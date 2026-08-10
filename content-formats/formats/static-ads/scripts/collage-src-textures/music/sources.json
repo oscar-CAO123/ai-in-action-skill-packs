@@ -1,0 +1,22 @@
+[
+ {
+  "file": "sheet-music-score-01.jpg",
+  "date": "1956",
+  "title": "Leonard Bernstein working on a score at his piano, 1956",
+  "item": "http://www.loc.gov/item/2023779043/",
+  "image": "https://tile.loc.gov/image-services/iiif/public:music:musbernstein-100030136:musbernstein-100030136.0001/full/pct:25/0/default.jpg",
+  "query": "sheet music score",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "sheet-music-score-02.jpg",
+  "date": "1950",
+  "title": "Leonard Bernstein marking a score at the piano, Israel Philharmonic Guest House, 1950",
+  "item": "http://www.loc.gov/item/2023778996/",
+  "image": "https://tile.loc.gov/image-services/iiif/public:music:musbernstein-100030089:musbernstein-100030089.0001/full/pct:25/0/default.jpg",
+  "query": "sheet music score",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ }
+]
