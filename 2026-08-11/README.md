@@ -1,6 +1,6 @@
 # 11 August 2026
 
-Four packs of agent skills, given away on the AI in Action call, Tuesday 11 August 2026.
+Five packs of agent skills, given away on the AI in Action call, Tuesday 11 August 2026.
 
 Root of the repo: [../README.md](../README.md). Licence: MIT, see [../LICENSE](../LICENSE).
 
@@ -24,6 +24,14 @@ The flagship. Two skills that build the thing everything else stands on.
   a working skill, a wiring checklist and the graph.
 
 Start here. The other three packs assume a brain exists and get much better when it does.
+
+### `workspace-audit/`
+Point it at a working environment and it checks every claim your files make against the disk, then
+classifies what it finds as poisoning, bloat, confusion or clash. Read-only: it never fixes anything
+while auditing. You get a scorecard, three to five questions your agent would answer wrongly today
+with each one traced to a finding, and a numbered fix list that waits for you to pick.
+
+Run it monthly. A workspace decays quietly and the first symptom is a confident wrong answer.
 
 ### `funnel-builder/`
 One offer in, a whole funnel out: the quiz, the scoring bands, the landing page, a result page per

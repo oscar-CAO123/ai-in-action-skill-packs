@@ -12,7 +12,7 @@ That is deliberate. The tools churn every few months. Anything written as a file
 
 | Date | What landed | Folder |
 |---|---|---|
-| **11 August 2026** | Graph engineering, funnel builder, content formats, four marketing agents | [`2026-08-11/`](2026-08-11/) |
+| **11 August 2026** | Graph engineering, workspace audit, funnel builder, content formats, four marketing agents | [`2026-08-11/`](2026-08-11/) |
 
 Nothing gets rewritten in place. A later drop that improves an earlier pack ships as its own dated
 folder and says what it supersedes, so anything you cloned keeps working.
