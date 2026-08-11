@@ -43,8 +43,10 @@ theirs:
 4. **The model routing table.** Which generation model owns which shot type, with verified ids and
    parameters, so nothing gets generated on the wrong one by accident.
 
-Where a skill references `references/` or a config path that is not in this repo, that is one of the
-four. Substitute your own file at the same path and the skill runs.
+**Every one of those paths now ships as a fill-in template**, so nothing dead-ends. Open
+`references/README.md` for the index, then work down it. Each template carries the structure that
+transfers and says what belongs in it. A format skill with empty templates produces competent
+generic work, which is the thing you are trying to avoid.
 
 The fastest way to build your own versions is to run the business interview and the funnel builder in
 this repo first. Both of them produce the language and the audience definitions these formats want.
