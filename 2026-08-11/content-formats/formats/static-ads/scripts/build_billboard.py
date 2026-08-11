@@ -7,7 +7,7 @@ pains, plus the magnet.
 
 One paid plate per industry. This file adds one thing to it and nothing else.
 
-## What this format is now (the operator, 2026-08-06, third and final call)
+## What this format is now (you, third and final call)
 
 **The billboard copy is generated INTO the plate, not composited onto it.**
 `plates_magnet.billboard_prompt` quotes the headline, the three bullets and the CTA line by line
@@ -23,7 +23,7 @@ element still drawn here.
 
 ## The Snapchat bar
 
-Measured off the template the operator downloaded, mirrored at
+Measured off the template you downloaded, mirrored at
 `../references/snapchat-text-template.webp` (720x1280):
 
 | | Template | As a fraction |
@@ -63,7 +63,7 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 W, H = 1080, 1350
 
-# Off the template, then corrected by the operator on the fourth pass: the flat `#767676` the template
+# Off the template, then corrected by you on the fourth pass: the flat `#767676` the template
 # samples at is what that mock renders over a light grey page, and lifting it literally gave a
 # heavy opaque slab. The real tool draws a TRANSLUCENT black scrim, so the footage reads through
 # it. Sampled grey stays as the reference value; what ships is the scrim.
@@ -97,7 +97,7 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;background:#000}}
 
 # The bar text shrinks to fit rather than wrapping, which is what the real tool does.
 FIT = """
-(function(){
+(function{
   var s=document.querySelector('.snap span');
   // AVAIL is passed in, not read off the bar: `clientWidth` counts the element's padding, so
   // reading it there hands the fit the full 1080 and the line runs to both frame edges with
@@ -107,20 +107,20 @@ FIT = """
   s.style.fontSize=size+'px';
   while(s.scrollWidth>avail && size>10){ size-=1; s.style.fontSize=size+'px'; }
   document.documentElement.dataset.fitted=Math.round(size)+'px';
-})();
+});
 """
 
 
 def render(industry):
     key = industry["key"]
     plate = PLATES / key / "billboard-plate.png"
-    if not plate.exists():
+    if not plate.exists:
         return None, "no plate shot"
     c = COPY["billboard"](industry)
     bar_h = round(SNAP_H * H)
     doc = (
         f'<meta charset="utf-8"><style>{CSS}</style><div class="card">'
-        f'<img class="plate" src="{plate.resolve().as_uri()}">'
+        f'<img class="plate" src="{plate.resolve.as_uri}">'
         f'<div class="snap" style="top:{round(SNAP_TOP * H)}px;height:{bar_h}px">'
         f'<span>{html.escape(c["snap"])}</span></div>'
         f'</div><script>{FIT.replace("START", str(round(bar_h * SNAP_FONT))).replace("AVAIL", str(W - 2 * SNAP_PAD))}</script>')
@@ -137,7 +137,7 @@ def render(industry):
     dom = subprocess.run([CHROME, "--headless", "--disable-gpu",
                           "--virtual-time-budget=4000", "--dump-dom", f"file://{tmp}"],
                          capture_output=True, text=True).stdout
-    Path(tmp).unlink()
+    Path(tmp).unlink
     m = re.search(r'data-fitted="([^"]+)"', dom)
     return out, (m.group(1) if m else "?")
 

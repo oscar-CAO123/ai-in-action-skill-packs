@@ -7,17 +7,17 @@
 Plates land in `../candidate/plates/<slug>.png`. Re-run `build_candidate_posters.py --plates`
 afterwards to composite the type over them.
 
-ROUTING (settled with the operator 2026-08-07).
+ROUTING (settled with you .
   u1a  `soul_cinematic` at 21:9. references/canon/model-routing.md gives retro and authentic
-       shots to Soul Cinema, "the one model that returns an image reading as captured rather
+       shots to your cinematic model, "the one model that returns an image reading as captured rather
        than rendered", which is what "ultra-realistic with imperfections" asks for. The plate
        is the middle third only, 1080x450, so 21:9 is the closest supported ratio to 2.4:1.
-  u1b  `nano_banana_pro` at 4:5, full bleed. The noir-painterly style lock in F2's own
+  u1b  `your image model` at 4:5, full bleed. The noir-painterly style lock in F2's own
        SKILL.md outranks the general routing table, and this plate carries its own paper
        ground behind the type, so it fills the whole 1080x1350 frame.
   u4   same as u1b, on a plain white ground.
 
-FACES. The house noir STYLE block hardcodes faceless silhouettes. the operator's rule, 2026-08-07:
+FACES. The house noir STYLE block hardcodes faceless silhouettes. your rule, :
 "faces when I say so, otherwise none". He said so for u1a (a mugshot) and u4 (the gaunt
 falling face). u1b's graduate stays faceless.
 """
@@ -27,7 +27,7 @@ import sys
 import urllib.request
 from pathlib import Path
 
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 OUT = Path(__file__).parent.parent / "candidate" / "plates"
 
 # The house vhs-camcorder tail, lifted verbatim from ideas/industry-build-carousels/styles.json.
@@ -39,7 +39,7 @@ VHS_TAIL = ("Amateur home-video look, low fidelity, soft optics, muted washed co
             "frame within the frame. Single clean exposure. No timestamp, no date stamp, no "
             "on-screen display, no text, no lettering, no numbers anywhere in the image.")
 
-# the operator, 2026-08-07, on the u1a v3 plate: "less degraded, brighter". The full tail above
+# you, on the u1a v3 plate: "less degraded, brighter". The full tail above
 # crushes the room to black and smears the picture. This keeps the tape as a texture rather
 # than as the subject, and asks for a bright well-exposed frame.
 VHS_TAIL_LIGHT = (
@@ -51,11 +51,11 @@ VHS_TAIL_LIGHT = (
     "text, no lettering, no numbers anywhere in the image.")
 
 # The canonical noir style, lifted verbatim from news-carousel/scripts/decks_noir.py, with the
-# faceless clause cut where the operator has authorised a face and the ground swapped off black.
+# faceless clause cut where you has authorised a face and the ground swapped off black.
 NOIR = ("A moody black-and-white oil painting in high-contrast film-noir style, thick visible "
         "brushstrokes, painterly chiaroscuro, hand-painted animation still, not a photograph.")
 
-# Oil on paper: the canonical noir SUB-STYLE declared by the operator 2026-08-07 off the u1b plate.
+# Oil on paper: the canonical noir SUB-STYLE declared by you off the u1b plate.
 # Spec of record is formats/noir-painterly/SKILL.md Phase 2b. These two constants are that
 # section's PAPER and MARKS blocks verbatim; edit the skill and this together or they drift.
 # Assembly is PAPER + <the scene> + MARKS, exactly as the parent is STYLE + scene + LIGHT.
@@ -68,7 +68,7 @@ MARKS = ("The hand shows: a few loose spots and flecks of black paint dotted aro
          "from the subject, one or two strokes that stop short or miss where they were going, a "
          "thin dry-brush skip where the bristles ran out of paint, and faint smudges and "
          "fingerprints on the bare paper. Purely black and white paint with no colour of any "
-         # The edge ban was strengthened 2026-08-07: the U7 cover came back as a photographed
+         # The edge ban was strengthened : the U7 cover came back as a photographed
          # sheet with a deckle edge, a white surround and a drop shadow, all four already
          # banned by the shorter wording. Naming the failure outright is what holds it.
          "kind. The paper fills the entire frame and runs off all four edges: this is the "
@@ -79,7 +79,7 @@ MARKS = ("The hand shows: a few loose spots and flecks of black paint dotted aro
          "anywhere.")
 
 PLATES = {
-    # v1 (2026-08-07) was REJECTED by the operator and must not be re-run. It asked for a literal
+    # v1 was REJECTED by you and must not be re-run. It asked for a literal
     # booking photo: "the way a person looks into a booking camera", expressionless, eyes-only
     # crop, plus a stack of blemish / bloodshot / dark-circles / stubble, lit by a harsh flat
     # on-camera flash. Those composite into an arrest photo of someone who looks unwell. The
@@ -87,11 +87,11 @@ PLATES = {
     # v2 keeps ONLY the tape format and changes every one of those choices.
     "u1a": {
         "job": "soul_cinematic",
-        "aspect": "3:4",          # Soul Cinematic has no 4:5; generate 3:4 and let the rig crop
+        "aspect": "3:4",          # your cinematic modeltic has no 4:5; generate 3:4 and let the rig crop
         "note": "from behind, wide, laptop at night",
         # v2 rejected: face visible, subject in the top half, flat dark laptop lid filling the
         # bottom, which composited as a dead black gap above the type.
-        # v3 rejected: right idea, wrong distance and grade. the operator: "further back, further
+        # v3 rejected: right idea, wrong distance and grade. you: "further back, further
         # back, less degraded, brighter." v3 sat right on his shoulder, crushed the room to
         # black and smeared the picture with tape artefacts.
         # v4 pulls the camera well back into the room, lifts the exposure so the room reads,
@@ -112,13 +112,13 @@ PLATES = {
             "on it. " + VHS_TAIL_LIGHT),
     },
     "u1b": {
-        "job": "nano_banana_pro",
+        "job": "your image model",
         "aspect": "4:5",
         "note": "falling graduate on paper, faceless, full bleed",
         # THIS IS THE APPROVED PROMPT. Do not add anatomy to it.
         # A v2 was tried that named the head, the arched back, both arms, each leg and the
         # direction of travel. It came back correct and completely literal, a rendered man in a
-        # gown, and the operator rejected it and restored this one (2026-08-07). The gesture IS the
+        # gown, and you rejected it and restored this one . The gesture IS the
         # style. See noir-painterly/SKILL.md Phase 2b.
         "prompt": (
             PAPER + " A single figure in a university graduation gown and mortarboard cap falls "
@@ -130,13 +130,13 @@ PLATES = {
             "on one edge, the rest of the figure solid black. " + MARKS),
     },
     "u4": {
-        "job": "nano_banana_pro",
+        "job": "your image model",
         "aspect": "4:5",
         "note": "first person push, gaunt falling face",
-        # Moved onto the oil-on-paper sub-style (PAPER + MARKS) on 2026-08-07, after the operator
+        # Moved onto the oil-on-paper sub-style (PAPER + MARKS) on after you
         # declared it canonical. It was written before that existed and asked for flat plain
         # white; paper is the house ground now and it matches the approved u1b.
-        # A FACE IS AUTHORISED HERE. the operator named the gaunt falling face specifically, which is
+        # A FACE IS AUTHORISED HERE. you named the gaunt falling face specifically, which is
         # the only exception to the faceless clause on this card.
         # Kept gestural on purpose. The u1b lesson: describe the movement and let the paint
         # find the body. Do not add a body plan to this prompt.
@@ -151,16 +151,16 @@ PLATES = {
             "one side, brilliant white highlights on the hands and the upturned face, the rest "
             "solid black. " + MARKS),
     },
-    # U7's Theme B cover, the only paid plate in that carousel. the operator moved U7 off the 5-plate
-    # black F5 rig onto Theme B on paper (2026-08-07), so this is one still instead of five.
+    # U7's Theme B cover, the only paid plate in that carousel. you moved U7 off the 5-plate
+    # black F5 rig onto Theme B on paper so this is one still instead of five.
     # Gestural per the sub-style: subject, garment, movement, then stop. Faceless, no face
     # authorised on this card.
     "u7": {
-        "job": "nano_banana_pro",
+        "job": "your image model",
         "aspect": "4:5",
         "note": "u7 cover, against the crowd",
         # v1 was the lone climb, and it left the figure floating with dead paper around it.
-        # the operator, 2026-08-07: fill the page with a crowd all facing the other way and take it
+        # you, : fill the page with a crowd all facing the other way and take it
         # aerial, so the card reads as one person going against everyone. Band layout, so the
         # painting fills the whole frame rather than sitting in the middle third.
         "prompt": (
@@ -187,7 +187,7 @@ PLATES = {
     # Gestural per the sub-style: subject, garment, movement, then stop. The u1b lesson holds,
     # do not add a body plan to this prompt.
     "u3": {
-        "job": "nano_banana_pro",
+        "job": "your image model",
         "aspect": "4:5",
         "note": "u3 mascot poster, headless recruiter pointing out",
         "prompt": (
@@ -202,18 +202,18 @@ PLATES = {
             "rakes from high on one side, brilliant white highlights along the pointing arm and "
             "the shoulders, the rest solid black. " + MARKS),
     },
-    # THE VHS-NOIR CUTOUT SET (the operator, 2026-08-10). Four subjects, cut out once and reused across
+    # THE VHS-NOIR CUTOUT SET (you, . Four subjects, cut out once and reused across
     # every Theme B carousel. The fan law is one style per piece and no two the same on a page,
     # the way the F8 grid deliberately mixes four treatments, and the bank was all painted noir,
-    # which the operator called "too much watercolour". These are the real-photograph half of it.
+    # which you called "too much watercolour". These are the real-photograph half of it.
     #
     # WRITTEN TO BE CUT OUT, not to be a scene. The subject sits clear of its surroundings so it
     # mattes cleanly. No painted style block here on purpose: this set is the counterweight to
-    # the oils, and from 2026-08-10 it is the HERO of every information page. Nothing recycled
+    # the oils, and from it is the HERO of every information page. Nothing recycled
     # from another carousel goes in that slot.
     #
     # VHS_TAIL_LIGHT, NOT VHS_TAIL. The first pass used the heavy tail and the plate came back
-    # crushed almost to black, the same failure the operator rejected on u1a v3. A cutout has to read as
+    # crushed almost to black, the same failure you rejected on u1a v3. A cutout has to read as
     # a figure at about 700px on a cream page, so it cannot be tenebrist: the tape is a texture
     # here, never the subject.
     "vhs-screen": {
@@ -266,7 +266,7 @@ PLATES = {
             "them. One hard light from behind them rims both figures and the room past them is "
             "a plain wall, so the pair read as a single separate shape. " + VHS_TAIL_LIGHT),
     },
-    # EPHEMERA FOR THE CUTOUT FAN (the operator, 2026-08-10). Two stills, cut out once and reused
+    # EPHEMERA FOR THE CUTOUT FAN (you, . Two stills, cut out once and reused
     # forever across every Theme B carousel. Torn scraps and pen marks are built in code for
     # nothing; tape and staples are the two that need real material and a real shadow, which is
     # why these are the only pieces of the fan that cost anything.
@@ -275,7 +275,7 @@ PLATES = {
     # separated, so `cutouts.py` can lift each one on its own. No noir style block, because a
     # tenebrist strip of tape is unusable as an object.
     "tape": {
-        "job": "nano_banana_pro",
+        "job": "your image model",
         "aspect": "4:5",
         "note": "tape strips, asset sheet",
         "prompt": (
@@ -290,7 +290,7 @@ PLATES = {
             "objects other than the tape anywhere in the image."),
     },
     "staples": {
-        "job": "nano_banana_pro",
+        "job": "your image model",
         "aspect": "4:5",
         "note": "staples, asset sheet",
         "prompt": (
@@ -313,7 +313,7 @@ PLATES = {
     # asked for it, but every other card in the batch shipped in the oil-on-paper sub-style and
     # one watercolour card would read as a different campaign.
     "u6l": {
-        "job": "nano_banana_pro",
+        "job": "your image model",
         "aspect": "4:5",
         "note": "u6 them, the wall of backs",
         "prompt": (
@@ -328,7 +328,7 @@ PLATES = {
     # The mascot half. Generated headless, `mascot.py` lays the mark in. Deliberately the mirror
     # of u3: that figure points at the viewer, this one offers a hand to them.
     "u6r": {
-        "job": "nano_banana_pro",
+        "job": "your image model",
         "aspect": "4:5",
         "note": "u6 us, the offered hand",
         "prompt": (
@@ -343,11 +343,11 @@ PLATES = {
     },
     # u3 v1 came back with the painting inside a ruled box, bare paper margins outside it and a
     # faint pencil rule down the right side. MARKS bans a frame within the frame outright and
-    # this is the same "floats in empty space" failure the operator rejected on u4 v1. the operator, 2026-08-10:
+    # this is the same "floats in empty space" failure you rejected on u4 v1. you, :
     # run the extend. i2i off the RAW plate, never off the mascot composite, so the head void
     # stays bare paper and `mascot.py` re-lays the mark afterwards.
     "u3x": {
-        "job": "nano_banana_pro",
+        "job": "your image model",
         "aspect": "4:5",
         "note": "u3 extended to fill the page",
         "refs": ["u3-u3-mascot-poster.png"],
@@ -366,12 +366,12 @@ PLATES = {
             "corners. There is no ruled line, no pencil border and no painted edge anywhere. "
             + PAPER + " " + MARKS),
     },
-    # the operator, 2026-08-07: "extend it out from where it currently is, so it takes up the whole
+    # you, : "extend it out from where it currently is, so it takes up the whole
     # scene". The v1 painting floats in the middle of the sheet with dead paper above and below.
     # This grows the SAME painting outward to fill the page rather than rolling a new one, so
     # the figure, the hands and the face he approved all survive. i2i off the v1 plate.
     "u4x": {
-        "job": "nano_banana_pro",
+        "job": "your image model",
         "aspect": "4:5",
         "note": "u4 extended to fill the page",
         "refs": ["u4-first-person-push.png"],
@@ -390,7 +390,7 @@ PLATES = {
 }
 
 
-# THE HERO IS CAST TO THE BEAT (the operator, 2026-08-10). This is the law the first pass broke: hero
+# THE HERO IS CAST TO THE BEAT (you, . This is the law the first pass broke: hero
 # images were picked from whatever plates were lying around, so a slide about walking a work
 # floor got a stock shot of hands and a slide about businesses waiting got an empty room.
 # `industry-build-carousel/SKILL.md` section 2a already states it for the F8 grid, "cast the
@@ -402,7 +402,7 @@ PLATES = {
 #   O3  the three-rung ladder                         DRAWN, built in code, costs nothing
 #
 # Three media across three pages, getting less literal as the carousel goes on. O3 is absent
-# below because a drawn piece is not a plate: `cutouts.ladder()` builds it for free.
+# below because a drawn piece is not a plate: `cutouts.ladder` builds it for free.
 #
 # The press blocks are `press-flash` from `industry-build-carousels/styles.json`, verbatim.
 PRESS_HEAD = "A black-and-white press photograph."
@@ -449,7 +449,7 @@ PLATES.update({
 })
 
 
-# U4'S HEROES (2026-08-10). U4 was rebuilt off the plain style onto the paper carousel, and the
+# U4'S HEROES . U4 was rebuilt off the plain style onto the paper carousel, and the
 # casting law bars anything recycled from another carousel out of a hero slot, so U3's three
 # plates cannot carry these pages. Three keys.
 #
@@ -461,7 +461,7 @@ PLATES.update({
 # runs press on O1 and live-action on O2, so two carousels carrying adjacent beats never compose
 # the same way.
 #
-# RE-CAST 2026-08-10 ONTO THE LADDER, the operator's go. The three v1 plates below were shot to the old
+# RE-CAST ONTO THE LADDER, your go. The three v1 plates below were shot to the old
 # spine (THE SWITCH / THE SEAT / WHAT PROVES IT) and the rewrite replaced it with THE FIRST SEAT /
 # THE STEP UP / THE TOP, so every one of them was off its beat and the casting law was broken on
 # all three hero slots. The ladder needs three PEOPLE at three seniorities, which is the one thing
@@ -483,7 +483,7 @@ PLATES.update({
     # watching, hands off, while the work happens without them. Watching is the whole point, so
     # the hands must be visibly idle or the picture reads as somebody typing.
     #
-    # v1 (2026-08-10) shot the OLD O1, "bought tools nobody is running": a back room of sealed
+    # v1 shot the OLD O1, "bought tools nobody is running": a back room of sealed
     # cartons with no person in it at all. It is a good plate for that beat and it is the wrong
     # beat for this one, because a page about the first seat cannot show an empty room.
     "u4-o1": {
@@ -507,7 +507,7 @@ PLATES.update({
     # itself: one person deciding over work two other people brought them. The seniority gap
     # between the three figures is what makes the page a step up rather than a second first seat.
     #
-    # v1 (2026-08-10) FAILED twice over and must not be re-run. It shot the old O2, "the seat
+    # v1 FAILED twice over and must not be re-run. It shot the old O2, "the seat
     # mid-build", and the model laid the held page flat across the face, so the hero of the page
     # had no person in it, and it covered the desk in documents whose lettering rendered as
     # garble. Its fixes (nothing held up, the face named as unobstructed, the paper named blank)
@@ -537,7 +537,7 @@ PLATES.update({
     # a painted plate reads as the top of a ladder where a flash photograph reads as a room.
     # Assembly is PAPER + scene + MARKS, which is the sub-style's own order.
     #
-    # v1 (2026-08-10) shot the old O3, "the thing built and running": a junior standing beside a
+    # v1 shot the old O3, "the thing built and running": a junior standing beside a
     # wall screen they had wired up. That is a first-rung picture, and it is the plate currently
     # miscast on this page.
     "u4-o3": {
@@ -557,7 +557,7 @@ PLATES.update({
 })
 
 
-# THE SCULPTURE END CARD (the operator, 2026-08-10). The last page of a Theme B carousel is the same
+# THE SCULPTURE END CARD (you, . The last page of a Theme B carousel is the same
 # end card the F8 industry-build carousels close on, except the monument changes per carousel.
 # The Thinker belongs to F8 and is never reused here.
 #
@@ -565,7 +565,7 @@ PLATES.update({
 # verbatim. Edit them together or the two formats stop matching. THE MOIRE IS NOT IN THE PROMPT:
 # the tail explicitly bans it, because a model low-passes the fine gratings that create real
 # interference and paints decorative op-art instead. The plate asks for the CARRIER, a fine metal
-# mesh in deep focus, and `endcard.grade()` beats the pattern out afterwards for nothing.
+# mesh in deep focus, and `endcard.grade` beats the pattern out afterwards for nothing.
 SCULPT_HEAD = "A classical bronze sculpture in a dark gallery."
 SCULPT_BODY = ("lit by one hard raking museum light from the side, seen through a fine metal "
                "mesh screen a short distance in front of it, deep focus so both the mesh and "
@@ -575,7 +575,7 @@ SCULPT_TAIL = ("Sharp photograph, real museum lighting, the patina and tool mark
                "itself. Full-bleed frame, no border, no film edge, no letterboxing, no frame "
                "within the frame. Single clean exposure. No text, no lettering.")
 CROP_CLAUSE = {
-    # the operator named the framing for three of the seven. Saying it in the prompt is the only way to
+    # you named the framing for three of the seven. Saying it in the prompt is the only way to
     # stop the model deciding for itself where to cut a full-length figure.
     "top": ("The frame is a tight vertical portrait of the upper body only and stops at the "
             "chest: no waist, no hips, no legs and no lower body anywhere in the picture."),
@@ -583,15 +583,15 @@ CROP_CLAUSE = {
 }
 
 
-def _monuments():
+def _monuments:
     """Build one plate key per monument in the bank, `mon-<slug>`."""
     src = (Path(__file__).parent.parent / "references" / "monuments" / "monuments.json")
-    if not src.exists():
+    if not src.exists:
         return {}
     out = {}
-    for m in json.loads(src.read_text())["items"]:
+    for m in json.loads(src.read_text)["items"]:
         out[f"mon-{m['slug']}"] = {
-            "job": "nano_banana_pro",
+            "job": "your image model",
             "aspect": "4:5",
             "note": f"end card, {m['title']}",
             "prompt": (f"{SCULPT_HEAD} Medium shot: {m['label']}, {SCULPT_BODY}. "
@@ -600,10 +600,10 @@ def _monuments():
     return out
 
 
-PLATES.update(_monuments())
+PLATES.update(_monuments)
 
 
-def main():
+def main:
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     if not args or args[0] not in PLATES:
         sys.exit(f"usage: gen_candidate_plate.py <{'|'.join(PLATES)}> [--go]")
@@ -620,17 +620,17 @@ def main():
         print("DRY RUN. Nothing dispatched. Add --go to spend.")
         return
 
-    # The two models name their size param differently, verified off `higgsfield model get`
-    # on 2026-08-07: soul_cinematic takes `quality` (1.5k, 2k), nano_banana_pro takes
+    # The two models name their size param differently, verified off `your generation platform model get`
+    # on : soul_cinematic takes `quality` (1.5k, 2k), your image model takes
     # `resolution` (1k, 2k, 4k). Passing the wrong one is a hard failure, not a fallback.
     size = "--quality" if p["job"] == "soul_cinematic" else "--resolution"
     cmd = [HF, "generate", "create", p["job"], "--prompt", p["prompt"],
            "--aspect_ratio", p["aspect"], size, "2k", "--wait", "--json"]
     # i2i refinement. The house habit is to feed the approved image back as a reference rather
     # than roll a fresh one, so the thing already signed off survives the change.
-    for r in p.get("refs", ()):
-        ref = (OUT / r).resolve()   # OUT is the plates dir; refs are bare filenames
-        if not ref.exists():
+    for r in p.get("refs",):
+        ref = (OUT / r).resolve   # OUT is the plates dir; refs are bare filenames
+        if not ref.exists:
             sys.exit(f"reference plate missing: {ref}")
         cmd += ["--image-references", str(ref)]
     print("dispatching one paid job...")
@@ -661,4 +661,4 @@ def trim(png, pct=0.02):
 
 
 if __name__ == "__main__":
-    main()
+    main

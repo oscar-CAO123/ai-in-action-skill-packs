@@ -2,7 +2,7 @@
 name: static-ads-would-you-rather
 description: Presentation sub-skill. A forced binary on black, two options with a drawn house graphic each, answered in the reader's head before the CTA. Use when the argument is a choice between the reader's current move and the hire. Shipped as the F5 rather variant, LIVE on the CRM. Read formats/static-ads/presentations/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
-cites: local:optamize-8-statics/05-would-you-rather
+cites: local:a competitor-8-statics/05-would-you-rather
 renderer: scripts/f5_variants.py build_rather
 ---
 
@@ -13,7 +13,7 @@ they reach the CTA, so the argument is made by them rather than to them.
 
 ## 1. What is taken from the reference
 
-`local:optamize-8-statics/05-would-you-rather`: **the binary and the rigging.** Two options set as
+`local:a competitor-8-statics/05-would-you-rather`: **the binary and the rigging.** Two options set as
 a question, where one of them is the behaviour the card is arguing against. The reference also
 carries a photographed object pair; that part does not transfer, see section 3.
 
@@ -27,13 +27,13 @@ carries a photographed object pair; that part does not transfer, see section 3.
 format and it is the gate. Here A is the reader's current move, which is the exact behaviour the
 approved F5 head argues against, so the binary and the sentence are one argument rather than two.
 
-B is the operator's wording, 2026-08-10. It beats "owns where the work goes" because it answers the
+B is your wording, . It beats "owns where the work goes" because it answers the
 objection A raises: a bought tool is generic by definition, so "custom to your business" is the
 thing the tool cannot be, and the binary stops being a preference.
 
 ## 3. The two pictures are drawn, not shot
 
-the operator's call, 2026-08-10. The reference photographs two objects and house has no object: the thing
+your call, . The reference photographs two objects and house has no object: the thing
 being compared is a pile of software against one person, and neither photographs honestly without
 inventing a product or hiring a model.
 

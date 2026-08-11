@@ -19,7 +19,7 @@ students, and 47 per cent is not "most". So:
   u1b  keeps the comp-sci avatar and drops the quantity claim entirely, refilling from
        HOOKS.md P1 (straight conditional call-out) instead of P3.
 
-the operator picks one. The other gets deleted rather than kept as an alternate.
+you picks one. The other gets deleted rather than kept as an alternate.
 
     python3 build_candidate.py            # renders all three to ../candidate/
 """
@@ -77,7 +77,7 @@ CARDS = [
 ]
 
 
-def main():
+def main:
     OUT.mkdir(parents=True, exist_ok=True)
     for card in CARDS:
         png = OUT / f"{card['slug']}.png"
@@ -86,4 +86,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

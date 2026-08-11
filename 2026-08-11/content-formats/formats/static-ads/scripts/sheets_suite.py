@@ -33,7 +33,7 @@ KEY_ORDER = ["kicker", "head", "sub", "body", "left", "right", "rows", "turns", 
 
 
 def font(name):
-    return base64.b64encode((ASSETS / name).read_bytes()).decode()
+    return base64.b64encode((ASSETS / name).read_bytes).decode
 
 
 def accent(s):
@@ -144,7 +144,7 @@ def build(only_batch=None):
 
     js = """
 const bs=[...document.querySelectorAll('button')];
-bs.forEach(b=>b.onclick=()=>{
+bs.forEach(b=>b.onclick==>{
   bs.forEach(x=>x.classList.remove('on')); b.classList.add('on');
   const f=b.dataset.f;
   document.querySelectorAll('.card').forEach(c=>{
@@ -159,7 +159,7 @@ bs.forEach(b=>b.onclick=()=>{
            f'<style>{CSS}</style>'
            f'<h1>The static suite, {title}</h1>'
            f'<div class="lede">{n_cards} cards, {n_cards - n_gated} authored, {n_gated} gated '
-           f'on real material. {len(KILLED)} formats were cut on 2026-08-07. Every line fills a '
+           f'on real material. {len(KILLED)} formats were cut on . Every line fills a '
            f'named structure in references/hooks/HOOKS.md with its id cited. Bold is the blue '
            f'accent, one per card.</div>'
            f'<div class="bar">{"".join(buttons)}</div>'

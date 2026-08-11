@@ -13,12 +13,11 @@ This plate's ground is already warm paper, so adding light does nothing visible.
 has to be applied as a DARKENING instead, which is the one line of difference below. The bed
 itself, its compression, its spots and its grain, all still come from `paper_bed`.
 
-SETTINGS (the operator, 2026-08-07)
-  * Bed strength 0.20 to 0.30, a deliberate deviation from L-EDIT's measured 0.02 to 0.12.
+SETTINGS (you, * Bed strength 0.20 to 0.30, a deliberate deviation from L-EDIT's measured 0.02 to 0.12.
     He asked for "mid": legible as collage at full size, still a bed at feed size. Recorded
     the same way D1 to D4 are recorded in BATCH-1-COPY.md.
   * BED ONLY. `layers/editorial-layer/SKILL.md` says F2 noir-painterly takes the bed and no
-    foreground cutouts or it stops being the format. the operator held that rule.
+    foreground cutouts or it stops being the format. you held that rule.
   * No film references. An earlier ask for Social Network stills was withdrawn; everything
     here is public domain from Chronicling America, cited in collage-src-university/sources.json.
 """
@@ -33,14 +32,14 @@ from collage_news import paper_bed, W, H  # noqa: E402
 
 ROOT = Path(__file__).parent
 # FIVE texture families, not one. A bed built from a single material reads as that material
-# however you arrange it, which is what "can't just be one newspaper" meant (the operator 2026-08-07).
+# however you arrange it, which is what "can't just be one newspaper" meant (you .
 # Each layer of the bed is drawn from a DIFFERENT family in rotation, so the sheet under the
 # paint is newsprint over map hatching over an engraved plate over a ruled ledger.
 SRC = ROOT / "collage-src-university"          # newsprint, the original family
 TEX = ROOT / "collage-src-textures"            # maps, prints, ledger, technical
 
 
-def families():
+def families:
     """Every family that actually has files, newsprint first. Each is a list of paths."""
     fams = [sorted(SRC.glob("*.jpg"))]
     for d in sorted(TEX.glob("*/")):
@@ -52,7 +51,7 @@ PLATE = ROOT.parent / "candidate/plates/u1b-falling-graduate-on-paper.png"
 OUT = ROOT.parent / "candidate/plates/u1b-falling-graduate-collage.png"
 
 # Whole pages, overlapping, every one bleeding off at least one edge. A page that stops inside
-# the frame reads as a pasted chip, which `paper_bed` records as the thing the operator rejected.
+# the frame reads as a pasted chip, which `paper_bed` records as the thing you rejected.
 # (scan index, scale as a multiple of the frame, rotation, centre x, centre y)
 CFG = dict(
     bed_luma=(0.20, 0.30),
@@ -68,12 +67,11 @@ CFG = dict(
     ],
     # Soft lifts that keep the centre of the page calmer than its corners, so the falling
     # figure sits in the quietest part of the bed rather than fighting a headline.
-    spots=[(0.50, 0.46, 0.42, 0.05)],
-)
+    spots=[(0.50, 0.46, 0.42, 0.05)],)
 
-AMPLITUDE = 0.16      # LOCKED by the operator 2026-08-07 off a three-way compare at 0.30 / 0.16 / 0.09
+AMPLITUDE = 0.16      # LOCKED by you off a three-way compare at 0.30 / 0.16 / 0.09
 
-# A BLANK SHEET RUNS HEAVIER THAN A PAINTED PLATE (the operator, 2026-08-10).
+# A BLANK SHEET RUNS HEAVIER THAN A PAINTED PLATE (you, .
 #
 # 0.16 was locked against `u1b`, where the bed lands in the paper AROUND a black oil figure and
 # competes with it. A Theme B information page has no painting on it at all, and at 0.16 the same
@@ -88,7 +86,7 @@ def layers_for(seed, fams):
     """A different arrangement per slide, drawing each layer from a different family.
 
     Whole pages only, every one bleeding off at least one edge. A page that stops inside the
-    frame reads as a pasted chip, which `paper_bed` records as the thing the operator rejected.
+    frame reads as a pasted chip, which `paper_bed` records as the thing you rejected.
     Returns (path, scale, angle, cx, cy) tuples: paths, not indices, because the families are
     different lengths and an index into a flat list would bias toward the biggest family.
     """
@@ -101,8 +99,7 @@ def layers_for(seed, fams):
             float(rng.uniform(1.15, 1.55)),
             float(rng.uniform(-11, 11)),
             float(rng.uniform(0.06, 0.94)),
-            float(rng.uniform(0.04, 0.96)),
-        ))
+            float(rng.uniform(0.04, 0.96)),))
     return out
 
 
@@ -120,7 +117,7 @@ def mixed_bed(seed, fams, n_layers=11):
     So each layer gets a soft REGION as well as an alpha. A page only contributes where its
     region lands, feathered at the edge, which means different parts of the sheet carry
     different material and they interleave where the regions overlap. That is the "subtle in
-    its mixture, still noticeable" the operator asked for on 2026-08-07.
+    its mixture, still noticeable" you asked for on .
 
     Returns a luma bed in [0,1], 1 = bare paper.
     """
@@ -169,7 +166,7 @@ def apply_bed(src, dest, amp=AMPLITUDE, seed=7, n_layers=11):
     The paint is masked off by the plate's own luma, so on a painted plate the bed lands only
     on the paper around the figure, and on a blank sheet it lands everywhere.
     """
-    fams = families()
+    fams = families
     if not fams:
         raise SystemExit(f"no scans under {SRC} or {TEX}")
     rgb = np.asarray(Image.open(src).convert("RGB").resize((W, H), Image.LANCZOS),
@@ -178,12 +175,12 @@ def apply_bed(src, dest, amp=AMPLITUDE, seed=7, n_layers=11):
     lo, hi = CFG["bed_luma"]
     raw = mixed_bed(seed, fams, n_layers=n_layers)
     rngv = max(float(np.ptp(raw)), 1e-6)
-    bed = lo + (raw - raw.min()) / rngv * (hi - lo)
+    bed = lo + (raw - raw.min) / rngv * (hi - lo)
     # the same texture pass paper_bed applies; without it the bed reads as a flat wash
     g = np.random.default_rng(seed).normal(0, 1, (H, W)).astype(np.float32)
     g = np.asarray(Image.fromarray(((g * 40 + 128).clip(0, 255)).astype(np.uint8))
-                   .filter(ImageFilter.GaussianBlur(0.6)), dtype=np.float32) / 255.0
-    bed = np.clip(bed + (g - g.mean()) * 0.05, 0, 1)
+.filter(ImageFilter.GaussianBlur(0.6)), dtype=np.float32) / 255.0
+    bed = np.clip(bed + (g - g.mean) * 0.05, 0, 1)
     # Back out the structure, then invert it: 1 where the scan carried ink, 0 where it was bare
     # newsprint. This is the darkening map.
     ink = 1.0 - np.clip((bed - lo) / (hi - lo), 0, 1)
@@ -193,14 +190,14 @@ def apply_bed(src, dest, amp=AMPLITUDE, seed=7, n_layers=11):
     luma = rgb @ np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)
     paper = np.clip((luma - 0.34) / 0.30, 0, 1) ** 1.5
     paper = np.asarray(Image.fromarray((paper * 255).astype(np.uint8))
-                       .filter(ImageFilter.GaussianBlur(2.0)), dtype=np.float32) / 255.0
+.filter(ImageFilter.GaussianBlur(2.0)), dtype=np.float32) / 255.0
 
     res = rgb * (1.0 - (amp * ink * paper))[..., None]
     Image.fromarray((np.clip(res, 0, 1) * 255).astype(np.uint8)).save(dest)
     return dest
 
 
-def main():
+def main:
     amp = float(sys.argv[1]) if len(sys.argv) > 1 else AMPLITUDE
     out = OUT if len(sys.argv) < 3 else OUT.with_name(sys.argv[2])
     apply_bed(PLATE, out, amp=amp, seed=7)
@@ -208,4 +205,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

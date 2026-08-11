@@ -24,7 +24,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 SRC = ROOT / "out-noir"
-SECRETS = Path.home() / "AIOS" / ".secrets" / ".env"
+SECRETS = Path.home / "AIOS" / ".secrets" / ".env"
 BUCKET = "content-media"
 
 SLUGS = [
@@ -34,15 +34,15 @@ SLUGS = [
 ]
 
 
-def load_env():
+def load_env:
     """Read the two keys we need. The merged .env has shell-hostile lines, so parse, never source."""
     env = {}
-    for line in SECRETS.read_text().splitlines():
-        line = line.strip()
+    for line in SECRETS.read_text.splitlines:
+        line = line.strip
         if not line or line.startswith("#") or "=" not in line:
             continue
         k, _, v = line.partition("=")
-        env[k.strip()] = v.strip().strip('"').strip("'")
+        env[k.strip] = v.strip.strip('"').strip("'")
     url = env.get("SUPABASE_URL") or os.environ.get("SUPABASE_URL")
     key = env.get("SUPABASE_SERVICE_ROLE_KEY") or os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
     if not url or not key:
@@ -55,26 +55,25 @@ def put(url, key, obj_key, body):
         f"{url}/storage/v1/object/{BUCKET}/{obj_key}",
         data=body, method="POST",
         headers={"Authorization": f"Bearer {key}", "Content-Type": "image/png",
-                 "x-upsert": "true", "Cache-Control": "no-cache"},
-    )
+                 "x-upsert": "true", "Cache-Control": "no-cache"},)
     with urllib.request.urlopen(req, timeout=180) as r:
         return r.status
 
 
-def main():
+def main:
     dry = "--dry-run" in sys.argv
-    url, key = load_env()
+    url, key = load_env
     ok = fail = 0
     for slug in SLUGS:
         for i in range(1, 7):
             p = SRC / slug / f"slide-{i:02d}.png"
-            if not p.exists():
+            if not p.exists:
                 print(f"MISSING {p}")
                 fail += 1
                 continue
-            body = p.read_bytes()
+            body = p.read_bytes
             obj = f"{slug}/slide-{i:02d}.png"
-            digest = hashlib.sha256(body).hexdigest()[:12]
+            digest = hashlib.sha256(body).hexdigest[:12]
             if dry:
                 print(f"would push {obj:<44} {len(body)/1e6:5.2f} MB  {digest}")
                 ok += 1
@@ -91,4 +90,4 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main)

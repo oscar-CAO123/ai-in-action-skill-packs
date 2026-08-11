@@ -9,7 +9,7 @@ Cards land in `out-industry/<industry>/<pain-slug>.png`.
 
 Plate policy. A card whose `plate` names an existing noir deck reuses that deck's wordless
 `slide-01` straight off disk, so the whole set costs nothing to re-render. A card whose
-`plate` starts with `industry-` has no plate on disk and gets one paid nano_banana_pro job,
+`plate` starts with `industry-` has no plate on disk and gets one paid your image model job,
 dispatched one at a time and downloaded before the next is sent, exactly as `plates_noir.py`
 does it. Those land in `plates-noir/<plate>/slide-01.png` and are reused from then on.
 
@@ -29,7 +29,7 @@ from decks_industry import (INDUSTRY_STATICS, NEW_PLATES, anno_label,  # noqa: E
                             band_lines)
 from decks_noir import LIGHT, STYLE  # noqa: E402
 
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 PLATES = ROOT / "plates-noir"
 REAL = ROOT / "plates-real"
 OUT = ROOT / "out-industry"
@@ -50,7 +50,7 @@ def generate(prompt, dest, tries=4):
     """Dispatch ONE paid still and download it. Blocks until the job finishes."""
     for attempt in range(1, tries + 1):
         r = subprocess.run(
-            [HF, "generate", "create", "nano_banana_pro", "--aspect_ratio", "5:4",
+            [HF, "generate", "create", "your image model", "--aspect_ratio", "5:4",
              "--resolution", "2k", "--prompt", prompt, "--wait", "--json"],
             capture_output=True, text=True)
         if r.returncode == 0 and "[" in r.stdout:
@@ -90,7 +90,7 @@ def subject_point(png):
     off_x, off_y = (W - w * s) / 2, (PLATE_H - h * s) / 2
 
     small = im.resize((120, int(120 * h / w)))
-    px = list(small.getdata())
+    px = list(small.getdata)
     sw, sh = small.size
     # Ignore the bottom third: the plate fades to black there and the label already sits in it.
     live = [(i % sw, i // sw, v) for i, v in enumerate(px) if i // sw < sh * 0.68]
@@ -144,21 +144,21 @@ def arrow_overlay(label, target):
 def plate_path(name, industry=None, slug=None):
     """The real-world plate if one has been shot, otherwise the painted noir plate.
 
-    `plates-real/<industry>/<slug>.png` is canonical as of 2026-08-06: the operator replaced the painted
+    `plates-real/<industry>/<slug>.png` is canonical as of : you replaced the painted
     noir plates with real-world captures shot by `plates_real.py`. The noir path stays as the
     fallback so an industry that has not been shot yet still renders.
     """
     if industry and slug:
         real = REAL / industry / f"{slug}.png"
-        if real.exists():
+        if real.exists:
             return real
     folder = name if name.startswith("industry-") else f"noir-pain-{name}"
     return PLATES / folder / "slide-01.png"
 
 
-def ensure_plates():
+def ensure_plates:
     """Generate any `industry-` plate that is not on disk yet. One paid job at a time."""
-    missing = [n for n in NEW_PLATES if not plate_path(n).exists()]
+    missing = [n for n in NEW_PLATES if not plate_path(n).exists]
     if not missing:
         print("all plates present, nothing to generate")
         return
@@ -169,12 +169,12 @@ def ensure_plates():
         print(f"{name}  done", flush=True)
 
 
-def main():
+def main:
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     if "--plates" in sys.argv:
-        ensure_plates()
+        ensure_plates
         return
-    ensure_plates()
+    ensure_plates
     only = set(args)
     for deck in INDUSTRY_STATICS:
         if only and deck["industry"] not in only:
@@ -183,13 +183,13 @@ def main():
         out = OUT / deck["industry"]
         for card in deck["cards"]:
             plate = plate_path(card["plate"], deck["industry"], card["slug"])
-            if not plate.exists():
+            if not plate.exists:
                 print(f"{card['slug']}  SKIPPED, no plate at {plate}")
                 continue
-            # No overlay. the operator cut the leader-arrow annotation on 2026-08-06, which puts these
+            # No overlay. you cut the leader-arrow annotation on puts these
             # cards back under section 2c: nothing is drawn over the plate. `arrow_overlay`,
             # `subject_point` and `ARROW_TARGETS` stay on disk with the rest of the annotation
-            # machinery and are not canonical; reviving them needs the operator's go again.
+            # machinery and are not canonical; reviving them needs your go again.
             report = render_card(band_lines(deck["industry"], card),
                                  out / f"{card['slug']}.png", plate=plate, theme="noir")
             print(f"{card['slug']:18} {report}", flush=True)
@@ -197,4 +197,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

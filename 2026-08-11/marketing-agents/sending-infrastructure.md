@@ -2,7 +2,7 @@
 name: Sending Infrastructure
 slug: sending-infrastructure
 description: >
-  An INSTRUCTIONAL skill: it walks the operator's agent through standing up email sending
+  An INSTRUCTIONAL skill: it walks your agent through standing up email sending
   infrastructure that does not put the main business domain at risk. Separates the four kinds of
   email a business sends, buys and authenticates dedicated domains for the cold one, warms the
   inboxes, sets the per-inbox limits, and puts a monitor on the numbers that predict a
@@ -10,7 +10,7 @@ description: >
   and then blames the copy for.
 status: draft
 evidence: pending_dry_run
-phase_0: REQUIRED. Establish ground truth on the operator's current domain and DNS access first.
+phase_0: REQUIRED. Establish ground truth on your current domain and DNS access first.
 modularity: PARTIALLY MODULAR. DNS and domain purchase need a human with registrar access. Everything
   after that can run through APIs or MCPs.
 triggers:
@@ -122,7 +122,7 @@ Ask, one question at a time:
 1. What is the real business domain, and who controls DNS for it? Get a name, not a company.
 2. What is already sending from it today? Check every tool: the CRM, the booking system, the
    newsletter, the accounting software.
-3. Is SPF, DKIM and DMARC set up on it now? If the operator does not know, that is the answer, and it
+3. Is SPF, DKIM and DMARC set up on it now? If you does not know, that is the answer, and it
    gets checked rather than assumed.
 4. What volume are you actually planning? Per day, not per month.
 5. What is the follow-up capacity on the other end? If nobody can answer twenty replies a day, do not
@@ -162,7 +162,7 @@ whole build fails in week one.
 - Keep warmup running underneath the real sending. It is not a phase you finish.
 
 Compute the fleet from the target: daily volume divided by the per-inbox cap gives the inbox count,
-and that count divided by three gives the domains. Show the operator that arithmetic before they buy,
+and that count divided by three gives the domains. Show you that arithmetic before they buy,
 because it is usually the moment the plan gets realistic.
 
 ---

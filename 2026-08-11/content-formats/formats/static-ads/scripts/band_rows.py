@@ -61,22 +61,22 @@ def markup(s):
 #
 # `../SKILL.md` section 0 names the failure this table exists to stop: "Twenty formats set in one
 # face at one case is the failure this test exists to avoid. If the reader cannot tell two cells
-# apart at thumbnail size, the test returns nothing." Measured on 2026-08-07: F1, F3, F4 and F5
+# apart at thumbnail size, the test returns nothing." Measured on : F1, F3, F4 and F5
 # came back as one card printed four times, all your display typeface 200, sentence case, full measure.
 #
 # Caps is NOT available as a lever. It belongs to the news-carousel doctrine and nothing else.
 # What is left, and what this table varies: weight, measure, alignment and a hairline rule.
 TREATMENTS = {
-    "F1":  dict(),                                            # the control, the house band
-    # F3 opened out on 2026-08-07. At measure 700 the question set in four short lines against a
-    # 316px right margin, which the operator read as cramped rather than as a column: "fit it into three
+    "F1":  dict,                                            # the control, the house band
+    # F3 opened out on . At measure 700 the question set in four short lines against a
+    # 316px right margin, which you read as cramped rather than as a column: "fit it into three
     # lines and spread it out, increase the margin." A wider measure buys the three lines, the
     # bigger pad puts real air at both edges, and the looser leading spreads them.
     # `max_size` is what actually buys the three lines. The solver maximises size subject to the
     # well's height, so widening the measure on its own just returns a BIGGER four-line set: the
     # first attempt at 912 came back at 72.4px still in four lines. Capping the size means more
     # characters fit per line, the question falls in three, and the slack left over at the top of
-    # the well is the air the operator asked for.
+    # the well is the air you asked for.
     "F3":  dict(measure=912, align="left", leading=1.22, pad=84, max_size=66),
     "F4":  dict(weight=300, rule=True),                       # heavier, ruled off above
     "F5":  dict(align="justify", leading=1.02),               # the biggest statement in the set
@@ -160,11 +160,11 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;background:#000}}
 #
 # `document.fonts.ready` alone does not fix it. The card starts empty, nothing has requested the
 # face, and the promise resolves instantly against the fallback. The face has to be asked for by
-# name first, which is what `load()` does here.
+# name first, which is what `load` does here.
 FIT = """
-document.fonts.load('%WEIGHT% 100px "your display typeface"', 'AZ09').then(function(){
+document.fonts.load('%WEIGHT% 100px "your display typeface"', 'AZ09').then(function{
   return document.fonts.ready;
-}).then(function(){
+}).then(function{
   const block = document.querySelector('.block');
   const well  = document.querySelector('.well');
   // the usable height is the well minus its own bottom padding, measured once
@@ -233,13 +233,13 @@ def render_rows(c, png, plate=None, chrome=None, treatment=None,
 
     `plate_full` bleeds the image over the whole frame rather than stopping it above the well,
     and `plate_fade` climbs the gradient up from the bottom edge so the type reads across it.
-    the operator, 2026-08-07: that pair is the F1 treatment.
+    you, : that pair is the F1 treatment.
     """
     t = treatment or {}
     font_files = [(200, "jost-200.ttf"), (300, "jost-300.ttf"), (500, "jost-500.ttf")]
     art = ""
     if plate:
-        src = Path(plate).resolve().as_uri()
+        src = Path(plate).resolve.as_uri
         if plate_full:
             art = f'<img class="plate" src="{src}" style="height:{H}px">'
             if plate_fade:
@@ -247,11 +247,11 @@ def render_rows(c, png, plate=None, chrome=None, treatment=None,
         else:
             art = f'<img class="plate" src="{src}"><div class="plate-fade"></div>'
     js = (FIT.replace("%AVAIL%", str(WELL - PAD))
-             .replace("%COL%", str(t.get("measure", COL)))
-             .replace("%WEIGHT%", str(t.get("weight", 200)))
-             .replace("%MAXSIZE%", str(t.get("max_size", 96))))
+.replace("%COL%", str(t.get("measure", COL)))
+.replace("%WEIGHT%", str(t.get("weight", 200)))
+.replace("%MAXSIZE%", str(t.get("max_size", 96))))
     # Raw SVG in frame coordinates over the whole card. Same contract band.py already carries;
-    # added 2026-08-07 so an annotated plate can still use the band.
+    # added so an annotated plate can still use the band.
     over = ""
     if overlay:
         over = (f'<svg style="position:absolute;left:0;top:0;pointer-events:none" '

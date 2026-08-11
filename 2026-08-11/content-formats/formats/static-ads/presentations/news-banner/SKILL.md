@@ -2,13 +2,13 @@
 name: static-ads-news-banner
 description: Presentation sub-skill. A white news banner laid across a full-bleed workplace plate, pure black condensed caps, with a topic chip. Use when a static should read as a report about the reader's market rather than a message to the reader. Shipped as the F5 news variant, LIVE on the CRM. Read formats/static-ads/presentations/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
-cites: local:optamize-8-statics/06-editorial-headline-still
+cites: local:a competitor-8-statics/06-editorial-headline-still
 renderer: scripts/f5_variants.py build_news
 ---
 
 # News banner
 
-the operator, on seeing the four F5 shapes: **"I love the news headline one."** It is the strongest card
+you, on seeing the four F5 shapes: **"I love the news headline one."** It is the strongest card
 the suite has produced and it is the one presentation here that reports rather than argues.
 
 **The mechanism.** A movement in the market, stated as news, with the reader's own trade in it. The
@@ -17,7 +17,7 @@ believed because of the register it is written in.
 
 ## 1. What is taken from the reference
 
-`local:optamize-8-statics/06-editorial-headline-still`: **the register of the type and the choice
+`local:a competitor-8-statics/06-editorial-headline-still`: **the register of the type and the choice
 of plate.** Heavier type set as a report, over a still of somebody in their own workplace. Nothing
 else transfers.
 
@@ -27,8 +27,8 @@ The news carousel's geometry: plate from y=0 to 844 fading into black, a 506px b
 carrying one flush sentence. Over it, **a white banner running across the frame** with picture
 still showing above and below.
 
-**This is a recorded break of the band law** (`../../SKILL.md` section 0), and it is the operator's call,
-2026-08-10: "make it canonical to the way it's actually being presented in the reference. It's a
+**This is a recorded break of the band law** (`../../SKILL.md` section 0), and it is your call,
+: "make it canonical to the way it's actually being presented in the reference. It's a
 banner running across the screen ... white background, pure black text, with a little sort of
 marker on what it is." `../../ui-mock/SKILL.md` already establishes that a format imitating
 something the reader trusts breaks the band law by design.
@@ -54,7 +54,7 @@ something the reader trusts breaks the band law by design.
 
 > Business owners across Australia rushing to hire new AI role as demand surges to record highs
 
-the operator's dictated wording with two changes he can undo in one line: the industry noun came out
+your dictated wording with two changes he can undo in one line: the industry noun came out
 because these run agnostic, and the doubled "Aussie ... across Australia" was cut to one. Present
 participle, no source named.
 

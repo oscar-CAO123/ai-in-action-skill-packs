@@ -5,7 +5,7 @@
     python3 magnet_copy.py construction   # one industry
     python3 magnet_copy.py --check        # the copy gate: em dashes, negation swap, banlist
 
-Settled with the operator 2026-08-06. Five hooks he supplied, each one given its own visual format,
+Settled with you . Five hooks he supplied, each one given its own visual format,
 filled per industry, every card closing on a lead magnet that ACTUALLY EXISTS.
 
 That last clause is the whole point of the set. The 25 existing industry statics close on
@@ -17,7 +17,7 @@ retired for this set and left alone in the old rig.
 Three laws this file obeys:
 
   - **Fill, never free-write.** Every hook is a named structure in `references/hooks/HOOKS.md`
-    with its id cited on the template. the operator authored the five sentences; the slots are
+    with its id cited on the template. you authored the five sentences; the slots are
     substituted and the sentence is not rewritten.
   - **The avatar comes FIRST**, or is named somewhere on the card. A pain with nobody in front
     of it makes no sense on a cold feed.
@@ -25,7 +25,7 @@ Three laws this file obeys:
     way the whole industry carries it, in the fewest words that still land.
 
 Case: sentence case everywhere EXCEPT hook 5, which is the news-carousel card and inherits that
-format's caps band. the operator, 2026-08-06.
+format's caps band. you, .
 """
 import re
 import sys
@@ -48,10 +48,10 @@ PLATES_REAL = (VAULT / "the business" / "skills" / "content-formats" / "formats"
 #   pain      hook 1's fill, as a gerund, because the sentence reads "still [painpoint]".
 #   still     the same pain as a second-person clause, for the split-screen dossier.
 #   magnet    the asset that EXISTS, verbatim off its shipped page's <title>. Kept for provenance:
-#             it is what the CRM row records and what the route serves. Renamed 2026-08-10 to the
+#             it is what the CRM row records and what the route serves. Renamed to the
 #             post-rename titles in `specs/RENAME-AND-FORMATS.md`: every industry asset is now
 #             "The [Industry] Business AI Audit", so the seven pain-named originals are gone.
-#   audit     WHAT THE CARDS SAY. the operator, 2026-08-06: one name across the whole program,
+#   audit     WHAT THE CARDS SAY. you, : one name across the whole program,
 #             "The [Industry] AI Audit", rather than seven separately branded assets. The cards
 #             sell one thing with an industry in front of it; the built page keeps its own title.
 #   proto     the prototype file the report screenshot is captured from.
@@ -81,7 +81,7 @@ INDUSTRIES = [
          name="Real Estate & Property Management",
          avatar="Aussie real estate agencies",
          short="real estate agency",
-         # the operator 2026-08-07: hospitality took "drowning in admin", so real estate walks down its
+         # you : hospitality took "drowning in admin", so real estate walks down its
          # own ranked list to keep seven distinct pains across the set.
          pain="running on disconnected systems",
          still="run on disconnected systems",
@@ -94,7 +94,7 @@ INDUSTRIES = [
          name="Hospitality & Food Service",
          avatar="Aussie hospitality businesses",
          short="hospitality business",
-         # the operator 2026-08-07: hospitality moves onto the drowning-in-admin hook.
+         # you : hospitality moves onto the drowning-in-admin hook.
          pain="drowning in admin",
          still="drown in admin",
          magnet="The Hospitality Business AI Audit",
@@ -124,10 +124,10 @@ INDUSTRIES = [
          proto="ratio-benchmark-prototype.html",
          plate="financial-services-and-insurance/context.png",
          agent="AI agent"),
-    # the operator 2026-08-07: this avatar is "trades businesses" everywhere it is said out loud, across
+    # you : this avatar is "trades businesses" everywhere it is said out loud, across
     # all five formats. `key`, `slug` and `proto` keep the building-services spelling: they address
     # the CRM row and the prototype file on disk, and renaming them breaks both. `magnet` and
-    # `route` moved to the trades name on 2026-08-10, because the shipped page did.
+    # `route` moved to the trades name on because the shipped page did.
     dict(key="building-services", audit="The Trades AI Audit", slug="building-services", paper="TRADES",
          name="Trades",
          avatar="Aussie trades businesses",
@@ -155,7 +155,7 @@ INDUSTRIES = [
 BY_KEY = {i["key"]: i for i in INDUSTRIES}
 
 # ---------------------------------------------------------------------------------------------
-# The five hooks, verbatim from the operator 2026-08-06, each mapped to its HOOKS.md structure.
+# The five hooks, verbatim from you each mapped to its HOOKS.md structure.
 #
 # Hook 5 ships with the `do do` typo corrected and the exclamation mark dropped to a full stop,
 # which is the band's own punctuation.
@@ -204,8 +204,8 @@ HOOKS = {
 # Accent markup is [[double brackets]], one per card, same as band.py and band_basic.py.
 
 
-# Hook 1 written out in full for one industry rather than filled from the template. the operator wrote
-# this line for trades on 2026-08-07 and asked for it on the split screen ONLY: the other four
+# Hook 1 written out in full for one industry rather than filled from the template. you wrote
+# this line for trades on and asked for it on the split screen ONLY: the other four
 # trades cards keep their own format's template, with the avatar renamed. The template's
 # "still [painpoint]" clause does not survive the rewrite, so the whole sentence is stored.
 SPLIT_HEAD = {
@@ -221,7 +221,7 @@ def split_copy(i):
         head=SPLIT_HEAD.get(
             i["key"],
             f"{i['avatar']}: this is the real reason you're still [[{i['pain']}]]."),
-        # the operator: "apart from the first ones, which say take the audit"
+        # you: "apart from the first ones, which say take the audit"
         cta="Take the audit")
 
 
@@ -235,7 +235,7 @@ def deliverable_copy(i):
 def editorial_copy(i):
     """Hook 3. The line IS the lead headline on a newspaper front page.
 
-    the operator, 2026-08-06, second pass: the card is built on the downloaded newspaper template
+    you, second pass: the card is built on the downloaded newspaper template
     (`~/Desktop/template.webp`), not on digital-article chrome. The first version read as our own
     authored page, which is the one thing this format cannot do.
 
@@ -285,7 +285,7 @@ PAIN3 = {
 
 
 def billboard_copy(i):
-    """Hook 4. Third pass, the operator 2026-08-06: **the comic is scrapped.**
+    """Hook 4. Third pass, you : **the comic is scrapped.**
 
     The card is now a roadside billboard someone is filming on their phone, and the billboard
     face carries the "Still..." sequence: a hanging lead, the industry's top three ranked pains
@@ -299,12 +299,12 @@ def billboard_copy(i):
         # what is PRINTED ON THE BILLBOARD, generated into the plate rather than composited.
         # Set in caps because that is how a billboard is set, and because the model holds
         # spelling far better on caps than on mixed case at this size.
-        head=f"{i['avatar'].upper()}, ARE YOU STILL...",
-        bullets=[p.upper() + "?" for p in PAIN3[i["key"]]],
-        box=f"Take {i['audit']}".upper(),
+        head=f"{i['avatar'].upper}, ARE YOU STILL...",
+        bullets=[p.upper + "?" for p in PAIN3[i["key"]]],
+        box=f"Take {i['audit']}".upper,
         # the Snapchat text-tool line. This one IS composited: it is phone UI sitting over the
         # footage, not something printed on the billboard.
-        snap=f"for all the {i['avatar'].lower()} out there",
+        snap=f"for all the {i['avatar'].lower} out there",
         cta=f"Take {i['audit']}")
 
 
@@ -314,7 +314,7 @@ def caution_copy(i):
     return dict(
         lines=[f"{i['avatar']}. Please be careful.",
                f"[[Do not touch AI]] before you do this audit."],
-        anno=f"TAKE {i['audit'].upper()}")
+        anno=f"TAKE {i['audit'].upper}")
 
 
 COPY = {
@@ -358,7 +358,7 @@ BANNED = [
 def check(keys=None):
     bad = 0
     for c in every_card(keys):
-        text = " ".join(str(v) for v in c["copy"].values())
+        text = " ".join(str(v) for v in c["copy"].values)
         where = f"{c['industry']['key']}/{list(HOOKS).index('split') and ''}{c['hook']['fmt']}"
         for pattern, why in BANNED:
             if re.search(pattern, text):
@@ -369,10 +369,10 @@ def check(keys=None):
         if n > 1:
             print(f"  FAIL {where}: {n} accents, the law is one")
             bad += 1
-    # the operator's law, 2026-08-10: every format cites the bank entry it is modelled on, by an id that
+    # your law, : every format cites the bank entry it is modelled on, by an id that
     # resolves. `refs.py check` is the same gate any other pipeline stage runs.
     import refs
-    for key, h in HOOKS.items():
+    for key, h in HOOKS.items:
         if not h.get("model"):
             print(f"  FAIL {h['fmt']}: no model reference (refs.py list)")
             bad += 1
@@ -382,7 +382,7 @@ def check(keys=None):
             except KeyError as err:
                 print(f"  FAIL {h['fmt']}: {err}")
                 bad += 1
-            if len(takes.split()) < 4:
+            if len(takes.split) < 4:
                 print(f"  FAIL {h['fmt']}: {ref} cites no principle, say what is taken from it")
                 bad += 1
     print(f"\n{'FAILED, ' + str(bad) + ' problems' if bad else 'clean'}")
@@ -397,10 +397,10 @@ def show(keys=None):
         print(f"\n{'=' * 92}\n{i['name']}  ({i['avatar']})")
         print(f"  magnet {i['magnet']}   route {i['route']}")
         print(f"  plate  {plate}")
-        for hk, h in HOOKS.items():
+        for hk, h in HOOKS.items:
             c = COPY[hk](i)
             print(f"\n  {h['fmt']}  {h['label']}   [{h['hooks_id']}]")
-            for k, v in c.items():
+            for k, v in c.items:
                 v = " / ".join(v) if isinstance(v, list) else v
                 print(f"      {k:9} {v}")
 

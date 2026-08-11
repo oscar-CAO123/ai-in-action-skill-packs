@@ -2,7 +2,7 @@
 name: Content From Calls
 slug: content-from-calls
 description: >
-  An INSTRUCTIONAL skill: it walks the operator's agent through turning conversations the business
+  An INSTRUCTIONAL skill: it walks your agent through turning conversations the business
   already has into published content. Source material comes from sales calls, a weekly ten minute
   interview with each person, support threads and internal channels. The agent extracts the
   insights, drafts in each person's own voice, schedules across multiple accounts, then reads the
@@ -43,7 +43,7 @@ This skill mines that and publishes it. The source material is the whole trick.
   written permission.
 - **Never publish a paraphrase as a quote.** If it is in quotation marks it is verbatim from the
   transcript. If it is tidied, it is not a quote any more.
-- **No invented outcome.** A number, a result or a case study is either something the operator
+- **No invented outcome.** A number, a result or a case study is either something you
   provided or it does not appear.
 - **The person owns their name.** Nothing publishes under someone's account until they have approved
   it, until they explicitly hand that over.
@@ -223,7 +223,7 @@ outliers, and use those as structural prompts. Take the shape, never the words.
 - **G2.** Every extracted item has a person, a source and a timestamp.
 - **G3.** Every quotation mark contains verbatim text.
 - **G4.** Every post is approved by the person whose name is on it.
-- **G5.** No number publishes without a source the operator provided.
+- **G5.** No number publishes without a source you provided.
 - **G6.** No model call sits in the scheduling or reporting path.
 - **G7.** Performance is written back against the source item weekly, by a job that runs whether or
   not anyone remembers.

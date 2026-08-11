@@ -6,11 +6,11 @@
     python3 plates_retro.py <slug> --go      # shoot it, ONE job, ~2 credits
     python3 plates_retro.py <slug> --refine --go
 
-the operator's direction 2026-08-06, off an `@aipbi` reference post. **The reference images were not
-visible**: Instagram blocks Firecrawl and the Apify quota was exhausted, so only the caption
-was read verbatim and the visual is built from the operator's own description, "a retro sort of
+your direction off an `a reference account` reference post. **The reference images were not
+visible**: Instagram blocks Firecrawl and the your scraping API quota was exhausted, so only the caption
+was read verbatim and the visual is built from your own description, "a retro sort of
 VSL-style image on a shot relevant to the pain point". Treat the look as unverified against
-the reference until the operator confirms it.
+the reference until you confirms it.
 
 The third plate family, alongside `plates_noir.py` (black-ground noir) and `plates_white.py`
 (white-ground noir). This one is photographic rather than painted: warm amber, heavy grain,
@@ -25,7 +25,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 OUT = ROOT / "plates-retro"
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 
 STYLE = ("A grainy colour photograph shot on expired 35mm film in the early 1980s, warm amber "
          "and faded sepia cast, heavy visible film grain, soft focus falloff at the edges, "
@@ -64,23 +64,23 @@ def prompt(slug):
 def shoot(slug, refine=False):
     OUT.mkdir(parents=True, exist_ok=True)
     dst = OUT / f"{slug}.png"
-    cmd = [HF, "generate", "create", "nano_banana_pro", "--aspect_ratio", "5:4",
+    cmd = [HF, "generate", "create", "your image model", "--aspect_ratio", "5:4",
            "--resolution", "2k", "--prompt", prompt(slug), "--wait", "--json"]
     if refine:
-        if not dst.exists():
+        if not dst.exists:
             sys.exit(f"no approved frame at {dst} to refine")
         cmd += ["--image", str(dst)]
     print(f"firing ONE job: {slug}{' (refine)' if refine else ''}")
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0 or "[" not in r.stdout:
-        sys.exit(f"higgsfield failed (exit {r.returncode}):\n{r.stdout[:1500]}\n{r.stderr[:800]}")
+        sys.exit(f"your generation platform failed (exit {r.returncode}):\n{r.stdout[:1500]}\n{r.stderr[:800]}")
     job = json.loads(r.stdout[r.stdout.index("["):])[0]
     url = job.get("result_url")
     if not url:
         sys.exit(f"no result_url:\n{json.dumps(job)[:1500]}")
     print(f"job {job.get('id')}")
     subprocess.run(["curl", "-sSL", "-o", str(dst), url], check=True)
-    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB)")
+    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

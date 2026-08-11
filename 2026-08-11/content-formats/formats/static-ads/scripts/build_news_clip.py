@@ -4,7 +4,7 @@
     python3 build_news_clip.py                 # all five
     python3 build_news_clip.py hospitality     # one
 
-the operator, 2026-08-06, across several passes off the original `-band` cards:
+you, across several passes off the original `-band` cards:
 
   1. **The clipping's own type stops being a caption and becomes newsprint.** `clip.py` prints
      it on a torn piece of paper entering from the bottom right, rather than `band.py`'s
@@ -82,7 +82,7 @@ HEADER = {
 
 def build(key):
     plate = PLATES / f"{key}.png"
-    if not plate.exists():
+    if not plate.exists:
         sys.exit(f"no collage plate at {plate}, run collage_news.py first")
     avatar, pain = HEADER[key]
     topline = f"Breaking: {avatar} can finally stop [[{pain}]]."

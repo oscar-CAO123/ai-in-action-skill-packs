@@ -6,7 +6,7 @@
     python3 plates_real.py construction-and-trades systems --go
     python3 plates_real.py <industry> --regrade              # re-grade from raw, free, no generation
 
-Settled with the operator 2026-08-06: the painted noir plates come off these cards and are replaced with
+Settled with you : the painted noir plates come off these cards and are replaced with
 real-world captures. The look is not invented here. It is the **F8 plate-style bank** already built
 for the industry-build carousels, at
 `projects/content-engine/ideas/industry-build-carousels/styles.json`, and this rig composes its
@@ -15,7 +15,7 @@ free ffmpeg grade from `grade_plate.sh`. Same universe, one card instead of a gr
 
 Two rules that are specific to these plates:
 
-  - **No people.** the operator, 2026-08-06. Every brief is a scene you would actually find in that kind of
+  - **No people.** you, . Every brief is a scene you would actually find in that kind of
     business with nobody in it: the desk after everyone has gone, the bench, the counter, the file
     wall. An empty room reads as the pain; a person in frame reads as a stock photo.
   - **One style per industry set**, unlike the carousels. The F8 law casts style per quadrant because
@@ -38,12 +38,12 @@ sys.path.insert(0, str(ROOT))
 from decks_industry import INDUSTRY_STATICS  # noqa: E402
 
 F8 = ROOT.parents[4] / "projects" / "content-engine" / "ideas" / "industry-build-carousels"
-STYLES = json.loads((F8 / "styles.json").read_text())["styles"]
+STYLES = json.loads((F8 / "styles.json").read_text)["styles"]
 GRADE_SH = F8 / "grade_plate.sh"
 OUT = ROOT / "plates-real"
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 
-# ONE style across all five industries: `vhs-camcorder`, the house retro look. the operator, 2026-08-06.
+# ONE style across all five industries: `vhs-camcorder`, the house retro look. you, .
 #
 # The first pass cast a different F8 stock per vertical (film-16mm, betacam-broadcast, super8-home,
 # vhs-camcorder, press-flash). Five stocks made five rows that did not read as one campaign, and the
@@ -60,10 +60,9 @@ PLATE_STYLES = dict.fromkeys(
         "retail-and-ecommerce",
         "financial-services-and-insurance",
     ],
-    "vhs-camcorder",
-)
+    "vhs-camcorder",)
 
-# The F8 per-vertical cast, retired on this format 2026-08-06. Restore by replacing the dict above.
+# The F8 per-vertical cast, retired on this format . Restore by replacing the dict above.
 F8_VERTICAL_STYLES = {
     "construction-and-trades": "film-16mm",
     "real-estate-and-property-management": "betacam-broadcast",
@@ -75,7 +74,7 @@ F8_VERTICAL_STYLES = {
 # (industry, card slug) -> the shot. `brief` is one plain sentence describing a real scene with
 # nobody in it. Keep it concrete and ordinary: the model paints what is named and invents the rest.
 SCENES = {
-    # the operator, 2026-08-06: the first pass put four screens on the desk and it was too busy. One
+    # you, : the first pass put four screens on the desk and it was too busy. One
     # laptop on a bare table. The pain is carried by the copy, so the plate does not have to
     # illustrate "disconnected" by stacking hardware in the frame.
     ("construction-and-trades", "systems"): {
@@ -93,10 +92,10 @@ SCENES = {
         "brief": "The owner's desk in a demountable site office at the end of the day, the chair "
                  "empty, the desk phone message light on, and an in-tray overflowing with job "
                  "folders waiting to be signed"},
-    # the operator, 2026-08-06: the interior-desk versions came off the four keeper plates. Four of the five
+    # you, : the interior-desk versions came off the four keeper plates. Four of the five
     # keepers were interiors of the same kind of room, so the set read as one office rather than five
     # industries. Each keeper now shows the place the business actually is. Financial services keeps
-    # its lamp-lit ledger desk, which the operator named as the benchmark the others are graded against.
+    # its lamp-lit ledger desk, which you named as the benchmark the others are graded against.
     ("construction-and-trades", "quoting"): {
         "shot": "Wide shot",
         "brief": "An Australian residential construction site at the end of the day, a half-built "
@@ -128,7 +127,7 @@ SCENES = {
         "brief": "A printed spreadsheet of agent figures marked up by hand in pen on an agency "
                  "desk, a calculator resting on top of it and a monitor behind showing a "
                  "half-built report"},
-    # the operator, 2026-08-06: explicitly NOT an agency interior. A house, with a clock in the foreground
+    # you, : explicitly NOT an agency interior. A house, with a clock in the foreground
     # entering from the left edge. The clock is generated in the scene as a real object rather than
     # composited on top, because nothing is drawn over a plate on this format.
     ("real-estate-and-property-management", "leadgen"): {
@@ -212,11 +211,11 @@ SCENES = {
 
 
 # Fixes to a plate whose composition is already approved. These run as image-to-image against the
-# plate already on disk, never as a fresh generation, so the frame the operator signed off survives and
+# plate already on disk, never as a fresh generation, so the frame you signed off survives and
 # only the named thing changes. Same rule as the rest of the house: refine from the image, do not
 # re-roll and hope.
 REFINES = {
-    # the operator, 2026-08-06. Nano Banana printed "MONITOR" and "OFFICE CHAIR" on the cartons despite
+    # you, . your image model printed "MONITOR" and "OFFICE CHAIR" on the cartons despite
     # the no-text clause. The frame was approved, so only the lettering comes off.
     ("construction-and-trades", "headcount"):
         "Keep this exact frame, composition, lighting and grain unchanged. Remove every printed "
@@ -228,7 +227,7 @@ REFINES = {
 # The no-people rule has to be IN the prompt, not just in the brief's silence. The first pass left
 # it implicit and five of the twenty-five came back with a person at the desk: the F8 style bodies
 # describe how a crew would frame a room, so the model fills it. Stated as an explicit exclusion.
-# "The room" was in here until 2026-08-06, when two keeper briefs moved outdoors (a construction site
+# "The room" was in here until when two keeper briefs moved outdoors (a construction site
 # and a house from the street) and the sentence stopped describing the scene it was attached to.
 NO_PEOPLE = ("The scene is completely empty of people. No person, no figure, no silhouette, no hands, "
              "no reflection of a person anywhere in the frame.")
@@ -244,7 +243,7 @@ def compose(style_key, shot, brief):
 
 def anchor_for(style_key):
     a = STYLES[style_key].get("anchor")
-    return str((F8 / a).resolve()) if a else None
+    return str((F8 / a).resolve) if a else None
 
 
 def dispatch(prompt, anchor, raw):
@@ -252,7 +251,7 @@ def dispatch(prompt, anchor, raw):
 
     5:4, not the carousels' 4:5. These plates fill the 1080x844 area above the band.
     """
-    cmd = [HF, "generate", "create", "nano_banana_pro", "--prompt", prompt,
+    cmd = [HF, "generate", "create", "your image model", "--prompt", prompt,
            "--aspect_ratio", "5:4", "--resolution", "2k", "--wait", "--json"]
     if anchor:
         cmd += ["--image-references", anchor]
@@ -270,7 +269,7 @@ def grade(style_key, raw, dest):
                    stdout=subprocess.DEVNULL)
 
 
-def main():
+def main:
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     go, regrade = "--go" in sys.argv, "--regrade" in sys.argv
     refine = "--refine" in sys.argv
@@ -312,14 +311,14 @@ def main():
                 continue
             print(f"{ind}/{slug}  refining from the approved plate ...", flush=True)
             raw.rename(raw.with_suffix(".prefix.png"))
-            dispatch(fix, str(raw.with_suffix(".prefix.png").resolve()), raw)
+            dispatch(fix, str(raw.with_suffix(".prefix.png").resolve), raw)
             grade(style, raw, dest)
             print(f"{ind}/{slug}  refined -> {dest}", flush=True)
             continue
         if not go:
             print(f"=== {ind}/{slug}  [{style}] ===\n{prompt}\n")
             continue
-        if dest.exists():
+        if dest.exists:
             print(f"{ind}/{slug}  exists, skipping")
             continue
         print(f"{ind}/{slug}  generating ...", flush=True)
@@ -332,4 +331,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

@@ -283,7 +283,7 @@ There is only one place in Australia you can hire one. Link below.""",
         "cta": "Hire a the role you place.",
     },
     {
-        # The directed F7 build, 2026-07-31. One new ad per format, written to refine the
+        # The directed F7 build, . One new ad per format, written to refine the
         # format skill against a real asset. CON-04 is the best warm lead in the market
         # and is uncovered by the seven above.
         "slug": "s13-already-tried",

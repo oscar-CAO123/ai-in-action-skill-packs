@@ -46,14 +46,13 @@ INK = (16, 16, 20)
 
 # `anchor` is where across the source frame the tall 2:5 window is centred, in fractions.
 # Measured off --composite at full size, never guessed.
-# Measured 2026-08-07 off a 20-column gridded copy of each source frame at full size, the same
+# Measured off a 20-column gridded copy of each source frame at full size, the same
 # method `_measure/grid_eyes.py` uses on the F-M1 censor bar. Guessing put the composed half at
 # 0.60 and sliced Simon's face in two at the card's left edge.
 SPLIT = {
     "simon": dict(
         left=dict(plate="simon-vsl-composed.png", anchor=0.50),
-        right=dict(plate="simon-vsl-open-hands.png", anchor=0.47),
-    ),
+        right=dict(plate="simon-vsl-open-hands.png", anchor=0.47),),
 }
 
 
@@ -78,7 +77,7 @@ def composite(who):
     if not spec:
         return None, f"no split set for {who}"
     paths = {s: PLATES / spec[s]["plate"] for s in ("left", "right")}
-    missing = [s for s, p in paths.items() if not p.exists()]
+    missing = [s for s, p in paths.items if not p.exists]
     if missing:
         return None, f"no plate for {', '.join(missing)}"
 
@@ -129,7 +128,7 @@ def build_statement(card):
     q = QUOTES[card["quote"]]
     out = OUT / f"{card['id']}-statement.png"
     return render_card([quoted(card["quote"]), CTA], out, theme="noir-lower",
-                       overlay=kicker(attribution(q).rstrip(".").upper()))
+                       overlay=kicker(attribution(q).rstrip(".").upper))
 
 
 def build_split(card):
@@ -142,7 +141,7 @@ def build_split(card):
     report = render_card([quoted(card["quote"]), CTA], out,
                          plate=plate, theme="noir-lower", plate_full=True,
                          plate_fade=True, lift=64,
-                         overlay=kicker(attribution(q).rstrip(".").upper()))
+                         overlay=kicker(attribution(q).rstrip(".").upper))
     return report, note
 
 

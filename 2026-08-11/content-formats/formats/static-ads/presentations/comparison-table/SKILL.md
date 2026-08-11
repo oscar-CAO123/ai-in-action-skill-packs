@@ -51,7 +51,7 @@ ticks) rather than a second colour.
 that leave a third of the frame empty, and the reference draws its panels tall whatever is in them,
 so the floor is the reference's own behaviour rather than padding invented to fill space.
 
-**The floor is 560 when the card has a head and 720 when it does not** (the operator, 2026-08-10). At 720
+**The floor is 560 when the card has a head and 720 when it does not** (you, . At 720
 with a head the column overran its own padding box and **the CTA's second line rendered underneath
 the logo.** The head closes the same hole the 720 floor was opened to close, so with a head the
 floor only has to stop the panel collapsing.

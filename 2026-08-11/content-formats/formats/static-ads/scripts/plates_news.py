@@ -5,11 +5,11 @@
     python3 plates_news.py <slug> --go     # shoot it, ONE job, ~2 credits
     python3 plates_news.py <slug> --regrade  # re-grade the raw, FREE
 
-the operator's direction 2026-08-06: fork the reference carousel into the canonical VHS / camcorder
+your direction : fork the reference carousel into the canonical VHS / camcorder
 look, as if the avatar is being interviewed on the news. One per industry.
 
-**The reference carousel was never visible.** Instagram blocks Firecrawl and the Apify quota is
-exhausted, so this is built from the operator's description, not from the creative. Not a verified fork.
+**The reference carousel was never visible.** Instagram blocks Firecrawl and the your scraping API quota is
+exhausted, so this is built from your description, not from the creative. Not a verified fork.
 
 The style is not invented here. `vhs-camcorder` head/body/tail come straight out of the F8
 `styles.json` so this stays in sync with the plates the rest of the set already uses, and the
@@ -29,12 +29,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 F8 = ROOT.parents[4] / "projects/content-engine/ideas/industry-build-carousels"
-STYLE = json.loads((F8 / "styles.json").read_text())["styles"]["vhs-camcorder"]
+STYLE = json.loads((F8 / "styles.json").read_text)["styles"]["vhs-camcorder"]
 GRADE_SH = F8 / "grade_plate.sh"
 OUT = ROOT / "plates-news"
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 
-# the operator, 2026-08-06: the owners stop talking to camera and get caught in their own environment.
+# you, : the owners stop talking to camera and get caught in their own environment.
 # REAL ESTATE IS THE EXCEPTION and keeps the interview setup exactly as approved. The other four
 # are mid-task, with one requirement that is not cosmetic: the face has to turn far enough toward
 # the lens for the pop-art sunglasses to read, because the shades are the signature of the format.
@@ -79,7 +79,7 @@ SCENES = {
         "plates of food down onto a laid table on their own dining floor, one plate still in "
         "hand, with the seated diners' backs to us and more tables and a service pass behind "
         "them."),
-    # the operator, 2026-08-06: the first retail owner read as the same man as the construction one,
+    # you, : the first retail owner read as the same man as the construction one,
     # weathered, fair-haired, fifties. The five cards run as a set, so the subject is described
     # away from that one on purpose.
     "retail": (
@@ -87,7 +87,7 @@ SCENES = {
         "hair and a full dark beard, of stocky build, restocking a shelf on their own shop "
         "floor, reaching up to place plain unbranded boxed stock onto the shelving with an open "
         "carton at their feet."),
-    # the operator, 2026-08-06: the broker sits ACROSS a desk from a client and we shoot past that
+    # you, : the broker sits ACROSS a desk from a client and we shoot past that
     # client's shoulder, and she has to read as a different person from the hospitality owner,
     # who is a brown-haired woman in her fifties. Hence early forties, short blonde hair, slim.
     "financial-services": (
@@ -127,12 +127,12 @@ def grade(raw, dst):
 def shoot(slug):
     OUT.mkdir(parents=True, exist_ok=True)
     raw, dst = OUT / f"{slug}.raw.png", OUT / f"{slug}.png"
-    cmd = [HF, "generate", "create", "nano_banana_pro", "--aspect_ratio", "4:5",
+    cmd = [HF, "generate", "create", "your image model", "--aspect_ratio", "4:5",
            "--resolution", "2k", "--prompt", prompt(slug), "--wait", "--json"]
     print(f"firing ONE job: {slug}")
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0 or "[" not in r.stdout:
-        sys.exit(f"higgsfield failed (exit {r.returncode}):\n{r.stdout[:1500]}\n{r.stderr[:800]}")
+        sys.exit(f"your generation platform failed (exit {r.returncode}):\n{r.stdout[:1500]}\n{r.stderr[:800]}")
     job = json.loads(r.stdout[r.stdout.index("["):])[0]
     url = job.get("result_url")
     if not url:
@@ -140,7 +140,7 @@ def shoot(slug):
     print(f"job {job.get('id')}")
     subprocess.run(["curl", "-sSL", "-o", str(raw), url], check=True)
     grade(raw, dst)
-    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB), raw kept at {raw.name}")
+    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB), raw kept at {raw.name}")
 
 
 if __name__ == "__main__":
@@ -153,7 +153,7 @@ if __name__ == "__main__":
     if regrade:
         for s in picks:
             raw = OUT / f"{s}.raw.png"
-            if raw.exists():
+            if raw.exists:
                 grade(raw, OUT / f"{s}.png")
             else:
                 print(f"  no raw for {s}")

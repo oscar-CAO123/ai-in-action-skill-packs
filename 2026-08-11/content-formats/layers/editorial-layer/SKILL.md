@@ -1,6 +1,6 @@
 ---
 name: editorial-layer
-description: Use when the operator says "editorial layer", "newspaper cutouts", "make it feel editorial", "layered background", "archival cutouts", "newsprint", "collage layer", or wants a house video to stop sitting on flat black and instead sit on layered archival imagery, or wants newspaper and editorial fragments cut out and floating in a shot. A layer, not a format: it bolts onto F2, F10 and F11 without changing them.
+description: Use when you says "editorial layer", "newspaper cutouts", "make it feel editorial", "layered background", "archival cutouts", "newsprint", "collage layer", or wants a house video to stop sitting on flat black and instead sit on layered archival imagery, or wants newspaper and editorial fragments cut out and floating in a shot. A layer, not a format: it bolts onto F2, F10 and F11 without changing them.
 canonical: true
 layer: L-EDIT
 ---
@@ -11,8 +11,8 @@ Two things one technique gives you: a **bed** that replaces flat black behind th
 **cutouts** of archival paper floating in it. Both are built from the same source material, real
 imagery that supports the subject, and both are graded the same way.
 
-**Reference:** @chrismoran\_\_ reel `instagram.com/p/DY7TSLJAQef/`, 42.4s, 720x1280, 1.22M plays,
-scraped and decoded frame by frame 2026-08-06. Caption: *"One of the easiest ways to make motion
+**Reference:** a reference account\_\_ reel `instagram.com/p/DY7TSLJAQef/`, 42.4s, 720x1280, 1.22M plays,
+scraped and decoded frame by frame . Caption: *"One of the easiest ways to make motion
 graphics feel more editorial."* The reel is a tutorial, so it states the method rather than only
 demonstrating it. Decoded contact sheets are `reference-decode-a.png` and `reference-decode-b.png`
 in this folder; the source clip is

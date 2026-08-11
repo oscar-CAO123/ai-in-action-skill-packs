@@ -13,7 +13,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-SCRIPTS = Path(__file__).resolve().parent.parent
+SCRIPTS = Path(__file__).resolve.parent.parent
 sys.path.insert(0, str(SCRIPTS))
 from build_split import CROP, HALF, H, PLATES, half_image  # noqa: E402
 

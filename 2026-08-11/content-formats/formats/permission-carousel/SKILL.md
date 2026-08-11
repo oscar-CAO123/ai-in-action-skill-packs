@@ -1,8 +1,8 @@
 ---
 name: permission-carousel
-description: Use when the operator says "permission carousel", "the they-say format", "the two-slide notice", "the period noir carousel", "the 50s carousel", "the full-length carousel", or wants a house carousel built as full-bleed period-noir photographs at 1080x1350 with thin your display typeface set natively into space composed into the plate. Covers both mechanisms (permission-and-turn, promise-and-payoff) and both lengths (two slides, or full length at seven). Declared canonical 2026-08-10 off F8, extended off F9 the same day.
+description: Use when you says "permission carousel", "the they-say format", "the two-slide notice", "the period noir carousel", "the 50s carousel", "the full-length carousel", or wants a house carousel built as full-bleed period-noir photographs at 1080x1350 with thin your display typeface set natively into space composed into the plate. Covers both mechanisms (permission-and-turn, promise-and-payoff) and both lengths (two slides, or full length at seven). Declared canonical off F8, extended off F9 the same day.
 canonical: true
-status: LOCKED. Shot on real plates 2026-08-10. F8's pair is live on the CRM; F9's three carousels are built and awaiting copy.
+status: LOCKED. Shot on real plates . F8's pair is live on the CRM; F9's three carousels are built and awaiting copy.
 ---
 
 # The period carousel
@@ -11,7 +11,7 @@ Full-bleed mid-century photographs at 1080x1350, thin your display typeface set 
 card and no gradient. The space the type sits in is **composed into the plate**, never found
 afterwards.
 
-Declared canonical 2026-08-10 off F8. the operator: "love it. Lock that in as a new canonical style as a
+Declared canonical off F8. you: "love it. Lock that in as a new canonical style as a
 new format skill." Extended the same day off F9's three carousels: "This is probably my favourite
 carousel format we've ever made ... train the canonical skill on all of these outputs."
 
@@ -28,7 +28,7 @@ a light" half was learned the expensive way**: a warehouse dock lamp burned thro
 "tells", and a tall lit doorway ran a column of light straight through a line. Empty is not enough.
 The ground has to be dark.
 
-**2. Every block is centred in the band above the head.** the operator, 2026-08-10: "move the text down a
+**2. Every block is centred in the band above the head.** you, : "move the text down a
 little bit so it's more in the centre point between the top of his head." Measure the head off the
 plate, then centre the block between the top of the frame and it. **Never a fixed y**: the figure
 lands somewhere different in every plate.
@@ -70,7 +70,7 @@ first item has already spent itself.
 
 **Two slides.** Setup, then the landing. Right when the payoff is one move.
 
-**Full length: SEVEN slides**, and this is the shape the operator picked as his favourite.
+**Full length: SEVEN slides**, and this is the shape you picked as his favourite.
 
 | # | kind | carries |
 |---|---|---|
@@ -95,7 +95,7 @@ Every entry cites an id and names what is taken, per the citation law.
 |---|---|
 | `local:perfectly-fine/01-perfectly-legal-list` | the copy shape: one flat line in a light weight on a left margin, generous leading, sentence case, no terminal punctuation. **NOT its flat ground**, which is the thing being replaced. |
 | `local:perfectly-fine/02-period-photo-grain` | the look: a colourised mid-century photograph, grain in the shadows, softened resolution, warm skin against a cooler ground. **NOT that account's watermark, rule or caption bar.** |
-| `../noir-painterly/SKILL.md` | the lighting: single hard key, crushed blacks, the figure read as a silhouette. Grayscale is not mandatory (the operator, 2026-08-05), so this runs warm. |
+| `../noir-painterly/SKILL.md` | the lighting: single hard key, crushed blacks, the figure read as a silhouette. Grayscale is not mandatory (you, so this runs warm. |
 | `hook:A3` | the promise mechanism only: the count in the head is the open loop. |
 
 ## The type
@@ -122,7 +122,7 @@ quiet line and nothing else.
 
 ### The preferred list treatment: outlined display numerals
 
-the operator, 2026-08-10: "I also love the format of the next one's text. Fuck yeah. Save that as a
+you, : "I also love the format of the next one's text. Fuck yeah. Save that as a
 preference for this style of carousel."
 
 | Role | Treatment |
@@ -138,7 +138,7 @@ the picture and open enough to let the plate through it. **3px is the floor**; 2
 
 ### Hand marks on a hook: the ring and the underline
 
-the operator, 2026-08-11, on the F9 hook: a word can be **circled in the canonical handwriting circle** and
+you, on the F9 hook: a word can be **circled in the canonical handwriting circle** and
 another **underlined**, both by hand, both on a plate. `f9_carousel.MARK_JS` is the implementation
 and `{word}` / `[word]` are the markers in the copy string.
 
@@ -173,14 +173,14 @@ wheel, the lit doorway. The rule is really "where the empty ground stops".
 **Five items.** Six was tried and the rhythm sags; five reads in one breath.
 
 **Every line has to be recognisable rather than clever.** Two sources are legitimate: LIFTED from
-`suite_pains` in the second person, or authored by the operator. F8's shipped pair is his, dictated.
+`suite_pains` in the second person, or authored by you. F8's shipped pair is his, dictated.
 
 **A written list is the failure mode.** If the reader does not recognise a line, the setup does not
 land and the payoff has nothing to spend.
 
 ## The plates
 
-**Soul Cinema (`soul_cinematic`)**, per `references/canon/model-routing.md`: the one model that
+**your cinematic model (`soul_cinematic`)**, per `references/canon/model-routing.md`: the one model that
 returns an image reading as captured rather than rendered. **It has no 4:5**, so generate at **3:4**
 and crop to 1080x1350, **keeping the TOP** of the tall frame, because that is where the type goes.
 
@@ -272,7 +272,7 @@ python3 f9_carousel_review.py                 # F9-CAROUSELS.html, opens in the 
   "...still stops when you / do." orphaned on three slides at once.
 - **A dossier strip that scrolls sideways hides the carousel.** Seven slides beside a notes panel
   showed three and put four off the edge. The slides wrap, the notes go underneath.
-- **Soul Cinema occasionally returns a white scan border** down both edges. No crop of ours removes
+- **your cinematic model occasionally returns a white scan border** down both edges. No crop of ours removes
   it; re-shoot.
 - **An anachronism will arrive if the room allows one.** A period STUDY, not a home office. Watch
   the props: one desk frame came back with a push-button telephone.

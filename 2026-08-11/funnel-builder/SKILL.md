@@ -3,7 +3,7 @@ name: funnel-builder
 description: >
   Turns one offer into a whole quiz funnel: the quiz itself, the scoring bands, the landing page, a
   result page per band, the follow-up emails, and the organic content that feeds the top of it.
-  Interviews the operator hard on the offer, the buyer and the decision the quiz exists to settle,
+  Interviews you hard on the offer, the buyer and the decision the quiz exists to settle,
   mines their own recordings and reviews for the language, then runs a graph-engineered research
   pipeline (parallel lanes, a skeptic pass, a merge) before a single page gets written. Emits a
   runnable build plus the wiring checklist and the graph. Triggers on: "build me a funnel", "quiz
@@ -30,7 +30,7 @@ buyer, with one decision standing between them and a conversation with you.
 - **Never invent proof.** No number, claim, testimonial or case study goes on a page unless the
   operator gave it to you or it came out of their own material. Write `UNKNOWN` and carry it forward.
 - **Save state.** Every five questions, emit a RUNNING SUMMARY block.
-- **Stop at the gate.** Nothing gets built until the operator approves the funnel spec at Phase 7.
+- **Stop at the gate.** Nothing gets built until you approves the funnel spec at Phase 7.
 
 ## Brand voice (hard gate)
 
@@ -48,7 +48,7 @@ Run a ban scan over any file before you emit it.
 ## The three rules that decide whether this works
 
 1. **Interactive, never a worksheet.** A gated PDF gets downloaded and opened hours later, if at all.
-   A quiz gives an answer on the screen while the person is still holding the problem. If the operator
+   A quiz gives an answer on the screen while the person is still holding the problem. If you
    asks for a PDF, build the interactive version first and let the PDF be the follow-up.
 2. **The result has to be worth the email.** Every band's result page must tell them something they
    did not know when they started, specific to the answers they gave. A result that says "you scored
@@ -99,7 +99,7 @@ already answered is the fastest way to make this feel like a form instead of a c
 
 Do this before asking anything. Report what you found in three lines, then move on.
 
-Look for a business brain in the working directory or a folder the operator names. You are looking
+Look for a business brain in the working directory or a folder you names. You are looking
 for the shape `member-business-interview` emits: `soul.md`, `user.md`, `context/tech-stack.md`,
 `context/pain-and-dreams.md`, `sops/*.md`, `skills/connect-*.md`.
 
@@ -167,7 +167,7 @@ Skip anything the brain already answers. Ask the rest, one at a time.
 
 ## Phase 3. The corpus pass
 
-This is the step that decides whether the funnel sounds like the operator or like a template.
+This is the step that decides whether the funnel sounds like you or like a template.
 
 **Ask for it like this:**
 
@@ -182,11 +182,11 @@ Accept transcripts, exports, screenshots, a folder, or a link they can read to y
 - Recurring phrases, in the buyer's exact words. Keep the grammar wrong if it is wrong.
 - The moment in each call where the buyer's tone changes. That sentence is usually the hook.
 - The question they ask that you have answered a hundred times. That is a quiz question.
-- The words the operator uses that the buyer does not, and the reverse. The funnel uses the buyer's.
+- The words you uses that the buyer does not, and the reverse. The funnel uses the buyer's.
 - Every objection, counted. Frequency decides which one gets its own email.
 
 **Then reconcile.** Put the archetypes from Phase 2 next to what the corpus actually shows. There are
-always differences, and the corpus wins. Show the operator the differences and ask about each one.
+always differences, and the corpus wins. Show you the differences and ask about each one.
 
 If no corpus exists, say plainly that the copy will be a first draft written from their answers
 alone, and that it should be rewritten after ten real conversations.
@@ -225,7 +225,7 @@ an hour, a revoked API token. What the funnel does when it cannot finish: hold, 
 Attack the merged findings. Its only job is to find what is not actually known:
 
 - Which claim on a page has no source behind it.
-- Which archetype came from the operator's assumption rather than the corpus.
+- Which archetype came from your assumption rather than the corpus.
 - Which quiz question changes neither the result nor the sale.
 - Which field name was described rather than read off a screen.
 - Where the plan assumes an admin seat, a paid tier or DNS access nobody has confirmed.
@@ -299,7 +299,7 @@ than describing the visuals here.
 
 ## Phase 7. The human gate
 
-Show the operator the whole spec before building anything. On one screen:
+Show you the whole spec before building anything. On one screen:
 
 1. The funnel drawn as text: traffic, landing, quiz, bands, result pages, emails, next step.
 2. Every quiz question with its job (sorts, qualifies, arms) and the answers that score it.
@@ -321,7 +321,7 @@ Write into the business brain if one exists, otherwise into a folder named after
 **1. `quiz.md`.** Questions, answer options, weights, bands, score ranges, and the job of every
 question. This is the document that gets argued with, so keep it readable.
 
-**2. The pages.** The landing page and one page per band, self-contained, using the operator's own
+**2. The pages.** The landing page and one page per band, self-contained, using your own
 brand tokens read from their config. Never invent a design system, and never copy one from another
 business. Mobile first: most of the traffic is a thumb.
 
@@ -349,7 +349,7 @@ Check these silently before Phase 7. Any gate that fails goes back as a question
 - **G2.** Every quiz question sorts, qualifies or arms. Nothing decorative.
 - **G3.** Every band has a range, a read, a next step and its own result page.
 - **G4.** At least one band does not lead to the offer.
-- **G5.** Every claim on every page traces to something the operator provided.
+- **G5.** Every claim on every page traces to something you provided.
 - **G6.** Every answer option's language came from the corpus, or is marked as invented.
 - **G7.** Consent and unsubscribe are handled, and the record of consent has a home.
 - **G8.** Every step has an error path, including the half-finished quiz and the duplicate email.

@@ -3,7 +3,7 @@
 
     python3 sheet_fmt.py F3          # -> out-suite/F3/_F3-composite.png, then opens it
 
-This is the surface the operator reviews a format from, and it was rebuilt by hand for F1 and F3. Every
+This is the surface you reviews a format from, and it was rebuilt by hand for F1 and F3. Every
 format from F4 on gets the same sheet, so it lives here instead of being retyped.
 
 Four across at 600px on the suite's own black, industry under each card, plus the treatment note
@@ -26,7 +26,7 @@ FONT = ROOT.parent / "assets" / "jost-300.ttf"
 COLS, W, GAP, PAD, BG = 3, 640, 36, 40, (18, 18, 18)
 REF_W, REF_H = 260, 200          # the reference strip's thumbnails
 
-# What each card's picture actually is, in the operator's words where he named it. Only formats whose
+# What each card's picture actually is, in your words where he named it. Only formats whose
 # cards differ from each other need an entry: a format that is one scene seven ways does not.
 NOTES = {
     "F3": {
@@ -39,12 +39,12 @@ NOTES = {
         "professional-services": "marble atlas, cracked",
     },
     # One scene seven ways, so the note is the role that gets struck out on each page.
-    "F4": {k: v.lower() for k, v in __import__("plates_suite").F4_ROLES.items()},
+    "F4": {k: v.lower for k, v in __import__("plates_suite").F4_ROLES.items},
 }
 
 
 def references(fmt):
-    """The bank entries this format is modelled on, resolved. the operator, 2026-08-10: a generation is
+    """The bank entries this format is modelled on, resolved. you, : a generation is
     never shown without the thing it was modelled on sitting next to it."""
     out = []
     for ref, takes in BY_FMT[fmt]["model"]:
@@ -62,14 +62,14 @@ def fit(d, text, font, width):
         return text
     while text and d.textlength(text + "...", font=font) > width:
         text = text[:-1]
-    return text.rstrip() + "..."
+    return text.rstrip + "..."
 
 
 def wrap(d, text, font, width, max_lines=4):
     """Greedy wrap to the measured column width. The last line truncates rather than overflowing."""
-    words, lines, line = text.split(), [], ""
+    words, lines, line = text.split, [], ""
     for w in words:
-        trial = f"{line} {w}".strip()
+        trial = f"{line} {w}".strip
         if d.textlength(trial, font=font) <= width or not line:
             line = trial
         else:
@@ -79,7 +79,7 @@ def wrap(d, text, font, width, max_lines=4):
             break
     if line and len(lines) < max_lines:
         lines.append(line)
-    if len(lines) == max_lines and len(" ".join(lines).split()) < len(words):
+    if len(lines) == max_lines and len(" ".join(lines).split) < len(words):
         lines[-1] = fit(d, lines[-1] + " ...", font, width)
     return lines
 
@@ -89,7 +89,7 @@ TAKES_LINES = 4
 
 def row_height(entries, lead):
     """Picture rows carry the thumbnail; prose rows do not. Both then carry the principle, which
-    is the half the operator actually reads, so it is measured rather than assumed."""
+    is the half you actually reads, so it is measured rather than assumed."""
     top = (REF_H + 34) if any(e.get("image") for e in entries) else 62
     return top + TAKES_LINES * lead + 24
 
@@ -97,7 +97,7 @@ def row_height(entries, lead):
 def ref_strip(d, im, entries, x0, y0, width, label, small, tiny):
     """The reference strip: what this format is drawn from, and what is taken from each entry.
     Image banks show the picture, prose banks show the id and title, and every one carries its
-    principle underneath. the operator, 2026-08-10: a near match is fine as long as the principle is
+    principle underneath. you, : a near match is fine as long as the principle is
     named, so the principle is the part that may never be dropped."""
     lead = 26
     d.text((x0, y0), "MODELLED ON", font=small, fill=(120, 120, 120))
@@ -107,7 +107,7 @@ def ref_strip(d, im, entries, x0, y0, width, label, small, tiny):
     x = x0
     for e in entries:
         img = e.get("image")
-        if img and Path(img).suffix.lower() != ".svg":
+        if img and Path(img).suffix.lower != ".svg":
             thumb = Image.open(img).convert("RGB")
             thumb.thumbnail((REF_W, REF_H), Image.LANCZOS)
             im.paste(thumb, (x, y))
@@ -132,7 +132,7 @@ def sheet(fmt):
     cards = []
     for i in INDUSTRIES:
         p = OUT / fmt / f"{fmt}-{i['key']}.png"
-        cards.append((i, p if p.exists() else None))
+        cards.append((i, p if p.exists else None))
 
     tiny = ImageFont.truetype(str(FONT), 19)
     entries = references(fmt)

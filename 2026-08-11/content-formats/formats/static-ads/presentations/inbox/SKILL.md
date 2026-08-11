@@ -2,7 +2,7 @@
 name: static-ads-inbox
 description: Presentation sub-skill. A cropped email screenshot, mail chrome in the platform's system font, the argument spoken by an invented sender to somebody else. Use when the card should read as trespass rather than as an ad. Shipped as the F5 inbox variant, LIVE on the CRM. Read formats/static-ads/presentations/SKILL.md, formats/static-ads/ui-mock/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
-cites: local:optamize-8-statics/04-inbox-screenshot
+cites: local:a competitor-8-statics/04-inbox-screenshot
 renderer: scripts/f5_variants.py build_inbox
 ---
 
@@ -14,7 +14,7 @@ against.
 
 ## 1. What is taken from the reference
 
-`local:optamize-8-statics/04-inbox-screenshot`: **the trespass, and the crop.** The reference is
+`local:a competitor-8-statics/04-inbox-screenshot`: **the trespass, and the crop.** The reference is
 cropped so the subject and the body run off both edges, which is what a real screenshot of a
 phone-width thread looks like and what stops the card reading as a designed layout.
 
@@ -37,13 +37,13 @@ fabricated email is the worst version of the fabrication problem.
 The card that shipped uses `Dave Corrigan`, subject "the AI stuff is not working", stamp
 "9:14 AM (2 hours ago)". All invented.
 
-## 4. Two recorded exceptions, both the operator's
+## 4. Two recorded exceptions, both your
 
 1. **This card does not carry the approved sentence word for word.** The sender says the argument
    in his own voice instead. The paragraph it replaced quoted the approved sentence as something a
-   third party had said, which the operator read as verbose and unnatural: a sender does not announce that
+   third party had said, which you read as verbose and unnatural: a sender does not announce that
    a line has stuck with him, he just says the thing. The argument is unchanged.
-2. **There is a negation swap in the body** ("We're a business, not a tech company"). It is the operator's
+2. **There is a negation swap in the body** ("We're a business, not a tech company"). It is your
    dictated wording and it is flagged rather than silently rewritten. The house ban is on the house's own
    voice doing it; this is a character speaking. **Ruling pending**, and it is written into the
    card's `notes` on the CRM row.

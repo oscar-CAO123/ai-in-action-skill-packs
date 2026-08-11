@@ -7,8 +7,8 @@ reaches the other LoC endpoints that answer `?fo=json` the same way, so a bed ca
 out of genuinely different surfaces: map hatching, engraved plates, technical line art,
 catalogue pages.
 
-    ./fetch_loc_texture.py --endpoint maps --q "city plan" --dates 1880/1929 --n 4 --out t/maps
-    ./fetch_loc_texture.py --endpoint photos --q "steel mill" --dates 1900/1929 --n 4 --out t/prints
+./fetch_loc_texture.py --endpoint maps --q "city plan" --dates 1880/1929 --n 4 --out t/maps
+./fetch_loc_texture.py --endpoint photos --q "steel mill" --dates 1900/1929 --n 4 --out t/prints
 
 Endpoints that work: maps, photos, collections/<name>. Everything downloaded is recorded in
 sources.json next to the images, because the layer skill requires a source per asset.
@@ -32,7 +32,7 @@ ENDPOINTS = {
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Encoding": "gzip"})
     with urllib.request.urlopen(req, timeout=120) as r:
-        raw = r.read()
+        raw = r.read
         enc = r.headers.get("Content-Encoding")
     return gzip.decompress(raw) if enc == "gzip" else raw
 
@@ -43,13 +43,13 @@ def page_jpg(image_urls, pct):
         if "image-services/iiif" in u:
             return f"{u.split('/full/')[0]}/full/pct:{pct}/0/default.jpg"
     for u in reversed(image_urls or []):
-        if str(u).lower().endswith((".jpg", ".jpeg")):
+        if str(u).lower.endswith((".jpg", ".jpeg")):
             return u if str(u).startswith("http") else "https:" + u
     return None
 
 
-def main():
-    ap = argparse.ArgumentParser()
+def main:
+    ap = argparse.ArgumentParser
     ap.add_argument("--endpoint", required=True, help="maps | photos | prints | collections/<name>")
     ap.add_argument("--q", required=True)
     ap.add_argument("--dates", default=None, help="YYYY/YYYY, omitted for undated material")
@@ -57,7 +57,7 @@ def main():
     ap.add_argument("--pct", type=int, default=25)
     ap.add_argument("--out", required=True)
     ap.add_argument("--tag", default=None)
-    a = ap.parse_args()
+    a = ap.parse_args
 
     base, rights = ENDPOINTS.get(
         a.endpoint, (f"https://www.loc.gov/{a.endpoint.strip('/')}/", "Public domain, Library of Congress"))
@@ -69,7 +69,7 @@ def main():
     results = results.get("results", [])
 
     os.makedirs(a.out, exist_ok=True)
-    tag = a.tag or "-".join(a.q.lower().split())[:24]
+    tag = a.tag or "-".join(a.q.lower.split)[:24]
     src_path = os.path.join(a.out, "sources.json")
     sources = json.load(open(src_path)) if os.path.exists(src_path) else []
 
@@ -102,4 +102,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

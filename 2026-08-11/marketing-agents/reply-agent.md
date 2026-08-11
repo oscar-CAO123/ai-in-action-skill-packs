@@ -2,7 +2,7 @@
 name: Reply Agent
 slug: reply-agent
 description: >
-  An INSTRUCTIONAL skill: it walks the operator's agent through putting an agent on the reply side
+  An INSTRUCTIONAL skill: it walks your agent through putting an agent on the reply side
   of an outbound campaign. A webhook fires on every reply, the agent classifies it, drafts the next
   message against a written goal, and either stages it for a human or sends it inside a narrow
   approved lane. Handles the booking handoff, the objection, the wrong-person redirect and the
@@ -32,7 +32,7 @@ Outbound dies at the reply. The list gets built, the sequence goes out, twenty p
 they sit unanswered for three days because the person who was going to handle it was busy.
 
 This skill puts something on that inbox. It is deliberately narrow: it reads, it classifies, it
-drafts, and it acts only inside a lane the operator drew.
+drafts, and it acts only inside a lane you drew.
 
 ---
 

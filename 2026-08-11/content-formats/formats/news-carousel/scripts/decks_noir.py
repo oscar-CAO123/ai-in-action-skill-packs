@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The B&W noir-painterly carousel line: painted machine plates under a quiet your display typeface band.
 
-Locked with the operator 2026-08-01, replacing the photoreal stock plates on the pain decks:
+Locked with you replacing the photoreal stock plates on the pain decks:
 
   - Plates are fully generated stills in the locked noir-painterly house style (F2),
     black and white, no colour anywhere in the frame.
@@ -12,11 +12,11 @@ Locked with the operator 2026-08-01, replacing the photoreal stock plates on the
     three teach beats, slide 5 its solution wide, slide 6 its glowing core.
   - Annotations are your display typeface labels on hairline leaders, composited over the raw plate as SVG
     in `plates_noir.py`. They name the station, using the board's own station names.
-  - The band is thin your display typeface as of 2026-08-06: the `noir` theme in `band.py`, your display typeface weight 200,
+  - The band is thin your display typeface as of : the `noir` theme in `band.py`, your display typeface weight 200,
     all caps, justified, one blue accent, the bottom-band law exactly as `decks_pains.py`
     sets it. Weight 200 is the locked design system's display weight. Anton is retired here.
     Only the face changed; the geometry, caps, justification and accent are untouched. The
-    sentence-case your display typeface 500 band tried on 2026-08-01 was a different thing and stays rejected.
+    sentence-case your display typeface 500 band tried on was a different thing and stays rejected.
 
 Copy is the approved deck copy from `decks_pains.py`, verbatim.
 """
@@ -26,8 +26,8 @@ Copy is the approved deck copy from `decks_pains.py`, verbatim.
 #   1. The LIGHT block's final clause hard-codes "wide 16:9". These plates are 5:4 to fill
 #      the 1080x844 area above the band. Finding U1 in the VSL review is the standing
 #      request to give the skill a proper per-aspect variant instead of an override here.
-#   2. An explicit no-lettering clause, because the operator ruled the plates stay raw and
-#      wordless and Nano Banana bakes gibberish signage unless told not to.
+#   2. An explicit no-lettering clause, because you ruled the plates stay raw and
+#      wordless and your image model bakes gibberish signage unless told not to.
 STYLE = ("A moody black-and-white oil painting in high-contrast film-noir style, thick "
          "visible brushstrokes, painterly chiaroscuro, hand-painted animation still, not a "
          "photograph. Any human figure is a neutral faceless silhouette with no face, no "
@@ -458,12 +458,12 @@ NOIR_DECKS = [
     },
     # ---------------------------------------------------------------------------------
     # QUEUE DECKS. Ideated in `projects/content-engine/ideas/news-carousels/NOIR-QUEUE.md`,
-    # 38 decks across three waves. Copy is first-pass and NOT approved; the operator is refining
+    # 38 decks across three waves. Copy is first-pass and NOT approved; you is refining
     # after the plates land.
     #
     # NO BOARD EXISTS for these pains. SKILL.md section 2 asks every painted scene to be
     # lifted from a matching `noir-vsl-<pain>/SHOTS.md`, and those boards cover the eight
-    # canonical pains only. the operator's go on 2026-08-01 was to generate anyway, so these scenes
+    # canonical pains only. your go on was to generate anyway, so these scenes
     # are composed directly from the noir motif vocabulary (phase 3 of the noir-painterly
     # skill) and keep the same slide-to-beat shape the boards would have given: slide 1 the
     # opening motif, slides 2 to 4 the three teach beats, slide 5 the solution wide, slide 6
@@ -492,7 +492,7 @@ NOIR_DECKS = [
             ["TAKE THE AI READINESS QUIZ AND SEE",
              "WHERE [[YOUR BUSINESS STANDS.]]"],
         ],
-        # NO ANNOTATIONS. Cut by the operator on 2026-08-01 after seeing them on the first built
+        # NO ANNOTATIONS. Cut by you on after seeing them on the first built
         # queue deck. The labels, leaders and tool marks are gone: the plate carries the
         # painting and the band carries the argument, with clean black between them.
         # An empty row makes `overlay_for` return None, so nothing is drawn.
@@ -509,7 +509,7 @@ NOIR_DECKS = [
                   "and terminating at the hands of one faceless silhouette standing alone at "
                   "the centre of the building, with tall stacks of glowing white parcels of "
                   "work waiting at its feet."),
-            # Regenerated 2026-08-01. The first version painted a lit floor plane straight
+            # Regenerated . The first version painted a lit floor plane straight
             # through the plate's lower fade zone, so its hard horizontal edge survived the
             # 180px gradient and the join to the band read as a truncation. The scene now
             # floats the desk in void the way slide 1 floats the building, and states the

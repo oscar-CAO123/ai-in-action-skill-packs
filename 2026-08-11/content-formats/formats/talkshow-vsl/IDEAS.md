@@ -9,7 +9,7 @@ offer on the last line.
 (each line is a clip unit), then run the pipeline in `SKILL.md` from Phase 3. The concept fields
 are already resolved, so Phase 0 only has to confirm mode, aspect and the hero still.
 
-## Selection rule: breadth, not persona (settled 2026-08-01)
+## Selection rule: breadth, not persona
 
 **These twelve are deliberately not avatar-specific.** No trade, no vertical, no named persona,
 no industry callout appears in any script. The selection rule is company spread in
@@ -20,7 +20,7 @@ The wiki's 33 themes collapse to these twelve families once the duplicates the q
 resolved are merged (`growth-capped` with `scaling-without-headcount`, `fragile-diy-systems`
 with `failed-diy-ai`, `ai-know-how-gap` with `option-overwhelm` and `no-time-to-implement`).
 
-**Still the right selection rule after the 2026-08-05 restructure.** The wiki now leads with 21
+**Still the right selection rule after the restructure.** The wiki now leads with 21
 industry playbooks, but this set is deliberately general-pain, so it draws from `pains/<slug>.md`
 rather than `industries/<slug>.md` and that is correct. Two things to carry across: rank additions
 off the weighted table in `context/pain-wiki/MARKET.md` rather than off record counts, and note that
@@ -64,14 +64,14 @@ specificity lands on the mechanism and on the recorded outcome instead.
 **Register.** Cinematic Register 1 shifted older and drier. He has watched businesses rise and
 fall and is unimpressed by all of it. He observes, he never sells.
 
-**Line 1 is a fill, never a free-write (settled 2026-08-01).** Eleven of the twelve hooks below
+**Line 1 is a fill, never a free-write.** Eleven of the twelve hooks below
 are taken from `../../references/scripts/core-pain-vsl-scripts.md`, the eighteen core-pain VSL
 scripts mined from real client and lead calls, and each concept cites the script number it came
 from. `../../references/hooks/HOOKS.md` supplies the mechanics floor those hooks are graded
 against: ten to fifteen words a sentence, a second loop before the fifteen-second mark, and
 discomfort inside the first three seconds.
 
-**The arc, compressed from the canonical P/S/VSL spine (settled 2026-08-01).** That corpus runs
+**The arc, compressed from the canonical P/S/VSL spine.** That corpus runs
 one structure for all eighteen scripts and this format runs the same one inside 110 words. Line 1
 opens the gap. Lines 2 to 4 are the machine walkthrough, "here is your business, the work comes in
 here, this is where it breaks", carrying the specific pain detail that does the agitating. Lines 5
@@ -79,8 +79,8 @@ and 6 educate across the gap with one real build and its recorded outcome. Lines
 it, and house is named nowhere before line 8.
 
 **One conflict with that corpus.** Its canonical pivot, "But the fix isn't X, it's Y", and several
-of its hooks run the contrast negation, which section 1 banned on 2026-07-31, after those scripts
-were written on 2026-07-18. Every hook below is rebuilt into the positive form. Read the source
+of its hooks run the contrast negation, which section 1 banned on after those scripts
+were written on . Every hook below is rebuilt into the positive form. Read the source
 for structure rather than for wording.
 
 **The word budget is hard and it is the binding constraint.** F1 runs 55 to 110 spoken words and
@@ -403,13 +403,13 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 structure and arc are copied whole. One block changes: where the source turns to the hire, the
 fork turns to three AI systems and teaches them.
 
-**The arc, as forked (settled 2026-08-01).**
+**The arc, as forked.**
 
 1. **The hook**, verbatim from the source. Either the dream outcome as a question, or the pain
    agitated. #8 uses the dream outcome.
 2. **The turn.** "Well, you can. You just need these three AI systems." One line, and it goes
    straight on. The objection pre-empt that sat here ("and no, it's not hiring a
-   second-in-command") was cut 2026-08-01.
+   second-in-command") was cut .
 3. **Straight into the systems.** No machine walkthrough, no "here's your business, the work
    comes in here". That beat is the source's own and it is cut: the purpose of this script is to
    educate, so the runtime goes to the builds.
@@ -430,7 +430,7 @@ fork turns to three AI systems and teaches them.
 Forty five to ninety seconds, roughly 120 to 240 spoken words. **The role is never named in this
 mode**, so the quiz result is what introduces the category.
 
-**V01 is the canonical style, locked by the operator 2026-08-01.** Every full VSL gets written against
+**V01 is the canonical style, locked by you .** Every full VSL gets written against
 it. The style is written down in `talkshow-vsl/SKILL.md` Phase 2 and in `content-formats/SKILL.md`
 7c; this file holds the reference implementation. The remaining eleven pains are unwritten.
 
@@ -450,7 +450,7 @@ it. The style is written down in `talkshow-vsl/SKILL.md` Phase 2 and in `content
   `noir-pain-bottleneck` were dropped (no tools recorded, and an executive assistant is the thing
   this owner has already tried), and so were the router and the morning brief (four roles saved
   and twenty changes a day are real, but neither is a saving an owner feels personally). Slot two
-  went through two more on 2026-08-01: the week-long verification build sat too close to slot
+  went through two more on : the week-long verification build sat too close to slot
   three, and the warranty dispatcher was field-service specific, so its twenty one days to four
   bought nothing for an owner with no technicians to dispatch.
   1. *Enterprise multi-agent workflow automation with security controls*, enterprise services.
@@ -504,7 +504,7 @@ it. The style is written down in `talkshow-vsl/SKILL.md` Phase 2 and in `content
 - **One hero still runs all twelve.** The close-medium guest plate is the volume asset: approve it
   once in Cursor, then reuse it as the start frame for every clip so the voice and the face hold
   across the batch (`SKILL.md` Phase 4).
-- **Two to four Seedance clips per concept**, chunked at two or three lines each. One paid
+- **Two to four your video modelclips per concept**, chunked at two or three lines each. One paid
   generation at a time, waiting for each before the next.
 - **The teach pair is lines 5 and 6** in every script: the build, then what it produced. Keep them
   in one chunk so the mechanism and its outcome land in a single breath.

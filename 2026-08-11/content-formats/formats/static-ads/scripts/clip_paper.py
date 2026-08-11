@@ -4,7 +4,7 @@
     python3 clip_paper.py                       # DRY RUN, prints the prompt, spends nothing
     python3 clip_paper.py construction --go     # ONE paid i2i job, ~2 credits
 
-the operator, 2026-08-06: the synthetic ground in `clip.py` reads as blank paper with our headline
+you, : the synthetic ground in `clip.py` reads as blank paper with our headline
 dropped on it. He wants the clipping to be an actual extract of a newspaper, with our line set
 as the page's own headline and the rest of the page's text left alone but slightly blurred.
 
@@ -14,7 +14,7 @@ design of the prompt, and the reason it is so insistent about it: this model rew
 wholesale if you let it, and a rewritten page is a fabricated newspaper.
 
 **The recorded deviation.** `layers/editorial-layer/SKILL.md` bans generated legible text
-outright, because gibberish newsprint is the tell. the operator overrode that here on 2026-08-06 for
+outright, because gibberish newsprint is the tell. you overrode that here on for
 the headline specifically, which is the one line on the card that has to be read. Two guards
 stay on: the rest of the page is asked for slightly out of focus so nothing else invites
 reading, and the prompt bans a masthead, a publication name and a byline, so the output can
@@ -35,7 +35,7 @@ from build_news_clip import COPY                                      # noqa: E4
 ROOT = Path(__file__).parent
 SRC = ROOT / "collage-src"
 OUT = ROOT / "clip-paper"
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 
 # One scan per card, so the five clippings are cut from five different pages.
 REF = {
@@ -52,7 +52,7 @@ REF = {
 #   frame, and there is no compositing fix: those two edges are the same line.
 #   Pass 2 kept the margin but ran the block three quarters of the way DOWN the page, so the
 #   headline owned the cutting and the cutting owned the card.
-# The cutting was then condensed, and the operator, 2026-08-06, with that room in front of him: the
+# The cutting was then condensed, and you, with that room in front of him: the
 # headline takes the whole of it, and every card takes the SAME structure the construction page
 # came back with. That page put the headline down the left half as a tall stack of short lines
 # with real columns beside it, and it is the structure of record. Only the size of the type
@@ -99,7 +99,7 @@ BAN = (
     "photograph, no illustration, no logo and no company name anywhere on the page. Nothing "
     "modern appears. No hand, no desk and no surface is visible.")
 
-# One ink. the operator, 2026-08-06: the blue accent goes. A newspaper prints black, and a spot colour
+# One ink. you, : the blue accent goes. A newspaper prints black, and a spot colour
 # on one phrase is the thing that gives the page away as artwork.
 INK = ("Every word on the page is printed in the same black newspaper ink, the headline and the "
        "standfirst included. No colour of any kind appears anywhere on the page.")
@@ -116,7 +116,7 @@ def prompt(key):
         f"sentence case, set on two or three lines, and it reads exactly and only: "
         f"\"{head}\" Directly under it, separated by a thin horizontal rule, one standfirst line "
         f"in much smaller roman type reads exactly and only: \"{deck_plain}\" "
-        f"The headline is exactly {len(head.split())} words long, in that order, and no word in "
+        f"The headline is exactly {len(head.split)} words long, in that order, and no word in "
         f"it is printed twice: it came back with \"admin admin\" on two runs of the real estate "
         f"page, so count the words. Every word of both is spelled exactly as given, with no "
         f"extra words, and the type is crisp and completely legible. "
@@ -125,27 +125,27 @@ def prompt(key):
 
 def shoot(key):
     ref = SRC / REF[key]
-    if not ref.exists():
+    if not ref.exists:
         sys.exit(f"no reference scan at {ref}")
     OUT.mkdir(parents=True, exist_ok=True)
     dst = OUT / f"{key}-news.png"
-    if dst.exists():
+    if dst.exists:
         dst.replace(OUT / f"{key}-news.prev.png")
         print(f"kept the old extract at {key}-news.prev.png")
-    cmd = [HF, "generate", "create", "nano_banana_pro", "--prompt", prompt(key),
+    cmd = [HF, "generate", "create", "your image model", "--prompt", prompt(key),
            "--image-references", str(ref), "--aspect_ratio", "3:2", "--resolution", "2k",
            "--wait", "--wait-timeout", "8m", "--wait-interval", "5s", "--json"]
     print(f"firing ONE job: {key} newspaper extract")
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0 or "[" not in r.stdout:
-        sys.exit(f"higgsfield failed (exit {r.returncode}):\n{r.stdout[:1500]}\n{r.stderr[:800]}")
+        sys.exit(f"your generation platform failed (exit {r.returncode}):\n{r.stdout[:1500]}\n{r.stderr[:800]}")
     job = json.loads(r.stdout[r.stdout.index("["):])[0]
     url = job.get("result_url")
     if not url:
         sys.exit(f"no result_url:\n{json.dumps(job)[:1500]}")
     print(f"job {job.get('id')}")
     subprocess.run(["curl", "-sSL", "-o", str(dst), url], check=True)
-    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB)")
+    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@
     python3 build_white.py            # both
     python3 build_white.py admin      # one
 
-Layout, the operator's direction 2026-08-06: hook as top text, the CTA directly under it as a thin
+Layout, your direction : hook as top text, the CTA directly under it as a thin
 line across the middle of the page, and the painted plate filling the bottom. White ground,
 `--light-text` on `#fff`, one blue accent, your display typeface only.
 
@@ -40,7 +40,7 @@ html,body{{width:{W}px;height:{H}px;background:var(--ground);overflow:hidden}}
 .sub{{font-family:'your display typeface';font-weight:300;font-size:27px;line-height:1.4;color:var(--t3);
  margin-top:20px}}
 /* the CTA is one thin line across the middle, rules either side of it */
-/* the operator, 2026-08-06: blow the lead-magnet line up. It was 17px, which is smaller than the sub
+/* you, : blow the lead-magnet line up. It was 17px, which is smaller than the sub
    it sits under, so the one thing the card asks the reader to DO read as a footnote. Tracking
    comes down with the size going up, because the longest magnet name (the broker and adviser
    one, 45 characters) has to stay on one line inside the 912px column. */
@@ -77,7 +77,7 @@ def arrow_down(x, y_from, y_to, label, label_x, label_y, anchor="end"):
             f'{html.escape(label)}</text>')
 
 
-# the operator, 2026-08-06: both white cards run across all five industries. The painting is the same
+# you, : both white cards run across all five industries. The painting is the same
 # set and the same figures every time, shot from a different camera angle, so the set reads as one
 # campaign and only the words change. Nouns are the locked ones from basics.py (`short`), which is
 # why real estate says "agency" and financial services says "brokerage" rather than "business".
@@ -93,9 +93,9 @@ MAGNET = {"construction": "Take the Site-to-Profit Readiness Check",
           "hospitality": "Take the Wow Factor Audit",
           "retail": "Take the Retail Ops AI Readiness Check",
           "financial-services": "Take the Broker and Adviser AI Readiness Check"}
-# The wrong fix each industry reaches for, verbatim from basics.py. Real estate's is the operator's own
-# wording from 2026-08-06 ("another admin staff member"), not the basics.py fill.
-# the operator, 2026-08-06: hospitality and retail move off their basics.py fills onto the same
+# The wrong fix each industry reaches for, verbatim from basics.py. Real estate's is your own
+# wording from ("another admin staff member"), not the basics.py fill.
+# you, : hospitality and retail move off their basics.py fills onto the same
 # shape as the others. "Put a part-timer on it" was not the same kind of wrong fix as the
 # rest, and "to grow" was surplus on retail.
 WRONG = {"construction": "hire more admin staff", "real-estate": "hire another admin staff member",
@@ -137,16 +137,14 @@ CARDS = {
         sub="You are scaling the problem.",
         cta="Take the AI-Ready Agency Score",
         # the centre figure sits dead centre of the plate
-        overlay=arrow_down(540, 712, 812, "Your the role you place", 512, 690, "end"),
-    ),
+        overlay=arrow_down(540, 712, 812, "Your the role you place", 512, 690, "end"),),
     "versus": dict(
         plate="versus-operators.png",
         head="Stop trying to use AI in your [[agency]] without doing this first.",
-        sub="",     # the operator 2026-08-06: the sub goes, on every versus card
+        sub="",     # you : the sub goes, on every versus card
 
         cta="Take the AI-Ready Agency Score",
-        overlay=versus_overlay(*VERSUS_X["versus"]),
-    ),
+        overlay=versus_overlay(*VERSUS_X["versus"]),),
 }
 
 # The other four industries of each card, filled from the tables above. Real estate keeps the two
@@ -169,13 +167,13 @@ for _ind in ("construction", "hospitality", "retail", "financial-services"):
 def build(key):
     c = CARDS[key]
     p = PLATES / c["plate"]
-    if not p.exists():
+    if not p.exists:
         print(f"  skip {key}: no plate at {p}")
         return
     # An empty sub renders nothing at all, rather than an empty div still carrying its margin.
     sub = f'<div class="sub">{html.escape(c["sub"])}</div>' if c["sub"] else ""
     doc = (f'<meta charset="utf-8"><style>{CSS}</style><div class="card">'
-           f'<img class="plate" src="{p.resolve().as_uri()}">'
+           f'<img class="plate" src="{p.resolve.as_uri}">'
            f'<div class="top"><div class="head">{markup(c["head"])}</div>{sub}'
            f'<div class="cta"><span>{html.escape(c["cta"])}</span><i></i></div></div>'
            f'<svg class="overlay" viewBox="0 0 {W} {H}" width="{W}" height="{H}">'
@@ -188,7 +186,7 @@ def build(key):
                     "--force-device-scale-factor=1", f"--window-size={W},{H}",
                     f"--screenshot={png}", f"file://{tmp}"],
                    stderr=subprocess.DEVNULL, check=True)
-    Path(tmp).unlink()
+    Path(tmp).unlink
     print(f"  {png}")
 
 

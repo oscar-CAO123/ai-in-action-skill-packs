@@ -6,7 +6,7 @@
 Reads what is actually on disk rather than what the docs claim, so it cannot drift. Thumbnails
 are embedded as base64, so the file opens anywhere with nothing beside it.
 
-Written 2026-08-06 because `DOSSIER.html` only covers the 20 copy cards plus the news-carousel
+Written because `DOSSIER.html` only covers the 20 copy cards plus the news-carousel
 keepers, and by then four more rigs had rendered work it never sees.
 """
 import base64
@@ -65,7 +65,7 @@ GRID = [
 ]
 
 SECTIONS = [
-    ("The five news-collage keepers", "LOCKED as canonical 2026-08-06. The only cards in the set "
+    ("The five news-collage keepers", "LOCKED as canonical . The only cards in the set "
      "that are finished end to end: plate, cutout, editorial bed, tear and type. Two type "
      "treatments are on disk: `-band` is the original news-carousel band, `-clip` sets the same "
      "cards as a torn newspaper clipping with an arrow on the subject (build_news_clip.py).",
@@ -74,7 +74,7 @@ SECTIONS = [
      "references/hooks/HOOKS.md. These are rendered on the plain band, NOT in their assigned "
      "formats. This is the batch waiting on images.",
      [S / "out-basics"], (".png",)),
-    ("Format prototypes", "Now three formats running across ALL FIVE industries, 15 cards, built 2026-08-06. The watercolour window (other LOCKED plate-led format), the consultant-vs-house card and the house-in-the-cubicles card. Each holds the same figures and set in every industry and moves only the camera, so the five read as one campaign; for the watercolour, the view through the window changes too. Plus the retro one-off.",
+    ("Format prototypes", "Now three formats running across ALL FIVE industries, 15 cards, built . The watercolour window (other LOCKED plate-led format), the consultant-vs-house card and the house-in-the-cubicles card. Each holds the same figures and set in every industry and moves only the camera, so the five read as one campaign; for the watercolour, the view through the window changes too. Plus the retro one-off.",
      [S / "out-noirreal", S / "out-white", S / "out-retro"], (".png",)),
     ("Superseded", "Earlier passes kept for reference. Not part of the current set.",
      [S / "out", S / "out-half", S / "out-lead"], (".png",)),
@@ -84,18 +84,18 @@ SECTIONS = [
 def thumb(p):
     im = Image.open(p).convert("RGB")
     im.thumbnail((THUMB_W, THUMB_W * 3), Image.LANCZOS)
-    buf = io.BytesIO()
+    buf = io.BytesIO
     im.save(buf, "JPEG", quality=72)
-    return base64.b64encode(buf.getvalue()).decode()
+    return base64.b64encode(buf.getvalue).decode
 
 
 def collect(dirs, suffixes):
     out = []
     for d in dirs:
-        if not d.exists():
+        if not d.exists:
             continue
         for p in sorted(d.rglob("*.png")):
-            if p.name.startswith("_") or "sheet" in p.name.lower():
+            if p.name.startswith("_") or "sheet" in p.name.lower:
                 continue
             if not any(p.name.endswith(s) for s in suffixes):
                 continue
@@ -103,7 +103,7 @@ def collect(dirs, suffixes):
     return out
 
 
-def main():
+def main:
     parts, total = [], 0
     for title, blurb, dirs, sfx in SECTIONS:
         files = collect(dirs, sfx)
@@ -148,7 +148,7 @@ td.f {{ color:#7e7e88; }}
 .wrap {{ overflow-x:auto; }}
 </style>
 <h1>Static ads, everything built</h1>
-<p class="lede">Read off disk on 2026-08-06, not from the docs. {total} rendered cards in four
+<p class="lede">Read off disk on not from the docs. {total} rendered cards in four
 groups, then the 25-cell grid with what each cell still needs. {built} of 25 cells are finished.</p>
 {''.join(parts)}
 <section><h2>The 25-cell grid <span class="n">{built} of 25 built</span></h2>
@@ -158,8 +158,8 @@ Every other cell has its copy written and nothing rendered in its assigned forma
 <tr><th>Industry</th><th>Pain</th><th>Format</th><th>Funnel</th><th>Sub-skill</th>
 <th>What it still needs</th></tr>{rows}</table></div></section>
 """, encoding="utf-8")
-    print(f"{OUT}  ({OUT.stat().st_size // 1024} KB, {total} cards)")
+    print(f"{OUT}  ({OUT.stat.st_size // 1024} KB, {total} cards)")
 
 
 if __name__ == "__main__":
-    main()
+    main

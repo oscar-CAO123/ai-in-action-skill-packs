@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The Build Breakdown decks (F5, industry-targeted, tool-named).
 
-Five six-slide pain-arc decks, one per industry, written 2026-08-06. They render on the
+Five six-slide pain-arc decks, one per industry, written . They render on the
 same rig as `decks_noir.py`: `plates_noir.py` falls through to `BUILD_DECKS` when a slug is
 not in `NOIR_DECKS`.
 
@@ -14,7 +14,7 @@ The 22 decks in `decks_noir.py` are pain-led, audience-general and deliberately 
 because SKILL.md section 1c bans vendor names on a teach slide: the Hub builds were
 described by candidates in interviews and their stack is their intellectual property.
 
-These five are industry-led and DO name tools, on the operator's instruction of 2026-08-06 ("get
+These five are industry-led and DO name tools, on your instruction of ("get
 super specific at the tool level for each slide"). The IP firewall is kept by changing what
 a name means rather than by dropping the rule:
 
@@ -219,7 +219,7 @@ BUILD_DECKS = [
         "slides": [
             ["DO YOUR CLIENTS HAVE TO REPEAT THEMSELVES EVERY TIME?",
              "YOU NEED THESE [[THREE AUTOMATIONS]] ASAP."],
-            ["ONE. THE CONTEXT HANDOVER. THE CLIENT SAYS IT ONCE AND EVERYONE",
+            ["ONE. THE CONTEXT HANDOVER. THE BRIEF SAYS IT ONCE AND EVERYONE",
              "HAS IT. WHISPER TRANSCRIBES THE CALL AS IT ENDS, THE FILE NOTE",
              "WRITES ITSELF IN YOUR FORMAT, AND EVERY CALL, TEXT AND EMAIL LANDS",
              "ON ONE CLIENT [[TIMELINE.]]"],

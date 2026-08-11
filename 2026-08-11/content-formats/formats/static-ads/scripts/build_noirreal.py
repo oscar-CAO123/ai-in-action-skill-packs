@@ -65,15 +65,15 @@ def markup(s):
     return "".join(out)
 
 
-# the operator, 2026-08-06: the CTA gains "to learn more", and the card runs across all five industries.
+# you, : the CTA gains "to learn more", and the card runs across all five industries.
 # Each head is the locked `bucket` fill for that industry's owner-bottleneck pain, straight from
 # basics.py. Hospitality has no bottleneck cell, so it takes `presence`, which is the same
 # argument in that industry's words: the place needs you on site for it to run.
-# the operator, 2026-08-06: the hook shape for this row is now "Still dealing with [pain] as a [avatar]?".
+# you, : the hook shape for this row is now "Still dealing with [pain] as a [avatar]?".
 # [avatar] is the PERSON, not the business, because "as a" needs a role. [pain] stays the pain the
 # card already carried, worded in that industry's own terms so the three bottleneck cards do not
 # come out word-identical.
-# the operator, 2026-08-06: the pain goes FLAT across all five. The per-industry wordings were his first
+# you, : the pain goes FLAT across all five. The per-industry wordings were his first
 # ask and his second was to drop them, so every card now runs the same line and only the avatar
 # changes, which is what makes it read as one campaign rather than five separate arguments.
 PAIN_FLAT = "Every decision still running through you"
@@ -90,7 +90,7 @@ BUCKET = {
     "real-estate": ("Aussie real estate agencies", "run every decision through the principal"),
     "hospitality": ("Aussie hospitality businesses", "be on site for it to run"),
     "retail": ("Aussie retailers", "run every decision through the owner"),
-    # the operator, 2026-08-06: "build the automation themselves" is not what house targets a broker
+    # you, : "build the automation themselves" is not what house targets a broker
     # on. Swapped to the `admin` bucket, which is the pain this picture actually argues:
     # the owner at ease while the work carries on without him.
     "financial-services": ("Aussie insurance brokers", "drown in paperwork"),
@@ -122,11 +122,11 @@ for _ind in ("real-estate", "hospitality", "retail", "financial-services"):
 def build(key):
     c = CARDS[key]
     p = PLATES / c["plate"]
-    if not p.exists():
+    if not p.exists:
         print(f"  skip {key}: no plate at {p}")
         return
     doc = (f'<meta charset="utf-8"><style>{CSS}</style><div class="card">'
-           f'<img class="plate" src="{p.resolve().as_uri()}"><div class="wash"></div>'
+           f'<img class="plate" src="{p.resolve.as_uri}"><div class="wash"></div>'
            f'<div class="top"><div class="head">{markup(c["head"])}</div>'
            f'<div class="sub">{html.escape(c["sub"])}</div>'
            f'<div class="cta"><span>{html.escape(c["cta"])}</span><i></i></div></div></div>')
@@ -138,7 +138,7 @@ def build(key):
                     "--force-device-scale-factor=1", f"--window-size={W},{H}",
                     f"--screenshot={png}", f"file://{tmp}"],
                    stderr=subprocess.DEVNULL, check=True)
-    Path(tmp).unlink()
+    Path(tmp).unlink
     print(f"  {png}")
 
 

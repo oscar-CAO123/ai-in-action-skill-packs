@@ -31,10 +31,10 @@ news-carousel format and it is the control the other four are judged against. `b
 the transform, so the copy string is not pre-cased.
 
 **The mark is centred on the PLATE AREA, not the card.** `CX, CY = W/2, PLATE_H/2`, so y=422 and
-not the card's own 675. the operator, 2026-08-06.
+not the card's own 675. you, .
 
 **Large, centred, symmetrical, and no laptop.** The first pass drew a laptop with a small hazard
-sign over it; the operator cut the laptop entirely and scaled the mark up.
+sign over it; you cut the laptop entirely and scaled the mark up.
 
 **Per-mark scale, not one shared number.** The triangle's local box is 156 units tall and the X's
 is 192, so a shared scale draws the X a quarter larger: it ran into the magnet label at the foot
@@ -45,7 +45,7 @@ warped sign with invented lettering on it, and the plate underneath is already p
 
 ## The recorded deviation
 
-the operator cut the leader-arrow annotation off the industry statics on 2026-08-06, which put those
+you cut the leader-arrow annotation off the industry statics on put those
 cards under "nothing is drawn over the plate". **This card draws over the plate on purpose**: the
 caution mark across the frame is the whole format. The magnet rides underneath it as a plain
 centred label with no leader line, which is the lightest way to name the asset without reviving

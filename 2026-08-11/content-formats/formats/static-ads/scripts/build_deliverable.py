@@ -7,7 +7,7 @@
 FREE. No generation anywhere in this format. The image on the card is a headless-Chrome capture
 of the asset's own scored report, taken by `shot_report.py`.
 
-The layout, settled with the operator 2026-08-06: white ground, black your display typeface, sentence case, the hook at
+The layout, settled with you : white ground, black your display typeface, sentence case, the hook at
 the top, an arrow pointing down, the deliverable centred under it.
 
 **Seven cards, one format, seven presentations.** The copy shape does not vary, so if the picture
@@ -81,8 +81,8 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;background:#fff}}
 # wider, and every card silently undersizes.
 FIT = """
 document.fonts.load('300 100px "your display typeface"','AZ09')
- .then(function(){ return document.fonts.ready; })
- .then(function(){
+ .then(function{ return document.fonts.ready; })
+ .then(function{
   var hook=document.querySelector('.hook');
   var card=document.querySelector('.card');
   var avail=CAP;
@@ -90,13 +90,13 @@ document.fonts.load('300 100px "your display typeface"','AZ09')
   for(var i=0;i<24;i++){
     var mid=(lo+hi)/2;
     hook.style.fontSize=mid+'px';
-    var r=hook.getBoundingClientRect();
+    var r=hook.getBoundingClientRect;
     var over = hook.scrollWidth > hook.clientWidth+1;
     if(r.height<=avail && !over){ best=mid; lo=mid; } else { hi=mid; }
   }
   hook.style.fontSize=best+'px';
   document.documentElement.dataset.fitted =
-    Math.round(best)+'px, '+Math.round(hook.getBoundingClientRect().height)+'px tall';
+    Math.round(best)+'px, '+Math.round(hook.getBoundingClientRect.height)+'px tall';
 });
 """
 
@@ -115,7 +115,7 @@ def stage_html(shot, look):
     w = look["width"]
     iw, ih = Image.open(shot).size
     h = round(w * ih / iw)
-    src = shot.resolve().as_uri()
+    src = shot.resolve.as_uri
     shadow = f"box-shadow:0 {look['drop'] // 2}px {look['drop']}px rgba(16,16,20,0.30);"
     tilt = 0 if look["style"] == "flat" else look["tilt"]
     behind = ""
@@ -135,7 +135,7 @@ def render(industry, png):
     look = LOOK[key]
     copy = COPY["deliverable"](industry)
     shot = SHOTS / f"{key}-report.png"
-    if not shot.exists():
+    if not shot.exists:
         raise SystemExit(f"no report capture for {key}. Run: python3 shot_report.py {key}")
 
     # The hook block gets a third of the card; the deliverable and the arrow take the rest.
@@ -159,7 +159,7 @@ def render(industry, png):
     dom = subprocess.run([CHROME, "--headless", "--disable-gpu",
                           "--virtual-time-budget=4000", "--dump-dom", f"file://{tmp}"],
                          capture_output=True, text=True).stdout
-    Path(tmp).unlink()
+    Path(tmp).unlink
     m = re.search(r'data-fitted="([^"]+)"', dom)
     return m.group(1) if m else "?"
 

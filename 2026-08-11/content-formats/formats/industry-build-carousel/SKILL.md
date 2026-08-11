@@ -1,6 +1,6 @@
 ---
 name: industry-build-carousel
-description: Use when the operator says "industry build carousel", "industry carousel", "what an AI hire builds", "vertical carousel", "grid carousel", or wants a house carousel that shows the actual systems an embedded the role you place builds for one industry. Builds a 4:5 carousel: a full-bleed 2x2 grid where each quadrant is shot in a DIFFERENT house style (painted noir, VHS camcorder, 16mm, Super 8, Betacam, security camera, press flash), with a white node diagram walking clockwise around a square ring centred on the frame. Format F8 in angles-and-formats.md.
+description: Use when you says "industry build carousel", "industry carousel", "what an AI hire builds", "vertical carousel", "grid carousel", or wants a house carousel that shows the actual systems an embedded the role you place builds for one industry. Builds a 4:5 carousel: a full-bleed 2x2 grid where each quadrant is shot in a DIFFERENT house style (painted noir, VHS camcorder, 16mm, Super 8, Betacam, security camera, press flash), with a white node diagram walking clockwise around a square ring centred on the frame. Format F8 in angles-and-formats.md.
 canonical: false
 format: F8
 status: in gate (Step-6-style). Not a valid pick for the weekly draw until it passes.
@@ -13,7 +13,7 @@ build for a business like mine? Each slide is one named system, drawn as a loop 
 walking clockwise around a centred square ring, over four painted quadrants that narrate that
 system's story.
 
-The vehicle is lifted from a @derivenotes grid carousel and rebuilt in the house noir world. Where
+The vehicle is lifted from a a reference account grid carousel and rebuilt in the house noir world. Where
 F5 news-carousel borrows the trust of a news headline, F8 borrows the trust of a workflow board:
 it reads as the actual system someone would hand you, drawn rather than designed at you.
 
@@ -24,16 +24,16 @@ that playbook, never guessed. Construction is batch 1 because it is the largest 
 corpus (55 calls, 50 businesses) and the deepest well in the wiki (262 mined records across 56
 companies).
 
-**All nineteen are written and sit at the reference shape (2026-08-05).** `other` is uncategorised
-and has no playbook, so it is not a vertical, and **Building Services was dropped by the operator on
-2026-08-05** and parked at `verticals/_parked/`, fully authored and never shot. Its batch number 6
+**All nineteen are written and sit at the reference shape .** `other` is uncategorised
+and has no playbook, so it is not a vertical, and **Building Services was dropped by you on
+** and parked at `verticals/_parked/`, fully authored and never shot. Its batch number 6
 is retired rather than reused. The nineteen live in `verticals/`, each with a complete data file: four systems chosen off that playbook's ranked pains, the workflows node by
 node, a stat per system with its provenance, the collage cover with its own diorama angle, a style
 cast onto every one of its twenty-one plates, and the magnet-led closing. Every one renders today
 with labelled placeholders, so a vertical is reviewable before a cent is spent. `VERTICALS.md` is
 the index, and it also carries the ad-targeting shape for each industry.
 
-The other nineteen were brought up from the pre-reference shape on 2026-08-05 in one free pass: covers
+The other nineteen were brought up from the pre-reference shape on in one free pass: covers
 recast from a 2x2 to the collage, angles assigned in batch order so no two consecutive carousels
 share one, briefs stripped of the 124 instances of lighting and format language left over from when
 style was per carousel, shot sizes normalised to the studio five, and the closing switched to the
@@ -45,9 +45,7 @@ quiz with graded answers and a result framing, so the closing CTA is a lookup ra
 job: Construction is The Site-to-Profit Readiness Check, Real Estate The AI-Ready Agency Score,
 Hospitality The Wow Factor Audit, and so on down all 20 playbooked industries.
 
-## THE REFERENCE SET (2026-08-05)
-
-**Real Estate is the finished carousel. Judge every new vertical against it.** It is the only one
+## THE REFERENCE SET **Real Estate is the finished carousel. Judge every new vertical against it.** It is the only one
 with all twenty-one plates shot.
 
 `export/real-estate-and-property-management/` holds it: `01-cover` through `06-closing` in swipe
@@ -64,11 +62,11 @@ order plus a contact sheet. Twenty-one paid plates. What that build settled, all
 | Branding | The house lockup ONCE, on the closing page only |
 | Diagram | Unchanged across all four slides, monochrome white on any plate underneath |
 
-Construction was ported into `verticals/` on 2026-08-05 and brought up to this set. Its old
+Construction was ported into `verticals/` on and brought up to this set. Its old
 four-slide build stays on disk at `slides.json` as the diagram's origin, reachable as the slug
 `slides`, and nothing reads it any more.
 
-**The plate style is a bank, cast per quadrant (2026-08-05).** Ten entries in `styles.json`, each a
+**The plate style is a bank, cast per quadrant .** Ten entries in `styles.json`, each a
 generation formula plus a free ffmpeg grade. Painted noir is still the flagship. Section 2a is the
 bank and its laws.
 
@@ -86,7 +84,7 @@ format: F8
 skill: industry-build-carousel
 canvas: [1080, 1350]           # 4:5, rendered at device-scale 2 to 2160x2700
 pages: 6                       # cover + 4 system slides + closing
-plate: nano_banana_pro at 4:5, 2k, one job at a time, style anchor as --image-references
+plate: your image model at 4:5, 2k, one job at a time, style anchor as --image-references
 routing: ../../references/canon/model-routing.md   # house shot-type table. nano keeps this lane: native 4:5 plus 14 image references for the style anchor
 plate_style: per QUADRANT in each quadrant's `style`. plateStyle is only the fallback
 quadrants: 4 per page          # 21 stills for a full carousel: 16 slides, 4 cover cutouts, 1 closing
@@ -142,16 +140,16 @@ qa:
   - brief check: no shot brief carries lighting, framing convention or format language. That
     belongs to the style, and a brief that states it will fight whatever style it is cast in
   - GRAYSCALE CHECK, on grayscale styles only (noir-oil, cctv-plate, press-flash). The colour
-    styles are meant to be colour and the grade sets their saturation. nano_banana_pro returns
+    styles are meant to be colour and the grade sets their saturation. your image model returns
     colour even when the prompt says pure grayscale: 2 of the 12 Construction plates came back warm (max channel spread 139
     on the dusk exterior, 60 on the pipeline screen). Desaturate in place rather than paying to
     regenerate, and keep the original under assets/_colour-originals/:
       python3 -c "from PIL import Image; import numpy as np, glob
       [print(p, (np.asarray(Image.open(p).convert('RGB')).astype(int).max(2) -
-       np.asarray(Image.open(p).convert('RGB')).astype(int).min(2)).max())
+       np.asarray(Image.open(p).convert('RGB')).astype(int).min(2)).max)
        for p in sorted(glob.glob('assets/s*-q*-paint.png'))]"
-    Anything above about 12 is colour. **That number is a candidate, not a defect** (the operator,
-    2026-08-06): he closed all 18 F8 flags unfixed, because variation across the set is wanted and
+    Anything above about 12 is colour. **That number is a candidate, not a defect** (you,
+    : he closed all 18 F8 flags unfixed, because variation across the set is wanted and
     a batch desaturated to pass a measurement reads as one template. Fix only where the colour is
     clearly a GRADE BUG, a cast across every plate in one style or a plate that disagrees with the
     other three in its own grid. When it is: Image.merge('RGB', [im.convert('L')] * 3)
@@ -169,10 +167,10 @@ outputs: render/cover.png, render/slide-1..4.png, render/closing.png
 
 ## 1. The six-page arc
 
-**The cover and closing were restyled onto the locked system on 2026-08-05** and now render from
+**The cover and closing were restyled onto the locked system on ** and now render from
 `loop_diagram.py` with the slides. `build.py` and its navy serif treatment are superseded.
 
-**The two end cards do not use the grid** (the operator, 2026-08-05). The four-up montage is for the four
+**The two end cards do not use the grid** (you, . The four-up montage is for the four
 system slides only. The cards each carry one idea:
 
 - **Cover: a pasted collage of four cutouts.** A 2x2 that looks torn out rather than laid out:
@@ -184,17 +182,17 @@ system slides only. The cards each carry one idea:
   clay-animation set of that industry on a tabletop, the way someone plays with a doll set, on
   `noir-oil`. Real estate is a tiny clay agent in front of a model house with a miniature for-sale
   board; construction is the same hands over a model site; hospitality over a model dining room.
-  The industry is the toy and the operator is the hands, which is the offer stated as an image
+  The industry is the toy and you is the hands, which is the offer stated as an image
   before a word of it is read.
   Over it: the `part 1` tag on a top scrim and the hook **centred in the frame** on its own radial
   scrim, in your display typeface 400 at 76px with a **drawn** blue underline on the key phrase (an SVG path through
   the `#rough` filter, never a text-decoration).
 
-  **The part tag is `part 1`, on the cover, and appears on no other page** (the operator, 2026-08-05).
+  **The part tag is `part 1`, on the cover, and appears on no other page** (you, .
   Every vertical opens its own series at part 1 rather than announcing itself as number N of twenty,
   which reads as a back catalogue nobody has seen. Follow-ups inside an industry take part 2 onward.
 
-  **The hook rotates across THREE patterns (the operator, 2026-08-05).** One line run twenty times is one
+  **The hook rotates across THREE patterns (you, .** One line run twenty times is one
   post duplicated twenty times, the same argument that rotates the cover angle. Each pattern is
   three parts, and the middle one carries the drawn blue rule:
 
@@ -210,8 +208,8 @@ system slides only. The cards each carry one idea:
   question that does not match the vertical's own top pain is worse than the generic line.
 
   **`{company type}` comes from that industry's Targeting section in
-  `context/pain-wiki/industries/<slug>.md`, never from what fits the sentence** (the operator,
-  2026-08-05). Two labels were wrong about who house sells to before this was a rule: "motor trade
+  `context/pain-wiki/industries/<slug>.md`, never from what fits the sentence** (you,
+. Two labels were wrong about who house sells to before this was a rule: "motor trade
   businesses" for a corpus of dealerships, crash repair and mechanic workshops, and "software
   businesses" for a corpus of SMB SaaS and MSP founders. **Financial Services is "brokerages", not
   "broking firms", everywhere.** Read the playbook before writing the label.
@@ -223,11 +221,11 @@ system slides only. The cards each carry one idea:
   F8: pick a named structure and cite it, never free-write.
 
   **The number comes from the slide count in code, never typed.** The skill claimed this from the
-  day the format locked and the data still carried a literal `4` until 2026-08-05. It is now real:
-  write `{n}` in any of the three parts and `build_cover()` fills it, so a cover cannot promise more
+  day the format locked and the data still carried a literal `4` until . It is now real:
+  write `{n}` in any of the three parts and `build_cover` fills it, so a cover cannot promise more
   systems than the carousel teaches.
 
-  **The angle changes every single time (the operator, 2026-08-05).** The scene is fixed, the camera is
+  **The angle changes every single time (you, .** The scene is fixed, the camera is
   not. `cover-angles.json` holds eight named angles and a `used` ledger; a new carousel takes an
   angle no recent carousel has taken, and never the one immediately before it. Twenty covers of one
   idea from one camera reads as a post duplicated twenty times; from twenty positions it reads as a
@@ -236,7 +234,7 @@ system slides only. The cards each carry one idea:
   photographed off a screen so interference banding and dot crawl ripple across it. The oldest
   image of thinking work arriving through the newest medium.
 
-  **Two type blocks, and only two** (the operator, 2026-08-05). The `One operator. Four systems. Live in
+  **Two type blocks, and only two** (you, . The `One operator. Four systems. Live in
   90 days.` offer block is CUT. What remains is the line, then the CTA under it:
 
   ```
@@ -264,7 +262,7 @@ the reader has already answered the question the cover asked.
 
 ## 2. The locked visual system
 
-**The quadrants.** Four full-bleed stills meeting at a centre seam, generated on `nano_banana_pro`
+**The quadrants.** Four full-bleed stills meeting at a centre seam, generated on `your image model`
 at 4:5 and 2k, one paid job at a time. Which world they are shot in is set by the carousel's
 `plateStyle`. Painted noir is one of seven and is still the flagship.
 
@@ -278,9 +276,7 @@ is brightest on]. [style tail] No text.
 "No legible text" replaces "No text" whenever the scene contains a screen, a page or a printed
 document, which is most of them. `gen_plates.py` decides that from the brief.
 
-## 2a. The plate-style bank (added 2026-08-05)
-
-Twenty carousels in the same painted noir would read as twenty of the same post. The plates carry
+## 2a. The plate-style bank (added Twenty carousels in the same painted noir would read as twenty of the same post. The plates carry
 the vertical's world, so the world changes with the vertical while the diagram never does.
 
 **The bank lives in `styles.json`.** Each style is two layers:
@@ -306,8 +302,8 @@ the vertical's world, so the world changes with the vertical while the diagram n
 
 **The laws.**
 
-- **The style is per QUADRANT, and one grid deliberately carries four of them** (the operator,
-  2026-08-05). The grid reads as a wall of footage of the same business pulled from four different
+- **The style is per QUADRANT, and one grid deliberately carries four of them** (you,
+. The grid reads as a wall of footage of the same business pulled from four different
   places: someone's home video, the office security camera, a screen recording, the broadcast
   package. **Mixing the formats inside the grid is the effect.** A grid in one uniform treatment is
   the miss. `plateStyle` at the top of a vertical file is the fallback for a quadrant that names
@@ -332,16 +328,16 @@ the vertical's world, so the world changes with the vertical while the diagram n
 `Q1 the trigger -> Q2 the old painful way -> Q3 the build working -> Q4 the result`
 
 **Nothing is drawn over the plates.** Green computer-vision bounding boxes with confidence scores
-were the original conceit and were **cut by the operator on 2026-08-05**. The plates run clean. The
+were the original conceit and were **cut by you on **. The plates run clean. The
 overlay code is gone from `build.py` and the `cv` arrays left in `slides.json` are inert. Do not
 reinstate them.
 
-**The loop (LOCKED 2026-08-05, this is the format).** The diagram is a node graph in n8n's
+**The loop (LOCKED this is the format).** The diagram is a node graph in n8n's
 grammar, walked clockwise around a square ring centred on the frame. It replaced a torn notebook
 card carrying a hand-drawn flowchart, which is retired: the card sat in the middle of the frame
 and made the composition a photograph with a note stuck to it.
 
-- **The ring adapts to the workflow (2026-08-05).** A node ALWAYS sits on all four corners, then
+- **The ring adapts to the workflow .** A node ALWAYS sits on all four corners, then
   the spare steps take edge midpoints in the order top, bottom, right, left. So 4 steps is the
   bare corners, 6 adds the top and bottom midpoints, 7 adds the right, 8 fills all four. Every
   consecutive pair therefore shares an edge, every connector is a straight run along it, and the
@@ -388,12 +384,12 @@ Four to eight steps, lowercase, each a plain statement of what happens. Every no
 stays in charge of the decision and stops doing the labour around it. Two `you` nodes reads as a
 job. Zero reads as a robot the reader will not trust.
 
-**Construction slide 3 broke this law and was fixed on the port (2026-08-05).** "The Job Sync" ran
+**Construction slide 3 broke this law and was fixed on the port .** "The Job Sync" ran
 five nodes with no `you` step, so it read as a robot with nobody in it. The added node is the owner
 confirming the job before it spins up across the three systems. It is the one piece of authored copy
 in that port rather than a move, so it is the first thing to check if Construction reads wrong.
 
-The kind tags were removed from the annotations on 2026-08-05, so the `you` step is now marked
+The kind tags were removed from the annotations on so the `you` step is now marked
 only by its dashed tile border. It is quieter than it was. If a slide needs that step to carry
 more weight, change the tile, never add the label back.
 
@@ -401,7 +397,7 @@ more weight, change the tile, never add the label back.
 
 This is the modulation surface. A new vertical is a new file, and the rig does not change.
 All twenty verticals live here, Construction included: it was ported off `slides.json` on
-2026-08-05 when it was brought up to the reference set. `slides.json` stays on disk as the record
+when it was brought up to the reference set. `slides.json` stays on disk as the record
 of the retired four-slide build and the rig reads it only for the slug `slides`.
 
 ```
@@ -431,7 +427,7 @@ slides[]:
     shot                    the shot size, from the studio palette vocabulary
     img                     assets/<slug>/s<N>-q<n>.png, absent until generated
     label                   the shot brief, shown as a placeholder until img exists
-    cv[]                    INERT. The overlay was cut 2026-08-05 and is no longer rendered
+    cv[]                    INERT. The overlay was cut and is no longer rendered
 closing: lines[] (two), cta. NO part tag, NO offer block
 ```
 
@@ -459,7 +455,7 @@ the only thing standing between the format and a claim it cannot support.
 
 **All nineteen unbuilt verticals are past step 6.** The files exist, they render on placeholders,
 their covers are recast, their quadrants are cast per beat and their briefs are clean. What is left
-for each is the operator's read of the placeholder set and then the paid plate run.
+for each is your read of the placeholder set and then the paid plate run.
 
 **Lead-magnet modulation.** The systems and the quadrants stay; the closing changes. The magnet
 sets the closing line and the single CTA, and the cover hook is written to promise what the magnet
@@ -488,9 +484,9 @@ playbook's "Result framing" paragraph is also the copy for the quiz result page 
 - Annotations 21.5px your display typeface 400, 272px wide, 76px off the tile, on 54px leaders.
 - Title at `bottom:258px` in your display typeface 400 at 48px with a blue step number. The Minecraft pixel face
   is retired: every piece of type on the slide is now your display typeface.
-- **The house lockup appears ONCE per carousel, on the closing page only** (the operator, 2026-08-05).
+- **The house lockup appears ONCE per carousel, on the closing page only** (you, .
   Cover and slides 1 to 4 carry no mark at all. Six lockups in six swipes reads as branding; one
-  at the end reads as a signature. `lockup()` in `loop_diagram.py` is the single gate, and only
+  at the end reads as a signature. `lockup` in `loop_diagram.py` is the single gate, and only
   the closing passes `brand=True`.
 - On that last page: the lockup at `bottom:46px`, 84px tall, forced white by
   `filter:brightness(0) invert(1)`. The letter-spaced text wordmark is retired.
@@ -526,17 +522,15 @@ still yet render as labelled placeholders, so a vertical is reviewable before an
 record of the Construction run.
 
 **Twenty-one plates per vertical, so the fourteen remaining carousels are 294 paid generations.**
-Nothing dispatches without `--go`, and `--go` needs the operator's explicit word every time.
+Nothing dispatches without `--go`, and `--go` needs your explicit word every time.
 
 **The closing plate is the same shot in every carousel**, so fourteen of those generations buy the
 identical Thinker. Copying one graded closing across the fourteen asset folders would take the batch
-to 280 and cost nothing. That is the operator's call, not a silent optimisation: a single reused
+to 280 and cost nothing. That is your call, not a silent optimisation: a single reused
 image is also the strongest series signature available, and regenerating it risks twenty slightly
 different Thinkers.
 
-## 8b. What the first three shot runs taught (2026-08-05)
-
-Real Estate, Construction and Hospitality are shot, 63 paid plates, **zero job failures across all
+## 8b. What the first three shot runs taught Real Estate, Construction and Hospitality are shot, 63 paid plates, **zero job failures across all
 three**. All three are live in the CRM at `board_order` 23 to 25 with their six pages in
 `content-media/f8-<slug>/`. What they changed:
 
@@ -560,7 +554,7 @@ pl=[(q['style'],q['img']) for q in d['cover']['panels']]+[(d['closing']['plate']
 pl+=[(q['style'],q['img']) for s in d['slides'] for q in s['quadrants']]
 for st,i in pl:
   a=np.asarray(Image.open(i).convert('RGB')).astype(float); m=a.reshape(-1,3).mean(0)
-  sp=int((a.astype(int).max(2)-a.astype(int).min(2)).max())
+  sp=int((a.astype(int).max(2)-a.astype(int).min(2)).max)
   if m[0]>m[1]+8 and m[2]>m[1]+8: print('MAGENTA', i)
   if st in G and sp>12: print('COLOUR ON GRAYSCALE', i)"
 ```
@@ -587,9 +581,9 @@ vertical. In order of severity:
 **Hospitality is the cleaner reference for a shot run than Construction.** Its clay diorama cover is
 the best in the set and its slides 1 to 3 came back clean. Judge a new vertical's plates against it.
 
-- The model id is `nano_banana_pro`. `nano_banana_2` 404s.
+- The model id is `your image model`. `your image model_2` 404s.
 - **A style anchor drags composition, not just treatment. This already happened.** The first paid
-  Super 8 plate (Real Estate s1-q1, 2026-08-05) came back with a film-gate border and sprocket
+  Super 8 plate (Real Estate s1-q1, came back with a film-gate border and sprocket
   notch baked in, plus a ghosted double exposure, because the palette-ref anchor was a photograph
   **of a film strip**. A baked border is fatal here: the quadrant cannot sit flush in a full-bleed
   2x2. **Only `noir-oil` keeps an anchor now**, because its anchor is bespoke and proven. Every
@@ -606,7 +600,7 @@ the best in the set and its slides 1 to 3 came back clean. Judge a new vertical'
   mark the set does not carry, and never let a node fall through to the positional fallback.
 - **A job can fail server-side and the CLI reports it as a timeout.** One Construction plate came
   back `Error: timed out waiting for job <id> (last status "in_progress")` after the 8m wait.
-  Query it before paying again: `higgsfield generate get <id> --json` returns `status: failed`
+  Query it before paying again: `your generation platform generate get <id> --json` returns `status: failed`
   with a null result URL, which means retry. Re-running the gen script retries only the missing
   quadrant, because it skips anything already on disk.
 - Chrome resolves from `CHROME_BIN` with the macOS default as its fallback. Do not hardcode it.
@@ -620,7 +614,7 @@ the best in the set and its slides 1 to 3 came back clean. Judge a new vertical'
   would wobble the paintings and the type as well, and the effect collapses.
 - Annotations are pinned by the edge facing their tile, never by their top edge. Pin them by the
   top and a two-line label drifts away from its node while a one-line label sits too close.
-- `build.py` is **fully superseded** as of 2026-08-05. `loop_diagram.py` renders all six pages.
+- `build.py` is **fully superseded** as of . `loop_diagram.py` renders all six pages.
   The file stays on disk only as the record of the retired navy serif treatment.
 - **The cover pair drifts.** Generated as two jobs, the model will change the owner's age, hair or
   clothing between the before and the after. The shared `subject` clause is the mitigation, not a

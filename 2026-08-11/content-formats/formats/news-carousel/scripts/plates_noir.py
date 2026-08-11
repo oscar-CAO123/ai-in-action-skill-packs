@@ -5,7 +5,7 @@
     python3 plates_noir.py noir-pain-admin 2 3          # only those slide numbers
     python3 plates_noir.py noir-pain-admin --recomp     # no generation, composite only
 
-Same contract as `plates.py`: one `nano_banana_pro` still per slide at 5:4 (the closest
+Same contract as `plates.py`: one `your image model` still per slide at 5:4 (the closest
 ratio to the 1080x844 plate area above the band), dispatched strictly one at a time and
 downloaded before the next is sent, so an interrupt costs at most one generation.
 
@@ -34,15 +34,15 @@ sys.path.insert(0, str(ROOT.parent.parent / "static-ads" / "scripts"))
 from band import render_card  # noqa: E402
 from decks_noir import NOIR_DECKS  # noqa: E402
 
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 
-# Tool marks. Text annotations were tried and cut on 2026-08-01; the plate now carries the
+# Tool marks. Text annotations were tried and cut on ; the plate now carries the
 # logos of the stack the automations are built on instead. They sit in one row in the black
 # gap between the painted subject and the band, so no mark ever covers paint.
 #
 # EVIDENCE NOTE: the admin board records no tool against its three Hub builds. These marks
 # carry the counted stack from the CRM interview evidence (Claude 198, ChatGPT/GPT 102,
-# n8n 71 of 483 populated transcript_summary rows, 2026-07-31), which is a claim about what
+# n8n 71 of 483 populated transcript_summary rows, is a claim about what
 # operators use, not a claim about these three specific builds.
 LOGOS = (ROOT.parents[4] / "projects" / "content-engine" / "ideas"
          / "museum-gallery-carousels" / "assets" / "logos")
@@ -73,7 +73,7 @@ def text_width(s):
 
 def logo_paths(name):
     """Pull the path geometry out of a 24x24 mono logo SVG."""
-    svg = (LOGOS / f"{name}.svg").read_text()
+    svg = (LOGOS / f"{name}.svg").read_text
     return re.findall(r'<path[^>]*\sd="([^"]+)"', svg)
 
 
@@ -122,7 +122,7 @@ def generate(prompt, dest, tries=4):
     """
     for attempt in range(1, tries + 1):
         r = subprocess.run(
-            [HF, "generate", "create", "nano_banana_pro", "--aspect_ratio", "5:4",
+            [HF, "generate", "create", "your image model", "--aspect_ratio", "5:4",
              "--resolution", "2k", "--prompt", prompt, "--wait", "--json"],
             capture_output=True, text=True)
         if r.returncode == 0 and "[" in r.stdout:
@@ -135,13 +135,13 @@ def generate(prompt, dest, tries=4):
     raise RuntimeError(f"generation failed after {tries} attempts: {dest}")
 
 
-def main():
+def main:
     slug = sys.argv[1]
     args = sys.argv[2:]
     recomp = "--recomp" in args
-    only = {int(a) for a in args if a.isdigit()}
+    only = {int(a) for a in args if a.isdigit}
     # The 22 general-pain decks live in decks_noir. The industry Build Breakdown decks
-    # (added 2026-08-06) live in decks_builds and render on the same rig, so the lookup
+    # (added live in decks_builds and render on the same rig, so the lookup
     # falls through to them rather than duplicating the compositor.
     decks = list(NOIR_DECKS)
     try:
@@ -157,15 +157,15 @@ def main():
         if only and i not in only:
             continue
         plate = plates / f"slide-{i:02d}.png"
-        if not plate.exists() and not recomp:
+        if not plate.exists and not recomp:
             print(f"slide-{i:02d}  generating ...", flush=True)
             generate(deck["plates"][i - 1], plate)
         report = render_card(copy, out / f"slide-{i:02d}.png",
-                             plate=plate if plate.exists() else None,
+                             plate=plate if plate.exists else None,
                              overlay=overlay_for(deck, i), theme="noir")
         print(f"slide-{i:02d}  {report}", flush=True)
     print("done")
 
 
 if __name__ == "__main__":
-    main()
+    main

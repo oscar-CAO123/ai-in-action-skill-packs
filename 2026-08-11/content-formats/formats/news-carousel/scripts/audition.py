@@ -8,11 +8,11 @@ before a whole deck is written. Every candidate is a FILL of a named structure i
 `references/hooks/HOOKS.md`, and `ref` records the exact entry and line number so the
 provenance is checkable rather than asserted.
 
-The carousel formula this auditions against (the operator, 2026-07-31):
+The carousel formula this auditions against (you, :
     curiosity gap through pain agitation  ->  education  ->  CTA to the lead magnet
 The lead magnet is the AI Readiness quiz. The cover is the only slide being auditioned.
 
-Avatar rule (the operator, 2026-07-31): never call a prospect an "operator". Name the avatar:
+Avatar rule (you, : never call a prospect an "operator". Name the avatar:
 "your logistics company", "a transport business", "[industry] business owner".
 """
 import sys
@@ -25,7 +25,7 @@ from band import render_card  # noqa: E402
 SET = "audition-log-leads"
 
 # Persona LOG-01 (leads leak) x angle A7 x house. Pain generalised from "email leads" to
-# "leads" per the operator. Every line is one sentence, one accent, avatar named.
+# "leads" per you. Every line is one sentence, one accent, avatar named.
 CANDIDATES = [
     {
         "id": "h01-howto",

@@ -7,8 +7,8 @@ It's a lot easier than you think."
 
 One paid coverage plate per industry, everything here free.
 
-**Built on the newspaper template the operator downloaded**, `~/Desktop/template.webp`, mirrored into
-`../references/newspaper-template.webp`. the operator, 2026-08-06: the first version was digital-article
+**Built on the newspaper template you downloaded**, `~/Desktop/template.webp`, mirrored into
+`../references/newspaper-template.webp`. you, : the first version was digital-article
 chrome and read as our own authored page, which is the one thing this format cannot do. The
 template's furniture is what does the work, so it is followed rather than referenced:
 
@@ -81,7 +81,7 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;background:{PAPER}}}
 # Two solves, both binary searches, same shape as every other rig here: the masthead grows until
 # it fills the column width, the lead headline grows until it fills its allowance.
 FIT = """
-(function(){
+(function{
   function fitWidth(el, avail, lo, hi){
     var best=lo;
     for(var i=0;i<26;i++){
@@ -94,7 +94,7 @@ FIT = """
     var best=lo;
     for(var i=0;i<26;i++){
       var mid=(lo+hi)/2; el.style.fontSize=mid+'px';
-      var ok = el.getBoundingClientRect().height<=availH && el.scrollWidth<=el.clientWidth+1;
+      var ok = el.getBoundingClientRect.height<=availH && el.scrollWidth<=el.clientWidth+1;
       if(ok){ best=mid; lo=mid; } else { hi=mid; }
     }
     el.style.fontSize=best+'px'; return best;
@@ -105,14 +105,14 @@ FIT = """
   var a=fitWidth(m, MEASURE, 40, 260);
   var b=fitBlock(l, LEDECAP, 26, 90);
   document.documentElement.dataset.fitted=Math.round(a)+'/'+Math.round(b)+'px';
-})();
+});
 """
 
 
 def render(industry):
     key = industry["key"]
     shot = PLATES / key / "editorial-coverage.png"
-    if not shot.exists():
+    if not shot.exists:
         return None, "no coverage plate"
     c = COPY["editorial"](industry)
     doc = (
@@ -123,7 +123,7 @@ def render(industry):
         f'<div class="thin"></div>'
         f'<div class="mast">{html.escape(c["paper"])}</div>'
         f'<div class="hair"></div>'
-        f'<img class="hero" src="{shot.resolve().as_uri()}">'
+        f'<img class="hero" src="{shot.resolve.as_uri}">'
         f'<div class="lede">{markup(c["head"])}</div>'
         f'<div class="cols">'
         f'<div class="col"><div class="colh">{html.escape(c["col1h"])}</div>'
@@ -150,7 +150,7 @@ def render(industry):
     dom = subprocess.run([CHROME, "--headless", "--disable-gpu",
                           "--virtual-time-budget=4000", "--dump-dom", f"file://{tmp}"],
                          capture_output=True, text=True).stdout
-    Path(tmp).unlink()
+    Path(tmp).unlink
     m = re.search(r'data-fitted="([^"]+)"', dom)
     return out, (m.group(1) if m else "?")
 

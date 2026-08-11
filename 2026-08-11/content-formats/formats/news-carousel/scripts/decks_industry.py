@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Single-card industry pain statics: one card, one pain, one industry, one lead magnet.
 
-Settled with the operator 2026-08-06. This retires the 22 general-pain noir carousels as the live
+Settled with you . This retires the 22 general-pain noir carousels as the live
 set. Those were pain-generic with no industry and a generic quiz CTA; these are the same
 canonical F5 look reduced to ONE card, targeted at a named industry and closing on that
 industry's own lead magnet.
@@ -21,22 +21,20 @@ The shape:
     ranked pains, so financial services card 5 lands on question 6. Every `q` here was read off
     its playbook and checked by hand. Re-check it when a playbook's magnet changes.
 
-## The band template (locked with the operator 2026-08-06)
-
-Every card sets exactly one sentence:
+## The band template (locked with you Every card sets exactly one sentence:
 
     AUSSIE <BUSINESS TYPE> ARE FINALLY REALISING THEY DON'T HAVE TO <PAIN> ANYMORE.
 
 The accent is the pain clause. The CTA left the band for the plate, so the accent is free again.
 
-**The "using AI" tail is cut.** the operator added it on 2026-08-06 and removed it the same day. Do not
+**The "using AI" tail is cut.** you added it on and removed it the same day. Do not
 put it back: the sentence lands on the pain, and naming the mechanism in the band answers a question
 the card has not asked yet. What replaces the pain is the offer's job, not the hook's.
 
 The business type is one plural per industry, in `WHO`. Construction is **construction businesses**,
 never "builders": `context/language-rules.md` binds that and it is the audience sense of the word.
 
-**The pain clause is a bucket, not a scene.** the operator's call, 2026-08-06, against a first pass
+**The pain clause is a bucket, not a scene.** your call, against a first pass
 that was too situation-specific. Name the pain the way the whole industry carries it, in the
 fewest words that still land: "MANUALLY QUOTE", not "BURN WEEKS OF SOMEONE'S TIME ON A SINGLE
 TENDER". The sentence describes the pain, never the action that produces it, and it is about
@@ -71,7 +69,7 @@ audience and the two never share a feed.
 """
 
 # Each magnet is spec'd in full (title, questions, answer options) in its industry playbook.
-# None of the five is built as a page yet; the operator has that in a separate session.
+# None of the five is built as a page yet; you has that in a separate session.
 MAGNETS = {
     "construction-and-trades": "THE SITE-TO-PROFIT READINESS CHECK",
     "real-estate-and-property-management": "THE AI-READY AGENCY SCORE",
@@ -94,7 +92,7 @@ NEW_PLATES = {
 }
 
 # The plural the template opens on. One per industry. It must NAME THE VERTICAL, not gesture at
-# it (the operator, 2026-08-06): "hospitality venues" not "venues", "insurance brokers" not "brokers",
+# it (you, : "hospitality venues" not "venues", "insurance brokers" not "brokers",
 # "real estate agencies" not "agencies". A bare noun reads as the wrong industry to half the feed.
 WHO = {
     "construction-and-trades": "AUSSIE CONSTRUCTION BUSINESSES",
@@ -191,7 +189,7 @@ INDUSTRY_STATICS = [
         "industry": "financial-services-and-insurance",
         "cards": [
             # Playbook pain 1. Context lost between people, 19 examples, 41% weight.
-            # the operator, 2026-08-06: reworded from "MAKE CLIENTS REPEAT THEMSELVES" to put the broker on
+            # you, : reworded from "MAKE CLIENTS REPEAT THEMSELVES" to put the broker on
             # the acting side of the same failure. The playbook's own angle is "nobody in your
             # business ever asks a client to explain themselves twice", and magnet question 1 asks
             # what happens to what a client has already told you, so this is the pain as written.

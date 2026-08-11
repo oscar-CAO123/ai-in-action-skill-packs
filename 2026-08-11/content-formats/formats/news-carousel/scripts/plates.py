@@ -5,7 +5,7 @@
     python3 plates.py three-automations 2 3        # only those slide numbers
     python3 plates.py three-automations --recomp   # no generation, just re-composite
 
-One `nano_banana_pro` still per slide at 5:4, which is the closest ratio to the 1080x844
+One `your image model` still per slide at 5:4, which is the closest ratio to the 1080x844
 plate area above the band. Jobs are dispatched strictly one at a time and each is
 downloaded before the next is sent, so an interrupt costs at most one generation.
 
@@ -33,7 +33,7 @@ from decks_pains import PAIN_DECKS  # noqa: E402
 
 DECKS = DECKS + PAIN_DECKS
 
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 
 LOOK = ("Deep near-black navy palette, one restrained electric blue accent, shallow depth "
         "of field, real material texture, fine film grain, controlled lighting, precise and "
@@ -88,7 +88,7 @@ def generate(prompt, dest, tries=4):
     """
     for attempt in range(1, tries + 1):
         r = subprocess.run(
-            [HF, "generate", "create", "nano_banana_pro", "--aspect_ratio", "5:4",
+            [HF, "generate", "create", "your image model", "--aspect_ratio", "5:4",
              "--resolution", "2k", "--prompt", prompt, "--wait", "--json"],
             capture_output=True, text=True)
         if r.returncode == 0 and "[" in r.stdout:
@@ -101,11 +101,11 @@ def generate(prompt, dest, tries=4):
     raise RuntimeError(f"generation failed after {tries} attempts: {dest}")
 
 
-def main():
+def main:
     slug = sys.argv[1]
     args = sys.argv[2:]
     recomp = "--recomp" in args
-    only = {int(a) for a in args if a.isdigit()}
+    only = {int(a) for a in args if a.isdigit}
     deck = next(d for d in DECKS if d["slug"] == slug)
     plates = ROOT / "plates" / slug
     out = ROOT / "out2" / slug
@@ -114,16 +114,16 @@ def main():
         if only and i not in only:
             continue
         plate = plates / f"slide-{i:02d}.png"
-        if not plate.exists() and not recomp:
+        if not plate.exists and not recomp:
             prompt = deck.get("plates", [None] * 99)[i - 1] or PROMPTS[slug][i]
             print(f"slide-{i:02d}  generating ...", flush=True)
             generate(prompt, plate)
         report = render_card(copy, out / f"slide-{i:02d}.png",
-                             plate=plate if plate.exists() else None,
+                             plate=plate if plate.exists else None,
                              overlay=OVERLAYS.get(slug, {}).get(i))
         print(f"slide-{i:02d}  {report}", flush=True)
     print("done")
 
 
 if __name__ == "__main__":
-    main()
+    main

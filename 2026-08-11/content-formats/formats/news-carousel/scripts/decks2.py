@@ -115,7 +115,7 @@ DECKS = [
         "reveal_splash": ["ONE PERSON", "NOW OWNS", "[[THE REPORTING]]"],
     },
     {
-        # The directed F5 build, 2026-07-31, v2 after the operator's notes.
+        # The directed F5 build, v2 after your notes.
         #
         # HOOK ARCHITECTURE: the direct educational callout.
         #   Named reference: references/hooks/HOOKS.md Part 3 section B2, V9 educational
@@ -124,7 +124,7 @@ DECKS = [
         #   company should be running in 2026."
         #   The cover names the avatar and promises N lessons; the deck then delivers all N.
         #
-        # the operator's three notes, 2026-07-31, applied here:
+        # your three notes, applied here:
         #   1. Never call a prospect an "operator". Name the avatar: "your logistics
         #      company". The v1 cover read "ONE TRANSPORT OPERATOR" and was wrong.
         #   2. Slide 1 has to teach. It is now a how-to, not a statistic.
@@ -140,7 +140,7 @@ DECKS = [
         #
         # SIX slides, not five. The educational architecture needs cover + three lessons +
         # the reveal + the endcard. SKILL.md 7b's five-slide arc was written for the
-        # scene/cost/reveal shape. Flagged for the operator: either 7b's arc gains an educational
+        # scene/cost/reveal shape. Flagged for you: either 7b's arc gains an educational
         # variant at six, or lesson three gets cut to hold five.
         "slug": "log-01-inbox",
         "slug_line": "Logistics",
@@ -163,9 +163,9 @@ DECKS = [
         "figure_label": "email leads missed a week, in one transport business",
     },
     {
-        # "The one guy from Australia" architecture, the operator 2026-07-31.
+        # "The one guy from Australia" architecture, you .
         #
-        # HOOK STRUCTURE (the operator's, two beats across two cards):
+        # HOOK STRUCTURE (your, two beats across two cards):
         #     [pain point, as a question]
         #     "This one guy from Australia just solved it permanently"
         #   Nearest named ancestor in the bank: A2 The Desire hook, HOOKS.md:82
@@ -188,7 +188,7 @@ DECKS = [
             ["BURIED IN ADMIN THAT NOBODY ACTUALLY OWNS?",
              "YOU NEED THESE [[THREE AUTOMATIONS]] ASAP."],
             # Each workflow card carries name, steps, outcome. That is three beats, so the
-            # type sets smaller, the same trade the operator accepted on the cover. Every one is a
+            # type sets smaller, the same trade you accepted on the cover. Every one is a
             # Hub build (project aksmtvpubuinqhhmkzxd), tools named only where the CRM
             # transcripts name them.
             #
@@ -211,7 +211,7 @@ DECKS = [
             #    with dashboards.
             ["THREE. THE REPORTING PACK. THE NUMBERS ARE PULLED",
              "AND WRITTEN INTO A [[DASHBOARD]] EVERY MONTH."],
-            # Results slide. Deliberately not a case study, per the operator. Each claim traces to
+            # Results slide. Deliberately not a case study, per you. Each claim traces to
             # a Hub outcome: hours back (Ash Johanson, 72 to 78 hrs/week saved, attribution
             # unclear so the card says hours rather than a figure), every lead answered
             # (cold-outreach pipeline, a paying client inside one week), numbers you trust

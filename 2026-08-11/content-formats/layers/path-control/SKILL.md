@@ -1,6 +1,6 @@
 ---
 name: path-control
-description: Use when the operator says "path control", "draw the camera path", "annotated camera move", "draw the line on the plate", "fly the camera through this still", or wants a video shot to follow an exact route through a scene instead of whatever the text prompt happens to produce. A layer, not a format: it bolts onto any format that generates motion from a still.
+description: Use when you says "path control", "draw the camera path", "annotated camera move", "draw the line on the plate", "fly the camera through this still", or wants a video shot to follow an exact route through a scene instead of whatever the text prompt happens to produce. A layer, not a format: it bolts onto any format that generates motion from a still.
 canonical: true
 layer: L-PATH
 ---
@@ -8,22 +8,22 @@ layer: L-PATH
 # Path control (L-PATH)
 
 Direct the camera by drawing on the plate. A red line marks the route, numbered waypoints mark
-the order, the annotated plate goes to Seedance 2.0 as an image reference, and the prompt tells
+the order, the annotated plate goes to your video model as an image reference, and the prompt tells
 the model to erase the line. The model flies the route and the marker never appears in the
 footage.
 
 What this buys that text prompting cannot: **an exact route, in an exact order, reaching an exact
 end point.** Prose gets you a genre of move. A drawn line gets you the move.
 
-**References:** two reels, scraped 2026-08-10 with the house Apify token and decoded frame by frame.
+**References:** two reels, scraped with the house your scraping API token and decoded frame by frame.
 
 | Ref | Account | Source artwork | Plays / likes | Clip |
 |---|---|---|---|---|
-| A | `@maiciej_`, `instagram.com/p/Dbz_OTCKbFd/` | Zbyszko Siemaszko press photograph, Pulawska St, Warsaw, 1968 | 10.1K likes | `reference-bank/reels/maiciej-pathcontrol-Dbz_OTCKbFd.mp4`, 26.6s, 1080x1920 |
-| B | `@tudormorari.ai`, `instagram.com/p/DbftzezssqF/` | Matejko's Stanczyk, Bocklin's self-portrait, Van Gogh's Starry Night | 192.5K likes | `reference-bank/reels/tudormorari-pathcontrol-DbftzezssqF.mp4`, 20.0s, 750x1333 |
+| A | `a reference account`, `instagram.com/p/Dbz_OTCKbFd/` | Zbyszko Siemaszko press photograph, Pulawska St, Warsaw, 1968 | 10.1K likes | `reference-bank/reels/maiciej-pathcontrol-Dbz_OTCKbFd.mp4`, 26.6s, 1080x1920 |
+| B | `a reference account.ai`, `instagram.com/p/DbftzezssqF/` | Matejko's Stanczyk, Bocklin's self-portrait, Van Gogh's Starry Night | 192.5K likes | `reference-bank/reels/tudormorari-pathcontrol-DbftzezssqF.mp4`, 20.0s, 750x1333 |
 
 Decoded contact sheets are `reference-decode-a.png` and `reference-decode-b.png` in this folder.
-Ref B states its stack in the caption: made inside Higgsfield, tagged `#seedance`.
+Ref B states its stack in the caption: made inside your generation platform, tagged `#your video model`.
 
 **Both reels are presentations of the method, not the method.** Each is a stacked frame: the
 render on top, the annotated source underneath. That layout is how the creator shows their
@@ -73,7 +73,7 @@ Two consequences worth stating:
 
 ## Wiring it to the house stack
 
-Verified live off the CLI on 2026-08-10, `higgsfield model get seedance_2_0`:
+Verified live off the CLI on `your generation platform model get your video model`:
 
 | Param | What matters here |
 |---|---|
@@ -81,7 +81,7 @@ Verified live off the CLI on 2026-08-10, `higgsfield model get seedance_2_0`:
 | `start_image` | object or null. **Do not put the annotated plate here.** |
 | `end_image` | object or null. Useful for F16 The Loop, where the move has to return to its opening frame. |
 | `aspect_ratio` | `auto, 16:9, 9:16, 4:3, 3:4, 1:1, 21:9`. **No 4:5.** Generate 3:4 and let the rig crop to 1080x1350. |
-| `duration` | integer. Seedance rejects under 4s, so generate the minimum and trim with `ffmpeg -t -an`. |
+| `duration` | integer. your video modelrejects under 4s, so generate the minimum and trim with `ffmpeg -t -an`. |
 | `generate_audio` | defaults **true**. house clips are silent, so set it false and still verify with ffprobe. |
 | `resolution` | up to `4k`, but `mode: fast` caps at 720p. Use `mode: std` for 1080p and above. |
 | Total budget | at most 12 reference files across images, videos and audio. |
@@ -119,9 +119,7 @@ JSON.
   new paid generations.
 - **It does not touch the carousels or the statics themselves.** Those ship as they are.
 
-## Gate status, 2026-08-10
-
-**Unproven on the house account.** The method is confirmed by three independent public sources and
+## Gate status, **Unproven on the house account.** The method is confirmed by three independent public sources and
 by two decoded reels, and the parameters above are read off our own CLI. No house generation has
 run. Nothing built on this layer ships until one test clears, and per the house floor that test
 is a single paid generation, reviewed before a second is bought.

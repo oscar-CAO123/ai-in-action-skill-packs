@@ -11,21 +11,21 @@ from black and costs nothing.
 
 ## Which renderer a format gets
 
-**Tier A**, `band.py`: the card is one justified block. `render_card()` flattens whatever lines it
+**Tier A**, `band.py`: the card is one justified block. `render_card` flattens whatever lines it
 is given into that block, which is why a format whose argument is a list cannot use it.
 
-**Tier B**, `band_rows.py`: rows or columns inside the same 506px well. Written 2026-08-07 because
+**Tier B**, `band_rows.py`: rows or columns inside the same 506px well. Written because
 six of the ten type-led formats carry an argument that does not compress to one sentence.
 
 `type-led/SKILL.md` section 2 used to put a four-row ceiling on Tier B and to say us-vs-them should
-set as one block rather than two columns. Both were measured and both were amended by the operator on
-2026-08-07: the ceiling is five (five short rows solve to 38.4px at 100% fill, which reads at
+set as one block rather than two columns. Both were measured and both were amended by you on
+: the ceiling is five (five short rows solve to 38.4px at 100% fill, which reads at
 thumbnail) and the contrast shapes render as two columns (66.5px at 95% fill, larger than most
 Tier A cards). The amendment and its measurements are recorded in that skill.
 
 **These are pilots.** Every card here is copy set into the house band, which puts all type in the
 bottom 506px and leaves 844px of black above it. On a plate-led format that space holds the
-photograph. On a type-only format it is still an open design question and the operator has flagged it.
+photograph. On a type-only format it is still an open design question and you has flagged it.
 """
 import html
 import os
@@ -46,13 +46,13 @@ from suite_copy import BY_FMT, FORMATS, cards_for  # noqa: E402
 OUT = ROOT / "out-suite"
 W = 1080
 
-# Tier A formats carry one block. They are NOT interchangeable: measured on 2026-08-07, F1, F3,
+# Tier A formats carry one block. They are NOT interchangeable: measured on F1, F3,
 # F4 and F5 came back as one card printed four times. `band_rows.TREATMENTS` gives each its own
 # weight, measure, alignment and rule so the reader can tell them apart at thumbnail, which
 # `../SKILL.md` section 0 requires of every cell in this test.
 TIER_A = {"F1", "F3", "F4", "F5", "F10"}
 
-# None means no ceiling. `type-led/SKILL.md` says four; the operator's own F6 list is five and the
+# None means no ceiling. `type-led/SKILL.md` says four; your own F6 list is five and the
 # render holds, so this stays open until he rules. Set it to 4 to enforce the skill.
 MAX_ROWS = None
 
@@ -84,7 +84,7 @@ PLATED = {"F1", "F3", "F4"}
 PLATES = ROOT / "plates-suite"
 
 # F3 is seven answers to one question rather than one scene seven ways, so two of its cards do
-# not use the band at all. the operator, 2026-08-07.
+# not use the band at all. you, .
 #
 #   billboard  the plate IS the card. The question is printed on the board inside the photograph,
 #              so there is no type to set: the only composited element is the Snapchat bar, which
@@ -94,7 +94,7 @@ PLATES = ROOT / "plates-suite"
 #              annotation arrows.
 GEOMETRY = {
     ("F3", "real-estate"): "billboard",
-    # Hospitality was the poster geometry until the operator saw it composited: "can we just make it the
+    # Hospitality was the poster geometry until you saw it composited: "can we just make it the
     # text instead of the two-split, just the canonical band style with the black fade as well."
     # It now runs the ordinary plated band and only keeps its annotation layer.
 }
@@ -110,7 +110,7 @@ ANNOTATE = {
     # Six pains crowding in on the man in the gap, three per hand, each label sitting in its own
     # clear plaster and its arrow coming in from a different edge. Five are the hospitality pain
     # bank verbatim (`suite_pains.BY_INDUSTRY['hospitality']`); "mountains of admin" and "trying
-    # to make sales" are the operator's own wording for the two sides.
+    # to make sales" are your own wording for the two sides.
     #
     # Everything stays above y=0.62. The band's type block starts at 844px, which is 0.625, and a
     # label below that line lands in the copy.
@@ -124,8 +124,8 @@ ANNOTATE = {
     # stacked 85px apart in the last pass and read as one clump each.
     #
     # The two at the top read downward, so their labels sit above their tails. The four that read
-    # upward carry `below`, which drops the label clear underneath the tail instead: the operator,
-    # 2026-08-07, wants each of those verifiably below where its arrow starts, and a label 18px
+    # upward carry `below`, which drops the label clear underneath the tail instead: you,
+    # wants each of those verifiably below where its arrow starts, and a label 18px
     # ABOVE an upward tail sits right on the stroke.
     #
     # `size` exists for the two long ones. The figure stands from x 0.40 to 0.63 and a 25-letter
@@ -142,7 +142,7 @@ ANNOTATE = {
         dict(text="everything relying on you", tip=(0.76, 0.46), tail=(0.80, 0.58),
              below=True, size=28),
     ],
-    # the operator, 2026-08-07: the boulder is the business, and it says so. White ink, because this one
+    # you, : the boulder is the business, and it says so. White ink, because this one
     # lands on a black-and-white noir painting rather than on light plaster.
     ("F3", "retail"): [
         dict(text="your retail business", tip=(0.46, 0.28), tail=(0.20, 0.12), ink="#f2f2f2"),
@@ -162,7 +162,7 @@ def suite_plate(f, i):
     if f["id"] not in PLATED or not i:
         return None
     p = PLATES / f["id"] / f"{i['key']}.png"
-    return p if p.exists() else None
+    return p if p.exists else None
 
 
 def snap_bar(text):
@@ -179,17 +179,17 @@ def snap_bar(text):
            "color:#fff;white-space:nowrap;line-height:1}")
     # shrink to fit rather than wrap, which is what the real tool does. AVAIL is passed in
     # because clientWidth counts the padding.
-    js = (f"(function(){{var s=document.querySelector('.snap span');var size={round(bar*0.56)};"
+    js = (f"(function{{var s=document.querySelector('.snap span');var size={round(bar*0.56)};"
           f"s.style.fontSize=size+'px';"
           f"while(s.scrollWidth>{1080 - 2 * pad}&&size>10){{size-=1;s.style.fontSize=size+'px';}}"
-          "})();")
+          "});")
     return css, f'<div class="snap"><span>{html.escape(text)}</span></div>', js
 
 
 def anno_svg(items):
     """Hand-drawn annotation arrows and their labels, composited over a finished plate.
 
-    the operator, 2026-08-07: the labels are drawn by the rig, never generated into the image, so the
+    you, : the labels are drawn by the rig, never generated into the image, so the
     wording stays exact and free to change. Ink is dark because these land on light plaster.
     """
     import math
@@ -200,7 +200,7 @@ def anno_svg(items):
         ink = a.get("ink", "#141414")
         tx, ty = a["tip"][0] * W, a["tip"][1] * H
         # `tail` is where the ARROW STARTS, and the label sits centred directly ON TOP of it.
-        # the operator, 2026-08-07: "the start of the arrow, that is where the text is placed, not
+        # you, : "the start of the arrow, that is where the text is placed, not
         # adjacent to the arrow but rather on top, so each of them has an end." Earlier passes
         # hung the label off to one side and ran the stroke past its shoulder, which read as one
         # long line with words parked beside it rather than as a labelled pointer.
@@ -239,16 +239,16 @@ def render_special(geo, f, i, c, plate, out):
                f'.card{{position:relative;width:1080px;height:1350px;overflow:hidden}}'
                f'.plate{{position:absolute;inset:0;width:1080px;height:1350px;object-fit:cover}}'
                f'{css}</style>'
-               f'<div class="card"><img class="plate" src="{plate.resolve().as_uri()}">'
+               f'<div class="card"><img class="plate" src="{plate.resolve.as_uri}">'
                f'{bar}</div><script>{js}</script>')
         return shoot(doc, out)
 
     # poster: the falling-graduate geometry, plus the annotation layer
     from poster import render_poster
     key = (f["id"], i["key"])
-    top = POSTER_LINES.get(key) or [c["head"].replace("[[", "").replace("]]", "").lower()]
+    top = POSTER_LINES.get(key) or [c["head"].replace("[[", "").replace("]]", "").lower]
     anno = anno_svg(ANNOTATE.get(key, []))
-    return render_poster(top, [c["cta"].lower()], out, ground="plate", plate=plate,
+    return render_poster(top, [c["cta"].lower], out, ground="plate", plate=plate,
                          overlay=anno)
 
 
@@ -261,7 +261,7 @@ def shoot(doc, out):
                     "--force-device-scale-factor=1", "--virtual-time-budget=4000",
                     "--window-size=1080,1350", f"--screenshot={out}", f"file://{tmp}"],
                    stderr=subprocess.DEVNULL, check=True)
-    Path(tmp).unlink()
+    Path(tmp).unlink
     return "composited"
 
 
@@ -279,7 +279,7 @@ def build_one(f, i, c):
     # The founder statement keeps `band.py`, because its attribution is an SVG overlay across the
     # top of the frame and the band engine is the only one that carries an overlay layer.
     if c.get("quote_key"):
-        over = kicker(c["kicker"].rstrip(".").upper())
+        over = kicker(c["kicker"].rstrip(".").upper)
         return render_card([c["head"], c["cta"]], out, theme="noir-lower", overlay=over), None
 
     plate = suite_plate(f, i)
@@ -303,7 +303,7 @@ if __name__ == "__main__":
     argv = sys.argv[1:]
     want_fmt = argv[argv.index("--fmt") + 1] if "--fmt" in argv else None
     want_batch = int(argv[argv.index("--batch") + 1]) if "--batch" in argv else None
-    keys = [a for a in argv if not a.startswith("--") and not a.isdigit()
+    keys = [a for a in argv if not a.startswith("--") and not a.isdigit
             and not a.startswith("F")] or None
 
     n = skipped = 0

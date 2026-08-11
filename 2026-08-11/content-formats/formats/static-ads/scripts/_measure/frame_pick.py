@@ -35,7 +35,7 @@ def probe(video):
     r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
                         "stream=width,height,duration", "-of", "csv=p=0", str(video)],
                        capture_output=True, text=True, check=True)
-    w, h, d = r.stdout.strip().split(",")[:3]
+    w, h, d = r.stdout.strip.split(",")[:3]
     return int(w), int(h), float(d)
 
 
@@ -54,7 +54,7 @@ def sheet(video, every, dst):
     for n, t in enumerate(times):
         subprocess.run(["ffmpeg", "-v", "error", "-ss", str(t), "-i", str(video),
                         "-frames:v", "1", str(tmp), "-y"], check=True)
-        if not tmp.exists():
+        if not tmp.exists:
             continue
         im = Image.open(tmp).convert("RGB").resize((tw, th), Image.LANCZOS)
         d = ImageDraw.Draw(im)
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     if not argv:
         sys.exit(__doc__)
     video = Path(argv[0])
-    if not video.exists():
+    if not video.exists:
         sys.exit(f"no such file: {video}")
 
     def opt(flag, default=None):

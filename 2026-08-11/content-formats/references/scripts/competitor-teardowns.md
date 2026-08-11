@@ -9,5 +9,5 @@
 
 Teardowns are dated on purpose: they go stale, and a stale teardown is worse than none.
 
-Same entry shape as `perdriau-teardowns.md`. Re-run the sweep quarterly and start a new dated file
+Same entry shape as `a reference brand-teardowns.md`. Re-run the sweep quarterly and start a new dated file
 rather than editing this one.

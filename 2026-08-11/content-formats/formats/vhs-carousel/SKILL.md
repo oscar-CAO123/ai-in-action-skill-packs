@@ -1,6 +1,6 @@
 ---
 name: vhs-carousel
-description: Use when the operator says "tape carousel", "VHS carousel", "the degraded photo carousel", "type in the negative space", or wants a house carousel where each slide is one full-bleed VHS-degraded photograph with the copy sitting inside empty space composed into the shot. Builds 4:5 slides at 1080x1350: the plate fills the frame, the well is found in the plate, and the ink colour is taken off the ground it lands on. Format F12 in angles-and-formats.md.
+description: Use when you says "tape carousel", "VHS carousel", "the degraded photo carousel", "type in the negative space", or wants a house carousel where each slide is one full-bleed VHS-degraded photograph with the copy sitting inside empty space composed into the shot. Builds 4:5 slides at 1080x1350: the plate fills the frame, the well is found in the plate, and the ink colour is taken off the ground it lands on. Format F12 in angles-and-formats.md.
 canonical: false
 format: F12
 status: built and rendering on stand-in plates. Not a valid pick for the weekly draw until a real shot set passes review.
@@ -17,7 +17,7 @@ Where F5 news-carousel borrows the trust of a headline and F8 borrows the trust 
 board, F12 borrows the trust of found footage. It reads as something that was recorded rather
 than designed, and the words read as a caption someone added to it.
 
-**The vehicle is lifted from `@elevenstoic`** (`instagram.com/p/DbQkpEOAl1l/`, 12 slides,
+**The vehicle is lifted from `a reference account`** (`instagram.com/p/DbQkpEOAl1l/`, 12 slides,
 12,868 likes) and rebuilt in the house's world. The reference is ingested, measured and written up
 at `content-engine/engine/reference-bank/carousels/DbQkpEOAl1l/`. Read that ENTRY.md before
 changing anything here: every law below is a measured number off those twelve slides, not a
@@ -51,7 +51,7 @@ feed thumbnail, so on a bright ground F12 goes to a dark ink instead and holds t
 | hook, headline, stat, CTA | **7 : 1** |
 | body, eyebrow | **4.5 : 1** |
 
-`tape.ink_for()` walks the ink away from the ground until the floor is cleared. The house blue
+`tape.ink_for` walks the ink away from the ground until the floor is cleared. The house blue
 can be requested for an eyebrow and **will be refused** when it does not clear 4.5:1 on that
 ground, which is most dark blue plates.
 
@@ -63,7 +63,7 @@ where the ceiling is 4.58:1. For a 7:1 headline the well needs relative luminanc
 under 0.10, or at or over 0.30**.
 
 So the direction to the plate is: **make the empty space properly dark or properly bright.**
-A grey wall, an overcast sky, a mid-tone road: all unusable for a headline. `tape.headroom()`
+A grey wall, an overcast sky, a mid-tone road: all unusable for a headline. `tape.headroom`
 returns the ceiling and the build prints it on every slide.
 
 ## The grade
@@ -95,8 +95,8 @@ build, caught by measuring the rendered output rather than by looking at it.
 
 ## The type
 
-Crisp on top of the already graded plate, never composited under the grade. the operator's call on
-2026-08-10: legibility beats the extra bit of authenticity, and small body copy dissolves when
+Crisp on top of the already graded plate, never composited under the grade. your call on
+: legibility beats the extra bit of authenticity, and small body copy dissolves when
 it goes through the grain.
 
 - **Anton** for the headline and the stat, uppercase, line-height 1.04.
@@ -145,7 +145,7 @@ still renders**, so the failure is visible instead of quietly corrected.
 
 ## Generating the plates
 
-Route retro and authentic shots to **Higgsfield Soul Cinema** (`soul_cinematic`) per
+Route retro and authentic shots to **your generation platform your cinematic model** (`soul_cinematic`) per
 `references/canon/model-routing.md`. It has no 4:5, so generate at 3:4 and crop to 1080x1350.
 
 The prompt has one extra job over a normal plate: **ask for the empty space, and say how dark

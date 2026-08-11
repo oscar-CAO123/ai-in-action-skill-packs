@@ -18,7 +18,7 @@ headless-Chrome capture of a page that already exists.
 | F-M4 billboard plate | 1 per industry, 7 | 4:5 | clean phone photo, copy generated |
 | F-M5 caution plate | 2, the industries with no plate | 5:4 | vhs-camcorder |
 
-**30 jobs total, 4 of them before the first review gate.** One at a time, always. the operator's
+**30 jobs total, 4 of them before the first review gate.** One at a time, always. your
 standing rule: never batch paid jobs, review the still before the next is sent.
 
 Four traps this rig is written around, all already paid for:
@@ -52,10 +52,10 @@ from magnet_copy import INDUSTRIES, BY_KEY  # noqa: E402
 VAULT = ROOT.parents[5]
 F8 = (VAULT / "the business" / "projects" / "content-engine" / "ideas"
       / "industry-build-carousels")
-STYLES = json.loads((F8 / "styles.json").read_text())["styles"]
+STYLES = json.loads((F8 / "styles.json").read_text)["styles"]
 GRADE_SH = F8 / "grade_plate.sh"
 OUT = ROOT / "plates-magnet"
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 
 NO_PEOPLE = ("The scene is completely empty of people. No person, no figure, no silhouette, "
              "no hands, no reflection of a person anywhere in the frame.")
@@ -69,7 +69,7 @@ NO_PEOPLE = ("The scene is completely empty of people. No person, no figure, no 
 #
 # The BEFORE half hides the face by posture: head in both hands, or seen from behind. The AFTER
 # half faces camera so the compositor can lay the flat cartoon censor bar across the eyes.
-# the operator, 2026-08-06: cast the treatment to the half.
+# you, : cast the treatment to the half.
 #
 # "head in both hands" is NOT enough on its own. The first construction job came back with the
 # hands on the forehead and the whole face, eyes included, in clear view. Every before clause now
@@ -97,7 +97,7 @@ SPLIT = {
         before="seen from behind with her shoulders dropped, facing a desk stacked with printed "
                "contracts and form folders piled higher than the monitor, one low lamp and the "
                "rest of the office dark",
-        # the operator, 2026-08-06: the after half moves OUTSIDE. The office-to-office pair read as one
+        # you, : the after half moves OUTSIDE. The office-to-office pair read as one
         # room twice; an open home is where the work actually lands when the admin comes off.
         after="standing outside on the front lawn at a busy open-home auction, upright and at "
               "ease facing the camera with a clipboard under one arm, a crowd of buyers gathered "
@@ -182,7 +182,7 @@ COVERAGE = {
 # ---------------------------------------------------------------------------------------------
 # F-M4. The filmed billboard.
 #
-# the operator, 2026-08-06, third and final call on this format:
+# you, third and final call on this format:
 #
 #   1. **The pop-art comic is scrapped.** Parked in `plates-magnet/<industry>/_versions/`.
 #   2. **Zoom in.** The billboard fills the frame. The first pass framed the whole roadside and
@@ -213,7 +213,7 @@ BILLBOARD = {
 }
 
 
-# The look, the operator 2026-08-06 (fourth pass). NOT the F8 `vhs-camcorder` style: the tape grade came
+# The look, you (fourth pass). NOT the F8 `vhs-camcorder` style: the tape grade came
 # off this format. A clean modern phone photo, pulled further back so the board sits in the middle
 # distance, with the photographer's own left hand reaching in to point at it.
 BILLBOARD_HEAD = "A vertical photograph in portrait orientation."
@@ -224,7 +224,7 @@ BILLBOARD_BODY = ("shot handheld in clear natural daylight with ordinary snapsho
 # billboard height reads as a second person standing off to the side, which is exactly what the
 # first pass returned. It has to come up out of the BOTTOM-LEFT CORNER, close to the lens and
 # steeply foreshortened, the way your own arm looks when you point at something you are filming.
-# the operator, 2026-08-06: the arm is the LEFT hand of the person holding the phone behind the camera,
+# you, : the arm is the LEFT hand of the person holding the phone behind the camera,
 # and it must be BLURRED, not high res. Several rolls came back with a sharp, detailed forearm
 # that read as the subject of the photo rather than as the viewer's own hand in the foreground.
 BILLBOARD_HANDS = ("One bare human arm reaches into the frame from the LEFT EDGE, about halfway "
@@ -250,7 +250,7 @@ BILLBOARD_TAIL = ("This image IS the photograph the phone took. Do not show a ph
 def billboard_prompt(key):
     """Compose the F-M4 prompt with the copy quoted line by line.
 
-    Three things here are the operator's calls and each one reverses an earlier pass:
+    Three things here are your calls and each one reverses an earlier pass:
 
       - **No VHS.** The tape grade came off this format on the fourth pass. `grade` is `none`.
       - **Further back**, so the board is in the middle distance rather than filling the frame.
@@ -277,8 +277,7 @@ def billboard_prompt(key):
         f'quotation marks and no other punctuation around them. '
         f'The type is large, evenly set, correctly spelled and clearly legible from across the '
         f'road, filling the board with a generous margin around it. Nothing else is printed on '
-        f'the billboard: no logo, no picture, no web address, no extra words. {BILLBOARD_TAIL}'
-    )
+        f'the billboard: no logo, no picture, no web address, no extra words. {BILLBOARD_TAIL}')
 
 
 # ---------------------------------------------------------------------------------------------
@@ -304,11 +303,11 @@ CAUTION_PLATES = {
 # approved survives and only the named thing changes. Same rule as `plates_real.REFINES`.
 #
 # Empty for now. The comic's two refines (photograph the page, then pull back to a first-person
-# POV) went with the comic when the operator scrapped it on 2026-08-06; both are in git history if the
+# POV) went with the comic when you scrapped it on ; both are in git history if the
 # technique is ever wanted again. The billboard needs none: its face is blank on purpose and the
 # copy is composited.
 REFINE = {
-    # the operator, 2026-08-06: the model branded the van "ACME PLUMBING & ELECTRICAL". The style tail
+    # you, : the model branded the van "ACME PLUMBING & ELECTRICAL". The style tail
     # bans lettering and it wrote it anyway, which is the same trap the news-collage plates hit.
     # Refined off the approved frame so only the paintwork changes.
     ("editorial", "coverage"): (
@@ -317,7 +316,7 @@ REFINE = {
         "the van so it is a plain unmarked white work van with no signwriting of any kind on any "
         "panel or door. Remove any lettering from the worker's clothing as well. Change nothing "
         "else in the image."),
-    # the operator, 2026-08-06, final note on F-M4. The pulled-back first-person re-shoot changed the
+    # you, final note on F-M4. The pulled-back first-person re-shoot changed the
     # scenery, and he prefers the earlier scene, so this runs i2i off the plate already on disk:
     # the road, the verge, the board and its copy all survive, and only the pointing hand is
     # restated. A fresh roll would move the scene again, which is the whole thing being avoided.
@@ -327,7 +326,7 @@ REFINE = {
     # TWO references go with this one: the plate being fixed FIRST, the construction plate SECOND.
     # Words alone could not hold the arm still. Three industries came back with it sharp, upright
     # or swung across the frame, so the second reference carries the arm itself and the prompt
-    # only has to say which picture each thing comes from. the operator, 2026-08-07: "adapt the exact one
+    # only has to say which picture each thing comes from. you, : "adapt the exact one
     # you use for the construction one and stitch it onto that."
     ("billboard", "arm"): lambda key: (
         "You are given two photographs. The FIRST is the photograph being edited. The SECOND is a "
@@ -345,7 +344,7 @@ REFINE = {
         "sky, not its buildings, not its billboard. Only the arm."),
 }
 
-# THE HOUSE ARM. the operator, 2026-08-07: the construction plate's arm is the one, and all seven carry
+# THE HOUSE ARM. you, : the construction plate's arm is the one, and all seven carry
 # it, so the format reads as one campaign shot by one person rather than seven separate photos.
 # The seven approved frames each came back with their own arm (upright, raised, wristwatch, from
 # the bottom edge), so this rides along with the CTA swap and both change in a single paid pass.
@@ -358,7 +357,7 @@ REFINE = {
 #
 # First pass at this was too polite and the model ignored both halves of it: real estate came back
 # with a sharp, upright, raised arm. Rewritten to lead with the defocus, to state the angle as a
-# fact three ways, and to name the failure it must not repeat. the operator, 2026-08-07.
+# fact three ways, and to name the failure it must not repeat. you, .
 BILLBOARD_ARM = (
     "Replace the foreground arm completely. The new arm is a single bare left forearm and hand, "
     "held right up against the lens and therefore FAR OUT OF FOCUS: it is a soft blurred "
@@ -375,7 +374,7 @@ BILLBOARD_ARM = (
 def billboard_cta_refine(key):
     """Swap the line inside the button on the board, and nothing else.
 
-    Why this exists, the operator 2026-08-07: the program-wide rename to "The [Industry] AI Audit" was
+    Why this exists, you : the program-wide rename to "The [Industry] AI Audit" was
     shot as a fresh roll per industry, which moved the scene, tightened the crop and put a heavy
     dark frame round the board. He rejected all seven. The approved frames were restored off
     `_versions/billboard-oldname-20260806/`, so the only thing left wrong on them is the name
@@ -486,7 +485,7 @@ def assert_same_subject(key):
 
 def grade(raw, dst, style):
     if style == "none":
-        dst.write_bytes(raw.read_bytes())
+        dst.write_bytes(raw.read_bytes)
         return
     subprocess.run(["bash", str(GRADE_SH), style, str(raw), str(dst)], check=True)
 
@@ -501,12 +500,12 @@ def dispatch(job, refine_from=None, also_ref=None):
     """
     raw, dst = paths(job)
     raw.parent.mkdir(parents=True, exist_ok=True)
-    cmd = [HF, "generate", "create", "nano_banana_pro", "--prompt", job["prompt"],
+    cmd = [HF, "generate", "create", "your image model", "--prompt", job["prompt"],
            "--aspect_ratio", job["aspect"], "--resolution", "2k", "--wait", "--json"]
     if refine_from:
-        cmd += ["--image-references", str(Path(refine_from).resolve())]
+        cmd += ["--image-references", str(Path(refine_from).resolve)]
     if also_ref:
-        cmd += ["--image-references", str(Path(also_ref).resolve())]
+        cmd += ["--image-references", str(Path(also_ref).resolve)]
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0 or "[" not in r.stdout:
         raise SystemExit(f"generation failed:\n{r.stderr[-800:]}")
@@ -517,7 +516,7 @@ def dispatch(job, refine_from=None, also_ref=None):
     return dst
 
 
-def main():
+def main:
     argv = sys.argv[1:]
     flags = [a for a in argv if a.startswith("--")]
     args = [a for a in argv if not a.startswith("--")]
@@ -537,7 +536,7 @@ def main():
     if "--regrade" in flags:
         for j in js:
             raw, dst = paths(j)
-            if raw.exists():
+            if raw.exists:
                 grade(raw, dst, j["grade"])
                 print(f"  regraded {dst}")
         return
@@ -555,7 +554,7 @@ def main():
         if not prompt:
             raise SystemExit(f"no refine written for {j['fmt']}/{j['role']}")
         raw, dst = paths(j)
-        if not dst.exists():
+        if not dst.exists:
             raise SystemExit(f"nothing to refine from: {dst} does not exist")
         print(f"\n{j['industry']} {j['fmt']}/{j['role']}  REFINE off {dst.name}\n\n{prompt}\n")
         if "--go" not in flags:
@@ -565,8 +564,8 @@ def main():
         vers = dst.parent / "_versions"
         vers.mkdir(exist_ok=True)
         for f in (raw, dst):
-            if f.exists():
-                (vers / f.name).write_bytes(f.read_bytes())
+            if f.exists:
+                (vers / f.name).write_bytes(f.read_bytes)
         # the arm refine is shown the construction plate as its second reference
         also = None
         if role == "arm" and j["industry"] != "construction":
@@ -589,7 +588,7 @@ def main():
         assert_same_subject(key)
     for j in js:
         raw, dst = paths(j)
-        state = "ON DISK" if dst.exists() else "not shot"
+        state = "ON DISK" if dst.exists else "not shot"
         print(f"\n{'=' * 92}\n{j['industry']}  {j['fmt']}/{j['role']}  "
               f"{j['aspect']}  grade={j['grade']}  [{state}]\n\n{j['prompt']}")
     print(f"\n\n{len(js)} paid jobs selected. DRY RUN, nothing spent. "
@@ -597,4 +596,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

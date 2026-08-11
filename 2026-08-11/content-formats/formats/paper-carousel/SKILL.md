@@ -5,7 +5,7 @@ description: The collaged paper carousel (Theme B). A dark full-bleed cover, inf
 
 # Paper Carousel (Theme B, the collaged information carousel)
 
-Declared as a shape on 2026-08-07, built out and locked on 2026-08-10 against U3, the first
+Declared as a shape on built out and locked on against U3, the first
 carousel to carry the whole format. It grew out of section 1e of `news-carousel/SKILL.md` and now
 owns itself; that section points here.
 
@@ -78,7 +78,7 @@ units are structurally out of reach. **Checksum them anyway.**
 ### The copy
 
 The format's laws are not enough to make a page read well, and the first U3 build proved it: the
-layout was locked and the operator still called the copy "not up to standard". Two passes fixed it.
+layout was locked and you still called the copy "not up to standard". Two passes fixed it.
 
 - **Break every line by hand, to about 27 characters** in the 626px measure. Lines do not wrap,
   they shrink the page: `render_sheet` solves one size for the whole block.
@@ -108,7 +108,7 @@ layout was locked and the operator still called the copy "not up to standard". T
 ### The highlighter
 
 Emphasis is a **highlighter**, never an underline and never a flat block of hex. Four things
-separate a marker stroke from a filled rectangle and `paper_sheet.highlighter()` carries all
+separate a marker stroke from a filled rectangle and `paper_sheet.highlighter` carries all
 four: a chisel tip so the ends are angled, a wandering edge from a turbulence displacement,
 density variation along the run, and translucency so the paper reads through the colour.
 
@@ -125,7 +125,7 @@ to a shout.
    `SHEET_LAYERS`, currently 0.30 and 17. That is well above the 0.16 over 11 locked for a
    PAINTED plate, and the two settings are separate on purpose: on a painted plate the bed
    competes with the figure, and on a blank page it competes with nothing.
-2. **The mid-ground band**, `cutouts.edge_band()`. A newspaper collage entering off the top
+2. **The mid-ground band**, `cutouts.edge_band`. A newspaper collage entering off the top
    edge, bowing out to the right margin, running down it and turning back in at the bottom, at
    about 58 per cent opacity, every piece rotated to the tangent so the run reads as one gesture.
    It goes on **before** the fan.
@@ -158,7 +158,7 @@ Three polaroids per page, fanning out of the right band.
 
 Torn newsprint shreds and hand-drawn ink marks in the corners and margins, **alongside** the fan
 rather than inside it, placed absolutely from a hand-set `EXTRAS` table. Measure each region's
-occupancy off the rendered base rather than guessing. `cutouts.mark()` carries six shapes in the
+occupancy off the rendered base rather than guessing. `cutouts.mark` carries six shapes in the
 same `#rough` turbulence the F8 loop diagram uses, so everything drawn in this rig reads as one
 hand.
 
@@ -230,7 +230,7 @@ Every one of these was hit while building U3.
   punched out as a hole through the face. Real matting needs rembg, which is unaudited.
 - **Trusting a plate's framing.** Every style tail here bans letterboxing and a frame within the
   frame, and the models do it anyway in both directions: black bars on one plate, a grey mount on
-  the next. `cutouts.trim_dark()` reads the surround colour off the corners and eats it.
+  the next. `cutouts.trim_dark` reads the surround colour off the corners and eats it.
 - **Pushing fan pieces out along their arm.** On a right-hand fan that is straight off the card:
   the pieces were rendering, just past the edge.
 - **Editing a shared engine without checksumming the siblings.** `paper_sheet.py` and `band.py`
@@ -292,7 +292,7 @@ python3 crm_u3.py --go       # upload, insert, write a REVERSE
 
 - **Read the copy off the renderer, never retype it.** `body` is assembled from `build_u3.COVER`,
   `SLIDES`, `CLOSE_LINES` and `CLOSE_CTA`, so the board cannot drift from the card.
-- **INSERT only.** Never DROP, ALTER, DELETE or UPDATE, and **the operator's explicit go every time**,
+- **INSERT only.** Never DROP, ALTER, DELETE or UPDATE, and **your explicit go every time**,
   after he has seen the statement the dry run prints.
 - **Snapshot before, REVERSE after**, both into `scripts/_crm/`, matching the files already there.
 - **Guard the re-run.** The script refuses to insert if a row with the same title exists, so a

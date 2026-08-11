@@ -4,13 +4,13 @@
     python3 build_news_band.py construction
 
 The band geometry is the news-carousel one: `band.py`, bottom 506px, your display typeface 200, justified flush
-on both margins, one blue accent. Two departures, both the operator's call on 2026-08-06:
+on both margins, one blue accent. Two departures, both your call on :
 
   * **lowercase**, via the additive `noir-lower` theme. Case is the only thing it changes.
   * **full bleed with the fade kept**, via `plate_full=True, plate_fade=True`. The plate runs the
     whole frame instead of stopping above a black band, and the carousel's bottom-up fade climbs
     the well from the bottom edge so the type still has something to sit on. The fade was dropped
-    for one pass on 2026-08-06 and the copy became unreadable across the hi-vis; the operator called it
+    for one pass on and the copy became unreadable across the hi-vis; you called it
     back the same day.
 
 Copy is the CONTRARIAN fill from basics.py, lowercased, because the band template line was
@@ -44,7 +44,7 @@ COPY = {
 
 def build(key):
     p = PLATES / f"{key}.png"
-    if not p.exists():
+    if not p.exists:
         sys.exit(f"no collage plate at {p}, run collage_news.py first")
     lines = COPY[key]
     OUT.mkdir(parents=True, exist_ok=True)

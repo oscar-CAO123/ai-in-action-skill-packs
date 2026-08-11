@@ -24,7 +24,7 @@ from pathlib import Path
 import tape
 from decks import DECK, SLIDES
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve.parent
 ASSETS = ROOT.parent / "assets"
 CHROME = os.environ.get(
     "CHROME_BIN", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
@@ -46,7 +46,7 @@ SLOP = 1.06
 
 
 def b64(path):
-    return base64.b64encode(Path(path).read_bytes()).decode()
+    return base64.b64encode(Path(path).read_bytes).decode
 
 
 def grade(src, dst, cast):
@@ -82,7 +82,7 @@ def pick_well(graded, slide):
 
 def fit(text, font, ceiling, width_px, height_px, line_h=1.06):
     """Largest size that keeps the text inside the well, by measured glyph advance."""
-    words = text.split()
+    words = text.split
     for size in range(ceiling, 15, -2):
         per_line = max(1, int(width_px / (size * ADVANCE[font] * SLOP)))
         lines, cur = 1, 0
@@ -188,12 +188,12 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;background:#000}}
     }
 
 
-def main():
-    ap = argparse.ArgumentParser()
+def main:
+    ap = argparse.ArgumentParser
     ap.add_argument("--out", default=str(ROOT / "out"))
     ap.add_argument("--plates", default=str(ROOT / "plates"))
     ap.add_argument("--regrade", action="store_true")
-    args = ap.parse_args()
+    args = ap.parse_args
 
     plates = Path(args.plates)
     out = Path(args.out)
@@ -204,10 +204,10 @@ def main():
     report = []
     for i, slide in enumerate(SLIDES, 1):
         src = plates / slide["plate"]
-        if not src.exists():
+        if not src.exists:
             sys.exit(f"missing plate {src}. Run plates.py for stand-ins, or drop the shot in.")
         graded = graded_dir / src.name
-        if args.regrade or not graded.exists():
+        if args.regrade or not graded.exists:
             grade(src, graded, slide["cast"])
         well = pick_well(graded, slide)
         rec = render(slide, graded, well, out / f"{i:02d}.png")
@@ -230,4 +230,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

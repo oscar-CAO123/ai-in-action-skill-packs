@@ -4,7 +4,7 @@ Every headline, number and quoted phrase is grounded in `skills/content-formats/
 (18 ranked pains, each from real discovery calls), `context/pain-wiki/` and
 `context/personas/personas-and-avatars.md`. Nothing invented, no real company or person names.
 
-The CONCEPT-BANK's 18-pain numbering predates the Discovery Intelligence Report (2026-08-05) and its
+The CONCEPT-BANK's 18-pain numbering predates the Discovery Intelligence Report and its
 15 weighted pain labels. The pain numbers below still resolve inside CONCEPT-BANK; for anything new,
 rank off `context/pain-wiki/MARKET.md` and pull vertical copy from
 `context/pain-wiki/industries/<slug>.md`.

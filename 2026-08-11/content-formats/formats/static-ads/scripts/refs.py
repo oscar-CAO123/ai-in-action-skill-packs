@@ -7,7 +7,7 @@
     python3 refs.py show swipe:09 --open # ... and open the image in Preview
     python3 refs.py check arch:S6 hook:S1 style:noir-oil   # exit 1 if any id is dead
 
-the operator's law, 2026-08-10: nothing is generated without a concrete reference from the bank, named
+your law, : nothing is generated without a concrete reference from the bank, named
 before the generation and shown with it. A reference is an ID that resolves here, not a
 description. "modelled on a newspaper" is not a reference; `tpl:Frame 466` is.
 
@@ -17,8 +17,8 @@ Adding an entry to a bank makes it citable immediately, with no edit here.
 Banks:
   hook   the copy structure the headline FILLS       references/hooks/HOOKS.md
   arch   the static/video archetype it IMITATES      references/scripts/archetypes.md
-  tear   the doctrine the treatment obeys            references/scripts/perdriau-teardowns.md
-  hex    the measured shape of the 16-reel corpus    references/transcripts/HEX-CREATIVES-FORMULA.md
+  tear   the doctrine the treatment obeys            references/scripts/a reference brand-teardowns.md
+  hex    the measured shape of the 16-reel corpus    references/transcripts/the reference corpus-FORMULA.md
   tpl    a Figma layout extract                      context/advertising/static-ads-bank/templates/
   local  a reference image a format was built on     formats/static-ads/references/
   style  a locked plate look                         content-engine/ideas/industry-build-carousels/styles.json
@@ -38,18 +38,18 @@ STYLES = (house / "projects" / "content-engine" / "ideas" / "industry-build-caro
           / "styles.json")
 
 # bank -> (sources, heading regex). The regex's first group is the id, the second the title.
-# `tear` takes a GLOB: teardowns arrive one file per source (Perdriau, then Optamize), and a bank
+# `tear` takes a GLOB: teardowns arrive one file per source (a reference brand, then a competitor), and a bank
 # that only ever reads one file quietly drops every source added after it.
 DOC_BANKS = {
     "hook": (REFS / "hooks" / "HOOKS.md", r"^### ([A-Z]\d+)\. (.+)$"),
     "arch": (REFS / "scripts" / "archetypes.md", r"^## ([A-Z]\d+)\. (.+)$"),
     "tear": (sorted((REFS / "scripts").glob("*teardowns*.md")), r"^## (.+)$"),
-    "hex": (REFS / "transcripts" / "HEX-CREATIVES-FORMULA.md", r"^## (.+)$"),
+    "hex": (REFS / "transcripts" / "the reference corpus-FORMULA.md", r"^## (.+)$"),
 }
 
 
 def slug(text):
-    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")[:40]
+    return re.sub(r"[^a-z0-9]+", "-", text.lower).strip("-")[:40]
 
 
 def doc_entries(bank):
@@ -58,7 +58,7 @@ def doc_entries(bank):
     sources, pattern = DOC_BANKS[bank]
     out = []
     for src in (sources if isinstance(sources, list) else [sources]):
-        lines = src.read_text().splitlines()
+        lines = src.read_text.splitlines
         hits = []
         for n, line in enumerate(lines):
             m = re.match(pattern, line)
@@ -70,13 +70,13 @@ def doc_entries(bank):
             hits.append(dict(id=rid, title=title, line=n, src=src))
         for a, b in zip(hits, hits[1:] + [None]):
             end = b["line"] if b else len(lines)
-            a["body"] = "\n".join(lines[a["line"]:end]).rstrip()
+            a["body"] = "\n".join(lines[a["line"]:end]).rstrip
         out += hits
     return out
 
 
-# NOT A BANK, deliberately. the operator, 2026-08-06: the scraped Meta and LinkedIn swipe records were
-# moved to `Archive/old-context/static-ads-swipe-banks-2026-08-06/` and are not a source of
+# NOT A BANK, deliberately. you, : the scraped Meta and LinkedIn swipe records were
+# moved to `Archive/old-context/static-ads-swipe-banks-/` and are not a source of
 # anything. `static-ads/SKILL.md` section 3: "do not re-scrape, do not rebuild them, and do not
 # cite them. The reference layer is the 41 Figma extracts and nothing else." A competitor static
 # is therefore not citable here, and adding a `swipe` bank back reopens a closed decision.
@@ -87,37 +87,37 @@ def image_bank(d, what, recurse=False):
     `image 9` would silently resolve to the .jpg and hide the .png.
 
     `recurse` walks subfolders and prefixes the id with the folder, so a set extracted from one
-    source stays together and cites as `local:optamize-8-statics/03-apology-letter`."""
-    if not d.is_dir():
+    source stays together and cites as `local:a competitor-8-statics/03-apology-letter`."""
+    if not d.is_dir:
         return []
-    it = sorted(d.rglob("*")) if recurse else sorted(d.iterdir())
-    files = [f for f in it if f.suffix.lower() in (".png", ".jpg", ".svg", ".webp")]
+    it = sorted(d.rglob("*")) if recurse else sorted(d.iterdir)
+    files = [f for f in it if f.suffix.lower in (".png", ".jpg", ".svg", ".webp")]
     stems = [f.stem if f.parent == d else f"{f.parent.name}/{f.stem}" for f in files]
-    # `.strip()`: one export is named "VetNotes Static Ads .png", and a trailing space in an id is
+    # `.strip`: one export is named "VetNotes Static Ads .png", and a trailing space in an id is
     # invisible in a listing and undebuggable in a citation. The gate found it on its first run.
     out = []
     for f, sid in zip(files, stems):
         rid = sid if stems.count(sid) == 1 else f"{sid}{f.suffix}"
-        out.append(dict(id=rid.strip(), title=f.name, body=f"{what}: {f.name}", src=f, image=f))
+        out.append(dict(id=rid.strip, title=f.name, body=f"{what}: {f.name}", src=f, image=f))
     return out
 
 
-def tpl_entries():
+def tpl_entries:
     return image_bank(ADS_BANK / "templates", "Figma layout extract")
 
 
-def local_entries():
+def local_entries:
     return image_bank(ROOT.parent / "references", "Format reference image", recurse=True)
 
 
-def style_entries():
-    if not STYLES.exists():
+def style_entries:
+    if not STYLES.exists:
         return []
-    data = json.loads(STYLES.read_text())
+    data = json.loads(STYLES.read_text)
     return [dict(id=k, title=(v.get("name") if isinstance(v, dict) else str(k)),
                  body=json.dumps(v, indent=2) if isinstance(v, dict) else str(v),
                  src=STYLES)
-            for k, v in data.get("styles", {}).items()]
+            for k, v in data.get("styles", {}).items]
 
 
 BANKS = {
@@ -135,13 +135,13 @@ def resolve(ref):
     bank, rid = ref.split(":", 1)
     if bank not in BANKS:
         raise KeyError(f"{ref}: no bank called '{bank}'. Banks: {', '.join(sorted(BANKS))}")
-    entries = BANKS[bank]()
+    entries = BANKS[bank]
     for e in entries:
-        if e["id"].lower() == rid.lower():
+        if e["id"].lower == rid.lower:
             return {**e, "bank": bank, "ref": f"{bank}:{e['id']}"}
     # The prose banks slugify their headings, so ids there run long. A UNIQUE prefix resolves,
     # which makes `tear:4` usable; an ambiguous one is an error rather than a coin toss.
-    hits = [e for e in entries if e["id"].lower().startswith(rid.lower())]
+    hits = [e for e in entries if e["id"].lower.startswith(rid.lower)]
     if len(hits) == 1:
         return {**hits[0], "bank": bank, "ref": f"{bank}:{hits[0]['id']}"}
     if len(hits) > 1:
@@ -161,7 +161,7 @@ def cmd_show(args):
     e = resolve(ref)
     print(f"{e['ref']}  {e['title']}")
     print(line_of(e))
-    print()
+    print
     print(e["body"])
     if "--open" in args:
         target = e.get("image") or e["src"]
@@ -171,7 +171,7 @@ def cmd_show(args):
 def cmd_list(args):
     banks = args or sorted(BANKS)
     for b in banks:
-        entries = BANKS[b]()
+        entries = BANKS[b]
         print(f"\n=== {b}  ({len(entries)}) ===")
         for e in entries:
             print(f"  {b}:{e['id']:<28} {e['title']}")
@@ -192,12 +192,12 @@ def cmd_check(args):
     print("\nclean")
 
 
-def main():
+def main:
     argv = sys.argv[1:]
     if not argv:
         total = 0
         for b in sorted(BANKS):
-            n = len(BANKS[b]())
+            n = len(BANKS[b])
             total += n
             src = DOC_BANKS[b][0] if b in DOC_BANKS else {"tpl": ADS_BANK / "templates",
                                                           "local": ROOT.parent / "references",
@@ -219,4 +219,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

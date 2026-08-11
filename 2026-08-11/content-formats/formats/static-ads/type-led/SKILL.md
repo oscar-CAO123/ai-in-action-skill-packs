@@ -36,7 +36,7 @@ Cell assignments, industries and pains: `../FORMAT-GRID.md` section 2.
 ## 2. Two tiers of band, and which one a format gets
 
 **Tier A, the pure band.** One justified block in the bottom 506px, one size, white, one blue
-accent. This is the law untouched and `render_card()` renders it today with no new template.
+accent. This is the law untouched and `render_card` renders it today with no new template.
 
 Tier A formats: band, problem/solution split, question hook, don't hire this person, stop trying
 to use AI, founder statement.
@@ -57,13 +57,13 @@ What a Tier B card may contain:
 - **No grey.** White at full strength, or blue. Grey is what made earlier passes read small.
 - **Five rows maximum.** See the amendment below.
 
-The renderer is `scripts/band_rows.py`, written 2026-08-07. It solves the size the same way Tier A
+The renderer is `scripts/band_rows.py`, written . It solves the size the same way Tier A
 does, by binary search against the well, and it carries the two traps this rig has already paid
 for: the column is given an explicit 952px width because `clientWidth` counts padding, and the
 well uses `justify-content:flex-end` rather than an auto margin, because an auto margin absorbs
 overflow and the fit then passes at every size.
 
-### The two amendments of 2026-08-07 (the operator, measured before ruling)
+### The two amendments of (you, measured before ruling)
 
 **The four-row ceiling is lifted to five.** The old text read "Four rows maximum. Five rows at this
 width takes the type under thumbnail legibility," and it had never been measured against short
@@ -107,7 +107,7 @@ Per-format notes worth having before writing:
 
 - **Band.** The industry set's band is fixed:
   `AUSSIE <BUSINESS TYPE> ARE FINALLY REALISING THEY DON'T HAVE TO <PAIN> ANYMORE.` The "using AI"
-  tail was cut on 2026-08-06 and does not go back. Spec of record: `news-carousel/SKILL.md` 1a.
+  tail was cut on and does not go back. Spec of record: `news-carousel/SKILL.md` 1a.
 - **Question hook.** A question mark does not make a hook. The line has to be one the owner has
   actually asked themselves, which is what the playbook's verbatim call quotes are for.
 - **Don't hire this person.** The joke only lands when the reader is inside it, so it sits on a
@@ -119,7 +119,7 @@ Per-format notes worth having before writing:
 - **Listicle and tick rows.** Rows are pains in the reader's own language from the playbook, and the
   answer row is the only blue. S14's canonical line is "Eight problems. One hire."
 
-## 4. QA before it goes in front of the operator
+## 4. QA before it goes in front of you
 
 - **The avatar is named on the card.** Read the card as a stranger: does it say who this is for.
 - **The pain is that avatar's, from the playbook**, rather than a category noun.

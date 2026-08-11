@@ -6,7 +6,7 @@
     python3 plates_white.py <slug> --go     # shoot it, ONE job, ~2 credits
     python3 plates_white.py <slug> --refine --go   # i2i fix, keeps the approved frame
 
-the operator's direction, 2026-08-06. Two deliberate departures from the house noir plates, both his
+your direction, . Two deliberate departures from the house noir plates, both his
 call and both recorded here so nobody "corrects" them back:
 
   1. **White ground, not black.** `decks_noir.py` LIGHT drops the lower quarter into solid
@@ -28,7 +28,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 OUT = ROOT / "plates-white"
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 
 STYLE = ("A black-and-white oil painting in high-contrast film-noir style painted on a bright "
          "flat white ground, thick visible brushstrokes, painterly chiaroscuro, hand-painted "
@@ -69,7 +69,7 @@ SCENES = {
 }
 
 
-# the operator, 2026-08-06: both cards run across all five industries, and the rule he set is "same
+# you, : both cards run across all five industries, and the rule he set is "same
 # character and set, camera moves only". So the other four are not fresh generations, they are
 # i2i off the APPROVED real estate frame with nothing changed but the camera. A fresh prompt
 # would re-cast the figures and the set every time and the five would stop reading as one
@@ -106,21 +106,21 @@ def prompt(slug):
 def shoot(slug, refine=False):
     OUT.mkdir(parents=True, exist_ok=True)
     dst = OUT / f"{slug}.png"
-    cmd = [HF, "generate", "create", "nano_banana_pro", "--aspect_ratio", "5:4",
+    cmd = [HF, "generate", "create", "your image model", "--aspect_ratio", "5:4",
            "--resolution", "2k", "--prompt", prompt(slug), "--wait", "--json"]
     if slug in VARIANTS:
         ref = OUT / f"{VARIANTS[slug]}.png"
-        if not ref.exists():
+        if not ref.exists:
             sys.exit(f"no approved base frame at {ref}")
         cmd += ["--image-references", str(ref)]
     elif refine:
-        if not dst.exists():
+        if not dst.exists:
             sys.exit(f"no approved frame at {dst} to refine")
         cmd += ["--image", str(dst)]
     print(f"firing ONE job: {slug}{' (refine)' if refine else ''}")
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0:
-        sys.exit(f"higgsfield failed:\n{r.stdout}\n{r.stderr}")
+        sys.exit(f"your generation platform failed:\n{r.stdout}\n{r.stderr}")
     # The CLI returns a JSON LIST and the image is at [0]["result_url"].
     # Same contract as plates_noir.py; do not "simplify" this to a dict lookup.
     if "[" not in r.stdout:
@@ -131,7 +131,7 @@ def shoot(slug, refine=False):
         sys.exit(f"job returned no result_url:\n{json.dumps(job)[:2000]}")
     print(f"job {job.get('id')}  {url[:90]}")
     subprocess.run(["curl", "-sSL", "-o", str(dst), url], check=True)
-    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB)")
+    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

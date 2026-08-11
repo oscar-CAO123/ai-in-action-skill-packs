@@ -71,7 +71,7 @@ THEMES = {
         # at that size; 200 disappears into the plate.
         "anno_weight": 300,
     },
-    # Same as `noir` in every respect except case. the operator, 2026-08-06, for the ripped news
+    # Same as `noir` in every respect except case. you, for the ripped news
     # collage: the band geometry and the thin your display typeface stay, the caps do not.
     "noir-lower": {
         "face": ("@font-face {{ font-family:'your display typeface'; font-weight:200; "
@@ -94,7 +94,7 @@ THEMES = {
 # whose plate is painted noir on PAPER, where white type is invisible and a fade to black would
 # put a dark slab across a light picture. `ground="light"` flips exactly four things: the card
 # background, the copy colour, the annotation fill and the direction both fades run.
-# Default stays "dark", so every existing card renders byte-identical. the operator, 2026-08-07.
+# Default stays "dark", so every existing card renders byte-identical. you, .
 GROUNDS = {
     "dark":  dict(bg="#000", ink="#fff", fade="0,0,0", anno="#fff"),
     "light": dict(bg="#f3ece1", ink="#0a0a0a", fade="243,236,225", anno="#0a0a0a"),
@@ -148,10 +148,10 @@ html,body {{ width:{W}px; height:{H}px; overflow:hidden; background:{g["bg"]}; }
 /* the span is what carries the text width; the div is always the full column */
 .copy .ln {{ display:inline-block; white-space:nowrap; }}
 .accent {{ {t["accent"]} }}
-/* The divider rule (the operator, 2026-08-10, canonical on the inverted ends of a Theme B carousel).
+/* The divider rule (you, canonical on the inverted ends of a Theme B carousel).
    It runs the TYPE'S measure, not the card's: from the well's left padding to its right, which
    is exactly where the copy lands because the band justifies flush on both margins. A
-   full-bleed version was tried first and rejected on 2026-08-10.
+   full-bleed version was tried first and rejected on .
    It sits on the card rather than inside `.well` so its `top` can be set independently, and
    the fit pass sets that once the copy block's height is known, because the height is not
    knowable until the type has been broken and sized. Hidden until then, so a card that somehow
@@ -164,7 +164,7 @@ html,body {{ width:{W}px; height:{H}px; overflow:hidden; background:{g["bg"]}; }
 """
 
 
-CSS = css_for()               # the default theme, kept for callers that read CSS directly
+CSS = css_for               # the default theme, kept for callers that read CSS directly
 
 # Line breaking is a fit problem, not an authoring one. One size for the whole card; the
 # breaks are chosen so the lines come out near-equal in length, and each line is then
@@ -174,9 +174,9 @@ FIT_JS = """
 var WORDS = __WORDS__;
 // fonts.ready alone is a trap here: the card starts empty, so nothing has requested the
 // face and the promise resolves instantly against fallback metrics. Ask for it by name.
-document.fonts.load('__WEIGHT__ 100px "__FAMILY__"', 'AZ09').then(function(){
+document.fonts.load('__WEIGHT__ 100px "__FAMILY__"', 'AZ09').then(function{
   return document.fonts.ready;
-}).then(function(){
+}).then(function{
   var well=document.querySelector('.well'), copy=document.querySelector('.copy');
   var ruler=document.getElementById('rule');
   var cs=getComputedStyle(well);
@@ -233,21 +233,21 @@ document.fonts.load('__WEIGHT__ 100px "__FAMILY__"', 'AZ09').then(function(){
       d.className='line';
       s.className='ln';
       s.innerHTML=WORDS.slice(plan.cuts[i],plan.cuts[i+1])
-                       .map(function(w){return w.h;}).join(' ');
+.map(function(w){return w.h;}).join(' ');
       d.appendChild(s);
       copy.appendChild(d);
       spans.push(s);
     }
-    function widest(){
+    function widest{
       var m=0;
-      for(var i=0;i<spans.length;i++) m=Math.max(m, spans[i].getBoundingClientRect().width);
+      for(var i=0;i<spans.length;i++) m=Math.max(m, spans[i].getBoundingClientRect.width);
       return m;
     }
     var size=REF*base/Math.max.apply(null, plan.widths);
     for(var pass=0;pass<4;pass++){
       copy.style.fontSize=size+'px';
       for(var i=0;i<spans.length;i++) spans[i].style.letterSpacing='0px';
-      size=size*base/widest();
+      size=size*base/widest;
     }
     copy.style.fontSize=size+'px';
     // Justify on the word gaps. Letters only take what the gaps cannot hold, and only up
@@ -258,7 +258,7 @@ document.fonts.load('__WEIGHT__ 100px "__FAMILY__"', 'AZ09').then(function(){
       var gaps=txt.split(' ').length-1, chars=txt.length;
       spans[i].style.letterSpacing='0px';
       spans[i].style.wordSpacing='0px';
-      var slack=base-spans[i].getBoundingClientRect().width;
+      var slack=base-spans[i].getBoundingClientRect.width;
       var byWord=Math.min(slack, gaps*WGMAX*size);
       if(gaps>0) spans[i].style.wordSpacing=(byWord/gaps)+'px';
       var left=slack-byWord;
@@ -267,7 +267,7 @@ document.fonts.load('__WEIGHT__ 100px "__FAMILY__"', 'AZ09').then(function(){
     // Anton throws ink above its line box at this leading; the box cannot see it. your display typeface
     // sits inside its box, so its theme sets this to zero.
     copy.style.paddingTop=(PADTOP*size)+'px';
-    return {h:copy.getBoundingClientRect().height, size:size};
+    return {h:copy.getBoundingClientRect.height, size:size};
   }
   // Among the line counts that clear the band, take the one whose worst line needs the
   // least stretching. Cramming in the most lines is not the goal; even colour is.
@@ -294,34 +294,34 @@ document.fonts.load('__WEIGHT__ 100px "__FAMILY__"', 'AZ09').then(function(){
   // The divider sits DIVGAP above the first line of type, which is only knowable now.
   var dv=document.querySelector('.divider');
   if(dv){
-    dv.style.top=Math.round(copy.getBoundingClientRect().top-DIVGAP)+'px';
+    dv.style.top=Math.round(copy.getBoundingClientRect.top-DIVGAP)+'px';
     dv.style.display='block';
   }
   document.documentElement.dataset.fitted=
     n+' lines @ '+Math.round(r.size)+'px, fill '+
-    Math.round(copy.getBoundingClientRect().height/avail*100)+'%';
+    Math.round(copy.getBoundingClientRect.height/avail*100)+'%';
 });
 """.replace("GAPMAX", str(GAP_MAX)).replace("WGMAX", str(WORD_GAP_MAX)) \
-   .replace("DIVGAP", str(DIV_GAP))
+.replace("DIVGAP", str(DIV_GAP))
 
 
 def fit_js_for(theme="anton"):
     t = THEMES[theme]
     return (FIT_JS.replace("__FAMILY__", t["family"])
-                  .replace("__WEIGHT__", str(t.get("weight", 400)))
-                  .replace("PADTOP", str(t["pad_top"]))
-                  .replace("JUSTIFY", "true" if t.get("justify", True) else "false"))
+.replace("__WEIGHT__", str(t.get("weight", 400)))
+.replace("PADTOP", str(t["pad_top"]))
+.replace("JUSTIFY", "true" if t.get("justify", True) else "false"))
 
 
 def words(lines):
     """Flatten the authored copy to words, each carrying its own accent markup."""
     text = " ".join(lines)
     out, buf_h, buf_t, inside = [], [], [], False
-    def flush():
+    def flush:
         if buf_t:
             out.append({"h": "".join(buf_h), "t": "".join(buf_t)})
-            buf_h.clear()
-            buf_t.clear()
+            buf_h.clear
+            buf_t.clear
     i = 0
     while i < len(text):
         if text.startswith("[[", i):
@@ -331,14 +331,14 @@ def words(lines):
             inside = False
             i += 2
         elif text[i] == " ":
-            flush()
+            flush
             i += 1
         else:
             ch = html.escape(text[i])
             buf_h.append(f'<span class="accent">{ch}</span>' if inside else ch)
             buf_t.append(text[i])
             i += 1
-    flush()
+    flush
     return out
 
 
@@ -357,9 +357,9 @@ def render_card(lines, png, assets=None, chrome=None, plate=None, overlay=None,
     js = fit_js_for(theme).replace("__WORDS__", json.dumps(words(lines)))
     art = ""
     if plate:
-        src = Path(plate).resolve().as_uri()
+        src = Path(plate).resolve.as_uri
         if plate_full:
-            # The plate bleeds the whole frame. Added 2026-08-06 for the ripped news collage.
+            # The plate bleeds the whole frame. Added for the ripped news collage.
             # `plate_fade` climbs the well from the bottom edge; without it the type sits
             # straight on the picture, which is how this started and why it was hard to read.
             art = f'<img class="plate" src="{src}" style="height:{H}px">'
@@ -389,6 +389,6 @@ def render_card(lines, png, assets=None, chrome=None, plate=None, overlay=None,
                    stderr=subprocess.DEVNULL, check=True)
     dom = subprocess.run([exe, "--headless", "--disable-gpu", "--virtual-time-budget=4000",
                           "--dump-dom", f"file://{tmp}"], capture_output=True, text=True).stdout
-    Path(tmp).unlink()
+    Path(tmp).unlink
     m = re.search(r'data-fitted="([^"]+)"', dom)
     return m.group(1) if m else "?"

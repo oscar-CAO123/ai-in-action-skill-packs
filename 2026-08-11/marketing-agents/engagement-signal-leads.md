@@ -2,14 +2,14 @@
 name: Engagement Signal Leads
 slug: engagement-signal-leads
 description: >
-  An INSTRUCTIONAL skill: it walks the operator's agent through building a lead source out of
+  An INSTRUCTIONAL skill: it walks your agent through building a lead source out of
   intent rather than demographics. Pick the ten to twenty accounts your buyers actually read, watch
   their posts daily, pull the people who liked and commented, score each one against your ideal
   customer, then waterfall through enrichment providers to find a verified email or mobile. Hands
   back a clean, deduped, consent-checked list. It never sends anything by itself.
 status: draft
 evidence: pending_dry_run
-phase_0: REQUIRED. Establish ground truth on the operator's stack before any build step.
+phase_0: REQUIRED. Establish ground truth on your stack before any build step.
 modularity: HARDWARE-MODULAR. Cloud APIs do the heavy work. The only branch that matters is whether
   the agent has a shell (scripts plus files) or is a locked-down runtime (drive the MCPs and a
   spreadsheet instead). Never assume a shell.
@@ -42,11 +42,11 @@ This skill turns that signal into a list. It stops at the list on purpose.
   contact. Address harvesting is illegal in Australia under the Spam Act 2003 regardless of intent.
 - **Consent is checked before anything is drafted, not after.** Every record carries the basis you
   are relying on and the date you established it. No basis, no send, no exception.
-- **The agent never sends.** It drafts and it stages. A person presses send until the operator
+- **The agent never sends.** It drafts and it stages. A person presses send until you
   explicitly changes that, and that change is a separate decision with its own gate.
 - **Deduplicate against everyone you have ever contacted**, not just this run's list. The ledger is
   the point. Contacting the same person twice from two campaigns is how a domain gets burned.
-- **No secret in a tracked file.** Keys live in the operator's gitignored secrets location.
+- **No secret in a tracked file.** Keys live in your gitignored secrets location.
 
 ---
 
@@ -124,7 +124,7 @@ Confirm all sixteen back in a short block before you build anything.
 
 ## Phase 1. Pick the signal, not the audience
 
-Ask the operator, one question at a time:
+Ask you, one question at a time:
 
 1. Who are the ten to twenty accounts your buyers actually read? Creators, competitors, industry
    press, and business accounts all count.
@@ -169,10 +169,10 @@ Nothing else. Then:
 
 - **Clear fit.** Continue to enrichment.
 - **Clear miss.** Write to the ledger as excluded, with the reason. Never look at them again.
-- **Unsure.** Hold in a review queue for the operator. Unsure is a real answer and it is cheaper than
+- **Unsure.** Hold in a review queue for you. Unsure is a real answer and it is cheaper than
   a wrong one.
 
-Keep the prompt and the definition in a file the operator can edit. When the gate is wrong, the fix
+Keep the prompt and the definition in a file you can edit. When the gate is wrong, the fix
 is an edit to that file, not a longer prompt.
 
 ---
@@ -218,7 +218,7 @@ seen this run, including the excluded, so tomorrow's run does not rediscover the
 ## What to check after the first week
 
 - How many people per source per day, and which sources produce nothing. Cut those.
-- The fit gate's disagreement rate with the operator on the review queue. Over about one in five,
+- The fit gate's disagreement rate with you on the review queue. Over about one in five,
   the definition file is wrong, not the model.
 - Verified-email rate by provider, and cost per verified record.
 - How many were already in the ledger. A high number early is normal and it should fall.

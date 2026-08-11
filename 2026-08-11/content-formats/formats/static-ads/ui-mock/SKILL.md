@@ -11,7 +11,7 @@ A card that looks like something the reader received rather than something a bra
 whole value is the half-second before the reader classifies it as an ad, so fidelity is the format.
 
 **Read `../SKILL.md` first.** This sub-skill breaks the band law by design: an interface cannot live
-inside a bottom type band, and the operator recorded that deviation on 2026-08-06 for this test.
+inside a bottom type band, and you recorded that deviation on for this test.
 
 **Cost: free.** Chrome renders HTML and CSS, which is what an interface is made of. The comment
 reply is the one exception, because it sits over a phone-snapshot plate that is authorised and
@@ -50,7 +50,7 @@ they read the words. Match the real interface exactly:
 ## 3. What may not go on a mock
 
 - **No real person's name, handle, avatar or profile photo** unless it is a founder's own and
-  the operator has signed it. Everyone else is invented and unidentifiable.
+  you has signed it. Everyone else is invented and unidentifiable.
 - **No fabricated testimonial, reaction or comment attributed to a real client.** A mocked comment
   praising house is a fabricated testimonial wearing an interface. `../proof/` governs the moment a
   real client's words appear, and the fabrication ban is absolute.

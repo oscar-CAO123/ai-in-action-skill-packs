@@ -26,9 +26,9 @@ python3 build_deliverable.py <industry>
 ## The law
 
 - **The deliverable is the filled scored report**, reached through the prototype's own
-  `jumpToReport()`, the same path its "Skip to a filled report" button uses.
+  `jumpToReport`, the same path its "Skip to a filled report" button uses.
 - **Capture is headless Chrome at 2x.** Deterministic, no window chrome, no cursor, retina sharp,
-  free to re-shoot after any edit to the asset. the operator chose this over a driven browser.
+  free to re-shoot after any edit to the asset. you chose this over a driven browser.
 - **Nothing in `build/` is modified.** The rig copies the prototype to a temp file *inside*
   `build/` so relative assets still resolve, appends a bootstrap script, shoots, and deletes it.
 - **This is the only white card in the house.** Deliberate: it is the one bottom-of-funnel-shaped

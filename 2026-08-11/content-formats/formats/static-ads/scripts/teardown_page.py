@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render a teardown doc as a review page: every format beside the still it was read from. FREE.
 
-    python3 teardown_page.py optamize      # -> ../TEARDOWN-OPTAMIZE.html, opens in the browser
+    python3 teardown_page.py a competitor      # -> ../TEARDOWN-a competitor.html, opens in the browser
     python3 teardown_page.py saas          # the SaaS pull, seven formats
     python3 teardown_page.py formats       # the six-formats pull
 
@@ -10,7 +10,7 @@ The argument matches against the teardown's FILENAME, so any doc in the `tear` b
 The text is read from the teardown markdown and the pictures from the reference bank, so this page
 has no content of its own and cannot drift from either.
 
-House rule, 2026-08-10: a dossier is HTML and it opens in the browser.
+House rule, : a dossier is HTML and it opens in the browser.
 """
 import html
 import re
@@ -46,7 +46,7 @@ margin:0 0 12px;letter-spacing:.03em}
 
 
 def kind(verdict):
-    v = verdict.lower()
+    v = verdict.lower
     if v.startswith(("no", "blocked", "already spent")):
         return "no"
     if v.startswith("yes"):
@@ -56,21 +56,21 @@ def kind(verdict):
 
 def build(which):
     entries = [e for e in refs.doc_entries("tear")
-               if which in str(e["src"]).lower() and re.match(r"^\d", e["title"])]
+               if which in str(e["src"]).lower and re.match(r"^\d", e["title"])]
     items = []
     for e in entries:
-        body = e["body"].splitlines()[1:]
+        body = e["body"].splitlines[1:]
         ref = next((ln.strip("` ") for ln in body[:3] if ln.startswith("`local:")), "")
-        prose = "\n".join(ln for ln in body if not ln.startswith("`local:")).strip()
+        prose = "\n".join(ln for ln in body if not ln.startswith("`local:")).strip
         verdict = VERDICT.search(prose)
-        v = verdict.group(1).strip() if verdict else ""
-        paras = [p.replace("\n", " ").strip() for p in prose.split("\n\n") if p.strip()]
+        v = verdict.group(1).strip if verdict else ""
+        paras = [p.replace("\n", " ").strip for p in prose.split("\n\n") if p.strip]
         paras = [re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", html.escape(p)
-                        .replace("&lt;", "<").replace("&gt;", ">")) for p in paras]
+.replace("&lt;", "<").replace("&gt;", ">")) for p in paras]
         pic = ""
         try:
             img = refs.resolve(ref)["image"]
-            pic = f'<img src="file://{Path(img).resolve()}">'
+            pic = f'<img src="file://{Path(img).resolve}">'
         except (KeyError, TypeError):
             pass
         items.append(
@@ -87,11 +87,11 @@ def build(which):
            f"rather than painted because the ad behind him is not in the footage. The verdict on "
            f"each is whether it survives house having no product to photograph."
            f"</p>{''.join(items)}")
-    dst = ROOT.parent / f"TEARDOWN-{which.upper()}.html"
+    dst = ROOT.parent / f"TEARDOWN-{which.upper}.html"
     dst.write_text(doc)
     print(f"{len(items)} formats -> {dst}")
     return dst
 
 
 if __name__ == "__main__":
-    subprocess.run(["open", str(build(sys.argv[1] if len(sys.argv) > 1 else "optamize"))])
+    subprocess.run(["open", str(build(sys.argv[1] if len(sys.argv) > 1 else "a competitor"))])

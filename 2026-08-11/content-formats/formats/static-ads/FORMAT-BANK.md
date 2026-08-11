@@ -1,6 +1,6 @@
 # The static format bank, everything we have
 
-Pulled 2026-08-07 from the canonical sources only: `SKILL.md` (the F7 router, sections 0-3),
+Pulled from the canonical sources only: `SKILL.md` (the F7 router, sections 0-3),
 `FORMAT-GRID.md` (the 20-cell grid + build status via `inventory.py` GRID),
 `references/hooks/HOOKS.md` Part A1 (the archetype set), `references/scripts/archetypes.md`,
 `references/FIGMA-PICKS.md`, and the rendered output directories under `scripts/out-*`.
@@ -9,8 +9,8 @@ Pulled 2026-08-07 from the canonical sources only: `SKILL.md` (the F7 router, se
 
 > **The reference layer is the 41 Figma extracts in
 > `context/advertising/static-ads-bank/templates/` and nothing else.** The scraped Meta and
-> LinkedIn swipe banks were pulled out on 2026-08-06 and moved to
-> `Archive/old-context/static-ads-swipe-banks-2026-08-06/`. Do not re-scrape or cite them.
+> LinkedIn swipe banks were pulled out on and moved to
+> `Archive/old-context/static-ads-swipe-banks-/`. Do not re-scrape or cite them.
 
 ---
 
@@ -89,7 +89,7 @@ Kasun D is candidate-side and stays out of employer-facing cards entirely.
 ## 6. `lead-magnet` , closes on one of the seven built magnets (5 formats)
 
 **All five BUILT across all seven industries, 35 cards, all live on the CRM board.** Roughly 63 paid
-`nano_banana_pro` jobs spent. Every plate is shot, so all five re-render free from here.
+`your image model` jobs spent. Every plate is shot, so all five re-render free from here.
 
 | # | Format | Sub-skill | Paid plates |
 |---|---|---|---|
@@ -161,7 +161,7 @@ From `references/hooks/HOOKS.md` A1. These are copy lines with no assigned rende
 
 ## 10. The law that binds all 35
 
-- **The band law** (`SKILL.md` section 0, settled 2026-07-31): every mark in the bottom 506px.
+- **The band law** (`SKILL.md` section 0: every mark in the bottom 506px.
 - **Recorded deviation, this test only:** native mocks may break the band, because an iMessage
   thread, a tweet screenshot or a photographed napkin cannot exist inside a bottom type band, and
   breaking it is the point of the test. Breaking it: iMessage, organic post screenshot, napkin,
@@ -175,5 +175,5 @@ From `references/hooks/HOOKS.md` A1. These are copy lines with no assigned rende
 - **house language rules bind every word**: construction business never building business, hospitality
   business never venue, trades not building services, "AI agent" in full where the industry already
   uses "agent" for a person. No em dashes. No negation swap.
-- **One paid job at a time, never batched. Construction end to end first, shown to the operator, before
+- **One paid job at a time, never batched. Construction end to end first, shown to you, before
   anything is paid for on the other six.**

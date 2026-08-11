@@ -29,7 +29,7 @@ ASSETS = ROOT.parent / "assets"
 CHROME = os.environ.get("CHROME_BIN",
                         "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
-LOGO_SVG = re.sub(r"<\?xml.*?\?>", "", (ASSETS / "house-logo.svg").read_text(), flags=re.S)
+LOGO_SVG = re.sub(r"<\?xml.*?\?>", "", (ASSETS / "house-logo.svg").read_text, flags=re.S)
 LOGO_SVG = LOGO_SVG.replace("<svg ", '<svg fill="#FFFFFF" ', 1)
 
 W, H = 1080, 1350
@@ -166,7 +166,7 @@ def render(deck, out_root):
                         "--force-device-scale-factor=1", f"--window-size={W},{H}",
                         f"--screenshot={png}", f"file://{tmp}"],
                        stderr=subprocess.DEVNULL, check=True)
-        Path(tmp).unlink()
+        Path(tmp).unlink
     print(f"{deck['slug']}: {n} slides -> {out}")
 
 
@@ -175,7 +175,7 @@ if __name__ == "__main__":
     out_root = ROOT / "out"
     if "--out" in args:
         i = args.index("--out")
-        out_root = Path(args[i + 1]).expanduser()
+        out_root = Path(args[i + 1]).expanduser
         args = args[:i] + args[i + 2:]
     for d in DECKS:
         if not args or d["slug"] in args:

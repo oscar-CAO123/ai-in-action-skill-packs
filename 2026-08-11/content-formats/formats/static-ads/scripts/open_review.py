@@ -4,10 +4,10 @@
     python3 open_review.py           # -> ../OPEN-FORMATS.html, opens in the browser
 
 One section per format: what it says, what it is modelled on and what is taken from each
-reference, what it renders as today, and the decision waiting on the operator. The cards are the live
+reference, what it renders as today, and the decision waiting on you. The cards are the live
 PNGs on disk, so this page is never a snapshot that has drifted from the renders.
 
-House rule, 2026-08-10: a dossier is HTML and it opens in the browser.
+House rule, : a dossier is HTML and it opens in the browser.
 """
 import html
 import subprocess
@@ -36,7 +36,7 @@ WAITING = {
 
 def thumbs(fmt):
     d = OUT / fmt
-    if not d.is_dir():
+    if not d.is_dir:
         return []
     return sorted(p for p in d.glob("*.png") if not p.name.startswith("_"))
 
@@ -47,8 +47,8 @@ def refs_html(fmt):
         try:
             e = refs.resolve(ref)
             pic = ""
-            if e.get("image") and Path(e["image"]).suffix.lower() != ".svg":
-                rel = Path(e["image"]).resolve()
+            if e.get("image") and Path(e["image"]).suffix.lower != ".svg":
+                rel = Path(e["image"]).resolve
                 pic = f'<img class="refpic" src="file://{rel}">'
             out.append(f'<div class="ref">{pic}<b>{html.escape(e["ref"])}</b>'
                        f'<span class="t">{html.escape(e["title"])}</span>'
@@ -68,7 +68,7 @@ def copy_html(fmt):
     for i, c in cards_for(BY_FMT[fmt]):
         name = i["paper"] if i else c.get("label", "-")
         parts = []
-        for k, v in c.items():
+        for k, v in c.items:
             if k in ("gated", "label", "quote_key", "source"):
                 continue
             v = " / ".join(v) if isinstance(v, list) else str(v)
@@ -110,14 +110,14 @@ em{color:#4d90fe;font-style:normal}
 """
 
 
-def build():
+def build:
     secs = []
     for fmt in OPEN_FMTS:
         f = BY_FMT[fmt]
         # Label every thumbnail. The strip is filename-ordered, so without a caption the first
         # card in the row is trades while the copy table below it starts on construction.
         pics = "".join(
-            f'<figure><img src="file://{p.resolve()}">'
+            f'<figure><img src="file://{p.resolve}">'
             f'<figcaption>{html.escape(p.stem.replace(fmt + "-", "").replace("-", " "))}'
             f'</figcaption></figure>' for p in thumbs(fmt))
         secs.append(f"""
@@ -143,4 +143,4 @@ today, and the decision it is waiting on. Cards are the live PNGs on disk.</p>
 
 
 if __name__ == "__main__":
-    subprocess.run(["open", str(build())])
+    subprocess.run(["open", str(build)])

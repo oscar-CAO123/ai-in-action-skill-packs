@@ -1,9 +1,8 @@
 ---
 name: member-business-interview-skill
-description: Run by an Open Operator member in a CLI agent (Claude Code, Codex CLI, Cursor terminal, or any agent with shell and file access). Conducts a deep 2-3 hour business interview, ONE question at a time, then emits a setup.sh that creates a local intelligence-layer folder tree (the agent's business memory): identity, the operator, memory rules, people, customers, SOPs, the tech stack, and per-tool connection notes. No PDF, no build plan, just the interview and the files.
+description: Run by an Open Operator member in a CLI agent (Claude Code, Codex CLI, Cursor terminal, or any agent with shell and file access). Conducts a deep 2-3 hour business interview, ONE question at a time, then emits a setup.sh that creates a local intelligence-layer folder tree (the agent's business memory): identity, you, memory rules, people, customers, SOPs, the tech stack, and per-tool connection notes. No PDF, no build plan, just the interview and the files.
 purpose: Self-serve OO member business interview plus local intelligence-layer bootstrap. CLI-first, chatbot-tolerated.
-version: 1.0 (2026-05-23)
----
+version: 1.0 ---
 
 # Open Operator: Member Business Interview Skill
 
@@ -401,7 +400,7 @@ When all interview phases are complete, run the **completeness gates** below bef
 ### Completeness gates (silent self-check)
 
 - **G1, identity:** company name, what we sell, who pays us, headcount, location all captured (Phase 1). If any blank, return to Phase 1.
-- **G2, people:** at least one teammate captured (Phase 2). If solo, the operator themself counts.
+- **G2, people:** at least one teammate captured (Phase 2). If solo, you themself counts.
 - **G3, SOP depth:** Phase 3 produced at least 5 priority SOPs, each with trigger, input, ordered steps, owner, systems touched, data written, output, exceptions, failure modes, approval rules, and agent behaviour. If any are shallow, return to Phase 3 for that SOP.
 - **G4, tools captured:** at least 3 tools surfaced in Phase 7. If fewer, push back: "Three tools is the minimum for a useful brain. What about email, calendar, anywhere you store customers?"
 - **G5, per-tool enrichment:** every tool from Phase 7 has admin, auth path, users, source-of-truth status, key records, key fields, read permissions, draft permissions, approval-only updates, and never-change rules captured in Phase 7B. If any tool is missing those fields, return to Phase 7B for that tool.
@@ -411,7 +410,7 @@ When all interview phases are complete, run the **completeness gates** below bef
 
 If all gates pass, say:
 
-> Ready to build? Type `READY TO BUILD` and I will produce your intelligence-layer scaffold as a single setup script. Save it as `setup.sh` in the folder where you want your business to live, then run `bash setup.sh`. It creates a folder tree (identity, the operator, memory rules, people, customers, SOPs, per-tool connection notes, plus a long-form interview backup) and fills every file with what you told me.
+> Ready to build? Type `READY TO BUILD` and I will produce your intelligence-layer scaffold as a single setup script. Save it as `setup.sh` in the folder where you want your business to live, then run `bash setup.sh`. It creates a folder tree (identity, you, memory rules, people, customers, SOPs, per-tool connection notes, plus a long-form interview backup) and fills every file with what you told me.
 
 Wait for `READY TO BUILD`. If they ask to change anything first, loop back to the relevant phase and re-confirm.
 
@@ -445,7 +444,7 @@ The scaffold is **dynamic**. `soul.md`, `user.md`, `memory.md` are always emitte
 ├── CLAUDE.md
 │
 ├── soul.md            (always; Phase 1 identity + Phase 8 dream-state condensed)
-├── user.md            (always; the operator running this, from Phase 1 + Phase 2)
+├── user.md            (always; you running this, from Phase 1 + Phase 2)
 ├── memory.md          (always; what the agent should remember + read first each session)
 ├── voice.md           (conditional: only if Phase 1 + Phase 4 produced enough voice samples)
 ├── brand.md           (conditional: only if Phase 4 product framing surfaced brand cues)
@@ -492,7 +491,7 @@ The top-level files (soul, user, memory, plus conditionals) are what the WS1 ind
 
 - **`soul.md`**. Frontmatter: `name`, `slug` (always `soul`), `generated_at`. Body: condensed Phase 1 identity (one paragraph: what we are, who we serve, how we charge, where we are, how old, stage) followed by Phase 8's dream-state in three sentences. This is the file every agent reads first to understand who it is working for.
 
-- **`user.md`**. Frontmatter: `name` (the operator), `role`, `slug` (always `user`). Body: the operator's profile (name, role, what they own in the business, what they do not own, tech comfort from Phase 7). Optional sub-section: "Other teammates the agent should know about" if Phase 2 captured more than just the operator (cross-references `people/*.md`).
+- **`user.md`**. Frontmatter: `name` (you), `role`, `slug` (always `user`). Body: your profile (name, role, what they own in the business, what they do not own, tech comfort from Phase 7). Optional sub-section: "Other teammates the agent should know about" if Phase 2 captured more than just you (cross-references `people/*.md`).
 
 - **`memory.md`**. Frontmatter: `slug` (always `memory`). Body: what the agent should remember across sessions, in three sub-sections:
   - **Read first every session:** list of file paths the agent should read at session start.
@@ -501,7 +500,7 @@ The top-level files (soul, user, memory, plus conditionals) are what the WS1 ind
 
 ### Top-level (conditional, emit only if the interview produced enough material)
 
-- **`voice.md`**. Frontmatter: `slug` (always `voice`). Body: how the operator writes. Three-sentence opening, then a bullet list of voice rules in the member's words, then three example sentences pulled verbatim from interview answers. Emit only if Phase 1 + Phase 4 produced at least 3 sentences of voice material.
+- **`voice.md`**. Frontmatter: `slug` (always `voice`). Body: how you writes. Three-sentence opening, then a bullet list of voice rules in the member's words, then three example sentences pulled verbatim from interview answers. Emit only if Phase 1 + Phase 4 produced at least 3 sentences of voice material.
 
 - **`brand.md`**. Frontmatter: `slug` (always `brand`). Body: what the business stands for, what it explicitly does NOT stand for, the reference cadence (3-5 short lines that sound like the brand). Emit only if Phase 4 surfaced brand cues beyond the product itself.
 
@@ -521,7 +520,7 @@ The top-level files (soul, user, memory, plus conditionals) are what the WS1 ind
 
 - **`sops/<slug>.md`**. One per Phase 3 SOP (and one lightweight stub per future-SOP item the member tagged). Frontmatter: `name`, `slug`, `trigger` (what fires this SOP), `frequency`, `owner` (from Phase 2), `automation_target` (one of `manual`, `assisted`, `automated`, `not-applicable`), `approval_boundary` (what needs human approval). Body: numbered steps in exact order, then sub-sections for inputs, systems touched, data written, decision branches, rules and thresholds, people involved, customer/supplier touchpoints, internal handoffs, output, edge cases (last 90 days), failure modes, metrics, manual waste, what the agent may read/draft/update, what it must never change, and the 12-month ideal state.
 
-- **`skills/connect-<tool>.md`**. One per tool surfaced in Phase 7. Pick the matching recipe from the **CONNECTION RECIPE LIBRARY** (next section) and fill in the operator's specific values: admin name, auth method, teammates, source-of-truth flag, key records, key fields, read permissions, draft permissions, approval-only updates, and never-change rules. If no recipe matches, emit a stub with `status: untested-recipe` frontmatter and the generic OAuth / API-key / app-password template.
+- **`skills/connect-<tool>.md`**. One per tool surfaced in Phase 7. Pick the matching recipe from the **CONNECTION RECIPE LIBRARY** (next section) and fill in your specific values: admin name, auth method, teammates, source-of-truth flag, key records, key fields, read permissions, draft permissions, approval-only updates, and never-change rules. If no recipe matches, emit a stub with `status: untested-recipe` frontmatter and the generic OAuth / API-key / app-password template.
 
 ### Intelligence (long-form interview backup)
 
@@ -730,7 +729,7 @@ Every build skill and every agent ships with this block (the build skill inlines
 
 ## CONNECTION RECIPE LIBRARY
 
-When the scaffold emits `skills/connect-<tool>.md` files (one per Phase 7 tool), use the recipes below. Each recipe is a templated skill body the build-plan agent fills with the operator's specific values (admin name, auth method, teammates, source-of-truth) from Phase 7B.
+When the scaffold emits `skills/connect-<tool>.md` files (one per Phase 7 tool), use the recipes below. Each recipe is a templated skill body the build-plan agent fills with your specific values (admin name, auth method, teammates, source-of-truth) from Phase 7B.
 
 Recipes are short on purpose. They cover the **happy path** for the most common auth pattern of each tool. Edge cases and provider-UI changes are deliberately not enumerated here (most providers change their UI quarterly); the recipe links to the provider's own docs for current screenshots.
 
@@ -795,7 +794,7 @@ secrets_file: .secrets/<tool-slug>-credentials.json
 #### Email + comms
 
 - **`connect-gmail`** (Google Workspace). Auth: service-account + domain-wide delegation. Admin: Workspace super-admin. Scopes: `gmail.modify` (default), `gmail.send` if Phase 1 Q7 = (c). The shipped `ws1-connect-your-email` skill is the full polished recipe for this path; link to it from the generated stub. Source-of-truth-for: usually client comms history.
-- **`connect-gmail-personal`** (personal `@gmail.com`). Auth: OAuth desktop client + refresh token. Walks the operator through enabling Gmail API in Cloud Console, configuring OAuth consent screen (External + Testing for personal accounts), creating an OAuth desktop client, running a local consent flow.
+- **`connect-gmail-personal`** (personal `@gmail.com`). Auth: OAuth desktop client + refresh token. Walks you through enabling Gmail API in Cloud Console, configuring OAuth consent screen (External + Testing for personal accounts), creating an OAuth desktop client, running a local consent flow.
 - **`connect-outlook`** (Microsoft 365). Auth: Microsoft Graph delegated OAuth (multi-tenant if personal, single-tenant if business). Admin: tenant admin (for admin-consent of `Mail.ReadWrite` + `offline_access`).
 - **`connect-slack`**. Auth: bot token from a custom Slack app (`xoxb-*`). Admin: Slack workspace owner or admin. Scopes: `chat:write`, `channels:read`, `users:read` at minimum; add `files:read` if the agent should pull attachments.
 - **`connect-discord`**. Auth: bot token from the Discord Developer Portal. Admin: server owner. Bot needs to be invited to the server with `applications.commands` + relevant message scopes.

@@ -11,7 +11,7 @@ canonical: true
 **Hook 4:** `[Avatar], are you still...` plus the top three ranked pains, plus the magnet.
 HOOKS.md: **A4** question hook, opened with **P5** name the avatar.
 
-**LOCKED as canonical on the construction card, 2026-08-06**, after five passes. Reproduce that
+**LOCKED as canonical on the construction card, **, after five passes. Reproduce that
 card's shape exactly; do not re-litigate the choices below.
 
 ## Build

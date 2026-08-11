@@ -1,6 +1,4 @@
-# The industry format grid (F7 build spec, 2026-08-06)
-
-the operator's decision on 2026-08-06: the 25 industry statics keep **ranked pain #3** in each industry on
+# The industry format grid (F7 build spec, your decision on : the 25 industry statics keep **ranked pain #3** in each industry on
 the current bottom-band VHS format, and the other **20 cells each get a different static format** so
 the format itself is what gets tested. This file is the assignment, and the sub-skill split that
 F7 gets broken into to build them.
@@ -11,10 +9,10 @@ Approve or amend the grid before anything renders.
 
 ## 1. What the corpus says before a single cell gets built
 
-Three findings from the 2026-08-06 corpus pull change how this grid is designed. Full detail in
-`references/scripts/perdriau-teardowns.md` (static doctrine section) and the refreshed swipe bank.
+Three findings from the corpus pull change how this grid is designed. Full detail in
+`references/scripts/a reference brand-teardowns.md` (static doctrine section) and the refreshed swipe bank.
 
-**A format is not good or bad, it is good or bad at a funnel position.** Perdriau audits creative by
+**A format is not good or bad, it is good or bad at a funnel position.** a reference brand audits creative by
 position first: Magic Mind scored 9 on bottom-of-funnel execution and 6 on scalability, because
 bottom-of-funnel carries a spend ceiling. So **every cell below is labelled TOF, MOF or BOF**, and a
 cell can only be read against others at the same position.
@@ -30,7 +28,7 @@ article screenshot" as a top-of-funnel shape. The archetype's own hard requireme
 an advertorial only performs when the click lands on a page that genuinely teaches, so the answer has
 to actually be there. It is cell `construction/quoting` below.
 
-Perdriau's warning lands on the Figma layer directly: template shapes are built to serve warm
+a reference brand's warning lands on the Figma layer directly: template shapes are built to serve warm
 audiences, and **feature call-outs only work at the bottom of funnel**. The two Figma-derived cells
 are therefore both BOF, never cold.
 
@@ -42,12 +40,12 @@ One card per industry keeps the band format: VHS plate above, one justified your
 bottom 506px. **The keeper is chosen for pain variety, not by rank** (see the note under the table),
 so the five survivors cover five different pains.
 
-**The five keepers moved off the band on 2026-08-06.** Each card now runs a your display typeface 200 "Breaking:"
+**The five keepers moved off the band on .** Each card now runs a your display typeface 200 "Breaking:"
 header and a CTA line over a top-down black fade, a black censorship bar over the subject's eyes
 in place of the pop-art sunglasses, and a torn newspaper clipping in the bottom right carrying the
 industry headline in one black ink. No arrow. `scripts/build_news_clip.py`, outputs
 `out-news/*-clip.png`, law recorded as deviation 3 in `SKILL.md` section 0. Two of the five also
-changed copy on the operator's call, so the pains in the table below no longer describe those cards:
+changed copy on your call, so the pains in the table below no longer describe those cards:
 **hospitality** runs `tribal-knowledge--declarative` instead of `numbers`, and **financial
 services** runs `admin--callout` instead of `context`. Construction, real estate and retail are
 unchanged. Every line is still a verbatim `basics.py` fill of a named HOOKS template.
@@ -85,7 +83,7 @@ unchanged. Every line is still a verbatim `basics.py` fill of a named HOOKS temp
 Holding rank #3 across all five put **owner-bottleneck on three of the five keepers**, because
 construction, real estate and financial services all rank it third. Construction and real estate came
 out as near-duplicate cards separated only by "through the owner" against "through the principal". A
-control group for a format test cannot be near-single-pain, so the operator moved it on 2026-08-06 to one
+control group for a format test cannot be near-single-pain, so you moved it on to one
 distinct pain per industry, each the most ownable pain that industry has: **quoting, lead follow-up,
 tribal knowledge, reporting lag, the dormant client book.**
 
@@ -122,8 +120,8 @@ drawn from the Figma template layer, which is where that layer belongs.
 
 ## 3. The band-law deviation (recorded, not silent)
 
-The layout law (SKILL.md section 0, settled 2026-07-31) puts every mark in the bottom 506px. the operator
-ruled on 2026-08-06 that **native mocks may break it for this test**, because an iMessage thread, a
+The layout law (SKILL.md section 0 puts every mark in the bottom 506px. you
+ruled on that **native mocks may break it for this test**, because an iMessage thread, a
 tweet screenshot or a photographed napkin cannot exist inside a bottom type band, and breaking it is
 the point of the test.
 
@@ -140,7 +138,7 @@ The law still binds every type-led shape, and it stays the house default outside
 
 ## 4. Plate budget
 
-the operator authorised **two paid plates**, one per new look, approved one at a time and then reused across
+you authorised **two paid plates**, one per new look, approved one at a time and then reused across
 industries. Every other cell is free.
 
 | Job | Look | Used by |
@@ -149,7 +147,7 @@ industries. Every other cell is free.
 | 2 | Phone snapshot with on-camera flash | comment reply |
 
 Three cells could take a paid plate later and are deliberately rendered free first, so nothing gets
-paid for before the operator has seen whether the free version holds:
+paid for before you has seen whether the free version holds:
 
 - **Napkin** and **whiteboard** render as drawn artwork rather than a photograph of real paper.
 - **Before and after** uses the same VHS plate twice at two grades rather than the two painted panels
@@ -158,7 +156,7 @@ paid for before the operator has seen whether the free version holds:
 ### Separate from the two: one keeper plate needs a refine
 
 The five keepers are the control group, so they are the cards that most need clean plates. Checked at
-full resolution on 2026-08-06 after the keepers moved to top pain:
+full resolution on after the keepers moved to top pain:
 
 | Keeper | Plate |
 |---|---|
@@ -188,14 +186,12 @@ educate immediately. The five industry magnet pages still do not exist; only the
 
 **Recommendation:** point the advice / advertorial cell at a real house advice page rather than a magnet
 quiz, and treat the advice page as part of that cell's build, since V11's own requirement is that the
-teaching has to be there when the click arrives. the operator has the magnet pages in a separate session, so
+teaching has to be there when the click arrives. you has the magnet pages in a separate session, so
 this is a flag, not a blocker for rendering.
 
 ---
 
-## 6. The F7 sub-skill split (BUILT 2026-08-06)
-
-the operator's note on 2026-08-06: F7 needs breaking into sub-skills, one per sub-format it covers, rather
+## 6. The F7 sub-skill split (BUILT your note on : F7 needs breaking into sub-skills, one per sub-format it covers, rather
 than staying one skill with a template table. Twenty formats do not want twenty skills, so they group
 by **how they are produced**, which is what actually differs between them:
 
@@ -210,7 +206,7 @@ by **how they are produced**, which is what actually differs between them:
 `proof` deliberately overlaps `type-led` and `plate-led`: it is a content gate on which words may
 appear rather than a renderer. The renderers are the first four.
 
-**Built on 2026-08-06.** Five sub-skill files now exist as `formats/static-ads/<name>/SKILL.md`
+**Built on .** Five sub-skill files now exist as `formats/static-ads/<name>/SKILL.md`
 (F7.1 type-led, F7.2 plate-led, F7.3 ui-mock, F7.4 hand-drawn, F7.5 proof), and the parent
 `SKILL.md` is now the router carrying the shared law: the band (section 0), the archetype-to-sub-skill
 map (1), the copy rules (2), the swipe bank (3), the funnel label (4), the rig (5), testing doctrine
@@ -229,12 +225,12 @@ one-block clause, and only for this test. Recorded as deviation 2 in the parent 
 
 ## 7. Build order
 
-1. the operator approves or amends this grid.
-2. ~~Split F7 into the five sub-skills, parent becomes the router.~~ **DONE 2026-08-06.**
+1. you approves or amends this grid.
+2. ~~Split F7 into the five sub-skills, parent becomes the router.~~ **DONE .**
 3. Build the free cells: `type-led`, then `ui-mock`, then `hand-drawn` renders, then `plate-led` on
    the existing VHS plates. Tier A type-led cells render on the existing rig; Tier B, the ui-mocks
    and the hand-drawn cards each need a template written against `band.py` first.
-4. Contact sheet plus dossier of all 25, walk it with the operator.
+4. Contact sheet plus dossier of all 25, walk it with you.
 5. Only then shoot the two paid plates, one at a time, for ultra low-fi and comment reply.
-6. Nothing reaches the CRM without the operator's explicit go. Archiving the 22 old carousels is still an
+6. Nothing reaches the CRM without your explicit go. Archiving the 22 old carousels is still an
    unmade Supabase write.

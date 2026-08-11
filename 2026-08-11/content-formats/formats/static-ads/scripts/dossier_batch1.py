@@ -7,7 +7,7 @@ superseded renders. Opens in the browser.
     python3 dossier_batch1.py --no-open
 
 U7 is left out: it is archived. Its strongest line survives as U4's O1 closing beat; the ladder
-rewrite of 2026-08-10 took the rest of it with the old O3.
+rewrite of took the rest of it with the old O3.
 """
 import subprocess
 import sys
@@ -41,9 +41,9 @@ UNITS = [
         "unit": "U3",
         "title": "The paper carousel",
         "status": ("shipped", "#3ddc84"),
-        "board": "row 45, pushed 2026-08-10, five images verified public",
+        "board": "row 45, pushed five images verified public",
         "note": "The reference implementation of the format. Copy pruned then line-edited by "
-                "the operator the same day.",
+                "you the same day.",
         "cards": [("u3/01-cover.png", "cover"), ("u3/02-who-is-asking.png", "who is asking"),
                   ("u3/03-what-they-need.png", "what they need"),
                   ("u3/04-what-it-pays.png", "what it pays"), ("u3/05-close.png", "close")],
@@ -52,9 +52,9 @@ UNITS = [
         "unit": "U4",
         "title": "THE FIRST SEAT / THE STEP UP / THE TOP",
         "status": ("on the board, ready", "#3ddc84"),
-        "board": "row 46, pushed 2026-08-10, five images verified public",
-        "note": "Rebuilt onto the paper-carousel format on 2026-08-10, then re-spined onto the "
-                "tier ladder on the operator's new cover copy. Close is the Michelangelo's David end "
+        "board": "row 46, pushed five images verified public",
+        "note": "Rebuilt onto the paper-carousel format on then re-spined onto the "
+                "tier ladder on your new cover copy. Close is the Michelangelo's David end "
                 "card. Every hero slot was shot to the old spine, so all three are still "
                 "off-beat: the re-shoot is under way and the pages want re-uploading as each "
                 "plate lands.",
@@ -74,9 +74,9 @@ UNITS = [
         "unit": "U6",
         "title": "Us versus them, splitscreen static",
         "status": ("on the board, ready", "#3ddc84"),
-        "board": "row 47, pushed 2026-08-10, image verified public",
-        "note": "Finished. The CTA names the role you place on the operator's reaffirmed call of "
-                "2026-08-10, while the rest of the batch sells the the entry-level role entry seat.",
+        "board": "row 47, pushed image verified public",
+        "note": "Finished. The CTA names the role you place on your reaffirmed call of "
+                "while the rest of the batch sells the the entry-level role entry seat.",
         "cards": [("u6/u6-us-vs-them.png", "")],
     },
 ]
@@ -126,30 +126,30 @@ def card(entry):
     w, h = Image.open(p).size
     meta = f"{w}x{h}"
     cls = ' class="warn"' if warn else ""
-    lines = "<br>".join(x for x in (cap, ) if x) or Path(rel).stem
+    lines = "<br>".join(x for x in (cap,) if x) or Path(rel).stem
     tail = f"<em>{warn}</em>" if warn else f"<em>{meta}</em>"
     return (f'<figure{cls}><a href="{rel}" target="_blank">'
             f'<div class="shot"><img src="{rel}" loading="lazy" alt="{rel}"></div></a>'
             f'<figcaption>{lines}{tail}</figcaption></figure>')
 
 
-def main():
-    missing = [e[0] for u in UNITS for e in u["cards"] if not (ROOT / e[0]).exists()]
+def main:
+    missing = [e[0] for u in UNITS for e in u["cards"] if not (ROOT / e[0]).exists]
     body = []
     for u in UNITS:
         label, colour = u["status"]
-        cards = [e for e in u["cards"] if (ROOT / e[0]).exists()]
+        cards = [e for e in u["cards"] if (ROOT / e[0]).exists]
         solo = " solo" if len(cards) == 1 else ""
         body.append(
-            f'<section id="{u["unit"].lower()}"><div class="head"><h2>{u["unit"]}</h2>'
+            f'<section id="{u["unit"].lower}"><div class="head"><h2>{u["unit"]}</h2>'
             f'<span class="ttl">{u["title"]}</span>'
             f'<span class="pill" style="color:{colour}">{label}</span></div>'
             f'<p class="board">{u["board"]}</p><p class="note">{u["note"]}</p>'
             f'<div class="grid{solo}">{"".join(card(e) for e in cards)}</div></section>')
 
     total = sum(len(u["cards"]) for u in UNITS)
-    nav = "".join(f'<a href="#{u["unit"].lower()}">{u["unit"]}</a>' for u in UNITS)
-    stamp = datetime.now().strftime("%-d %b %Y, %-I:%M%p").lower()
+    nav = "".join(f'<a href="#{u["unit"].lower}">{u["unit"]}</a>' for u in UNITS)
+    stamp = datetime.now.strftime("%-d %b %Y, %-I:%M%p").lower
 
     html = f"""<!doctype html><html><head><meta charset="utf-8">
 <title>Candidate batch 1, finished cards</title><style>{CSS}</style></head><body><div class="wrap">
@@ -169,4 +169,4 @@ closing bar survives, as U4's O1.<br>Missing from disk: {", ".join(missing) if m
 
 
 if __name__ == "__main__":
-    main()
+    main

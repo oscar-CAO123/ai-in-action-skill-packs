@@ -9,11 +9,9 @@
     python3 plates_suite.py --refine F1 construction --go # i2i fix, keeps the frame
 
 **One paid job at a time.** `--go` refuses to run unless exactly one job is selected. Review the
-returned still before the next is sent. the operator's standing rule and this rig will not override it.
+returned still before the next is sent. your standing rule and this rig will not override it.
 
-## F1, the band (the operator, 2026-08-07)
-
-The band format keeps its type exactly as it is and gains a full-bleed plate behind it.
+## F1, the band (you, The band format keeps its type exactly as it is and gains a full-bleed plate behind it.
 Four calls, all his:
 
   - **Full-bleed behind type**, not a top-half inset and not a hard black band.
@@ -49,10 +47,10 @@ from suite_copy import INDUSTRIES, BY_KEY  # noqa: E402
 VAULT = ROOT.parents[5]
 F8 = (VAULT / "the business" / "projects" / "content-engine" / "ideas"
       / "industry-build-carousels")
-STYLES = json.loads((F8 / "styles.json").read_text())["styles"]
+STYLES = json.loads((F8 / "styles.json").read_text)["styles"]
 GRADE_SH = F8 / "grade_plate.sh"
 OUT = ROOT / "plates-suite"
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 
 # The type sits in the lower third over a fade to black, so the plate has to leave that space
 # quiet. Getting there is a CAMERA instruction, not a layout instruction, and the difference has
@@ -115,7 +113,7 @@ F1_SCENES = {
               "desks on headsets with paper client files open in front of them, a wall of "
               "lever-arch files running down one side of the room, the nearest empty desk "
               "running toward the camera"),
-    # Rewritten 2026-08-07 after three rolls. The original brief put the scene in a laundry with
+    # Rewritten after three rolls. The original brief put the scene in a laundry with
     # a second tradesperson "through the doorway behind him", and every roll framed the whole
     # photograph inside a doorway: first as a hard seam with a pasted floor, then as a soft inset
     # with a blurred surround. Naming a doorway in an interior is what built the frame. This one
@@ -140,14 +138,14 @@ F1_SCENES = {
 }
 
 # ---------------------------------------------------------------------------------------------
-# F3, the question hook. the operator, 2026-08-07, card by card.
+# F3, the question hook. you, card by card.
 #
 # F1 is one scene rewritten seven ways. F3 is the opposite: seven different ideas answering the
 # same question, so every card carries its own medium, its own aspect and in two cases its own
 # geometry. A scene may therefore override `style`, `grade` and `aspect`, and may supply a
 # finished `prompt` instead of a `brief` when the style bank does not describe its look.
 #
-# Not written yet: trades and professional services. the operator: "then we'll work on the rest after."
+# Not written yet: trades and professional services. you: "then we'll work on the rest after."
 
 # The noir blocks, lifted verbatim from formats/noir-painterly/SKILL.md phase 2. A style LOCK
 # outranks this rig, so they are copied rather than paraphrased. No 4:5 tail exists in that skill
@@ -176,7 +174,7 @@ F3_SCENES = {
     # on alone, and that reading is carried by light and framing, never by lettering.
     "construction": dict(
         shot="Extreme close-up",
-        # the operator, 2026-08-07: light on the second hand too. The first roll left the whole right
+        # you, : light on the second hand too. The first roll left the whole right
         # side of the frame in shadow, so the offer read as one pill rather than a choice. Both
         # hands are now lit and the blue keeps its edge by being the brighter of the two.
         brief="Two open human palms held out toward the lens in a dim room, one pill resting in "
@@ -195,7 +193,7 @@ F3_SCENES = {
     "real-estate": dict(
         shot="Medium-wide shot",
         aspect="4:5",
-        # the operator, 2026-08-07: "the text isn't actually properly on the billboard." The first roll
+        # you, : "the text isn't actually properly on the billboard." The first roll
         # set the two lines small, flat and low on a mostly empty board, so they read as an
         # overlay floating in front of it rather than as ink printed on a surface photographed at
         # an angle. The fix is to state the printing as a physical fact: the type is ON the vinyl,
@@ -241,7 +239,7 @@ F3_SCENES = {
             "No text, no lettering, no numerals and no writing anywhere in the image.")),
 
     # The corner office, straight VHS. Camera sits ON the desk looking up at him, which is the
-    # vlog framing the operator asked for, and the warm 70s grade rides on top of the tape look.
+    # vlog framing you asked for, and the warm 70s grade rides on top of the tape look.
     "financial-services": dict(
         shot="Low-angle medium shot from desk height",
         brief="An Australian insurance broker in his forties in a well-cut mid-century suit with "
@@ -270,7 +268,7 @@ F3_SCENES = {
             "bent almost double under one single enormous jagged boulder that rests across his "
             "shoulders and upper back. Both of his arms are hooked backward over the boulder to "
             "hold it in place, the way a man carries a cross. His back is almost horizontal, his "
-            "head hangs down toward the ground, his knees are buckling and one leg drags behind "
+            "head hangs down toward the ground, his knees are bucyour video modeland one leg drags behind "
             "him. The boulder is a single solid mass several times the size of his whole body and "
             "is unmistakably a heavy rock. There is nothing else in the picture: no other figure, "
             "no buildings, no landscape, only bare ground under his feet. "
@@ -278,7 +276,7 @@ F3_SCENES = {
                                  "the top edge of the boulder") + " "
             + NOIR_BLEED + " No text, no lettering and no writing anywhere in the image.")),
 
-    # the operator, 2026-08-07: "the ute at 9pm". Straight VHS, the same universe as F1, and the only
+    # you, : "the ute at 9pm". Straight VHS, the same universe as F1, and the only
     # card in F3 that answers the question with the man himself rather than with a metaphor.
     #
     # It overrides both house clauses because both were written for a room. `LOWER_THIRD` puts the
@@ -306,11 +304,11 @@ F3_SCENES = {
               "dark. A clipboard, a few loose hand tools and a takeaway coffee cup sit on the "
               "seat beside him. Everything further back inside the cab falls away into darkness"),
 
-    # the operator, 2026-08-07: "marble atlas, cracked". A finished prompt because museum sculpture was
+    # you, : "marble atlas, cracked". A finished prompt because museum sculpture was
     # not in the F8 style bank when this was shot, and `grade="none"` because polished marble does
     # not take a tape grade any more than the fresco did.
     #
-    # the operator locked the look the moment he saw it, so it is now `marble-monument` in the bank
+    # you locked the look the moment he saw it, so it is now `marble-monument` in the bank
     # (`industry-build-carousels/styles.json`) and any format after this one casts it from there
     # rather than copying this prompt. This scene keeps its own wording so the approved plate
     # stays reproducible.
@@ -342,7 +340,7 @@ F3_SCENES = {
 }
 
 # ---------------------------------------------------------------------------------------------
-# F4, "Don't hire this person". the operator, 2026-08-07: the classifieds page, struck out.
+# F4, "Don't hire this person". you, : the classifieds page, struck out.
 #
 # One scene seven ways, like F1, but on a different medium so the two never read as the same ad:
 # a jobs page shot flat under a hard press flash. The role that gets struck is the hire the
@@ -411,11 +409,11 @@ def f4_page(role):
             role, F4_LOWER, F4_BRANDING))
 
 
-F4_SCENES = {k: dict(prompt=f4_page(role)) for k, role in F4_ROLES.items()}
+F4_SCENES = {k: dict(prompt=f4_page(role)) for k, role in F4_ROLES.items}
 
 FORMATS = {
     "F1": dict(scenes=F1_SCENES, aspect="4:5", grade="vhs", style="vhs-camcorder"),
-    # the operator, 2026-08-07: "the VHS grain on these is too hard." F3 takes the soft tape grade.
+    # you, : "the VHS grain on these is too hard." F3 takes the soft tape grade.
     "F3": dict(scenes=F3_SCENES, aspect="4:5", grade="vhs-soft", style="vhs-camcorder"),
     "F4": dict(scenes=F4_SCENES, aspect="4:5", grade="press-ink", style="press-flash"),
 }
@@ -440,7 +438,7 @@ def compose(style, shot, brief, lower=None, branding=None):
 
 def jobs(fmts=None, keys=None):
     out = []
-    for fmt, spec in FORMATS.items():
+    for fmt, spec in FORMATS.items:
         if fmts and fmt not in fmts:
             continue
         for i in INDUSTRIES:
@@ -470,7 +468,7 @@ def paths(job):
 
 def grade(raw, dst, style):
     if style == "none":
-        dst.write_bytes(raw.read_bytes())
+        dst.write_bytes(raw.read_bytes)
         return
     subprocess.run(["bash", str(GRADE_SH), style, str(raw), str(dst)], check=True)
 
@@ -479,10 +477,10 @@ def dispatch(job, refine_from=None):
     """ONE paid generation, downloaded before this function returns."""
     raw, dst = paths(job)
     raw.parent.mkdir(parents=True, exist_ok=True)
-    cmd = [HF, "generate", "create", "nano_banana_pro", "--prompt", job["prompt"],
+    cmd = [HF, "generate", "create", "your image model", "--prompt", job["prompt"],
            "--aspect_ratio", job["aspect"], "--resolution", "2k", "--wait", "--json"]
     if refine_from:
-        cmd += ["--image-references", str(Path(refine_from).resolve())]
+        cmd += ["--image-references", str(Path(refine_from).resolve)]
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0 or "[" not in r.stdout:
         raise SystemExit(f"generation failed:\n{r.stderr[-800:]}")
@@ -493,7 +491,7 @@ def dispatch(job, refine_from=None):
     return dst
 
 
-def main():
+def main:
     argv = sys.argv[1:]
     flags = [a for a in argv if a.startswith("--")]
     args = [a for a in argv if not a.startswith("--")]
@@ -507,7 +505,7 @@ def main():
     if "--regrade" in flags:
         for j in js:
             raw, dst = paths(j)
-            if raw.exists():
+            if raw.exists:
                 grade(raw, dst, j["grade"])
                 print(f"  regraded {dst}")
         return
@@ -520,7 +518,7 @@ def main():
         if not prompt:
             raise SystemExit(f"no refine written for {j['fmt']}/{j['industry']}")
         raw, dst = paths(j)
-        if not dst.exists():
+        if not dst.exists:
             raise SystemExit(f"nothing to refine from: {dst} does not exist")
         print(f"\n{j['fmt']} {j['industry']}  REFINE off {dst.name}\n\n{prompt}\n")
         if "--go" not in flags:
@@ -529,8 +527,8 @@ def main():
         vers = dst.parent / "_versions"
         vers.mkdir(exist_ok=True)
         for f in (raw, dst):
-            if f.exists():
-                (vers / f.name).write_bytes(f.read_bytes())
+            if f.exists:
+                (vers / f.name).write_bytes(f.read_bytes)
         dispatch({**j, "prompt": prompt}, refine_from=dst)
         return
 
@@ -545,7 +543,7 @@ def main():
 
     for j in js:
         raw, dst = paths(j)
-        state = "ON DISK" if dst.exists() else "not shot"
+        state = "ON DISK" if dst.exists else "not shot"
         print(f"\n{'=' * 92}\n{j['fmt']}  {j['industry']}  {j['aspect']}  "
               f"grade={j['grade']}  [{state}]\n\n{j['prompt']}")
     print(f"\n\n{len(js)} paid jobs selected. DRY RUN, nothing spent. "
@@ -553,4 +551,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

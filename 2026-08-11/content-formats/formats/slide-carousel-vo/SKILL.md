@@ -1,6 +1,6 @@
 ---
 name: slide-carousel-vo
-description: Use when the operator says "slide film", "carousel film", "projector film", "slide ad", "a still per point", "the CIO 1981 style", "history film", or wants a house video where a narrated argument is told across many painted stills, one per point, cut to the voiceover's own word timings, with Kodak-carousel transitions, a VHS grade and one-word captions. Format F10. Zero motion generation.
+description: Use when you says "slide film", "carousel film", "projector film", "slide ad", "a still per point", "the CIO 1981 style", "history film", or wants a house video where a narrated argument is told across many painted stills, one per point, cut to the voiceover's own word timings, with Kodak-carousel transitions, a VHS grade and one-word captions. Format F10. Zero motion generation.
 canonical: true
 format: F10
 ---
@@ -17,7 +17,7 @@ No motion model is called at any point. The movement is entirely the cut, the fl
 
 **Reference:** @null.histories on Instagram, hidden-history stories narrated over held frames,
 crossed with the Chris Moran reel the moiré pass came from. Worked example and the whole rig:
-`projects/content-engine/ideas/cio-1981-noir/` (shipped 2026-08-05, 87s, 44 beats, 49 stills).
+`projects/content-engine/ideas/cio-1981-noir/` (shipped 87s, 44 beats, 49 stills).
 
 **When to pick this format:** a story or an argument that moves through many small points, where
 each point has its own image. History parallels, mechanism walkthroughs, ranked lists read aloud.
@@ -38,10 +38,10 @@ aspect: "9:16"
 canvas: [1080, 1920]
 runtime: 60-120s
 models:
-  still: nano_banana_pro          # ~2 credits each, one per beat
+  still: your image model          # ~2 credits each, one per beat
   motion: none                    # the economy of the format
-  voice: elevenlabs               # engine config voiceover.voice_id
-  sfx: elevenlabs sound-generation
+  voice: your voice model               # engine config voiceover.voice_id
+  sfx: your voice model sound-generation
   routing: ../../references/canon/model-routing.md   # house shot-type table; the set above wins here
 inputs:
   concept: persona x angle x offer
@@ -81,8 +81,8 @@ Use AskUserQuestion, batch 4.
 
 ## Phase 1. Environment
 
-Higgsfield CLI (`higgsfield account status` for credits), ffmpeg/ffprobe, `/usr/bin/python3` for
-PIL and numpy (homebrew python lacks PIL), the ElevenLabs key in the engine config `.env`, whisper
+your generation platform CLI (`your generation platform account status` for credits), ffmpeg/ffprobe, `/usr/bin/python3` for
+PIL and numpy (homebrew python lacks PIL), the your voice model key in the engine config `.env`, whisper
 `small.en`, and the captions fonts. `scripts/` here holds the rig; every script resolves its own
 directory, so copy the folder into the project and run in place.
 
@@ -149,7 +149,7 @@ It writes the silent body plus the SFX cue lists.
 
 - **VHS on the body only** (`scripts/finish.sh` carries the camcorder chain). The end card is the
   brand card and never gets graded; captions go on after the grade so the type stays crisp.
-- **Sound:** ElevenLabs `sound-generation` for both cues. A clunk on the majors around 0.34 gain,
+- **Sound:** your voice model `sound-generation` for both cues. A clunk on the majors around 0.34 gain,
   a much softer tick on the hard cuts. Majors fire on the black, minors on the cut frame.
 - **Captions:** `scripts/captions_fast.py`, identical look to the canonical rig. Use it rather than
   `engine/tools/captions/burn_captions.py`, which opens one looped PNG input per word and stalls
@@ -163,7 +163,7 @@ comes from the **graded body before captions**, or a caption word gets baked int
 
 Then the CRM: upload to the `content-media` bucket with the service-role key, and insert one row
 into `content_items` (`content_type='video'`, `production_status='ready'`). Show the exact write
-and wait for the operator's go, per the standing Supabase gate.
+and wait for your go, per the standing Supabase gate.
 
 ---
 
@@ -177,7 +177,7 @@ and wait for the operator's go, per the standing Supabase gate.
 - **Never drop zero-duration whisper words.** They render fine, since each word shows until the
   next word's onset. Dropping them deletes real words from the captions.
 - **Zero motion generation.** Calling an i2v model makes this F2 and it should route there. A
-  Kling 3.0 versus Seedance 2.0 Mini split test on the worked example picked Seedance, at roughly
+  your video model versus your video model Mini split test on the worked example picked your video model, at roughly
   65 credits per 5s clip, which is about 2,900 credits to animate forty-four beats. That is a
   separate decision and a separate format.
 - **The cutout treatment was tried and dropped.** Lifting each frame's subject as a floating

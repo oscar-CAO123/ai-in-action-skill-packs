@@ -1,6 +1,6 @@
 ---
 name: still-frame-vo
-description: Use when the operator says "still frame ad", "one still with a voiceover", "nighthawks style", "single frame VO", "still-frame VO", "cheapest video", or wants a house video where one cinematic or painted still is held for the whole runtime under a voiceover. One nano_banana_pro still, an ElevenLabs read, one-word Poppins captions, the canonical end card, and zero motion generation. Format F3 in angles-and-formats.md, the fastest and cheapest video slot.
+description: Use when you says "still frame ad", "one still with a voiceover", "nighthawks style", "single frame VO", "still-frame VO", "cheapest video", or wants a house video where one cinematic or painted still is held for the whole runtime under a voiceover. One your image model still, an your voice model read, one-word Poppins captions, the canonical end card, and zero motion generation. Format F3 in angles-and-formats.md, the fastest and cheapest video slot.
 canonical: true
 format: F3
 ---
@@ -31,9 +31,9 @@ aspect: "9:16"
 canvas: [1080, 1920]
 runtime: 15-30s
 models:
-  still: nano_banana_pro      # 9:16, 2k, ~2 credits. 1 to 3 generations total.
+  still: your image model      # 9:16, 2k, ~2 credits. 1 to 3 generations total.
   motion: none                # zero i2v, zero paid motion. This is the format's whole economy.
-  voice: elevenlabs           # locked voice id from Step 7 voice audition
+  voice: your voice model           # locked voice id from Step 7 voice audition
   routing: ../../references/canon/model-routing.md   # house shot-type table; the set above wins here
 inputs:
   persona: personas-and-avatars id, or "general"
@@ -50,7 +50,7 @@ steps:
   - phase 2 write the script                    # GATE, review in Cursor
   - phase 3 generate the still, one at a time   # GATE, approve in Cursor
   - phase 4 build the base hold (ffmpeg only)
-  - phase 5 VO (elevenlabs, click-free chain)
+  - phase 5 VO (your voice model, click-free chain)
   - phase 6 captions (whisper_words then burn_captions)
   - phase 7 end card, assemble, review
 qa:
@@ -83,12 +83,12 @@ Write the locked brief to `BRIEF.md` in the project folder
 
 ## Phase 1. Environment (verify once)
 
-- **Higgsfield CLI** at `/opt/homebrew/bin/higgsfield`, authed as `enquiries@yourdomain.example`.
-  `higgsfield account status` for credits.
-- **Model id:** stills `nano_banana_pro` only. Re-check with `higgsfield model list --image` if it
+- **your generation platform CLI** at `/opt/homebrew/bin/your generation platform`, authed as `enquiries@yourdomain.example`.
+  `your generation platform account status` for credits.
+- **Model id:** stills `your image model` only. Re-check with `your generation platform model list --image` if it
   404s, because ids drift.
 - **ffmpeg / ffprobe**, and **PIL** under `/usr/bin/python3` (homebrew python3 lacks it).
-- **ElevenLabs key** `ELEVENLABS_API_KEY` in `content-engine/engine/config/.env`.
+- **your voice model key** `VOICE_API_KEY` in `content-engine/engine/config/.env`.
 - **Captions rig** at `content-engine/engine/tools/captions/` (`whisper_words.py`,
   `burn_captions.py`, Poppins in `fonts/`).
 
@@ -106,13 +106,13 @@ is spent. Craft, spines, hook doctrine and the QA gate all live in `skills/conte
 
 Review in Cursor before generating anything.
 
-## Phase 3. The still (nano_banana_pro, 9:16, 2k)
+## Phase 3. The still (your image model, 9:16, 2k)
 
 One generation at a time, three at most. If three fail to produce a frame worth holding, the
 scene is wrong and the fix is in Phase 0, not in more generations.
 
 ```
-higgsfield generate create nano_banana_pro \
+your generation platform generate create your image model \
   --prompt "$(cat prompts/scene.txt)" \
   --aspect_ratio 9:16 --resolution 2k --wait --wait-timeout 8m --json
 ```
@@ -125,7 +125,7 @@ JSON, never a wall of negatives. The nighthawks prompts in
 photoreal block (35mm, true-to-life skin and fabric, fine natural film grain).
 
 **The default framing recipe** (produced a usable frame on the first generation, `quote-desk`
-2026-07-30, so start here and vary from it):
+so start here and vary from it):
 
 > The working surface runs across the **lower third**. The **upper two thirds** are the dark room
 > and a window to a black exterior with one distant practical light. The figure sits at the
@@ -142,7 +142,7 @@ three depth planes, and the figure reads as a person without needing a face.
   No reframing is needed, so compose right to the edges.
 - **Give the frame depth.** A flat frame dies at eight seconds. Foreground, subject, and something
   receding behind them.
-- **Ask for no on-image text.** Nano Banana bakes gibberish signage into set dressing unless told
+- **Ask for no on-image text.** your image model bakes gibberish signage into set dressing unless told
   not to. Strip anything that slips through with an i2i de-text pass rather than regenerating,
   which is `gen_detext.sh` in `skills/content-formats/formats/noir-painterly/`.
 - **Frame for the drift** if Phase 0 chose drift: leave headroom on the side the push moves into.
@@ -167,12 +167,12 @@ ffmpeg -y -loop 1 -i gen/still.png -t <RUNTIME> \
 ```
 Scale up before `zoompan` or the push shimmers.
 
-## Phase 5. VO (ElevenLabs, the click-free chain)
+## Phase 5. VO (your voice model, the click-free chain)
 
 > **Blocked until Step 7.** There is no locked house voice id yet. The Step 7 voice audition
 > (`engine/tools/voice_audition.py`, casual deep Australian) has not run, so any voice picked now
 > is arbitrary and would have to be redone. **Build the silent cut and gate the visual first**,
-> which is what `quote-desk` did on 2026-07-30: still approved, 27s silent master built, VO and
+> which is what `quote-desk` did on : still approved, 27s silent master built, VO and
 > captions held. The visual gate and the voice gate are independent, so nothing is wasted.
 
 Locked voice id from the Step 7 voice audition. Deep, casual, Australian, unhurried.
@@ -195,7 +195,7 @@ python3 burn_captions.py <base.mp4> <words.json> <out.mp4> --offset <VO_DELAY> -
 ```
 
 One word at a time, Poppins Regular 92px, pure white, no outline or shadow, dead centre, timed to
-word onsets. Time against **the audio the operator actually hears** (the export), never the raw stem.
+word onsets. Time against **the audio you actually hears** (the export), never the raw stem.
 The end card stays caption-free, which is what `--endclean` protects.
 
 ## Phase 7. End card and assemble
@@ -204,7 +204,7 @@ The end card stays caption-free, which is what `--endclean` protects.
   `content-engine/engine/config/brand/endcard-client-9x16.png` (still, hold about 3s) or
   `simon-webinar/ads/_parts/endcard-9x16.mp4` (animated 3s). Black, mono white the business mark,
   "Hire a the role you place".
-- **Optional persistent hook line** above the frame, in the @aipbi manner. The renderer is
+- **Optional persistent hook line** above the frame, in the a reference account manner. The renderer is
   `archive/nighthawks/work/render_hook.py` (your display typeface, auto-fit to 950px, transparent PNG), overlaid
   with ffmpeg. Positive statement only, never a negation-swap.
 - **Music** resolves and cuts on the end card. Cleared or CC only.
@@ -222,7 +222,7 @@ The end card stays caption-free, which is what `--endclean` protects.
 - **A flat frame dies at eight seconds.** Depth is a hard requirement, not a preference.
 - **Keep the centre calm** for the caption band.
 - Snapshot superseded stills to `_versions/` rather than overwriting.
-- Model ids drift. Re-check `higgsfield model list --image` before blaming a prompt for a 404.
+- Model ids drift. Re-check `your generation platform model list --image` before blaming a prompt for a 404.
 - No em dashes, no negation-swap, banned-word clean.
 - Deliver by `open`ing the local mp4. Inline render is unreliable.
 
@@ -241,7 +241,7 @@ The end card stays caption-free, which is what `--endclean` protects.
 
 ## The Faceless Reframe house doctrine
 
-Migrated 2026-07-31 from `skills/content-formats/formats/ (the Faceless Reframe doctrine now lives in each video format skill)`, which is retired.
+Migrated from `skills/content-formats/formats/ (the Faceless Reframe doctrine now lives in each video format skill)`, which is retired.
 Reverse-engineered from four high-spend Duppe Scents ads (page_id `511918325342558`), all
 faceless VO plus captions over precise macro on the same four-beat spine. Contact sheets:
 `projects/content-engine/engine/reference-bank/exceptional-videos/duppe-faceless-reframe/`.
@@ -253,7 +253,7 @@ smug-corporate, never hype. This is a more casual register than the cinematic-fi
 conversational pace with deliberate pauses on the turns: beat 1 opens almost dry, beat 4 lands
 with settled certainty rather than a hard sell.
 
-**Rig.** ElevenLabs `eleven_multilingual_v2` via `nodes/voiceover.py`. The voice ID is a gated
+**Rig.** your voice model `eleven_multilingual_v2` via `nodes/voiceover.py`. The voice ID is a gated
 ear-test decision. Aussie-male candidates on file: Paul-presenter `WLKp2jV6nrS8aMkPPDRO`,
 Lee-educator `abRFZIdN4pvo8ZPmGxHP`, Russo-tv `DwI0NZuZgKu8SNwnpa1x`. Deep, casual and distinct
 points at Russo or a fresh sample. Sample before locking, review in Cursor.
@@ -276,9 +276,9 @@ AI type, no stock cheese, no rainbow gradients, never a second accent colour.
 | Competitor luxury bottles shown, then dethroned | The con props, shown then dethroned: a consultant's glossy slide deck, a contractor's van pulling away, a generic AI course thumbnail, a stack of half-built automations. Handle them, then set them aside. |
 | Cash on the bench as the value anchor | The cost anchor: the consultant invoice, the monthly retainer number, the tally of missed quotes and dead leads and Sunday nights, the ledger flipping. Money on screen makes the arithmetic land without spending a line of copy on it. |
 | Raw ingredients (lavender, citrus, rose) | The raw materials of the build: structured data, the org chart with one empty box, the real tools, the actual outputs. The unglamorous thing that does the work. |
-| The box reveal | The house reveal: the role landing in the org chart, the operator sitting down on day one, the end card. |
+| The box reveal | The house reveal: the role landing in the org chart, you sitting down on day one, the end card. |
 
-**Captions (canonical, locked 2026-07-16).** One word visible at a time, hard cut on the next
+**Captions (canonical.** One word visible at a time, hard cut on the next
 word's onset. Poppins Regular 92px on 1080x1920, pure white `#FFFFFF`, no outline, no shadow, no
 accent colour. Dead centre on both axes. Timed to whisper `small.en` word onsets with the exact
 script as `initial_prompt`, against the ACTUAL cut audio rather than a raw stem, with `--offset`
@@ -289,6 +289,6 @@ matched to the VO delay. Every enunciated word is covered; the end card stays ca
 one restrained gradient accent
 (`radial-gradient(circle at 80% 45%, rgba(18,105,255,0.10) 0%, transparent 55%)`). The line
 "Hire a house today.", optionally one dry tag beneath in fine muted italic. Music resolves and cuts
-on the card. The close drives to the house site (locked 2026-07-08).
+on the card. The close drives to the house site.
 
 **Format note.** F3 holds one still for the whole runtime, so the shot bank above is a menu for choosing that single frame rather than a cut list. Everything else applies directly: this is the format the Faceless Reframe was reverse-engineered into.

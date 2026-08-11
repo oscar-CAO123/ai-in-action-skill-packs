@@ -11,8 +11,7 @@ The card looks like it was made in thirty seconds by the person talking, which i
 before it gets classified. Low fidelity is a decision the card has to make on purpose and hold
 completely, because half-polish reads as a mistake.
 
-**Read `../SKILL.md` first.** This sub-skill breaks the band law by design, recorded on 2026-08-06
-for this test. A drawing cannot live inside a bottom type band.
+**Read `../SKILL.md` first.** This sub-skill breaks the band law by design, recorded on for this test. A drawing cannot live inside a bottom type band.
 
 **Cost: free first.** All three render as drawn artwork before anything is photographed. Only the
 ultra low-fi look has a paid plate authorised, and it stays unshot until the free version has been

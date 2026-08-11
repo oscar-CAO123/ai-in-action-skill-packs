@@ -16,7 +16,7 @@ import numpy as np
 from PIL import Image, ImageFilter
 from scipy import ndimage
 
-PLATES = Path(__file__).resolve().parent.parent / "plates-magnet"
+PLATES = Path(__file__).resolve.parent.parent / "plates-magnet"
 OUT = Path(__file__).parent / "out"
 OUT.mkdir(exist_ok=True)
 
@@ -48,7 +48,7 @@ lab, n = ndimage.label(m)
 edge = set(np.unique(lab[:, 0])) - {0}
 if not edge:
     raise SystemExit("no component reaches the left edge, loosen the thresholds")
-best = max(edge, key=lambda i: (lab == i).sum())
+best = max(edge, key=lambda i: (lab == i).sum)
 m = lab == best
 m = ndimage.binary_fill_holes(m)
 m = ndimage.binary_closing(m, np.ones((25, 25)))
@@ -60,8 +60,8 @@ img = img.filter(ImageFilter.GaussianBlur(9))       # feather: the source edge i
 
 cov = np.asarray(img).astype(np.float32) / 255.0
 ys, xs = np.where(cov > 0.5)
-print(f"matte covers {100 * (cov > 0.5).mean():.2f}% of the frame")
-print(f"bbox x {xs.min()}-{xs.max()}  y {ys.min()}-{ys.max()}  (frame {W}x{H})")
+print(f"matte covers {100 * (cov > 0.5).mean:.2f}% of the frame")
+print(f"bbox x {xs.min}-{xs.max}  y {ys.min}-{ys.max}  (frame {W}x{H})")
 
 img.save(OUT / "arm-mask.png")
 cut = Image.new("RGBA", (W, H), (0, 0, 0, 0))

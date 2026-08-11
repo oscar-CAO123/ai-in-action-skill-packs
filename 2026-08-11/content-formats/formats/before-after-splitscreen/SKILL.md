@@ -1,6 +1,6 @@
 ---
 name: before-after-splitscreen
-description: Use when the operator says "before and after", "split screen", "splitscreen", "before/after carousel", "the painting one", or wants a house static showing a business owner before and after they hire a the role you place. Builds a 4:5 split screen: two classical oil paintings of the same owner in the same room meeting at a hard centre seam, their pains listed in your display typeface over the dark half and what changed listed over the light half. Format F9 in angles-and-formats.md.
+description: Use when you says "before and after", "split screen", "splitscreen", "before/after carousel", "the painting one", or wants a house static showing a business owner before and after they hire a the role you place. Builds a 4:5 split screen: two classical oil paintings of the same owner in the same room meeting at a hard centre seam, their pains listed in your display typeface over the dark half and what changed listed over the light half. Format F9 in angles-and-formats.md.
 canonical: false
 format: F9
 status: in gate (Step-6-style). Not a valid pick for the weekly draw until it passes.
@@ -20,7 +20,7 @@ argues with a diagram, and F9 argues with a portrait.
 `context/pain-wiki/industries/`, in the owner's own words, with its evidence recorded in `src`.
 Invented pains kill it, because the whole effect depends on an owner reading their own week.
 
-**Status: authored 2026-08-05, no panels shot yet.** The rig renders on labelled placeholders, and
+**Status: authored no panels shot yet.** The rig renders on labelled placeholders, and
 the prompt pair is written. Nothing has been paid for.
 
 **Lineage:** the rig is `projects/content-engine/ideas/before-after-splitscreen/`. It borrows the
@@ -36,7 +36,7 @@ format: F9
 skill: before-after-splitscreen
 canvas: [1080, 1350]           # 4:5, rendered at device-scale 2 to 2160x2700
 panels: 2 per unit             # left BEFORE, right AFTER. 2 paid stills per unit
-plate: nano_banana_pro at 4:5, 2k, one job at a time
+plate: your image model at 4:5, 2k, one job at a time
 routing: ../../references/canon/model-routing.md   # house shot-type table. nano keeps this lane: it is the only model with a native 4:5
 renderer: headless-chrome      # CHROME_BIN env, macOS default fallback
 fonts:
@@ -97,9 +97,9 @@ lost profile is period-correct, so the rule costs nothing here.
 type hold over it. The AFTER panel is left much brighter (0.34 to 0.72) with only four lines to
 carry. The reader sees the difference in the light before they read either list.
 
-## 1a. The stacked photographic variant (ruled 2026-08-07, not built)
+## 1a. The stacked photographic variant, not built)
 
-A second layout for the same argument, taken from `@thediaryofaceopodcast` and recorded at
+A second layout for the same argument, taken from `a reference account` and recorded at
 `projects/content-engine/engine/reference-bank/carousels/DbGk7k-l5sC/ENTRY.md`. Where the painted
 split above runs left to right and lists both sides in full, this one runs top to bottom and puts
 one pair of lines per slide across a whole carousel.
@@ -209,7 +209,7 @@ vertical set of four units is eight generations against F8's twenty.
 
 ## 7. Gotchas
 
-- The model id is `nano_banana_pro`. `nano_banana_2` 404s.
+- The model id is `your image model`. `your image model_2` 404s.
 - **The two panels drift.** Generated as two jobs, the model will change the person's age, hair or
   clothing between them. The shared subject clause is the mitigation, not a guarantee. Check the
   pair side by side before compositing, and regenerate the AFTER panel against the BEFORE rather

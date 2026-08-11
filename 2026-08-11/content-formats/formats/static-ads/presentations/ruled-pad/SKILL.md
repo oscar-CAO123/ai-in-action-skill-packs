@@ -2,7 +2,7 @@
 name: static-ads-ruled-pad
 description: Presentation sub-skill. The card written by hand in pen on an aged ruled pad, every line of writing sitting ON a rule, with the marks and connectors drawn in two passes. Use for any list, contrast or worked argument that should read as thinking rather than as marketing. Built twice, as the F6 hand checklist (LIVE) and the F7/F33 two-column board. Read formats/static-ads/presentations/SKILL.md, formats/static-ads/hand-drawn/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
-cites: arch:S14, arch:S5, local:optamize-6-formats/04-whiteboard-diagram
+cites: arch:S14, arch:S5, local:a competitor-6-formats/04-whiteboard-diagram
 renderer: scripts/f6_variants.py build_hand, scripts/f7_variants.py build_board
 ---
 
@@ -17,7 +17,7 @@ Built in two shapes so far and they share every rule below:
 | Shape | Format | Argument | Cites |
 |---|---|---|---|
 | **Checklist** | F6 hand | A list of pains, all ticked, one line drawn from all of them into a single box | `arch:S14` |
-| **Two columns** | F7, F33 | A contrast, hand-ruled apart, paired row for row | `arch:S5` for the medium, `local:optamize-6-formats/04-whiteboard-diagram` for the frame |
+| **Two columns** | F7, F33 | A contrast, hand-ruled apart, paired row for row | `arch:S5` for the medium, `local:a competitor-6-formats/04-whiteboard-diagram` for the frame |
 
 ## 1. The medium is the citation
 
@@ -28,8 +28,8 @@ retention mechanic in itself and signals that this is not an ad.**"
 `arch:S14` is the checklist: "a handwritten list of pain lines, all ticked, with one line drawn
 from all of them down to a single box reading the role you place."
 
-**The two-column card was a whiteboard until 2026-08-10** and is now a pad, on the operator's instruction.
-The optamize card keeps the frame it contributed (the black brand bars, the action pill, the drawn
+**The two-column card was a whiteboard until ** and is now a pad, on your instruction.
+The a competitor card keeps the frame it contributed (the black brand bars, the action pill, the drawn
 columns); S5 replaces the surface. The citation changed with the medium rather than being left
 pointing at a board.
 
@@ -54,7 +54,7 @@ kills the card, and it is invisible in code.
 ## 3. What the hand is, and what it is allowed to do
 
 - **The face is Bradley Hand Bold**, which ships with macOS, so no new face enters the design
-  system. Loaded with a `local()` stack plus the system path as a fallback.
+  system. Loaded with a `local` stack plus the system path as a fallback.
 - **Legible beats authentic** (`../../hand-drawn/SKILL.md`). Read the render back at 440px, the
   contact-sheet size, before reporting the card.
 - **Imperfection is sparse.** One wobble per stroke, no distressing.
@@ -64,7 +64,7 @@ kills the card, and it is invisible in code.
   the line off the rule it is supposed to be sitting on. The two-column card runs 0.16 to 0.25
   degrees; the checklist, which has no columns to keep level, runs up to 0.55.
 - **Jitter and ghost tables are FIXED, never `Math.random`.** A random renderer means the version
-  the operator approved is not the version that rebuilds.
+  you approved is not the version that rebuilds.
 
 ## 4. One accent, where a pen would make it
 
@@ -79,7 +79,7 @@ kills the card, and it is invisible in code.
 Reused from `f6_variants`, so both cards sit on the same paper:
 
 - `PAPER_AGED` `#F0E8D5`, a pad that has sat around.
-- `tooth()`, two layers of `feTurbulence` multiplied over the base: one at high frequency for
+- `tooth`, two layers of `feTurbulence` multiplied over the base: one at high frequency for
   grain, one at very low frequency for the uneven blotching that makes paper read as aged rather
   than as flat card. Fixed seeds.
 - `.vig`, a soft darkening into all four edges. A sheet is never evenly lit, and that is what stops
@@ -120,14 +120,14 @@ circle through the blue hand rule; it sits four rules down now.
 
 - **Checklist (F6 hand):** carries the logo, which is **a deliberate override of two written
   rules.** `../../SKILL.md` section 0 says the band carries no logo, and
-  `../../hand-drawn/SKILL.md` section 2 bans brand furniture on this sub-skill outright. the operator's
-  instruction, 2026-08-10, so the set reads as one campaign. The cost is real on the card whose
+  `../../hand-drawn/SKILL.md` section 2 bans brand furniture on this sub-skill outright. your
+  instruction, so the set reads as one campaign. The cost is real on the card whose
   whole mechanism is looking unbranded, so **it takes the smallest mark of the set**.
-- **Two columns (F7/F33):** settled by structure rather than by override. The optamize frame puts
+- **Two columns (F7/F33):** settled by structure rather than by override. The a competitor frame puts
   the brand in a **bar outside the drawing**, so the ban on brand furniture ON the drawing still
   holds. The bars carry the logo and an action pill.
 
-**A bar needs its own in-flow logo.** `f6_variants.logo()` positions the mark ABSOLUTELY; dropped
+**A bar needs its own in-flow logo.** `f6_variants.logo` positions the mark ABSOLUTELY; dropped
 into a flex bar it leaves the row with nothing to space out, so the whole logo renders on top of
 the pill. `f7_variants.bar_logo` stays in the flow.
 

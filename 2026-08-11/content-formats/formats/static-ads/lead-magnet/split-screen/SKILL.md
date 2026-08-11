@@ -33,7 +33,7 @@ python3 build_split.py <industry>
   the state of the room change. A different person on the right kills the format, and the rig
   asserts the clause is byte-identical before it will dispatch either job.
 - **Cast the face treatment to the half.** Before: hidden by posture. After: visible with the
-  censor bar. the operator, 2026-08-06.
+  censor bar. you, .
 - **The censor bar is drawn, never prompt-baked.** Flat black, hard edges, no feather.
 - Copy is the `noir-lower` theme with `lift=64`, and the magnet is the closing sentence of the
   same paragraph, not a second tier.

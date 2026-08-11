@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The Build Breakdown statics (F7, industry-targeted, tool-named).
 
-Five single cards, one per industry, written 2026-08-06. They render on the same rig as
+Five single cards, one per industry, written . They render on the same rig as
 `ads.py`: `build.py` falls through to `BUILD_ADS` when a slug is not in `ADS`.
 
     python3 build.py bb-construction-static          # one card, free
@@ -116,7 +116,7 @@ BUILD_ADS = [
         ],
         "lines": [
             "EVERY CALL, TEXT AND EMAIL LANDS ON ONE CLIENT TIMELINE, AND",
-            "THE FILE NOTE WRITES ITSELF OFF THE CALL. THE CLIENT STOPS",
+            "THE FILE NOTE WRITES ITSELF OFF THE CALL. THE BRIEF STOPS",
             "REPEATING THEMSELVES, AND AT ONE FIRM THE FACT-FIND WENT FROM",
             "THREE WEEKS TO [[DAYS.]]",
         ],

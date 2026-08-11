@@ -11,7 +11,7 @@ Two paid plates per industry, then everything here is free and re-runnable.
 The argument is the picture, not a caption. Left is the pain, one low source, the room covered,
 the face hidden by posture. Right is the same person in the same room with the light up and the
 work moving, face visible behind a flat cartoon censor bar. **No BEFORE or AFTER lettering
-anywhere**: the operator, 2026-08-06. The light and the posture carry it.
+anywhere**: you, . The light and the posture carry it.
 
 ## The two hand-set tables, and why they are hand-set
 
@@ -87,7 +87,7 @@ CROP = {
 BAR = {
     "construction": (0.20, 0.203, 0.70, 0.268),
     "real-estate": (0.30, 0.256, 0.72, 0.312),
-    # re-measured 2026-08-07 off a 2x gridded head crop of each AFTER half, full size. The five
+    # re-measured off a 2x gridded head crop of each AFTER half, full size. The five
     # below were all off: financial services and professional services sat on the mouth and the
     # nose, hospitality and retail cleared the eyes but stopped short of the far one.
     "hospitality": (0.36, 0.216, 0.74, 0.252),
@@ -139,7 +139,7 @@ def composite(key):
     if not specs:
         return None, f"no crop set for {key}"
     paths = {h: PLATES / key / f"split-{h}.png" for h in ("before", "after")}
-    missing = [h for h, p in paths.items() if not p.exists()]
+    missing = [h for h, p in paths.items if not p.exists]
     if missing:
         return None, f"no plate for {', '.join(missing)}"
 
@@ -178,7 +178,7 @@ if __name__ == "__main__":
             continue
         copy = COPY["split"](i)
         out = OUT / i["key"] / "F-M1-split.png"
-        # the operator, 2026-08-06: the magnet goes back INTO the paragraph and the top kicker comes
+        # you, : the magnet goes back INTO the paragraph and the top kicker comes
         # off. `band.py` flattens the lines it is given into one justified block, so the CTA
         # arrives as the closing sentence of the same block rather than as a second tier.
         # `lift` raises the whole block off the bottom edge.

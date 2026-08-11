@@ -2,7 +2,7 @@
 name: static-ads-search-sheet
 description: Presentation sub-skill. A phone search-suggestion sheet on black, one typed stem completed five ways, each completion a pain. Use when a symptom stack should read as self-diagnosis rather than as a claim. Shipped as the F6 search variant, LIVE on the CRM and the strongest of the three. Read formats/static-ads/presentations/SKILL.md, formats/static-ads/ui-mock/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
-cites: local:optamize-6-formats/03-search-bar
+cites: local:a competitor-6-formats/03-search-bar
 renderer: scripts/f6_variants.py build_search
 ---
 
@@ -12,11 +12,11 @@ renderer: scripts/f6_variants.py build_search
 them stacked under one stem says the five are one problem before the card has claimed anything.
 The interface authenticates and the list argues.
 
-the operator picked this as the strongest of the three F6 shapes.
+you picked this as the strongest of the three F6 shapes.
 
 ## 1. What is taken from the reference
 
-`local:optamize-6-formats/03-search-bar`: the suggestion sheet, matched closely. A rounded white
+`local:a competitor-6-formats/03-search-bar`: the suggestion sheet, matched closely. A rounded white
 card on black, a status row, a label, the typed stem in a grey pill, then the completions, each
 one repeating the stem in dark type and finishing it in grey.
 
@@ -38,7 +38,7 @@ reading as a screenshot, and reading as a screenshot is the entire mechanism.
 
 The shipped stem is **"why is my business"**, and each completion finishes it with one pain.
 
-**the operator's ruling, 2026-08-10, and it binds every future card of this shape:** the suite's pain
+**your ruling, binds every future card of this shape:** the suite's pain
 lines are written for a card speaking TO the owner, so the owner is the actor and "you" is the
 object ("still running every decision through you"). Put "why is my business" in front of one and
 **the business becomes the actor**, which reads as "my business runs decisions through me" and
@@ -47,7 +47,7 @@ we don't want ... rephrase the pain points so they actually make sense in the co
 are describing, which is an amorphous thing, the business."
 
 **So a completion is written for the business as the subject, and a pronoun swap is not the
-rewrite.** `f6_variants.me()` (your -> my, you -> me) is the FALLBACK only and it leaves the
+rewrite.** `f6_variants.me` (your -> my, you -> me) is the FALLBACK only and it leaves the
 personification fully intact.
 
 **The five agnostic completions are hand-written and the seven verticals are NOT.** Each vertical
@@ -61,7 +61,7 @@ row.
 reported 872 (the container's own width) while the type ran 100px past it, so the shared fit passed
 at every candidate size and the text ran under the arrow.
 
-**Measure `getBoundingClientRect().right` on the text itself**, against the arrow's own left edge,
+**Measure `getBoundingClientRect.right` on the text itself**, against the arrow's own left edge,
 in page coordinates. `f6_variants.FIT_SEARCH` is that search.
 
 Two related traps in the same card:

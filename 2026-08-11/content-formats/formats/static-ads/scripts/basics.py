@@ -6,14 +6,14 @@
     python3 basics.py --shape question
     python3 basics.py --sheets        # contact sheet per shape
 
-Settled with the operator 2026-08-06. This is NOT the news-carousel band:
+Settled with you . This is NOT the news-carousel band:
 
   - **Sentence case.** All caps is the F5 news-carousel doctrine and it carries the band keepers
     only. Every card here sets sentence case, which is also what separates them from the control
     at thumbnail size.
   - **Top anchored, left aligned, ragged right.** Taken off the Figma scaffolds, which all anchor
     type to the top and let it run ragged. The band anchors to the bottom and justifies flush.
-  - **The avatar comes FIRST.** the operator, 2026-08-06: a line like "still running seven systems that
+  - **The avatar comes FIRST.** you, : a line like "still running seven systems that
     do not talk" with no avatar in front of it makes no sense on a cold feed. The industry opens
     every card.
   - **Fill, never free-write.** Every shape is a named template from `references/hooks/HOOKS.md`,
@@ -237,7 +237,7 @@ GRID = {
 
 
 def cap(s):
-    return s[0].upper() + s[1:] if s else s
+    return s[0].upper + s[1:] if s else s
 
 
 # Each shape is a FILL of a named template in references/hooks/HOOKS.md, cited by id.

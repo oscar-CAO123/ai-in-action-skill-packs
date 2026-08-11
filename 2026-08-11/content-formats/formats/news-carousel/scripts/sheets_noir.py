@@ -15,8 +15,8 @@ BG = (12, 12, 12)
 INK = (210, 210, 210)
 
 
-def decks():
-    return sorted(d for d in OUT.iterdir() if d.is_dir() and d.name.startswith("noir-pain-"))
+def decks:
+    return sorted(d for d in OUT.iterdir if d.is_dir and d.name.startswith("noir-pain-"))
 
 
 def label(draw, x, y, text, size):
@@ -24,9 +24,9 @@ def label(draw, x, y, text, size):
     draw.text((x, y), text, font=f, fill=INK)
 
 
-def wall():
+def wall:
     """Every slide-1 at half size, 5 across, labelled with its slug."""
-    ds = decks()
+    ds = decks
     tw, th = 540, 675
     cap = 46
     pad = 14
@@ -38,7 +38,7 @@ def wall():
     draw = ImageDraw.Draw(sheet)
     for i, d in enumerate(ds):
         p = d / "slide-01.png"
-        if not p.exists():
+        if not p.exists:
             continue
         x = pad + (i % cols) * (tw + pad)
         y = pad + (i // cols) * (th + cap + pad)
@@ -49,12 +49,12 @@ def wall():
     print(f"{out}  {sheet.size}  {len(ds)} decks")
 
 
-def deck_sheets():
+def deck_sheets:
     """One sheet per deck: 6 slides across at 45 percent, numbered."""
     tw, th = 486, 608
     cap = 40
     pad = 12
-    for d in decks():
+    for d in decks:
         slides = sorted(d.glob("slide-*.png"))
         W = len(slides) * (tw + pad) + pad
         H = th + cap + 2 * pad + 44
@@ -74,6 +74,6 @@ def deck_sheets():
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "both"
     if mode in ("wall", "both"):
-        wall()
+        wall
     if mode in ("decks", "both"):
-        deck_sheets()
+        deck_sheets

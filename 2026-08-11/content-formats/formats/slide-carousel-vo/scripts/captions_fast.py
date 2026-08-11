@@ -19,21 +19,21 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 W, H, FPS = 1080, 1920, 24
-def _find_font():
+def _find_font:
     """Walk up from this script until the engine's captions fonts turn up, so the rig works
     wherever the project folder sits."""
-    here = Path(__file__).resolve()
-    for parent in [Path.cwd().resolve()] + list(here.parents):
+    here = Path(__file__).resolve
+    for parent in [Path.cwd.resolve] + list(here.parents):
         f = parent / "engine/tools/captions/fonts/Poppins-Regular.ttf"
-        if f.exists():
+        if f.exists:
             return f
         f = parent / "../../engine/tools/captions/fonts/Poppins-Regular.ttf"
-        if f.exists():
-            return f.resolve()
+        if f.exists:
+            return f.resolve
     raise SystemExit("Poppins-Regular.ttf not found; is the engine tools folder reachable?")
 
 
-FONT = _find_font()
+FONT = _find_font
 SIZE = 92
 
 
@@ -44,14 +44,14 @@ def arg(flag, default):
 def dur(p):
     r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
                         "-of", "default=nk=1:nw=1", str(p)], capture_output=True, text=True)
-    return float(r.stdout.strip())
+    return float(r.stdout.strip)
 
 
 def clean(t):
-    return t.strip().rstrip(".,")            # keep ? and !
+    return t.strip.rstrip(".,")            # keep ? and !
 
 
-def main():
+def main:
     base, words_json, out = sys.argv[1], sys.argv[2], sys.argv[3]
     offset = float(arg("--offset", "0"))
     endclean = float(arg("--endclean", "3.0"))
@@ -67,12 +67,12 @@ def main():
     for w in raw:
         if not clean(w[2]):
             continue
-        if w[1] <= w[0] and words and clean(words[-1][2]).lower() == clean(w[2]).lower():
+        if w[1] <= w[0] and words and clean(words[-1][2]).lower == clean(w[2]).lower:
             continue
         words.append(w)
 
     font = ImageFont.truetype(str(FONT), SIZE)
-    ascent, descent = font.getmetrics()
+    ascent, descent = font.getmetrics
     ch = ascent + descent
 
     # one sprite per distinct word, and the frame range it owns
@@ -125,15 +125,15 @@ def main():
             x0, y0 = (W - sw) // 2, (H - sh) // 2
             patch = frame[y0:y0 + sh, x0:x0 + sw]
             frame[y0:y0 + sh, x0:x0 + sw] = patch * (1 - alpha) + rgb * alpha
-            enc.stdin.write((np.clip(frame, 0, 1) * 255 + 0.5).astype(np.uint8).tobytes())
+            enc.stdin.write((np.clip(frame, 0, 1) * 255 + 0.5).astype(np.uint8).tobytes)
         n += 1
 
-    enc.stdin.close()
-    dec.wait()
-    if enc.wait() != 0:
+    enc.stdin.close
+    dec.wait
+    if enc.wait != 0:
         sys.exit("encode failed")
     print(f"WROTE {out}  ({len(spans)} words over {n} frames, {len(sprites)} sprites)")
 
 
 if __name__ == "__main__":
-    main()
+    main

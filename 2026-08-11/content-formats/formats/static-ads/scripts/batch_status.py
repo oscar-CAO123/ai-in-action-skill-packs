@@ -8,7 +8,7 @@ layer, render counts from the folders on disk, CRM counts from the board itself 
 which costs two reads). Anything that could not be checked in this run is labelled UNVERIFIED
 on the page rather than being quietly asserted.
 
-Written 2026-08-10 because four workstreams (the magnets themselves, the magnet statics, the
+Written because four workstreams (the magnets themselves, the magnet statics, the
 19-format suite, the carousels) had drifted into four separate handovers and no single view.
 """
 import subprocess
@@ -25,20 +25,20 @@ OUT_SUITE, OUT_MAGNET = ROOT / "out-suite", ROOT / "out-magnet"
 DIST = VAULT / "the business" / "projects" / "lead-magnet-funnels" / "build" / "_shell" / "dist"
 
 # Presentation state per suite format. This is the ONE hand-kept table on the page: it records
-# what the operator has decided, which no file on disk knows. Everything else is measured.
+# what you has decided, which no file on disk knows. Everything else is measured.
 DECIDED = {
     "F1": ("LIVE", "Full-bleed VHS plate, band over it. 7 rows on the board."),
     "F3": ("LIVE", "Seven treatments, one per industry. 7 rows on the board."),
     "F5": ("LIVE", "Four presentations: news, rather, inbox, apology. 4 rows. "
-                   "the operator: 'I love the news headline one.'"),
+                   "you: 'I love the news headline one.'"),
     "F6": ("LIVE", "Three presentations: search, rows, hand. 3 rows, agnostic."),
     "F7": ("LIVE", "BOTH shapes, agnostic: pen on a ruled pad and the black comparison table. 2 rows, same copy, and the board decides which survives."),
     "F4": ("REOPENED", "Classifieds plates shot and rejected as a shape, and so was the "
-                       "job-ad-set-in-type replacement. Waiting on a new shape from the operator. "
+                       "job-ad-set-in-type replacement. Waiting on a new shape from you. "
                        "Do not spend until he picks."),
     "F33": ("BUILT, UNSHIPPED", "The consultant contrast, rendered and correct on the same ruled "
-                                "pad as F7. Not pushed: the operator cut the set to one format on "
-                                "2026-08-10. `crm_f7_variants.py --fmt F33` ships it if he "
+                                "pad as F7. Not pushed: you cut the set to one format on "
+                                ". `crm_f7_variants.py --fmt F33` ships it if he "
                                 "changes his mind."),
     "F8": ("LIVE", "The PERMISSION CAROUSEL, two slides on shot period-noir plates. 2 rows. "
                    "Declared a canonical format: formats/permission-carousel/SKILL.md. The PSA "
@@ -55,7 +55,7 @@ DECIDED = {
     "F12": ("NOT BUILT", "Plate exists, no renderer."),
     "F14": ("NOT BUILT", "Plate exists, SVG overlay needed."),
     "F16": ("NOT BUILT", "Two grades of one plate, no renderer."),
-    "F18": ("NOT BUILT", "Renderer needed, free. Group-chat use needs the operator's approval."),
+    "F18": ("NOT BUILT", "Renderer needed, free. Group-chat use needs your approval."),
     "F23": ("NOT BUILT", "Renderer needed, free. The only hand-drawn format left."),
 }
 
@@ -80,11 +80,11 @@ ASSETS = [
 # Not verifiable from this folder. Stated as coming from the handovers, and labelled as such.
 CAROUSELS = [
     ("Industry-build carousels (F8)", "19 verticals x 6 pages", "114 pages live on the CRM",
-     "handover industry-build-carousel, 2026-08-06"),
+     "handover industry-build-carousel, "),
     ("Noir pain decks (F5)", "22 decks", "All 22 generated, 14 live on the CRM",
-     "handover noir-carousel-pain-queue, 2026-08-02"),
+     "handover noir-carousel-pain-queue, "),
     ("Build Breakdown series", "157 unique cases", "Built, UNSHOT",
-     "handover build-breakdown-series, 2026-08-06"),
+     "handover build-breakdown-series, "),
 ]
 
 CSS = """
@@ -119,18 +119,18 @@ def tag(kind, text):
 
 def rendered(fmt):
     d = OUT_SUITE / fmt
-    return len([f for f in d.glob("*.png") if not f.name.startswith("_")]) if d.is_dir() else 0
+    return len([f for f in d.glob("*.png") if not f.name.startswith("_")]) if d.is_dir else 0
 
 
-def crm_counts():
+def crm_counts:
     """Read the board. Two calls, both read-only, and both may be skipped."""
     out = {}
     for name, script in (("suite", "crm_suite.py"), ("magnet", "crm_magnet.py")):
         try:
             r = subprocess.run([sys.executable, str(ROOT / script), "--status"],
                                capture_output=True, text=True, timeout=120)
-            last = [ln for ln in r.stdout.strip().splitlines() if ln.strip()][-1]
-            out[name] = last.strip()
+            last = [ln for ln in r.stdout.strip.splitlines if ln.strip][-1]
+            out[name] = last.strip
         except Exception as e:                                   # noqa: BLE001
             out[name] = f"UNREAD ({e.__class__.__name__})"
     return out
@@ -167,7 +167,7 @@ def build(crm=None):
         f'<td class="num">7</td><td class="num">7</td>'
         f'<td>{tag("done", "BUILT")}</td>'
         f'<td class="dim">{", ".join(ref for ref, _ in h["model"])}</td></tr>'
-        for h in HOOKS.values())
+        for h in HOOKS.values)
 
     asset_rows = "".join(
         f'<tr><td>{n}</td><td class="dim">{fmt}</td>'
@@ -208,7 +208,7 @@ to push.</p>
 
 <h2>2. Lead-magnet statics, the promo cards for those assets</h2>
 <p class="sub">Five formats across seven industries. This set is FINISHED: every card is built and
-every one is on the board. The magnet names and routes were renamed 2026-08-10, so the PNGs on
+every one is on the board. The magnet names and routes were renamed so the PNGs on
 disk are current and the CRM row titles still carry the old names.</p>
 <table><tr><th>Fmt</th><th>Format</th><th>Cards</th><th>Built</th><th>State</th>
 <th>Modelled on</th></tr>{magnet_rows}</table>
@@ -217,11 +217,11 @@ disk are current and the CRM row titles still carry the old names.</p>
 <p class="sub">{len(FORMATS)} formats, {n_cards} cards of copy authored, {len(KILLED)} formats
 killed. Copy is done for all of them. <b>Presentation is the bottleneck, not copy.</b>
 <b class="num">{len(live)} are LIVE</b> and <b class="num">{len(FORMATS) - len(live)} are left</b>:
-two are OPEN and workable today, F4 and F33 wait on the operator, four are BLOCKED behind a citation or a
+two are OPEN and workable today, F4 and F33 wait on you, four are BLOCKED behind a citation or a
 real quote, and six have no renderer at all. Everything marked OPEN renders today as bare type on
 black with the top half empty.</p>
-<p class="sub"><b>A format whose rows do not change by industry has no verticals.</b> the operator's cut of
-2026-08-10, on sight of nine near-identical F7 and F33 cards: F33's seven verticals were
+<p class="sub"><b>A format whose rows do not change by industry has no verticals.</b> your cut of
+on sight of nine near-identical F7 and F33 cards: F33's seven verticals were
 byte-identical and F7's differed only in the head's industry name. The Cards column below is the
 copy matrix, NOT a shipping plan. Diff the renders before building a vertical set.</p>
 <table><tr><th>Fmt</th><th>Format</th><th>Family</th><th>Cards</th><th>Rendered</th>
@@ -258,8 +258,8 @@ write and needs your go.</li>
 
 
 if __name__ == "__main__":
-    crm = crm_counts() if "--crm" in sys.argv else None
+    crm = crm_counts if "--crm" in sys.argv else None
     path = build(crm)
-    # Plain `open`, so it lands in the browser. House rule, 2026-08-10: dossiers are HTML and
+    # Plain `open`, so it lands in the browser. House rule, : dossiers are HTML and
     # they are reviewed in the browser, never in Cursor.
     subprocess.run(["open", str(path)])

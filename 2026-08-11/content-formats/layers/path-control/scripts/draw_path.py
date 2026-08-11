@@ -47,18 +47,18 @@ def load_font(size):
             return ImageFont.truetype(f, size)
         except OSError:
             continue
-    return ImageFont.load_default()
+    return ImageFont.load_default
 
 
-def main():
-    ap = argparse.ArgumentParser()
+def main:
+    ap = argparse.ArgumentParser
     ap.add_argument("plate")
     ap.add_argument("out")
     ap.add_argument("--waypoints", nargs="+", required=True,
                     help="x,y fractions in camera order, e.g. 0.8,0.7 0.5,0.4")
     ap.add_argument("--width-pct", type=float, default=STROKE_PCT)
     ap.add_argument("--no-labels", action="store_true")
-    a = ap.parse_args()
+    a = ap.parse_args
 
     im = Image.open(a.plate).convert("RGB")
     W, H = im.size
@@ -100,4 +100,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

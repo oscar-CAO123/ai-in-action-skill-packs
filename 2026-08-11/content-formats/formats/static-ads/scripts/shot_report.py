@@ -6,13 +6,13 @@
     python3 shot_report.py --secs 2       # cut lower down the report
     python3 shot_report.py --width 1200   # override the capture width
 
-This is the deliverable in F-M2. the operator's call 2026-08-06: headless Chrome at 2x rather than a
+This is the deliverable in F-M2. your call : headless Chrome at 2x rather than a
 driven browser, because it is deterministic, carries no window chrome and no cursor, is retina
 sharp, and can be re-shot for free after any edit to the asset.
 
 How it works, and why it does not touch the prototypes:
 
-  The prototypes already ship a `jumpToReport()` used by their own "Skip to a filled report"
+  The prototypes already ship a `jumpToReport` used by their own "Skip to a filled report"
   button, which loads the DEMO answer set and renders the real scored report. This rig copies the
   prototype to a temp file **inside build/** (so `logo.svg` and every other relative path still
   resolves), appends a bootstrap script that calls that function and strips the page furniture,
@@ -50,41 +50,41 @@ MAX_H = 6000           # a capture past this is a sliver on the card, so it is a
 # The page furniture that is not the deliverable. The report itself is <main id="report">.
 BOOTSTRAP = """
 <script>
-(function(){
-  jumpToReport();
-  setTimeout(function(){
+(function{
+  jumpToReport;
+  setTimeout(function{
     ['.proto','.nav','.hero','.site-foot'].forEach(function(sel){
-      document.querySelectorAll(sel).forEach(function(e){ e.remove(); });
+      document.querySelectorAll(sel).forEach(function(e){ e.remove; });
     });
     document.body.style.margin = '0';
     var r = document.getElementById('report');
     r.style.margin = '0';
     window.scrollTo(0, 0);
-    var top = r.getBoundingClientRect().top + window.scrollY;
+    var top = r.getBoundingClientRect.top + window.scrollY;
     var secs = r.querySelectorAll('.sec');
-    var cut = r.getBoundingClientRect().height;
+    var cut = r.getBoundingClientRect.height;
     if(SECS === 0 && secs.length){
       // everything above section 01: the score head, the topline and the CTA bar
-      cut = secs[0].getBoundingClientRect().top + window.scrollY - top;
+      cut = secs[0].getBoundingClientRect.top + window.scrollY - top;
     } else if(secs.length >= SECS){
-      cut = secs[SECS - 1].getBoundingClientRect().bottom + window.scrollY - top;
+      cut = secs[SECS - 1].getBoundingClientRect.bottom + window.scrollY - top;
     }
     document.documentElement.dataset.reportH = Math.ceil(cut);
   }, 400);
-})();
+});
 </script>
 """
 
 
 def temp_page(proto, secs=SECS):
     """Write the instrumented copy beside the original so relative assets still resolve."""
-    html = proto.read_text()
+    html = proto.read_text
     if "</body>" not in html:
         raise SystemExit(f"{proto.name}: no </body> to hook, the prototype shape changed")
     doc = html.replace("</body>", BOOTSTRAP.replace("SECS", str(secs)) + "</body>", 1)
     f = tempfile.NamedTemporaryFile("w", suffix=".html", dir=proto.parent, delete=False)
     f.write(doc)
-    f.close()
+    f.close
     return Path(f.name)
 
 
@@ -92,11 +92,11 @@ def measure(page, width):
     dom = subprocess.run(
         [CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
          f"--window-size={width},2000", "--virtual-time-budget=6000",
-         "--dump-dom", page.as_uri()],
+         "--dump-dom", page.as_uri],
         capture_output=True, text=True).stdout
     m = re.search(r'data-report-h="(\d+)"', dom)
     if not m:
-        raise SystemExit("could not measure the report. Did jumpToReport() throw?")
+        raise SystemExit("could not measure the report. Did jumpToReport throw?")
     return int(m.group(1))
 
 
@@ -114,7 +114,7 @@ def capture(page, png, width, height):
     subprocess.run(
         [CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
          "--force-device-scale-factor=2", f"--window-size={width},{tall}",
-         "--virtual-time-budget=6000", f"--screenshot={png}", page.as_uri()],
+         "--virtual-time-budget=6000", f"--screenshot={png}", page.as_uri],
         stderr=subprocess.DEVNULL, check=True)
     im = Image.open(png)
     scale = im.width / width                      # device pixel ratio, 2
@@ -123,7 +123,7 @@ def capture(page, png, width, height):
 
 def shoot(industry, width=WIDTH, secs=SECS):
     proto = MAGNET_BUILD / industry["proto"]
-    if not proto.exists():
+    if not proto.exists:
         print(f"  {industry['key']:22} SKIPPED, no prototype at {proto.name}")
         return None
     page = temp_page(proto, secs)

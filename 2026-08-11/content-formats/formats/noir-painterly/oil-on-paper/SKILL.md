@@ -1,6 +1,6 @@
 ---
 name: noir-painterly-oil-on-paper
-description: F2 sub-skill. The same black-and-white noir oils, painted onto a sheet of warm paper instead of set inside a black environment. Use when the operator says "oil on paper", "the paper noir", "the paper style", "paint it on paper", or wants a candidate-facing painted plate. Owns the PAPER and MARKS prompt blocks, the gesture rule, and the light-ground band. Read formats/noir-painterly/SKILL.md first for the parent style.
+description: F2 sub-skill. The same black-and-white noir oils, painted onto a sheet of warm paper instead of set inside a black environment. Use when you says "oil on paper", "the paper noir", "the paper style", "paint it on paper", or wants a candidate-facing painted plate. Owns the PAPER and MARKS prompt blocks, the gesture rule, and the light-ground band. Read formats/noir-painterly/SKILL.md first for the parent style.
 parent: noir-painterly
 format: F2.1
 canonical: true
@@ -8,7 +8,7 @@ canonical: true
 
 # F2.1 Oil on paper
 
-Declared canonical by the operator on 2026-08-07, off the plate in `examples/01-gesture-founding-plate.png`.
+Declared canonical by you on off the plate in `examples/01-gesture-founding-plate.png`.
 
 **The difference from the parent is what the ground IS.** F2 paints a world and lets it fall away
 into crushed black, so the frame is a place. This paints a subject onto a page, so the frame is an
@@ -48,7 +48,7 @@ Both blocks live in code at `formats/static-ads/scripts/gen_candidate_plate.py` 
 > sheet of warm off-white paper with visible fibre, tooth and a few age flecks. The paper is the
 > whole ground and fills the frame edge to edge.*
 
-**MARKS** (the imperfection block, the operator's ask 2026-08-07: "add a few human mistakes")
+**MARKS** (the imperfection block, your ask : "add a few human mistakes")
 > *The hand shows: a few loose spots and flecks of black paint dotted around the page away from the
 > subject, one or two strokes that stop short or miss where they were going, a thin dry-brush skip
 > where the bristles ran out of paint, and faint smudges and fingerprints on the bare paper. Purely
@@ -58,7 +58,7 @@ Both blocks live in code at `formats/static-ads/scripts/gen_candidate_plate.py` 
 > shadow, no white surround and no desk or surface behind or around it anywhere. Absolutely no
 > text, no lettering, no signage, no labels, no logos and no numbers anywhere.*
 
-**The edge ban is load bearing and was strengthened on 2026-08-07** after the U7 cover came back
+**The edge ban is load bearing and was strengthened on ** after the U7 cover came back
 as a photographed sheet with a deckle edge, a white surround and a drop shadow, all four already
 banned by the shorter wording. Naming the failure explicitly ("never a photograph of a sheet")
 is what holds it.
@@ -77,7 +77,7 @@ That is what makes it read as a painting rather than as an illustration of a per
 **Spelling out the anatomy kills it, and this was tested rather than assumed.** A second version of
 the founding plate named the head, the arched back, both arms, each leg and the direction of
 travel. It came back technically correct and completely literal: a rendered man in a gown, legible
-at a glance and generic, with none of the force of the gestural version. the operator rejected it and
+at a glance and generic, with none of the force of the gestural version. you rejected it and
 restored the abstract plate. Compare `01-gesture-founding-plate.png` against
 `04-counter-example-too-literal.png` before writing any scene block.
 
@@ -87,7 +87,7 @@ abstract to place, add ONE anchor object. Never a body plan.
 ## 4. What carries over, and what must never be pasted back in
 
 **Carries over from the parent, unchanged.**
-- The faceless clause, unless the operator authorises a face for a specific plate. His rule, 2026-08-07:
+- The faceless clause, unless you authorises a face for a specific plate. His rule, :
   **"faces when I say so, otherwise none."**
 - Pure black and white. No colour, ever.
 - The single hard key on the subject, so the paint keeps one bright edge and one dark mass.
@@ -106,7 +106,7 @@ which is what the poster layout wants. **It leaves the painting floating** if th
 instead: compare `03-before-the-extend.png` against `02-full-page-extend.png`.
 
 **To fill the page, extend rather than re-roll.** Feed the approved plate back as an i2i reference
-on `nano_banana_pro` and ask for MORE of the same scene carried out to the edges, naming what
+on `your image model` and ask for MORE of the same scene carried out to the edges, naming what
 continues (limbs out of the bottom corners, spatter toward all four edges) and stating that poses
 and expressions do not change. The face, the hands and the brushwork survive intact. The rig
 supports this: `gen_candidate_plate.py` takes a `refs` list of bare plate filenames.

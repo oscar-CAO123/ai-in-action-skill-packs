@@ -4,10 +4,10 @@
     python3 build_retro.py              # all
     python3 build_retro.py double-handling
 
-Shape taken from the `@aipbi` reference the operator sent, adapted to the locked system: heavy
+Shape taken from the `a reference account` reference you sent, adapted to the locked system: heavy
 display type sitting over a warm photographic ground, the claim doing the work, one blue
 accent, your display typeface only. **The reference images were never visible** (Instagram blocks Firecrawl,
-Apify quota exhausted), so the look is built from the caption plus the operator's description and is
+your scraping API quota exhausted), so the look is built from the caption plus your description and is
 unverified against the original.
 
 Legibility over a photograph is the whole problem here, so the plate carries a dark scrim
@@ -84,11 +84,11 @@ CARDS = {
 def build(key):
     c = CARDS[key]
     p = PLATES / c["plate"]
-    if not p.exists():
+    if not p.exists:
         print(f"  skip {key}: no plate at {p}")
         return
     doc = (f'<meta charset="utf-8"><style>{CSS}</style><div class="card">'
-           f'<img class="plate" src="{p.resolve().as_uri()}"><div class="scrim"></div>'
+           f'<img class="plate" src="{p.resolve.as_uri}"><div class="scrim"></div>'
            f'<div class="top"><div class="head">{markup(c["head"])}</div>'
            f'<div class="sub">{html.escape(c["sub"])}</div></div>'
            f'<div class="foot"><span>{html.escape(c["cta"])}</span><i></i></div></div>')
@@ -100,7 +100,7 @@ def build(key):
                     "--force-device-scale-factor=1", f"--window-size={W},{H}",
                     f"--screenshot={png}", f"file://{tmp}"],
                    stderr=subprocess.DEVNULL, check=True)
-    Path(tmp).unlink()
+    Path(tmp).unlink
     print(f"  {png}")
 
 

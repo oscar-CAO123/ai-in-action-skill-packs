@@ -14,11 +14,11 @@ import json
 import subprocess
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve.parent
 
 
 def b64(p):
-    return base64.b64encode(Path(p).read_bytes()).decode()
+    return base64.b64encode(Path(p).read_bytes).decode
 
 
 CSS = """
@@ -55,12 +55,12 @@ h1{font-size:26px;letter-spacing:-.01em;margin-bottom:6px}
 """
 
 
-def main():
-    ap = argparse.ArgumentParser()
+def main:
+    ap = argparse.ArgumentParser
     ap.add_argument("--out", default=str(ROOT / "out"))
-    args = ap.parse_args()
+    args = ap.parse_args
     out = Path(args.out)
-    rep = json.loads((out / "report.json").read_text())
+    rep = json.loads((out / "report.json").read_text)
     deck, slides = rep["deck"], rep["slides"]
 
     cards = []
@@ -116,4 +116,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

@@ -38,7 +38,7 @@ IMG_W = 820
 
 def parse_playbook(slug):
     """Ranked pains and the lead-magnet questions out of one industry playbook."""
-    src = (WIKI / "industries" / f"{slug}.md").read_text()
+    src = (WIKI / "industries" / f"{slug}.md").read_text
 
     pains = []
     block = re.search(r"^## Pains, ranked\n(.*?)^## ", src, re.S | re.M)
@@ -47,26 +47,26 @@ def parse_playbook(slug):
         body = m.group(3)
         def field(name):
             f = re.search(rf"\*\*{name}\.\*\* (.+?)(?=\n\n|\Z)", body, re.S)
-            return " ".join(f.group(1).split()) if f else ""
-        desc = re.split(r"\n\*\*", body.strip())[0]
-        pains.append({"rank": int(m.group(1)), "title": m.group(2).strip(),
-                      "desc": " ".join(desc.split()),
+            return " ".join(f.group(1).split) if f else ""
+        desc = re.split(r"\n\*\*", body.strip)[0]
+        pains.append({"rank": int(m.group(1)), "title": m.group(2).strip,
+                      "desc": " ".join(desc.split),
                       "evidence": field("Evidence"), "angle": field("Angle")})
 
     lm = re.search(r"^## Lead magnet: (.+?)\n(.*?)^## ", src, re.S | re.M)
     questions, lede = [], ""
     if lm:
-        lede = " ".join(lm.group(2).strip().split("\n")[0].split())
+        lede = " ".join(lm.group(2).strip.split("\n")[0].split)
         for q in re.finditer(r"^(\d+)\. (.+?)$", lm.group(2), re.M):
-            questions.append({"n": int(q.group(1)), "q": q.group(2).strip()})
+            questions.append({"n": int(q.group(1)), "q": q.group(2).strip})
     return pains, questions, lede
 
 
 def corpus_row(slug):
     """The industry's line from the wiki INDEX, so the dossier states its own sample size."""
-    for line in (WIKI / "INDEX.md").read_text().splitlines():
+    for line in (WIKI / "INDEX.md").read_text.splitlines:
         if line.startswith(f"| [[{slug}]]"):
-            c = [x.strip() for x in line.strip("|").split("|")]
+            c = [x.strip for x in line.strip("|").split("|")]
             return {"calls": int(c[1]), "businesses": int(c[2]), "records": int(c[4])}
     return {"calls": 0, "businesses": 0, "records": 0}
 
@@ -74,9 +74,9 @@ def corpus_row(slug):
 def data_uri(png):
     im = Image.open(png).convert("RGB")
     im.thumbnail((IMG_W, IMG_W * 4))
-    buf = io.BytesIO()
+    buf = io.BytesIO
     im.save(buf, "JPEG", quality=86)
-    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue).decode
 
 
 def accent_html(lines):
@@ -86,7 +86,7 @@ def accent_html(lines):
 
 
 def title_of(slug):
-    return slug.replace("-and-", " & ").replace("-", " ").title()
+    return slug.replace("-and-", " & ").replace("-", " ").title
 
 
 CSS = """
@@ -138,23 +138,23 @@ footer li{margin-bottom:6px}
 """
 
 
-# the operator, 2026-08-06: the format grid keeps ONE card per industry on this band format and replaces the
+# you, : the format grid keeps ONE card per industry on this band format and replaces the
 # other twenty cells with twenty different static formats. `--keepers` renders only the five
 # survivors. Grid: formats/static-ads/FORMAT-GRID.md.
 #
 # The keeper was ranked pain #3 for about an hour, and that put the SAME pain on three of the five
 # (construction, real estate and financial services all rank owner-bottleneck third), leaving
 # construction and real estate as near-duplicate cards separated only by "owner" against "principal".
-# A control group for a format test cannot be near-single-pain, so the operator moved it to one distinct pain
+# A control group for a format test cannot be near-single-pain, so you moved it to one distinct pain
 # per industry, each the most ownable pain that industry has.
 #
-# the operator, 2026-08-06 (second pass): hospitality, retail and financial services move to their
+# you, (second pass): hospitality, retail and financial services move to their
 # TOP-ranked pain. Real estate is explicitly excepted and stays on lead follow-up. Construction was
 # not named and stays on quoting, which is its most ownable pain even though it ranks fourth.
 # The five still cover five distinct pains, which was the point of moving off rank #3.
 KEEPERS = {
     "construction-and-trades": "quoting",              # rank 4, kept: most ownable
-    "real-estate-and-property-management": "leadgen",   # rank 5, kept: the operator's exception
+    "real-estate-and-property-management": "leadgen",   # rank 5, kept: your exception
     "hospitality-and-food-service": "numbers",          # rank 1
     "retail-and-ecommerce": "systems",                  # rank 1
     "financial-services-and-insurance": "context",      # rank 1
@@ -220,7 +220,7 @@ def industry_section(deck, keepers=False):
 </section>"""
 
 
-def main():
+def main:
     keepers = "--keepers" in sys.argv
     sections, totals, nav = [], {"calls": 0, "businesses": 0, "records": 0}, []
     for deck in INDUSTRY_STATICS:
@@ -240,7 +240,7 @@ def main():
 <header>
   <h1>the business , {'what remains of the existing batch' if keepers else 'single-card industry statics'}</h1>
   {'''<div class="sub"><b>Five cards, one per industry, five different pains.</b> These are the
-  survivors of the format grid the operator settled on 2026-08-06: one card per industry keeps this
+  survivors of the format grid you settled on : one card per industry keeps this
   bottom-band VHS format, and the other twenty cells are being rebuilt in twenty different static
   formats to test the format itself. The grid is <code>formats/static-ads/FORMAT-GRID.md</code>.</div>
   <div class="sub"><b>The keeper is chosen for pain variety, not by rank.</b> Holding rank #3 across
@@ -252,8 +252,8 @@ def main():
   without <code>--keepers</code>.</div>''' if keepers else '''<div class="sub">Five industries, five cards each. Every card is one ranked pain, targeted at one
   industry. This set replaces the 22 general-pain noir carousels, which carried no industry and a
   generic quiz CTA.</div>'''}
-  <div class="sub"><b>Plates are real-world captures, no people.</b> the operator replaced the painted noir
-  plates on 2026-08-06. Each industry is shot on one style from the F8 plate-style bank at
+  <div class="sub"><b>Plates are real-world captures, no people.</b> you replaced the painted noir
+  plates on . Each industry is shot on one style from the F8 plate-style bank at
   <code>ideas/industry-build-carousels/styles.json</code>, composed and graded exactly the way the
   industry-build carousels are. The leader-arrow CTA that briefly rode on the plate was cut the same
   day, so nothing is drawn over the plate and the band is the only type on the card.</div>
@@ -284,7 +284,7 @@ def main():
 <footer>
   <div>Renders from <code>build_industry.py</code>, copy in <code>decks_industry.py</code>, this page
   from <code>dossier_industry.py</code>. Re-rendering the whole set is free.</div>
-  <div style="margin-top:12px">Open, and needing the operator:</div>
+  <div style="margin-top:12px">Open, and needing you:</div>
   <ul>
     <li><b>The lead magnet named on every card has no page built.</b> Five quizzes, spec'd in full
     in the playbooks, are a separate build.</li>
@@ -292,7 +292,7 @@ def main():
     has not been made.</li>
     {'''<li><b>One of these five plates carries a flagged issue.</b> Real estate/leadgen still shows
     "APPRAISAL REQUEST SLIPS - UNOPENED" legibly on the folder. The other four were checked at full
-    resolution on 2026-08-06 and are clean: construction's blueprint text, hospitality's laptop screen
+    resolution on and are clean: construction's blueprint text, hospitality's laptop screen
     and financial services' ledger pages all degraded to speckle with no readable word, and retail's
     CRT reads as a database screen without a legible heading.</li>
     <li>Fixing it is <code>plates_real.py real-estate-and-property-management leadgen --refine
@@ -307,8 +307,8 @@ def main():
     dest = DEST.with_name("INDUSTRY-STATICS-KEEPERS.html") if keepers else DEST
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(doc)
-    print(f"{dest}  {dest.stat().st_size/1024/1024:.1f} MB")
+    print(f"{dest}  {dest.stat.st_size/1024/1024:.1f} MB")
 
 
 if __name__ == "__main__":
-    main()
+    main

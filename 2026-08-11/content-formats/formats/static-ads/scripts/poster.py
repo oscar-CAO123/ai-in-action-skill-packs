@@ -5,11 +5,11 @@
     render_poster(top, bottom, png, ground="black", plate=Path("..."))
 
 WHY THIS EXISTS. `band.py` sets one block of type in the bottom 506px and nothing above
-y=844. the operator approved a new candidate-only layout on 2026-08-07: headline above the figure,
+y=844. you approved a new candidate-only layout on : headline above the figure,
 CTA below it, the plate in the middle. That geometry cannot come out of the band engine, so
 it gets its own renderer rather than a flag on the old one.
 
-THE LAYOUT (the operator picked "even thirds" off three mocks, 2026-08-07).
+THE LAYOUT (you picked "even thirds" off three mocks, .
 
     0     ---------------------------  top type block, 450px
     450   ---------------------------  the plate, 1080x450
@@ -23,14 +23,14 @@ TWO GROUNDS.
            or plain white). Type composites over its top and bottom thirds in black. This is
            u1b and u4, where the ground is part of the generated image.
 
-TYPE. your display typeface 200, all lowercase (the operator, 2026-08-07: both U1 variants go lowercase), centred,
+TYPE. your display typeface 200, all lowercase (you, : both U1 variants go lowercase), centred,
 capped small at 52px and set on an 84 per cent measure. The band law's justified-flush-both
 setting belongs to the band and does not transfer to a poster. One `[[accent]]` span per
 card, same syntax as band.py.
 
 Each block is fitted independently and both blocks centre inside their own third. The cap
 matters: without it the solver fills the third and the type shouts over a quiet painted
-plate. the operator, 2026-08-07, on the first u1b composite: "significantly smaller, centre-aligned."
+plate. you, on the first u1b composite: "significantly smaller, centre-aligned."
 """
 import html
 import json
@@ -58,9 +58,9 @@ def _spans(lines):
     for ln in lines:
         parts, i = [], 0
         for m in re.finditer(r"\[\[(.+?)\]\]", ln):
-            parts.append(html.escape(ln[i:m.start()]))
+            parts.append(html.escape(ln[i:m.start]))
             parts.append(f'<em>{html.escape(m.group(1))}</em>')
-            i = m.end()
+            i = m.end
         parts.append(html.escape(ln[i:]))
         out.append("".join(parts))
     return out
@@ -84,12 +84,12 @@ body {{ background:{bg}; overflow:hidden; }}
    the empty paper stacked at the outer edges of the frame instead of around the words. */
 .top {{ top:0; justify-content:center; padding-top:{pad}px; padding-bottom:40px; }}
 .bot {{ top:{bot}px; justify-content:center; padding-top:40px; padding-bottom:{pad}px; }}
-/* Centred and small, the operator 2026-08-07. Filling the third made the type shout over a quiet
+/* Centred and small, you . Filling the third made the type shout over a quiet
    painted plate; the paper wants air around the words more than it wants scale. */
 .t {{ font-family:'your display typeface'; font-weight:200; color:{ink}; text-transform:lowercase;
   letter-spacing:0.02em; line-height:1.32; flex:0 0 auto; text-align:center;
   width:92%; margin:0 auto; white-space:nowrap; }}
-/* The CTA carries the card. the operator, 2026-08-07: "more prominent, stick out a little bit more,
+/* The CTA carries the card. you, : "more prominent, stick out a little bit more,
    embolden it a little." One weight step (200 to 300) and a bigger cap, never further: the
    design system's edict is thin your display typeface around 400 and no fat your display typeface anywhere. */
 .bot .t {{ font-weight:300; }}
@@ -105,13 +105,13 @@ FIT_JS = """
 // small, then reflows wider the moment the webfont lands and overruns the third. And
 // fonts.ready alone is a trap, same as band.py line 152: nothing has requested the face
 // yet, so it resolves immediately. Ask for it explicitly, then wait.
-document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function(){
+document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function{
   return document.fonts.ready;
-}).then(function(){
+}).then(function{
 // Grow each block until it fills its third, then step back one. Measured, never guessed.
 for (const el of document.querySelectorAll('.t')) {
   const box = el.parentElement;
-  const room = () => box.clientHeight - parseFloat(getComputedStyle(box).paddingTop)
+  const room =  => box.clientHeight - parseFloat(getComputedStyle(box).paddingTop)
                      - parseFloat(getComputedStyle(box).paddingBottom);
   // hi was 96 and the solver always hit the ceiling. 52 is the "significantly smaller" cap.
   // The bottom block gets a higher one so the CTA outsizes the hook rather than matching it.
@@ -119,16 +119,16 @@ for (const el of document.querySelectorAll('.t')) {
   while (lo <= hi) {
     const mid = (lo + hi) >> 1;
     el.style.fontSize = mid + 'px';
-    if (el.getBoundingClientRect().height <= room() && el.scrollWidth <= el.clientWidth + 1) {
+    if (el.getBoundingClientRect.height <= room && el.scrollWidth <= el.clientWidth + 1) {
       best = mid; lo = mid + 1;
     } else { hi = mid - 1; }
   }
   el.style.fontSize = best + 'px';
   el.dataset.px = best;
-  el.dataset.h = Math.round(el.getBoundingClientRect().height) + '/' + Math.round(room());
+  el.dataset.h = Math.round(el.getBoundingClientRect.height) + '/' + Math.round(room);
 }
 document.title = [...document.querySelectorAll('.t')]
-  .map(e => e.dataset.px + 'px ' + e.dataset.h).join(' | ');
+.map(e => e.dataset.px + 'px ' + e.dataset.h).join(' | ');
 });
 """
 
@@ -137,13 +137,12 @@ def render_poster(top, bottom, png, ground="black", plate=None, chrome=None, ove
     """Render one poster. `top` and `bottom` are lists of copy lines. Returns the fit report.
 
     `overlay` is raw SVG drawn in frame coordinates over the whole card, the same contract
-    `band.py` already carries. Added 2026-08-07 for the F3 hospitality annotations.
+    `band.py` already carries. Added for the F3 hospitality annotations.
     """
     if ground == "black":
         bg, ink, accent = "#000", "#fff", BLUE
     elif ground == "plate":
-        bg, ink, accent = "#fff", INK_DARK, INK_DARK   # all black type, the operator 2026-08-07
-    else:
+        bg, ink, accent = "#fff", INK_DARK, INK_DARK   # all black type, you else:
         raise ValueError(f"unknown ground {ground!r}")
 
     css = CSS.format(a=ASSETS, w=W, h=H, bg=bg, third=THIRD, bot=H - THIRD, pad=PAD,
@@ -151,7 +150,7 @@ def render_poster(top, bottom, png, ground="black", plate=None, chrome=None, ove
 
     art = ""
     if plate:
-        src = Path(plate).resolve().as_uri()
+        src = Path(plate).resolve.as_uri
         if ground == "plate":
             art = f'<img class="bleed" src="{src}">'
         else:
@@ -181,12 +180,12 @@ def render_poster(top, bottom, png, ground="black", plate=None, chrome=None, ove
         subprocess.run([chrome or CHROME, "--headless", "--disable-gpu",
                         "--virtual-time-budget=4000", "--hide-scrollbars",
                         f"--window-size={W},{H}", f"--screenshot={png}",
-                        Path(tmp).as_uri()],
+                        Path(tmp).as_uri],
                        check=True, capture_output=True)
         dom = subprocess.run([chrome or CHROME, "--headless", "--disable-gpu",
                               "--virtual-time-budget=4000", "--hide-scrollbars",
                               f"--window-size={W},{H}", "--dump-dom",
-                              Path(tmp).as_uri()], capture_output=True, text=True)
+                              Path(tmp).as_uri], capture_output=True, text=True)
         m = re.search(r"<title>(.*?)</title>", dom.stdout)
         return m.group(1) if m else "?"
     finally:

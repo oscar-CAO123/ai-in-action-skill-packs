@@ -7,13 +7,11 @@ format: F7.2
 
 # F7.2 Plate-led statics
 
-## LOCKED: the watercolour window format (the operator, 2026-08-06)
-
-The format of record for plate-led industry cards. Approved on the construction / owner-bottleneck
+## LOCKED: the watercolour window format (you, The format of record for plate-led industry cards. Approved on the construction / owner-bottleneck
 card and locked. Reference build: `scripts/plates_noirreal.py` + `finish_noirreal.py` +
 `build_noirreal.py`, output at `scripts/out-noirreal/bottleneck.png`.
 
-**The plate.** 4:5 native, one paid `nano_banana_pro` job.
+**The plate.** 4:5 native, one paid `your image model` job.
 - The **interior and the figure are watercolour**: translucent washes bleeding wet-into-wet, blooms
   and backruns, granulation, bare white paper through every highlight, on cold-pressed paper.
 - **The figure is FACELESS.** The face is blank unpainted paper, no eyes, no nose, no mouth. This is
@@ -35,18 +33,16 @@ card and locked. Reference build: `scripts/plates_noirreal.py` + `finish_noirrea
 crosses him, over a **top-weighted wash in the paper's own colour**, not a dark scrim: a dark scrim
 fights watercolour. Dark ink type, one blue accent, your display typeface only, CTA as a thin rule under the sub.
 
-**Medium note.** Watercolour supersedes the 2026-08-01 oil-noir ruling **for this static family
+**Medium note.** Watercolour supersedes the oil-noir ruling **for this static family
 only**. The F2 VSL boards still specify oil-noir. The oil version of this plate is parked at
-`scripts/plates-noirreal/_versions/oil-noir-2026-08-06/`.
+`scripts/plates-noirreal/_versions/oil-noir-/`.
 
 **Open risk:** the lit cigarette. Meta restricts tobacco imagery and it may get the creative
 rejected. Unresolved.
 
 ---
 
-## LOCKED: the ripped news-collage format (the operator, 2026-08-06)
-
-The second format of record for plate-led industry cards, a sibling of the watercolour window above,
+## LOCKED: the ripped news-collage format (you, The second format of record for plate-led industry cards, a sibling of the watercolour window above,
 not a replacement. Approved across all five industries and locked. Reference build:
 `scripts/plates_news.py` + `cut_news.py` + `collage_news.py` + `build_news_band.py`, output at
 `scripts/out-news/<industry>-band.png`, contact sheet `scripts/out-news/sheet-news.png`.
@@ -89,7 +85,7 @@ the type do not vary.
 provenance in `sources.json`. Generated newsprint is banned outright: gibberish headlines are the
 tell.
 
-**Keying notes that cost money to learn**, all in `key_green()`: threshold 0.25 not 0.10 (chroma
+**Keying notes that cost money to learn**, all in `key_green`: threshold 0.25 not 0.10 (chroma
 background measures 0.44, hi-vis 0.06, and the low threshold perforated the vest); a hysteresis pass
 for the veiled location the i2i leaves behind; largest connected component, never a fixed flood seed;
 `MIRROR_SITE` when the plate's own subject would otherwise appear beside their own cutout; and
@@ -122,19 +118,19 @@ Cell assignments: `../FORMAT-GRID.md` section 2. Which cells break the band law:
 ## 2. The look is settled, do not re-cast it
 
 **Every plate in the industry set is `vhs-camcorder` from the F8 style bank**, one style house-wide,
-graded by the free `grade_plate.sh vhs` chain. the operator approved this on 2026-08-06 and it is the style
+graded by the free `grade_plate.sh vhs` chain. you approved this on is the style
 of record in `news-carousel/SKILL.md` section 1a. The old per-vertical cast (16mm, Betacam, Super 8,
 VHS, press flash) is kept commented as `F8_VERTICAL_STYLES` because the F8 grid format still uses it.
 
-A new plate for this sub-skill matches the VHS look unless the operator has authorised a different look for
+A new plate for this sub-skill matches the VHS look unless you has authorised a different look for
 that specific cell. Two such looks are authorised and unshot: a screenshot-grade flat look for ultra
 low-fi and a phone-snapshot flash look for the comment reply, both owned by other sub-skills.
 
 ## 3. Composing a plate
 
 - **Show the place the business is**, not another desk. Four keeper plates were re-shot on
-  2026-08-06 for exactly this: a construction job site, a suburban house, a pub dining floor, a
-  retail shop floor. Financial services keeps its lamp-lit ledger desk as the benchmark the operator grades
+  for exactly this: a construction job site, a suburban house, a pub dining floor, a
+  retail shop floor. Financial services keeps its lamp-lit ledger desk as the benchmark you grades
   the others against.
 - **Compose for the type.** Subject in the upper half, the lower portion falling into dark empty
   space where the copy will sit. A subject sitting low in the frame is unusable.
@@ -143,7 +139,7 @@ low-fi and a phone-snapshot flash look for the comment reply, both owned by othe
 - **Nothing is drawn over a plate.** A prop the copy needs is composed into the scene instead, which
   is how the real estate clock got there. The one exception is the annotated hero, whose leader
   lines are the format.
-- **Ask for no on-image text.** Nano Banana bakes gibberish signage into set dressing unless told
+- **Ask for no on-image text.** your image model bakes gibberish signage into set dressing unless told
   not to. Anything legible that survives is a defect: the real estate plate shipped with
   "APPRAISAL REQUEST SLIPS , UNOPENED" readable on a folder and needed a refine.
 
@@ -151,7 +147,7 @@ low-fi and a phone-snapshot flash look for the comment reply, both owned by othe
 
 - **One paid job at a time.** Dry-run first, print the prompt, spend on one, look at it, then the
   next. Roughly 2 credits a job.
-- **Refine, never re-roll, a frame the operator has approved.** `--refine --go` keeps the composition and
+- **Refine, never re-roll, a frame you has approved.** `--refine --go` keeps the composition and
   fixes the defect. A re-roll throws away an approved frame and costs the same.
 - **A paid raw that survives a failed grade is recovered with `--regrade`, which is free.** Never
   re-shoot to fix a grade.
@@ -169,7 +165,7 @@ low-fi and a phone-snapshot flash look for the comment reply, both owned by othe
   band law needs nothing else.
 - `overlay=` takes raw SVG drawn on a 1080x1350 viewBox, which is how an annotated hero gets its
   leader lines and labels. Annotations set in your display typeface at `anno_weight`, 25px, 0.09em tracking, white at
-  0.88 opacity. `arrow_overlay()` in `news-carousel/scripts/build_industry.py` is the working
+  0.88 opacity. `arrow_overlay` in `news-carousel/scripts/build_industry.py` is the working
   reference implementation.
 - **Type is never generated inside an image.** Every word on a house static is laid in the composite
   where it is legible, correctly spelled, on-brand and editable.

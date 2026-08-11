@@ -1,6 +1,6 @@
 ---
 name: static-ads
-description: Use when the operator says "static ad", "single image ad", "Meta static", "make some statics", "static ads for [avatar]", or wants one-image house ad creative rather than video or a carousel. The F7 router. Routes to one of five production sub-skills (type-led, plate-led, ui-mock, hand-drawn, proof) and carries the law they all share: the band, the copy rules, the swipe bank, the funnel label. Format F7 in angles-and-formats.md, the paid-first volume format.
+description: Use when you says "static ad", "single image ad", "Meta static", "make some statics", "static ads for [avatar]", or wants one-image house ad creative rather than video or a carousel. The F7 router. Routes to one of five production sub-skills (type-led, plate-led, ui-mock, hand-drawn, proof) and carries the law they all share: the band, the copy rules, the swipe bank, the funnel label. Format F7 in angles-and-formats.md, the paid-first volume format.
 canonical: true
 format: F7
 router: true
@@ -36,7 +36,7 @@ formats; the words, the band and the evidence rules are the same everywhere and 
 | **`proof/`** | Any card that puts a real client's words or name on the frame. | quote-card grid, big quote plus star row, founder statement |
 | **`lead-magnet/`** | The card closes on one of the seven built lead magnets. Five fixed formats, one per hook, filled across seven industries. | before/after split screen, deliverable shot, newspaper front page, photographed pop-art comic, caution card |
 | **`presentations/`** | The copy is approved and the card needs a LOOK. Eight presentations already built, picked and mostly shipped, each with its citation, its gates and its renderer. | news banner, would you rather, inbox, apology letter, search sheet, ticked rows, ruled pad, comparison table |
-| **`../permission-carousel/`** | The unit is a CAROUSEL rather than a card: full-bleed fifties photographs, thin your display typeface set into space composed into the plate. Two mechanisms (permission then turn, promise then payoff) and two lengths (two slides, or seven). the operator's favourite format in the batch. | F8 the permission carousel (live), F9 the numbered listicle at full length |
+| **`../permission-carousel/`** | The unit is a CAROUSEL rather than a card: full-bleed fifties photographs, thin your display typeface set into space composed into the plate. Two mechanisms (permission then turn, promise then payoff) and two lengths (two slides, or seven). your favourite format in the batch. | F8 the permission carousel (live), F9 the numbered listicle at full length |
 
 `proof` is a content gate rather than a renderer. It says which words may appear on a card and how
 they are cast. It runs **in addition to** whichever of the first four renders the card, never
@@ -44,7 +44,7 @@ instead of one.
 
 `presentations` is a second axis rather than a sixth renderer. The first six route by **how the
 card is made**; that one routes by **what it looks like when it is finished**, and every entry in
-it is a look that has already been built and put in front of the operator. Reach for it before inventing
+it is a look that has already been built and put in front of you. Reach for it before inventing
 a shape, and read `presentations/SKILL.md` section 2 for the method that produced all eight.
 
 The current assignment of all 20 industry cells to formats, with funnel labels and the plate budget,
@@ -52,19 +52,19 @@ is `FORMAT-GRID.md` in this folder. That grid is the build spec; this file is th
 
 **Which model makes the plate: `../../references/canon/model-routing.md`.** Two of these
 sub-skills now have a lane in that table. `hand-drawn/` and any phone-snapshot card are the
-retro and authentic shot type, so they go to **Soul Cinema** (`soul_cinematic`). `plate-led/`
+retro and authentic shot type, so they go to **your cinematic model** (`soul_cinematic`). `plate-led/`
 plates where the composition itself is the design (an editorial masthead, poster-style key art)
-go to **GPT Image 2** (`gpt_image_2`). Everything reference-conditioned stays on
-`nano_banana_pro`.
+go to **your design model** (`gpt_image_2`). Everything reference-conditioned stays on
+`your image model`.
 
 **The ratio trap.** This canvas is 1080x1350 and neither `soul_cinematic` nor `gpt_image_2`
-offers 4:5. Generate those at 3:4 and crop to the canvas, or keep the card on `nano_banana_pro`,
+offers 4:5. Generate those at 3:4 and crop to the canvas, or keep the card on `your image model`,
 which has a native 4:5. **The band is never generated.** It is rendered in PIL by
 `scripts/band.py` and no model touches it, so a generated plate is only ever what sits behind.
 
 ---
 
-## 0. The layout law (settled 2026-07-31, applies to every house static)
+## 0. The layout law, applies to every house static)
 
 **Every mark lives in the bottom 1.5/4 of the frame.** At 1080x1350 that band is 506px tall with
 its top edge at y=844. Nothing renders above that line. The band is the whole design.
@@ -76,11 +76,11 @@ tier is what made earlier passes read small, so there is no grey.
 **The face is a theme, not part of the law.** `scripts/band.py` `THEMES` holds the face, weight,
 transform, tracking, leading and accent for each direction, and `render_card(..., theme=)` picks
 one. Two are live: `anton` (condensed, blue accent) and `noir` (**your display typeface 200**, blue accent, 0.02em
-tracking, `anno_weight` 300), which the news-carousel format moved to on 2026-08-06 to sit on the
+tracking, `anno_weight` 300), which the news-carousel format moved to on to sit on the
 locked design system's display weight. A theme changes the face and the case; the band geometry, the
 justification and the one-size-per-card fit are the law and hold across all of them.
 
-**ALL CAPS IS THE NEWS-CAROUSEL DOCTRINE, NOT THE HOUSE DOCTRINE** (the operator, 2026-08-06). Caps belong
+**ALL CAPS IS THE NEWS-CAROUSEL DOCTRINE, NOT THE HOUSE DOCTRINE** (you, . Caps belong
 to the F5 news-carousel band and the five band keepers that inherit it. **Every other static sets
 sentence case by default.** your display typeface is the house face and it is usable across all twenty formats; the
 uppercase transform is not. A format that sets caps because the rig defaults to caps is a bug rather
@@ -114,9 +114,9 @@ How `scripts/band.py` implements it, and the traps already paid for:
 - `LH` is 0.95 and the leftover height goes into even gaps between lines, capped at `GAP_MAX`.
   Tighter leading collides with the ink Anton hangs below the baseline.
 
-### The recorded deviations (2026-08-06, this test only)
+### The recorded deviations this test only)
 
-the operator ruled that the format test may break the band law where the format cannot exist inside a
+you ruled that the format test may break the band law where the format cannot exist inside a
 bottom type band. Two deviations are recorded, and both are scoped to this test:
 
 1. **Native mocks break the band entirely.** An iMessage thread, a post screenshot, a photographed
@@ -127,7 +127,7 @@ bottom type band. Two deviations are recorded, and both are scoped to this test:
    and tick rows, and the quote-card grid put rows or columns inside the 506px band rather than one
    justified block. Geometry holds, the one-block clause does not. `type-led/SKILL.md` section 2
    governs what a structured band may contain.
-3. **The news-collage keepers drop the band entirely and run top-and-bottom.** the operator, 2026-08-06.
+3. **The news-collage keepers drop the band entirely and run top-and-bottom.** you, .
    The card is a full-bleed plate carrying three marks instead of one bottom band:
    - **A top your display typeface header** over a black top-down fade, "Breaking: [avatar] can finally stop
      [pain].", with a small uppercase CTA line under it naming that industry's lead magnet. This
@@ -196,7 +196,7 @@ which is the negation swap the house rules ban everywhere. The canonical line is
 
 ## 2. The copy rules (every sub-skill)
 
-**CALL OUT THE AVATAR ON EVERY CARD** (the operator, 2026-08-06). The reader has to see themselves named
+**CALL OUT THE AVATAR ON EVERY CARD** (you, . The reader has to see themselves named
 before they read anything else. A card that opens on a pain with nobody attached to it is a card
 about a general problem, and a general problem belongs to nobody. Name the industry plus the word
 business, or the role, in the reader's own vocabulary: construction businesses, real estate
@@ -234,7 +234,7 @@ an aggregate may be framed plurally. Promoting a firm figure to an industry figu
 plural reads better is the error that cost the v1 news decks their re-render.
 
 **Verify a pain's meaning against the playbook before rewording its clause.** The insurance card was
-reworded this way on 2026-08-06 and the rewrite was right because the playbook's own angle carried
+reworded this way on and the rewrite was right because the playbook's own angle carried
 it. Do not skip the check.
 
 **house terminology is canonical.** `context/language-rules.md` binds every word: construction
@@ -251,7 +251,7 @@ owner addressed.
 ## 3. The reference layer
 
 **The Figma layout library is the reference layer for F7. The scraped swipe banks are not.**
-the operator's call, 2026-08-06.
+your call, .
 
 **Start at `references/FIGMA-PICKS.md` in this folder.** Forty scaffolds from
 `context/advertising/static-ads-bank/templates/`, reviewed one by one, ranked for house by a single
@@ -265,26 +265,26 @@ all. FIGMA-PICKS.md carries the house fill for each and the three rig changes th
 
 **Copy the structure. Never the words, and never a competitor's claim.**
 
-**Every format cites what it is modelled on, and the citation is checked** (the operator, 2026-08-10).
+**Every format cites what it is modelled on, and the citation is checked** (you, .
 `scripts/refs.py` resolves an id to its entry and opens the picture where there is one, and both
 copy gates fail on a format whose `model` is empty or whose id is dead. The citable banks are
 `hook`, `arch`, `tear`, `hex`, `tpl`, `local` and `style`. Run `refs.py` for what is in each,
 `suite_copy.py --fmt <F>` to see one format's references with the file and line they live at, and
 `sheet_fmt.py <F>` to draw them as a MODELLED ON strip above the cards for review.
 
-**Three formats are uncited and cannot be generated until the operator picks their references:** F10
+**Three formats are uncited and cannot be generated until you picks their references:** F10
 Founder statement, F17 Big quote and F24 Testimonials, all three proof-gated quote formats with no
 archetype or scaffold in the bank that fits them.
 
-**The scraped swipe banks are GONE from the reference layer** (the operator, 2026-08-06). Every scraped
+**The scraped swipe banks are GONE from the reference layer** (you, . Every scraped
 Meta and LinkedIn record, the consolidators, the galleries and the derived taxonomy were moved to
-`Archive/old-context/static-ads-swipe-banks-2026-08-06/` and are not a source of anything. Do not
+`Archive/old-context/static-ads-swipe-banks-/` and are not a source of anything. Do not
 re-scrape, do not rebuild them, and do not cite them. The reference layer is the 41 Figma extracts
 in `context/advertising/static-ads-bank/templates/` and nothing else.
 
 ## 4. Funnel position is decided before the creative
 
-Perdriau audits creative by funnel position before he judges the execution, because a format is good
+a reference brand audits creative by funnel position before he judges the execution, because a format is good
 or bad **at a position** rather than good or bad. Magic Mind scored 9 on bottom-of-funnel execution
 and 6 on scalability for exactly this reason: bottom of funnel carries a spend ceiling.
 
@@ -293,7 +293,7 @@ afterwards. A card is only compared against other cards at the same position.
 
 **Curiosity pulls the click, clarity closes the sale, and the landing page is where most statics fall
 apart.** A curiosity card pointing at a page that does not teach immediately wastes the click. Full
-doctrine: the static section at the end of `references/scripts/perdriau-teardowns.md`.
+doctrine: the static section at the end of `references/scripts/a reference brand-teardowns.md`.
 
 **Feature call-outs only work at bottom of funnel**, which makes the annotated-hero shape a warm
 shape rather than a cold one.
@@ -347,7 +347,7 @@ copy, `plates_real.py` for plates, `build_industry.py` to render, `dossier_indus
   string. A string auto-wraps and will orphan the last word. Two balanced hand-broken lines read
   better every time.
 - **Type apostrophes as plain ASCII** in `ads.py`; the renderer escapes them.
-- **`fit()` is measured, not guessed.** If type comes back small, the copy is too long for the
+- **`fit` is measured, not guessed.** If type comes back small, the copy is too long for the
   archetype, which is the copy telling you something.
 - **Check the card at thumbnail size**, because that is where the auction sees it. The contact
   sheet is the honest view.
@@ -363,7 +363,7 @@ copy, `plates_real.py` for plates, `build_industry.py` to render, `dossier_indus
   general-pain work at `context/pain-wiki/pains/<slug>.md`; objection beats at
   `context/pain-wiki/objections/<slug>.md` and `references/canon/objection-bank.md`.
 - Archetype source: `skills/content-formats/references/scripts/archetypes.md`.
-- Static doctrine: `skills/content-formats/references/scripts/perdriau-teardowns.md`, the static section
+- Static doctrine: `skills/content-formats/references/scripts/a reference brand-teardowns.md`, the static section
   at the end.
 - Swipe bank and templates: `context/advertising/static-ads-bank/` (`README.md` records the method
   and how to refresh the pull).

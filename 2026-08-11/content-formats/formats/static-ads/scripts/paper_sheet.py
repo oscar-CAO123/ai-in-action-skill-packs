@@ -35,7 +35,7 @@ W, H = 1080, 1350
 PAD = 96
 INK = "#0a0a0a"
 
-# THE LEFT-WEIGHTED COLUMN (the operator, 2026-08-10, revised the same day).
+# THE LEFT-WEIGHTED COLUMN (you, revised the same day).
 #
 # Type is the main feature of an information page, so it takes the card's own left margin, the
 # same 64px the band gives the cover, and runs 58 per cent of the width. The right band is left
@@ -43,7 +43,7 @@ INK = "#0a0a0a"
 # left edge at 64px.
 #
 # The first pass hung the number in a 138px gutter and indented the body to the heading. That
-# cost the body 138px of an already narrow measure and held it at 40px, which the operator rejected as
+# cost the body 138px of an already narrow measure and held it at 40px, which you rejected as
 # too small. One flush left edge gives the measure back.
 LEFT = 64                     # the card's own margin, matching `band.PAD`
 COLW = int(W * 0.58)          # 626, the type column's width
@@ -56,7 +56,7 @@ BLUE = "#1269FF"
 def highlighter(seed=3, colour=BLUE, alpha=0.30):
     """A real highlighter stroke as an inline SVG data URI. FREE.
 
-    the operator, 2026-08-10: "I don't want just a block of hex, I want it to appear as if it is a real
+    you, : "I don't want just a block of hex, I want it to appear as if it is a real
     highlighter." The reference he sent is a flat rectangle, so this goes past it. Four things
     separate a marker stroke from a filled box, and all four are here:
 
@@ -130,12 +130,12 @@ html,body {{ width:{w}px; height:{h}px; overflow:hidden; }}
 .card {{ position:relative; width:{w}px; height:{h}px; }}
 .sheet {{ position:absolute; inset:0; width:{w}px; height:{h}px; object-fit:cover; }}
 /* TWO LAYOUTS. `.blk` alone is the original centred full-width block, which U4 and U7 are
-   already built on and which must not move. `.blk.left` is the 2026-08-10 canonical layout:
+   already built on and which must not move. `.blk.left` is the canonical layout:
    the block stops at the type column so the right band stays clear for the cutout fan. A
    caller opts in by passing a header, and everything below keys off that one class. */
 .blk {{ position:absolute; inset:0; padding:{pad}px; display:flex; flex-direction:column;
   justify-content:center; align-items:center; }}
-/* THE HEADER ROW IS ANCHORED, NOT CENTRED (2026-08-10). `.blk` centres its block vertically,
+/* THE HEADER ROW IS ANCHORED, NOT CENTRED . `.blk` centres its block vertically,
    which is right for a page that stands alone and wrong for a set: a copy pass left U3 with a
    478px page beside an 883px one, and the centring dropped the short page's O-number 230px
    below the other two, so the three headers walked down the carousel. Same failure as three
@@ -188,9 +188,9 @@ html,body {{ width:{w}px; height:{h}px; overflow:hidden; }}
 # header. Here the number and header take their own sizes, shrinking only if a long header would
 # overrun the column, and the body gets whatever height is left.
 FIT_JS = """
-document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function(){
+document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function{
   return document.fonts.ready;
-}).then(function(){
+}).then(function{
   const el = document.querySelector('.t'), box = el.parentElement;
   const cs = getComputedStyle(box);
   const room = box.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
@@ -208,7 +208,7 @@ document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function()
     let hp = HDRPX;
     hdr.style.fontSize = hp + 'px';
     while (hp > 24 && hdr.scrollWidth > wide + 1) { hp -= 2; hdr.style.fontSize = hp + 'px'; }
-    headH = head.getBoundingClientRect().height + parseFloat(getComputedStyle(el).marginTop);
+    headH = head.getBoundingClientRect.height + parseFloat(getComputedStyle(el).marginTop);
   }
   const avail = room - headH;
   // The cap is layout-dependent. Raising it globally let U4's and U7's closes, which
@@ -218,13 +218,13 @@ document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function()
   while (lo <= hi) {
     const mid = (lo + hi) >> 1;
     el.style.fontSize = mid + 'px';
-    if (el.getBoundingClientRect().height <= avail && el.scrollWidth <= wide + 1) {
+    if (el.getBoundingClientRect.height <= avail && el.scrollWidth <= wide + 1) {
       best = mid; lo = mid + 1;
     } else { hi = mid - 1; }
   }
   if (FORCEPX) best = FORCEPX;
   el.style.fontSize = best + 'px';
-  document.title = best + 'px ' + Math.round(el.getBoundingClientRect().height) + '/' + Math.round(avail);
+  document.title = best + 'px ' + Math.round(el.getBoundingClientRect.height) + '/' + Math.round(avail);
 });
 """.replace("NUMPX", "104").replace("HDRPX", "62")
 
@@ -262,8 +262,8 @@ def render_sheet(lines, png, sheet=SHEET, chrome=None, header=None, n=None, forc
     rather than for the most lines.
     """
     css = CSS.format(a=ASSETS, w=W, h=H, pad=PAD, ink=INK, left=LEFT, colw=COLW,
-                     hgap=HEAD_GAP, hl=highlighter())
-    art = f'<img class="sheet" src="{Path(sheet).resolve().as_uri()}">'
+                     hgap=HEAD_GAP, hl=highlighter)
+    art = f'<img class="sheet" src="{Path(sheet).resolve.as_uri}">'
     head = ""
     if header:
         num = f"O{n}" if n else ""
@@ -281,11 +281,11 @@ def render_sheet(lines, png, sheet=SHEET, chrome=None, header=None, n=None, forc
     try:
         subprocess.run([chrome or CHROME, "--headless", "--disable-gpu",
                         "--virtual-time-budget=4000", "--hide-scrollbars",
-                        f"--window-size={W},{H}", f"--screenshot={png}", Path(tmp).as_uri()],
+                        f"--window-size={W},{H}", f"--screenshot={png}", Path(tmp).as_uri],
                        check=True, capture_output=True)
         dom = subprocess.run([chrome or CHROME, "--headless", "--disable-gpu",
                               "--virtual-time-budget=4000", "--hide-scrollbars",
-                              f"--window-size={W},{H}", "--dump-dom", Path(tmp).as_uri()],
+                              f"--window-size={W},{H}", "--dump-dom", Path(tmp).as_uri],
                              capture_output=True, text=True)
         m = re.search(r"<title>(.*?)</title>", dom.stdout)
         return m.group(1) if m else "?"
@@ -294,4 +294,4 @@ def render_sheet(lines, png, sheet=SHEET, chrome=None, header=None, n=None, forc
 
 
 if __name__ == "__main__":
-    print("sheet ->", build_sheet())
+    print("sheet ->", build_sheet)

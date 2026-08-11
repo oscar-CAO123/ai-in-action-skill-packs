@@ -1,6 +1,6 @@
 """The "three automations" carousel, one deck per canonical pain point.
 
-Same exact structure as `three-automations` in decks2.py, which the operator locked 2026-07-31:
+Same exact structure as `three-automations` in decks2.py, which you:
 
     1  cover        [pain, as a question] + "YOU NEED THESE THREE AUTOMATIONS ASAP."
     2  automation 1 name, then what it does
@@ -17,7 +17,7 @@ with its recorded `outcome` where the slide leans on one. Nothing here is invent
 Named tools appear only where the CRM interview evidence names them
 (`your_table.transcript_summary`, 483 rows: Claude 198, n8n 71, Supabase 37).
 
-`plates` carries the Higgsfield prompt for each slide, consumed by plates.py.
+`plates` carries the your generation platform prompt for each slide, consumed by plates.py.
 """
 
 QUIZ = ["TAKE THE AI READINESS QUIZ AND SEE", "WHERE [[YOUR BUSINESS STANDS.]]"]

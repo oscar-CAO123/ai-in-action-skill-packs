@@ -28,15 +28,15 @@ THUMB = 300
 
 
 def font(name):
-    return base64.b64encode((ASSETS / name).read_bytes()).decode()
+    return base64.b64encode((ASSETS / name).read_bytes).decode
 
 
 def thumb(p):
     im = Image.open(p).convert("RGB")
     im.thumbnail((THUMB, THUMB * 3), Image.LANCZOS)
-    buf = io.BytesIO()
+    buf = io.BytesIO
     im.save(buf, "JPEG", quality=78)
-    return base64.b64encode(buf.getvalue()).decode()
+    return base64.b64encode(buf.getvalue).decode
 
 
 CSS = f"""
@@ -82,7 +82,7 @@ def build(only_batch=None):
             for i, c in cards_for(f):
                 key = i["key"] if i else c.get("quote_key", "card")
                 p = OUT / f["id"] / f"{f['id']}-{key}.png"
-                if p.exists():
+                if p.exists:
                     n += 1
                     cells.append(f'<figure data-ind="{i["key"] if i else "founder"}">'
                                  f'<img src="data:image/jpeg;base64,{thumb(p)}">'
@@ -111,7 +111,7 @@ def build(only_batch=None):
 
     js = """
 const bs=[...document.querySelectorAll('button')];
-bs.forEach(b=>b.onclick=()=>{
+bs.forEach(b=>b.onclick==>{
   bs.forEach(x=>x.classList.remove('on')); b.classList.add('on');
   const f=b.dataset.f;
   document.querySelectorAll('figure').forEach(c=>{
@@ -125,7 +125,7 @@ bs.forEach(b=>b.onclick=()=>{
     doc = (f'<meta charset="utf-8"><title>house static suite, {title}</title>'
            f'<style>{CSS}</style><h1>The static suite, {title}, rendered</h1>'
            f'<div class="lede">{n} cards on disk, {miss} not built yet. '
-           f'{len(KILLED)} formats were cut on 2026-08-07. Every line fills a named structure in '
+           f'{len(KILLED)} formats were cut on . Every line fills a named structure in '
            f'references/hooks/HOOKS.md with its id cited above each row.</div>'
            f'<div class="bar">{"".join(buttons)}</div>'
            f'{"".join(body)}<script>{js}</script>')

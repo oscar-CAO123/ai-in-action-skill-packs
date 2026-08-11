@@ -91,19 +91,18 @@ def data_uri(path, width):
     """Embed a slide, resized and JPEG'd so the whole dossier stays a sane single file."""
     im = Image.open(path).convert("RGB")
     im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
-    buf = io.BytesIO()
+    buf = io.BytesIO
     im.save(buf, "JPEG", quality=84, optimize=True)
-    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue).decode
 
 
-def main():
+def main:
     DEST.parent.mkdir(parents=True, exist_ok=True)
     parts = []
 
     nav = "".join(
         f'<a href="#{slug}">{html.escape(title.replace("Noir carousel: ", ""))}<b>6</b></a>'
-        for slug, title, _ in CAROUSELS
-    )
+        for slug, title, _ in CAROUSELS)
 
     for slug, title, tag in CAROUSELS:
         rows = []
@@ -113,13 +112,11 @@ def main():
             old_html = (
                 f'<div class="old"><p class="k">retired (live now)</p>'
                 f'<img src="{data_uri(old_p, OLD_W)}"></div>'
-                if old_p.exists() else
-                '<div class="old"><p class="k">retired</p></div>'
-            )
+                if old_p.exists else
+                '<div class="old"><p class="k">retired</p></div>')
             rows.append(
                 f'<div class="row"><div><span class="rank new">SLIDE {i}</span>'
-                f'<img src="{data_uri(new_p, NEW_W)}"></div>{old_html}</div>'
-            )
+                f'<img src="{data_uri(new_p, NEW_W)}"></div>{old_html}</div>')
             print(f"  {slug} slide-{i:02d}")
 
         parts.append(
@@ -127,8 +124,7 @@ def main():
             f'<div class="slug">content-media/{slug}/</div>'
             f'<div class="icount"><span>tags <b>noir, F5, pain, {tag}</b></span>'
             f'<span>slides <b>6</b></span><span>status <b>ready</b></span></div></div>'
-            f'<div class="rowwrap">{"".join(rows)}</div></section>'
-        )
+            f'<div class="rowwrap">{"".join(rows)}</div></section>')
 
     doc = f"""<!doctype html><html><head><meta charset="utf-8">
 <title>Noir ready carousels: thin-your display typeface review</title>
@@ -155,9 +151,9 @@ so the CRM picks the new slides up immediately.
 </body></html>"""
 
     DEST.write_text(doc)
-    mb = DEST.stat().st_size / 1e6
+    mb = DEST.stat.st_size / 1e6
     print(f"\nwrote {DEST}  ({mb:.1f} MB)")
 
 
 if __name__ == "__main__":
-    main()
+    main

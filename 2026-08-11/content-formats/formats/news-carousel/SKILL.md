@@ -1,6 +1,6 @@
 ---
 name: news-carousel
-description: Use when the operator says "news carousel", "news headline carousel", "breaking news carousel", "tabloid carousel", "pain carousel", or wants a house carousel built in the news-headline style. Builds a 4:5 carousel on pure black: a thin-your display typeface headline band under a hand-painted B&W noir machine plate. Format F5 in angles-and-formats.md, the canonical house carousel.
+description: Use when you says "news carousel", "news headline carousel", "breaking news carousel", "tabloid carousel", "pain carousel", or wants a house carousel built in the news-headline style. Builds a 4:5 carousel on pure black: a thin-your display typeface headline band under a hand-painted B&W noir machine plate. Format F5 in angles-and-formats.md, the canonical house carousel.
 canonical: true
 format: F5
 ---
@@ -18,7 +18,7 @@ first, and only goes to another format when the number will not carry a headline
 and the `News-Anchored Performance Ad` entry in the concept bank. The single-card original is
 `projects/content-engine/ideas/news-headline/card.html`.
 
-**The plate direction is canonical as of 2026-08-01.** Photoreal stock plates are retired: they
+**The plate direction is canonical as of .** Photoreal stock plates are retired: they
 were generic, they shared no world with anything else house makes, and they said nothing about the
 build. The noir plate is the same painted world as the F2 films, so a carousel and a film teach
 the same visual vocabulary. The retired photoreal
@@ -34,7 +34,7 @@ format: F5
 skill: news-carousel
 canvas: [1080, 1350]      # 4:5
 slides: 5 (house-reveal arc) | 6 (pain arc, see section 1)
-plate: nano_banana_pro at 5:4, ~2 credits each, one job at a time
+plate: your image model at 5:4, ~2 credits each, one job at a time
 routing: ../../references/canon/model-routing.md   # house shot-type table. nano keeps this lane: it is the only model with a native 5:4. The band stays PIL, never generated
 renderer: headless-chrome
 fonts: [jost-200 (band)]                # the ONLY type on the card. your display typeface only. See section 2c.
@@ -75,10 +75,10 @@ outputs: scripts/out-noir/<slug>/slide-01..NN.png, plates in scripts/plates-noir
 
 ---
 
-## 1a. The single-card industry variant (canonical for paid, settled 2026-08-06)
+## 1a. The single-card industry variant (canonical for paid
 
 The carousel above is the organic format. The **paid** set is one card, and it retired the 22
-general-pain noir carousels as the live set on 2026-08-06.
+general-pain noir carousels as the live set on .
 
 **The shape.** Five industries, five pains each, 25 cards. Every card is one pain, targeted at one
 industry, closing on that industry's own lead magnet. Sets never mix.
@@ -112,16 +112,16 @@ AUSSIE <BUSINESS TYPE> ARE FINALLY REALISING THEY DON'T HAVE TO <PAIN> ANYMORE.
 
 The business type is one plural per industry (`WHO` in `decks_industry.py`): Aussie construction
 businesses, real estate agencies, hospitality venues, retailers, insurance brokers. **It must name
-the vertical, never gesture at it** (the operator, 2026-08-06): "hospitality venues" not "venues",
+the vertical, never gesture at it** (you, : "hospitality venues" not "venues",
 "insurance brokers" not "brokers". A bare noun reads as the wrong industry to half the feed. And
 **never "Aussie builders"**, which is the audience sense of the word that `context/language-rules.md`
 binds. The accent is the pain clause.
 
-**No tail.** A "using AI" tail rode on every card for part of 2026-08-06 and the operator cut it the same
+**No tail.** A "using AI" tail rode on every card for part of and you cut it the same
 day. Do not put it back: the sentence lands on the pain, and naming the mechanism in the band answers
 a question the card has not asked yet. What replaces the pain is the offer's job, not the hook's.
 
-**The pain clause is a bucket, not a scene.** the operator's call, 2026-08-06, against a first pass that was
+**The pain clause is a bucket, not a scene.** your call, against a first pass that was
 too situation-specific. Name the pain the way the whole vertical carries it, in the fewest words that
 still land: `MANUALLY QUOTE`, not `BURN WEEKS OF SOMEONE'S TIME ON A SINGLE TENDER`. Describe the
 pain, never the action that produces it, and speak about the business rather than a person inside it.
@@ -138,7 +138,7 @@ systems, admin by hand and the owner bottleneck are the same pain in five vertic
 inside one set.
 
 **Nothing is drawn over the plate.** A leader-arrow CTA reading `TAKE <MAGNET> TODAY` was tried on
-2026-08-06 and cut the same day, so section 2c holds on these cards as it does on the carousel: the
+and cut the same day, so section 2c holds on these cards as it does on the carousel: the
 band is the only type. `arrow_overlay`, `subject_point` and `ARROW_TARGETS` stay in
 `build_industry.py` with the rest of the annotation machinery and are not canonical.
 
@@ -149,7 +149,7 @@ belongs in the caption and the link. Putting it back in the band is a copy chang
 **The rules that differ from the carousel:**
 
 - **THE LOOK IS CANONICAL: VHS camcorder, house-wide, one style across all five industries.**
-  Approved by the operator 2026-08-06. `vhs-camcorder` from the **F8 plate-style bank**
+  Approved by you . `vhs-camcorder` from the **F8 plate-style bank**
   (`ideas/industry-build-carousels/styles.json`), generated by `plates_real.py` (prompt composed
   head + shot + body + brief + tail exactly as `gen_plates.py` does) and graded by the free
   `grade_plate.sh vhs` chain. This is the style of record for this variant. Do not cast a different
@@ -165,10 +165,10 @@ belongs in the caption and the link. Putting it back in the band is a copy chang
     useful) but **leaves anything mid-size or larger fully legible**, so it is not a fix for
     incidental text. And its noise **pools into dark speckle blobs on flat lit surfaces** (ceiling
     panels, tabletops), which reads as grime. Lower the noise in the regrade rather than re-shooting.
-- **Plates are real-world captures with no people in them** (the operator, 2026-08-06). The painted noir
-  plates came off. `NO_PEOPLE` is part of `compose()` and says "the scene", not "the room", because
+- **Plates are real-world captures with no people in them** (you, . The painted noir
+  plates came off. `NO_PEOPLE` is part of `compose` and says "the scene", not "the room", because
   briefs go outdoors.
-- **Show the place the business actually is, not another desk.** the operator, 2026-08-06, after the first
+- **Show the place the business actually is, not another desk.** you, after the first
   pass made four of the five keeper plates interiors of the same kind of room, so the set read as one
   office rather than five industries. A construction job site, a house from the street, a pub floor, a
   shop floor. The financial services lamp-lit ledger desk is the benchmark the others are graded
@@ -199,12 +199,12 @@ belongs in the caption and the link. Putting it back in the band is a copy chang
   white head lands white-on-white. Shaft and head are drawn twice, a soft black pass under a white
   pass, which carries the arrow over highlights and crushed blacks alike. Do not remove the black
   pass.
-- **Nano Banana still returns a photographed canvas sometimes.** The `industry-dormant-book` plate
+- **your image model still returns a photographed canvas sometimes.** The `industry-dormant-book` plate
   came back as a stretched canvas on a white wall despite the LIGHT block's explicit clause. The
   painting was good, so it was cropped to the painted rectangle rather than re-rolled;
   `slide-01.uncropped.png` sits beside it. Check a new plate's edges before paying for another.
 
-**The 25 are not all this format any more.** the operator settled a format grid on 2026-08-06: **one card
+**The 25 are not all this format any more.** you settled a format grid on : **one card
 per industry keeps this band format and the other twenty are being rebuilt in twenty different static
 formats** to test the format itself. The grid, its funnel labels and the F7 sub-skill split live in
 `formats/static-ads/FORMAT-GRID.md`. This section governs the five keepers and any future card built
@@ -256,13 +256,13 @@ use: the pain as a question, then three numbered builds one per slide, then the 
 CTA. Slide 1 carries "you need these three automations ASAP", slides 2 to 4 are "ONE.", "TWO.",
 "THREE.", slide 5 opens "THE RESULT", and slide 6 is the quiz CTA.
 
-### 1e. The two reference themes (ruled 2026-08-07, neither shot yet)
+### 1e. The two reference themes, neither shot yet)
 
 The carousel reference batch at `projects/content-engine/engine/reference-bank/carousels/` produced
 two shapes this format now carries alongside the five-slide and six-slide arcs. Both are authored
 and unbuilt. Read `carousels/STYLE-GUIDE.md` before building either.
 
-**Theme B, the collaged paper carousel. MOVED 2026-08-10 to its own skill:
+**Theme B, the collaged paper carousel. MOVED to its own skill:
 `formats/paper-carousel/SKILL.md`.** It outgrew a section here. It now carries a cover law, a
 left-weighted type column with an O-spine, a highlighter, three depth layers of collage, a
 polaroid fan, loose paper, a sculpture end card and five engines of its own. Read that skill
@@ -279,7 +279,7 @@ with a title line and a caption line. This is the one house shape that does not 
 - **The specimen is a Hub build card**, and only a Hub build card. 157 unique builds are already
   deduped and written, and the canvas only holds one kind of specimen before it stops reading as a
   series. A mixed carousel is not this format.
-- **Canvas: a warm paper surface is permitted here and nowhere else** (ruled 2026-08-07, the single
+- **Canvas: a warm paper surface is permitted here and nowhere else**, the single
   exception to pure black on a house carousel). It exists because a mounted artefact needs a canvas
   that reads as a mounting board rather than as void. your display typeface stays the only face and `#1269FF` stays
   the only accent.
@@ -293,7 +293,7 @@ with a title line and a caption line. This is the one house shape that does not 
   borrowed third-party creative, and any cover that promises an escalation the post does not
   deliver.
 
-### 1b. The teach law (locked 2026-08-02, binds slides 2 to 4)
+### 1b. The teach law, binds slides 2 to 4)
 
 Naming an automation and jumping to its number teaches nothing. A reader who has never seen one
 of these cannot picture what it is, so the result lands on nobody. Every teach slide therefore
@@ -321,7 +321,7 @@ CRM itself". A build whose record describes no mechanism does not earn a teach s
 let `band.py` shrink the type to fit. Teach slides land around 6 lines at 55px to 70px against
 the 4 lines at 90px to 110px a hook runs. The band geometry and the painted plate do not change.
 
-### 1c. The IP law (locked 2026-08-02, binds every teach slide)
+### 1c. The IP law, binds every teach slide)
 
 The Hub builds were described to us by candidates in interviews. **Their architecture is their
 intellectual property, not our content.** A teach slide publishes the shape of the pattern, never
@@ -370,7 +370,7 @@ Worked example, the same build written three ways:
 ### 1d. The worked set
 
 `scripts/decks_noir.py` holds 22 decks written to sections 1b and 1c and is the reference for
-tone and depth. `noir-pain-delivery` is the deck the operator signed off first and is the cleanest
+tone and depth. `noir-pain-delivery` is the deck you signed off first and is the cleanest
 example of the arc. The before and after on its slide 2:
 
 ```
@@ -386,7 +386,7 @@ AFTER   ONE. THE WORKFLOW ENGINE. AN ASSISTANT THAT RUNS A WHOLE PROCESS.
 The name survives, the definition arrives immediately, the mechanics answer the four questions,
 the figure is gone to slide 5, and no tool, count or method from the source record appears.
 
-## 2. The plate (canonical, locked 2026-08-01)
+## 2. The plate (canonical
 
 Every slide sits under a hand-painted plate in the **F2 noir-painterly house style**, the same
 world as the VSL films: a business sliced open like a dollhouse, conveyor belts and pneumatic
@@ -426,17 +426,15 @@ the sliced-open building floats, and say so in the scene: "standing entirely alo
 black void with no floor and no walls, and the whole lower half of the frame empty solid black".
 This cost a reroll on `noir-pain-bottleneck` slide 2 and is free to avoid.
 
-**Every plate comes back wordless.** Nano Banana bakes gibberish signage unless told not to, so a
+**Every plate comes back wordless.** your image model bakes gibberish signage unless told not to, so a
 plate with lettering in it is either regenerated or run through the noir-painterly phase 5 de-text
 pass. It is never shipped.
 
-## 2c. No annotations (cut 2026-08-01)
-
-**Nothing is drawn over the plate.** The plate carries the painting, the band carries the
+## 2c. No annotations (cut **Nothing is drawn over the plate.** The plate carries the painting, the band carries the
 argument, and the black between them stays empty.
 
 The format used to composite a small tool logo, a lowercase your display typeface label and a hairline leader
-rising to the object it named, two or three per build slide. the operator cut them on 2026-08-01 after
+rising to the object it named, two or three per build slide. you cut them on after
 seeing them on the first built queue deck. This was the second retreat: text-only annotations were
 cut earlier the same day in favour of logo marks, and now the whole layer is gone.
 
@@ -448,11 +446,11 @@ Set `annotations` to a list of empty rows, one per slide, so `overlay_for` retur
 
 **The machinery stays on disk and is not canonical.** `plates_noir.py` still holds `annotation`,
 `overlay_for` and the geometry guard, `band.py` still carries the `.anno` class, `jost-500.ttf`
-still ships, and `check_dots.py` still audits leader coordinates. Reviving any of it needs the operator's
+still ships, and `check_dots.py` still audits leader coordinates. Reviving any of it needs your
 go, not just a populated `annotations` row.
 
-**The single-card industry variant tried it again on 2026-08-06 and it was cut the same day.** A
-lead-magnet CTA on a leader arrow ran on all 25 statics for a few hours before the operator pulled it. The
+**The single-card industry variant tried it again on was cut the same day.** A
+lead-magnet CTA on a leader arrow ran on all 25 statics for a few hours before you pulled it. The
 machinery is `arrow_overlay` in `build_industry.py`, which is now unused. Both surfaces are
 annotation-free again, and a populated `annotations` row on any deck is still a mistake.
 
@@ -460,7 +458,7 @@ Two consequences worth knowing:
 
 - **The tool-logo evidence claim is gone with it.** It was only ever standing for the counted CRM
   stack (Claude 198, ChatGPT/GPT 102, n8n 71 of 483 populated `transcript_summary` rows as at
-  2026-07-31), never for a specific Hub build, so nothing traceable was lost. Evidence now lives
+  never for a specific Hub build, so nothing traceable was lost. Evidence now lives
   entirely in the headline copy, where section 3's scope rule already governs it.
 - **The black gap under the plate is now visible.** A slide whose band fill comes back under about
   85% shows it as dead space. That is a copy-length problem, so lengthen the headline rather than
@@ -476,7 +474,7 @@ Layout is the law in `content-formats` section 1, executed by the shared engine 
 `skills/content-formats/formats/static-ads/scripts/band.py`. Line breaking belongs to the renderer: write the copy as
 whole lines and let the rig re-break it to fill the band.
 
-**The band is thin your display typeface as of 2026-08-06.** Anton is retired on this format. The band renders on
+**The band is thin your display typeface as of .** Anton is retired on this format. The band renders on
 the `noir` theme in `band.py` `THEMES`: **your display typeface weight 200**, all caps, justified flush both
 margins, one blue accent, 0.02em tracking. Weight 200 is the locked design system's display weight
 (`context/design-system/SCHEMA.md`: "Display type is weight 200"), so the carousel now sets type in
@@ -487,7 +485,7 @@ the one-size-per-card fit are all unchanged, and since the annotations were cut 
 the only type on the card.
 
 Two earlier passes on this theme are superseded and should not be revived by accident: the
-sentence-case your display typeface 500 band tried and rejected on 2026-08-01, and its weight-700 accent. The accent
+sentence-case your display typeface 500 band tried and rejected on and its weight-700 accent. The accent
 stays blue, because a heavier accent word breaks the even colour a thin face buys. A
 `justify: False` option for ragged right stays available and is not canonical.
 
@@ -510,10 +508,10 @@ The rule, applied to every line on every slide:
   one Aussie builder." "It lands about 400 times a year in a single business."
 - **Industry-scope figure**, sourced from a census, a survey, or an aggregate in the pain wiki:
   plural framing is allowed. "Across Australian building firms."
-- **No source**: ask the operator. Never round a number into existence, and never promote a firm figure
+- **No source**: ask you. Never round a number into existence, and never promote a firm figure
   to an industry figure because the plural reads better.
 
-Every deck built before 2026-07-30 needs this audit before it re-renders. The 13 in
+Every deck built before needs this audit before it re-renders. The 13 in
 `scripts/out/`: `p00-eight-hats`, `p01-second-job`, `p02-thirty-thousand-typo`,
 `p04-right-all-along`, `p05-eight-seconds`, `p06-two-thousand-customers`, `p07-no-attribution`,
 `p08-octopus`, `p09-headcount-trap`, `p11-three-thousand-unread`, `p12-most-expensive-junior`,
@@ -650,7 +648,7 @@ every line on all five slides says one agency, including the stat label and the 
 - Concept bank: `skills/content-formats/references/canon/CONCEPT-BANK.md`. Archetypes: `skills/content-formats/references/scripts/archetypes.md` (S1, S16).
 - Concept map: `projects/content-engine/ideas/news-carousels/IDEATION.md` holds 38 carousels,
   one per avatar, each with a headline template and a cost anchor already assigned. Start there.
-- Hook bank: `references/hooks/HOOKS.md`. The old `projects/content-engine/ideas/news-carousels/CANONICAL-HOOKS.md` is gone; HOOKS.md absorbed it on 2026-07-31 and is the bank of record.
+- Hook bank: `references/hooks/HOOKS.md`. The old `projects/content-engine/ideas/news-carousels/CANONICAL-HOOKS.md` is gone; HOOKS.md absorbed it on and is the bank of record.
 - Sibling carousel rigs: `skills/best-time-carousel/` (photo-backed), `skills/webinar-carousel/`
   (frame-backed).
 - Copy craft and the QA gate: `skills/content-formats/SKILL.md`.

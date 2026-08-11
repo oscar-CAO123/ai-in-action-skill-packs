@@ -16,7 +16,7 @@ same way.
 
 MASKING. The oil-on-paper plates key on luma for nothing: black paint against bare paper. The
 VHS and F8 frames are photographic and will not key, and `rembg` is not installed (it goes
-through the `dependency-audit` skill and the operator's go first), so `mask_luma` is the only matte
+through the `dependency-audit` skill and your go first), so `mask_luma` is the only matte
 this file carries today. `mask_rect` is the fallback: the whole frame as a torn rectangle.
 """
 import sys
@@ -26,8 +26,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageOps
 
 ROOT = Path(__file__).parent
-BORDER = 0.028        # white border, as a share of the longest side (halved 2026-08-10)
-ROUGH = 0.034         # edge displacement, as a share of the longest side
+BORDER = 0.028        # white border, as a share of the longest side (halved ROUGH = 0.034         # edge displacement, as a share of the longest side
 SHADOW = (10, 14, 26) # (dx, dy, blur) for the drop shadow
 
 
@@ -38,12 +37,12 @@ def _noise(shape, seed, octaves=(6, 13, 29)):
     amp = 1.0
     for o in octaves:
         g = rng.normal(0, 1, (o, o)).astype(np.float32)
-        up = np.asarray(Image.fromarray(((g - g.min()) / max(np.ptp(g), 1e-6) * 255)
-                                        .astype(np.uint8)).resize(shape[::-1], Image.BICUBIC),
+        up = np.asarray(Image.fromarray(((g - g.min) / max(np.ptp(g), 1e-6) * 255)
+.astype(np.uint8)).resize(shape[::-1], Image.BICUBIC),
                         dtype=np.float32) / 255.0
         acc += (up - 0.5) * amp
         amp *= 0.55
-    return np.clip(acc / max(np.abs(acc).max(), 1e-6), -1, 1)
+    return np.clip(acc / max(np.abs(acc).max, 1e-6), -1, 1)
 
 
 def mask_luma(im, thresh=0.62, close=9):
@@ -81,7 +80,7 @@ def trim_dark(im, tol=38):
     flat = (np.abs(a - ref).max(axis=2) <= tol)
     rows = flat.mean(axis=1) < 0.94        # a row that is almost entirely surround
     cols = flat.mean(axis=0) < 0.94
-    if not rows.any() or not cols.any():
+    if not rows.any or not cols.any:
         return im
     y0, y1 = int(np.argmax(rows)), len(rows) - int(np.argmax(rows[::-1]))
     x0, x1 = int(np.argmax(cols)), len(cols) - int(np.argmax(cols[::-1]))
@@ -107,7 +106,7 @@ def trim_border(im, thresh=70, frac=0.6, seed_frac=0.5, rounds=2):
     dark field reads as its own frame: u4-o3 has no border at all and this took it from 1968 rows
     to 1122, eating the bottom third. `build_u4.RAW_TO_CLEAN` carries the per-plate opt-in.
 
-    ADDITIVE, 2026-08-10: nothing already built calls it. `polaroid` is deliberately left alone
+    ADDITIVE, : nothing already built calls it. `polaroid` is deliberately left alone
     because U3 is live on the CRM and its three plates trim identically either way.
     """
     a = np.asarray(im.convert("L"), dtype=np.int32)
@@ -123,17 +122,17 @@ def trim_border(im, thresh=70, frac=0.6, seed_frac=0.5, rounds=2):
     cols = np.where(dark.mean(axis=0) > seed_frac)[0]
     if not len(rows) or not len(cols):
         return im
-    y0, y1 = int(rows.min()), int(rows.max()) + 1
-    x0, x1 = int(cols.min()), int(cols.max()) + 1
+    y0, y1 = int(rows.min), int(rows.max) + 1
+    x0, x1 = int(cols.min), int(cols.max) + 1
     for _ in range(rounds):
         before = (y0, y1, x0, x1)
-        while y0 < y1 - 1 and (a[y0, x0:x1] < thresh).mean() > frac:
+        while y0 < y1 - 1 and (a[y0, x0:x1] < thresh).mean > frac:
             y0 += 1
-        while y1 > y0 + 1 and (a[y1 - 1, x0:x1] < thresh).mean() > frac:
+        while y1 > y0 + 1 and (a[y1 - 1, x0:x1] < thresh).mean > frac:
             y1 -= 1
-        while x0 < x1 - 1 and (a[y0:y1, x0] < thresh).mean() > frac:
+        while x0 < x1 - 1 and (a[y0:y1, x0] < thresh).mean > frac:
             x0 += 1
-        while x1 > x0 + 1 and (a[y0:y1, x1 - 1] < thresh).mean() > frac:
+        while x1 > x0 + 1 and (a[y0:y1, x1 - 1] < thresh).mean > frac:
             x1 -= 1
         if (y0, y1, x0, x1) == before:
             break
@@ -149,7 +148,7 @@ def mask_rect(im, inset=0.0):
     ABOVE the threshold and gets punched out as a hole through the middle of the face.
 
     Keying a photograph needs a real matte, which means `rembg`, which is not installed and goes
-    through the `dependency-audit` skill and the operator's go first. Until then a live-action hero is a
+    through the `dependency-audit` skill and your go first. Until then a live-action hero is a
     torn rectangular print, which is a real magazine-cutout look in its own right rather than a
     compromise: the tear and the white border still do the work.
     """
@@ -168,7 +167,7 @@ def _tear(mask, seed, amount):
     # the edge pulls in, where it is low it pushes out. Blurring first is what makes the result
     # a wandering edge rather than a fringe of speckle.
     b = np.asarray(Image.fromarray((a * 255).astype(np.uint8))
-                   .filter(ImageFilter.GaussianBlur(amount * 0.9)), dtype=np.float32) / 255.0
+.filter(ImageFilter.GaussianBlur(amount * 0.9)), dtype=np.float32) / 255.0
     return Image.fromarray(((b + n * 0.42 > 0.5) * 255).astype(np.uint8))
 
 
@@ -182,8 +181,8 @@ def _texture(im, seed):
     rng = np.random.default_rng(seed)
     g = rng.normal(0, 1, a.shape[:2]).astype(np.float32)
     g = np.asarray(Image.fromarray(((g * 40 + 128).clip(0, 255)).astype(np.uint8))
-                   .filter(ImageFilter.GaussianBlur(0.5)), dtype=np.float32) / 255.0
-    a = a + (g - g.mean())[..., None] * 0.085
+.filter(ImageFilter.GaussianBlur(0.5)), dtype=np.float32) / 255.0
+    a = a + (g - g.mean)[..., None] * 0.085
     a = a * (1.0 + _noise(a.shape[:2], seed + 1, octaves=(3, 5))[..., None] * 0.10)
     return Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8))
 
@@ -261,7 +260,7 @@ def cut(src, seed=0, mask=None, tint="none", height=None):
     out.alpha_composite(art)
 
     # Trim the empty canvas away, THEN scale, so `height` is the subject.
-    box = out.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox()
+    box = out.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox
     if box:
         out = out.crop(box)
     if height and out.height:
@@ -278,14 +277,14 @@ POLA_STOCK = (250, 248, 242)
 def polaroid(src, seed=0, height=520, tint="press", trim=True):
     """One polaroid print. FREE.
 
-    the operator, 2026-08-10, after the torn-cutout passes fell short: every piece in the fan is a
+    you, after the torn-cutout passes fell short: every piece in the fan is a
     polaroid, and they fan out the way the cutouts did. That is a different object from a
     magazine cutout and it is built differently: a polaroid has a MACHINED white frame, thin on
     three sides and deep at the foot, so the tear and the ragged edge are gone. What carries the
     hand is the fan, the tilt and the shadow.
 
     The picture inside runs the degraded noir treatment: greyscale, the print grain and uneven
-    exposure `_texture` already lays down, and one of the F8 tints. the operator named the O2 press
+    exposure `_texture` already lays down, and one of the F8 tints. you named the O2 press
     frame as the reference for the lighting he wants.
     """
     im = Image.open(src).convert("RGB") if not isinstance(src, Image.Image) else src
@@ -333,7 +332,7 @@ def polaroid(src, seed=0, height=520, tint="press", trim=True):
 def edge_band(size, seed=0, n=8, opacity=0.58, span=(-0.06, 1.06)):
     """A newspaper collage running down the right side and curving round both corners.
 
-    THE THIRD DEPTH LAYER (the operator, 2026-08-10). The page had two: the editorial bed baked into
+    THE THIRD DEPTH LAYER (you, . The page had two: the editorial bed baked into
     the sheet, which is nearly subliminal, and the foreground of polaroids, shreds and ink marks
     at full strength. This sits between them, so the right side of the card has something
     happening in the middle distance instead of jumping from a whisper to a shout.
@@ -412,16 +411,16 @@ def mark(kind="circle", seed=0, height=220, width=8, ink="#141414"):
     with tempfile.NamedTemporaryFile("w", suffix=".html", dir=ROOT, delete=False) as f:
         f.write(doc)
         tmp = f.name
-    out = Path(tempfile.mkdtemp()) / "mark.png"
+    out = Path(tempfile.mkdtemp) / "mark.png"
     try:
         subprocess.run([chrome, "--headless", "--disable-gpu", "--hide-scrollbars",
                         "--default-background-color=00000000", "--window-size=400,400",
-                        f"--screenshot={out}", Path(tmp).as_uri()],
+                        f"--screenshot={out}", Path(tmp).as_uri],
                        check=True, capture_output=True)
     finally:
         os.unlink(tmp)
     im = Image.open(out).convert("RGBA")
-    box = im.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox()
+    box = im.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox
     if box:
         im = im.crop(box)
     if height and im.height:
@@ -432,13 +431,13 @@ def mark(kind="circle", seed=0, height=220, width=8, ink="#141414"):
 def scrap(seed=0, height=420, tint="none", family=None):
     """A torn scrap of NEWSPRINT. Free: the scans are already on disk for the paper bed.
 
-    Newsprint by default. `collage_bed_paper.families()` returns eight families, and
+    Newsprint by default. `collage_bed_paper.families` returns eight families, and
     drawing at random handed the fan scraps of fabric, sheet music and map hatching, which come
     back as grey blurs at scrap size and read as a smudge rather than as a torn piece of paper.
     Newsprint is the only family that still says "newspaper" at 420px. Pass `family` to override.
     """
     from collage_bed_paper import families
-    fams = families()
+    fams = families
     fam = fams[family] if family is not None else fams[0]   # index 0 is collage-src-university
     rng = np.random.default_rng(seed)
     src = fam[int(rng.integers(0, len(fam)))]
@@ -495,8 +494,8 @@ svg {{ display:block; }}
 def ladder(bands=("70 to 120", "120 to 180", "180 to 250+"), height=620, seed=4):
     """The three-rung pay ladder, DRAWN. Free: no plate, no generation.
 
-    O3's beat is the three bands and the published rule for moving between them, and the operator's
-    call on 2026-08-10 was to break from photographs there: a drawn piece as the third medium,
+    O3's beat is the three bands and the published rule for moving between them, and your
+    call on was to break from photographs there: a drawn piece as the third medium,
     after the live-action O1 and the press-photo O2.
 
     The line quality is the house's, the `#rough` turbulence displacement the F8 loop diagram
@@ -524,18 +523,18 @@ def ladder(bands=("70 to 120", "120 to 180", "180 to 250+"), height=620, seed=4)
            f'</filter></defs>{rails}{"".join(rows)}</svg>')
     doc = (f'<meta charset="utf-8">'
            f'<style>@font-face {{ font-family:\'your display typeface\'; font-weight:400; '
-           f'src:url("{(ROOT.parent / "assets" / "jost-300.ttf").resolve().as_uri()}"); }}'
+           f'src:url("{(ROOT.parent / "assets" / "jost-300.ttf").resolve.as_uri}"); }}'
            f'{LADDER_CSS.format(w=W, h=H)}</style>{svg}')
     chrome = os.environ.get("CHROME_BIN",
                             "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
     with tempfile.NamedTemporaryFile("w", suffix=".html", dir=ROOT, delete=False) as f:
         f.write(doc)
         tmp = f.name
-    out = Path(tempfile.mkdtemp()) / "ladder.png"
+    out = Path(tempfile.mkdtemp) / "ladder.png"
     try:
         subprocess.run([chrome, "--headless", "--disable-gpu", "--hide-scrollbars",
                         "--default-background-color=00000000", f"--window-size={W},{H}",
-                        f"--screenshot={out}", Path(tmp).as_uri()],
+                        f"--screenshot={out}", Path(tmp).as_uri],
                        check=True, capture_output=True)
     finally:
         os.unlink(tmp)
@@ -580,9 +579,9 @@ def fan(card, pieces, origin, angles=None, spread=45, start=-45, pin=0.20, push=
     for i, piece in enumerate(pieces):
         ang = angles[i] if angles else start + spread * i
         if i < len(opacity) and opacity[i] < 1.0:
-            piece = piece.copy()
+            piece = piece.copy
             piece.putalpha(piece.getchannel("A")
-                           .point(lambda v, o=opacity[i]: int(v * o)))
+.point(lambda v, o=opacity[i]: int(v * o)))
         # EVERY PIECE ROTATES ABOUT THE SHARED ORIGIN, which is what makes this a fan rather
         # than a stack. Rotating each piece on its own axis and then placing it near the origin
         # was tried first: the three ended up almost on top of each other, because rotating a
@@ -607,7 +606,7 @@ def fan(card, pieces, origin, angles=None, spread=45, start=-45, pin=0.20, push=
     return card
 
 
-def main():
+def main:
     if "--demo" not in sys.argv:
         sys.exit("usage: cutouts.py --demo")
     plates = ROOT.parent / "candidate" / "plates"
@@ -622,4 +621,4 @@ def main():
 
 if __name__ == "__main__":
     sys.path.insert(0, str(ROOT))
-    main()
+    main

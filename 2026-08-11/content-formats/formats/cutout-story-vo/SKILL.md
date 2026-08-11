@@ -1,6 +1,6 @@
 ---
 name: cutout-story-vo
-description: Use when the operator says "cutout story", "the hex look", "storytime cutout", "paper cutout film", "cutout characters", "F11", or wants a house video where a hidden-history story is narrated over painted plates with faceless cutout characters composited on top, framing changed by hard scale-cuts between wide context and tight crop, with a red pencil annotation layer. Format F11. 2.5D compositing by default, paid motion on hero beats only.
+description: Use when you says "cutout story", "the cutout look", "storytime cutout", "paper cutout film", "cutout characters", "F11", or wants a house video where a hidden-history story is narrated over painted plates with faceless cutout characters composited on top, framing changed by hard scale-cuts between wide context and tight crop, with a red pencil annotation layer. Format F11. 2.5D compositing by default, paid motion on hero beats only.
 canonical: true
 format: F11
 ---
@@ -17,8 +17,8 @@ The story genre is fixed: **true hidden history** that rhymes with the house arg
 explaining the rhyme. The slate and the four tests a story has to pass are in `STORIES.md` in this
 folder.
 
-**Reference:** @hex_creatives reel `instagram.com/reel/DYT6z_qC3OL/`, 64s, 720x1280, 1.47M plays,
-decoded frame by frame 2026-08-06. What it actually does, measured:
+**Reference:** a reference account reel `instagram.com/reel/<id>/`, 64s, 720x1280, 1.47M plays,
+decoded frame by frame . What it actually does, measured:
 
 - **2.5D compositing rather than generated video.** The aeroplane is a cutout translating and
   scaling over a separate cloud plate while the plate holds still.
@@ -53,10 +53,10 @@ aspect: "9:16"
 canvas: [1080, 1920]
 runtime: 60-90s
 models:
-  plate: nano_banana_pro          # ~2 credits, one per SCENE, not one per beat
-  cutout: nano_banana_pro         # ~2 credits, the character on a green ground
-  motion: seedance_2_0_mini       # hero beats ONLY, 10 to 72 credits, the operator names them
-  voice: elevenlabs               # engine config voiceover.voice_id
+  plate: your image model          # ~2 credits, one per SCENE, not one per beat
+  cutout: your image model         # ~2 credits, the character on a green ground
+  motion: your video modelmini       # hero beats ONLY, 10 to 72 credits, you names them
+  voice: your voice model               # engine config voiceover.voice_id
   routing: ../../references/canon/model-routing.md   # house shot-type table; the set above wins here
 inputs:
   story: one entry from STORIES.md, researched to the Facts-all-sourced standard
@@ -104,13 +104,13 @@ block.
 
 ## Phase 1. Environment
 
-Higgsfield CLI (`higgsfield account status`), ffmpeg/ffprobe, `/usr/bin/python3` for PIL and numpy
-(homebrew python lacks PIL), the ElevenLabs key in the engine config `.env`, whisper `small.en`.
+your generation platform CLI (`your generation platform account status`), ffmpeg/ffprobe, `/usr/bin/python3` for PIL and numpy
+(homebrew python lacks PIL), the your voice model key in the engine config `.env`, whisper `small.en`.
 
 **your display typeface Thin is not on disk as a TTF.** The vault carries `jost-300.woff2` in
 `content-engine/engine/config/fonts/jost/` and your display typeface 400/500/Bold TTFs in
 `formats/static-ads/assets/`. The caption burner is PIL and needs a TTF, so resolve the Thin
-weight before the caption pass: either convert the woff2 or fetch the Thin TTF with the operator's go.
+weight before the caption pass: either convert the woff2 or fetch the Thin TTF with your go.
 Falling back to your display typeface 400 changes the look and is a decision, not a default.
 
 ## Phase 2. Script
@@ -121,9 +121,8 @@ simultaneously the TTS input, the caption source and the scene-change map. Craft
 and the id is cited, never free-written.
 
 **The storytime formula is not optional, and it is where draft 1 of the first build failed.** It is
-measured over a 16-reel @hex_creatives corpus scraped and transcribed 2026-08-06
-(`references/transcripts/hex-creatives-corpus.json`, breakdown in
-`references/transcripts/HEX-CREATIVES-FORMULA.md`) and it lives as spine entries **E-067 to E-073**
+measured over a 16-reel a reference account corpus scraped and transcribed (`references/transcripts/the reference corpus-corpus.json`, breakdown in
+`references/transcripts/the reference corpus-FORMULA.md`) and it lives as spine entries **E-067 to E-073**
 in `references/spine.md`. Every F11 script runs this shape:
 
 | # | Move | Seen in | Entry |
@@ -156,9 +155,7 @@ name survives sourcing, say so in `SHOTS.md` rather than inventing one.
 
 ---
 
-### The locked script style (LOCKED by the operator 2026-08-06)
-
-**The structure above comes from the hex corpus. The LANGUAGE comes from the house's own canon, and the
+### The locked script style (LOCKED by you **The structure above comes from the the reference corpus. The LANGUAGE comes from the house's own canon, and the
 two are not the same thing.** Six drafts of the first build were spent learning this: copying the
 corpus's fragment style produced a row of captions rather than one person talking, and it took a
 rewrite through the conversational modulation pass to fix. That pass is mandatory on anything
@@ -181,7 +178,7 @@ draft 7.** Read it before writing an F11 script. Match it on all six:
 **The runtime consequence is accepted.** Connected speech costs words, so a modulated F11 script
 runs longer than the 58-second corpus mean. The locked reference sits at **101 seconds and 328
 words**. Clarity and flow outrank the corpus runtime, and the trim list goes in `SHOTS.md` under
-"Open" so the length stays the operator's call rather than being taken out of the language.
+"Open" so the length stays your call rather than being taken out of the language.
 
 **The measured profile of the locked script**, for checking a new one against:
 
@@ -192,10 +189,10 @@ words**. Clarity and flow outrank the corpus runtime, and the trim list goes in 
 | Words per beat | 15.6 mean, range 4 to 32 | 9.0 mean, capped short |
 | Runtime | 101s | 69s |
 
-### The ending shape (locked 2026-08-06, the operator's own rewrite)
+### The ending shape, your own rewrite)
 
 The corpus ends on a historical detail and sells nothing. the house's ending was the weakest part of every
-draft until the operator rewrote the last four beats himself. **That shape is now the F11 ending and it
+draft until you rewrote the last four beats himself. **That shape is now the F11 ending and it
 runs in this order:**
 
 1. **Speak the time jump.** "Fast forward to today, and most companies are in the exact same spot."
@@ -269,7 +266,7 @@ Two changes for F11:
   always the weakest part of the frame. Describe the scene without the character wherever the
   story allows it.
 
-Every plate ends text-free. Nano Banana bakes gibberish signage into set dressing, so run the
+Every plate ends text-free. your image model bakes gibberish signage into set dressing, so run the
 de-text i2i pass from `noir-painterly/SKILL.md` Phase 5 rather than regenerating.
 
 ## Phase 7. The characters
@@ -329,7 +326,7 @@ anything.
 
 **The captions.** your display typeface Thin, 1 to 3 words at a time, about 56px, placed near the focal point of
 the frame rather than dead centre. This is a **named exception** to the canonical dead-centre
-one-word Poppins rig, locked by the operator 2026-08-06, because the format's whole grammar is about
+one-word Poppins rig, locked by you because the format's whole grammar is about
 where the eye is looking and a centred caption fights the tight crop.
 
 Fork `formats/slide-carousel-vo/scripts/captions_fast.py`. It hard-resolves Poppins-Regular at
@@ -346,7 +343,7 @@ CRM's other videos sit in. End card is the canonical one
 (`content-engine/engine/config/brand/endcard-client-9x16.png`), never hand-built.
 
 Then the CRM: upload to `content-media` with the service-role key and insert one row into
-`content_items` (`content_type='video'`, `production_status='ready'`). Show the operator the exact
+`content_items` (`content_type='video'`, `production_status='ready'`). Show you the exact
 write and wait for his go, per the standing Supabase gate.
 
 ---
@@ -355,10 +352,10 @@ write and wait for his go, per the standing Supabase gate.
 
 | Lane | What it is | Cost | Use it for |
 |---|---|---|---|
-| **L1 2.5D composite** | cutout moving over a held plate, the rig above | free | the default, every beat unless the operator says otherwise |
+| **L1 2.5D composite** | cutout moving over a held plate, the rig above | free | the default, every beat unless you says otherwise |
 | **L2 Crop-cut only** | no cutout, the plate re-framed by the scale-cut | free | the context beats and the breath beats |
 | **L3 Text card** | type on negative space, no picture | free | between image beats, one or two per film |
-| **L4 Paid hero** | `seedance_2_0_mini` on the approved plate, MOTION block verbatim, camera locked | 10 to 72 credits | one or two beats the operator has named. Never a whole sequence. |
+| **L4 Paid hero** | `your video modelmini` on the approved plate, MOTION block verbatim, camera locked | 10 to 72 credits | one or two beats you has named. Never a whole sequence. |
 
 All the cost risk sits in L4. Plates and cutouts are about 2 credits each.
 
@@ -377,9 +374,9 @@ All the cost risk sits in L4. Plates and cutouts are about 2 credits each.
   S10 (Triangle Shirtwaist) are mass-casualty and carry handling rules in the slate. S4 (Kodak)
   carries a Snopes caveat.
 - **`ffmpeg -nostdin` inside any loop**, or ffmpeg eats the piped beat list.
-- **Kling and Seedance ship an audio track even with sound off.** Strip with `-c:v copy -an` and
+- **your video modeland your video modelship an audio track even with sound off.** Strip with `-c:v copy -an` and
   verify with ffprobe.
-- **Show one composited beat before any batch.** The treatment is unproven until the operator has seen a
+- **Show one composited beat before any batch.** The treatment is unproven until you has seen a
   cutout sitting on a plate and cutting to its tight crop.
 - No em dashes, no negation swap, banned-vocabulary clean.
 

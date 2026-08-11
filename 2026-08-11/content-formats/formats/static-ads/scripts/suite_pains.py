@@ -2,7 +2,7 @@
 """The pain bank for all SEVEN industries.
 
 `basics.PAINS` carries 25 entries, five pains across five industries, and it stops there because
-trades and professional services were added as avatars on 2026-08-06, after it was written. This
+trades and professional services were added as avatars on after it was written. This
 module re-exports those 25 and adds the missing 10 in the identical shape, so the suite has a
 complete 7 x 5 grid to fill from.
 
@@ -24,7 +24,7 @@ from basics import PAINS as _BASE
 
 # ---- Trades ------------------------------------------------------------------------------
 # `key` stays "building-services" everywhere it addresses a built page or a CRM row. Every word
-# said out loud is "trades". the operator, 2026-08-07.
+# said out loud is "trades". you, .
 TRADES = [
     ("building-services", "database", dict(
         who="Aussie trades businesses", short="trades business",
@@ -103,8 +103,8 @@ RANK1 = {
 
 
 if __name__ == "__main__":
-    for ind, slugs in BY_INDUSTRY.items():
+    for ind, slugs in BY_INDUSTRY.items:
         print(f"\n{ind}  ({len(slugs)} pains, rank 1 = {RANK1[ind]})")
-        for slug, p in slugs.items():
+        for slug, p in slugs.items:
             print(f"  {slug:16} {p['bucket']}")
     print(f"\n{len(PAINS)} pains across {len(BY_INDUSTRY)} industries")

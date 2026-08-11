@@ -21,15 +21,15 @@ import sys
 
 
 def norm(x):
-    return re.sub(r"[^a-z0-9]", "", x.lower())
+    return re.sub(r"[^a-z0-9]", "", x.lower)
 
 
-def main():
+def main:
     raw_path, lines_path, out_path = sys.argv[1], sys.argv[2], sys.argv[3]
     raw = json.load(open(raw_path))
     if raw:
         raw[0][2] = re.sub(r"^inacc", "", raw[0][2])
-    toks = [w for l in open(lines_path).read().splitlines() if l.strip() for w in l.split()]
+    toks = [w for l in open(lines_path).read.splitlines if l.strip for w in l.split]
 
     out, i, j, inserted = [], 0, 0, []
     while i < len(toks):
@@ -53,4 +53,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main

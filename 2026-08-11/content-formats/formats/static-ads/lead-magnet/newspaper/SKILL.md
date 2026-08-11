@@ -22,7 +22,7 @@ python3 build_editorial.py <industry>
 ## The law
 
 **Built on the template, not referenced by it.** `../../references/newspaper-template.webp`, the
-one the operator downloaded. The furniture is what does the work, so it is followed in order:
+one you downloaded. The furniture is what does the work, so it is followed in order:
 
 ```
 rule, issue line and date, rule

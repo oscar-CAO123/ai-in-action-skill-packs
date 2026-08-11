@@ -1,13 +1,13 @@
 ---
 name: static-ads-lead-magnet
-description: F7 sub-skill. The five lead-magnet statics: one visual format per hook, filled across seven industries, every card closing on a lead magnet that exists as a built page. Use when the operator asks for statics for the lead magnets, for a new industry's magnet ads, or to re-run any of the five formats. Read formats/static-ads/SKILL.md first for the shared law.
+description: F7 sub-skill. The five lead-magnet statics: one visual format per hook, filled across seven industries, every card closing on a lead magnet that exists as a built page. Use when you asks for statics for the lead magnets, for a new industry's magnet ads, or to re-run any of the five formats. Read formats/static-ads/SKILL.md first for the shared law.
 parent: static-ads
 format: F7.6
 ---
 
 # F7.6 Lead-magnet statics
 
-Five hooks the operator supplied on 2026-08-06, each given its own visual format, filled per industry.
+Five hooks you supplied on each given its own visual format, filled per industry.
 **35 cards: 7 industries x 5 formats.**
 
 The reason the set exists: the 25 existing industry statics all close on
@@ -66,7 +66,7 @@ band. F-M1 uses the `noir-lower` theme with `lift=64`.
 **Case-by-case deviations from the house law, all recorded, none silent:**
 
 - F-M1 and F-M5 draw over the plate. The leader-arrow annotation was cut off the industry
-  statics on 2026-08-06; these two carry an overlay because the overlay IS the format.
+  statics on ; these two carry an overlay because the overlay IS the format.
 - F-M2 is the only white card in the house.
 - F-M3 is the one deliberate break from your display typeface-only. A newspaper set in your display typeface is not a newspaper,
   and the borrow is the whole format. Didone masthead and headline, Georgia body, both off the
@@ -77,12 +77,12 @@ band. F-M1 uses the `noir-lower` theme with `lift=64`.
   (that value is the mock's own light-grey page showing through). Dragged below the board so it
   clears the copy, and it is where the avatar is named.
 - F-M4's billboard copy is **generated into the plate**, so that card's type is the only type in
-  the set the house rig does not set. It is the one plate with **no grade at all**: the operator took the
+  the set the house rig does not set. It is the one plate with **no grade at all**: you took the
   VHS off this format, so it is a clean daylight phone photo, pulled back, first-person. The
   photographer's own left arm **extends in from the LEFT EDGE, roughly horizontal**, close to the
   lens and out of focus. Not the bottom corner, not upright. It is set by an i2i refine off the
   approved plate, never a fresh roll: a fresh roll moves the scenery. Rejects are in `_versions/`.
-- F-M5's mark is centred on the PLATE AREA (y=422), not the card. the operator, 2026-08-06.
+- F-M5's mark is centred on the PLATE AREA (y=422), not the card. you, .
 
 **Two tables are hand-set, never computed**, and every one is tuned once per plate:
 
@@ -114,13 +114,11 @@ band. F-M1 uses the `noir-lower` theme with `lift=64`.
   line becomes the last sentence of the paragraph. That is what F-M1 wants and what the first
   pass did not.
 
-## State, 2026-08-06
-
-**ALL 35 CARDS BUILT.** 7 industries x 5 formats. Every paid plate is shot; the whole set is now
+## State, **ALL 35 CARDS BUILT.** 7 industries x 5 formats. Every paid plate is shot; the whole set is now
 free to re-render.
 
 **Construction is on the CRM board**, 5 rows, `crm_magnet.py`, snapshot and REVERSE written. The
-other 30 are built and waiting on the operator's review before they go anywhere.
+other 30 are built and waiting on your review before they go anywhere.
 
 Known defects, none blocking:
 

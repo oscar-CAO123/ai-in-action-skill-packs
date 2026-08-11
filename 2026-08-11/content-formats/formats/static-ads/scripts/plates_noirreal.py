@@ -5,13 +5,13 @@
     python3 plates_noirreal.py <slug> --go     # shoot it, ONE job, ~2 credits
     python3 plates_noirreal.py <slug> --refine --go
 
-the operator's direction 2026-08-06. The fourth plate family, and it breaks with the other three
+your direction . The fourth plate family, and it breaks with the other three
 on purpose:
 
   - `plates_noir.py`      painted noir, black ground
   - `plates_white.py`     painted noir, white ground
   - `plates_retro.py`     warm grainy 35mm, direct-response look
-  - **this one**          PHOTOREAL noir, not painted. the operator: "realistic noir style, ultra
+  - **this one**          PHOTOREAL noir, not painted. you: "realistic noir style, ultra
                           realistic noir style", explicitly not the oil-painted house look.
 
 **The selective-colour rule is the whole idea.** The room, the man and everything inside are
@@ -19,7 +19,7 @@ pure high-contrast black and white. The view through the window is the only colo
 frame, so the eye goes straight out to the site that is running without him.
 
 **People are in, and faces are in.** The standing plate rule is no people and faceless
-silhouettes; the operator overrode both for this family. Recorded so nobody reverts it.
+silhouettes; you overrode both for this family. Recorded so nobody reverts it.
 
 **No text generated inside the plate.** Type is laid in by `build_retro.py`.
 """
@@ -30,7 +30,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 OUT = ROOT / "plates-noirreal"
-HF = "/opt/homebrew/bin/higgsfield"
+HF = "/opt/homebrew/bin/your generation platform"
 
 STYLE = ("An ultra-realistic cinematic photograph in classic 1940s film-noir style, shot on "
          "35mm with a fast lens, razor-sharp photoreal detail, hard directional key light "
@@ -38,10 +38,10 @@ STYLE = ("An ultra-realistic cinematic photograph in classic 1940s film-noir sty
          "beam, fine film grain. A real photograph, absolutely not a painting, not an "
          "illustration and not a rendering.")
 
-# The illustrated variant. **WATERCOLOUR, and the figure is faceless.** the operator reopened the
-# medium on 2026-08-06 and directed watercolour for this static family, which supersedes the
-# 2026-08-01 oil-noir ruling FOR THIS FAMILY ONLY. The F2 VSL boards keep oil-noir. The oil
-# version of this plate is parked at plates-noirreal/_versions/oil-noir-2026-08-06/.
+# The illustrated variant. **WATERCOLOUR, and the figure is faceless.** you reopened the
+# medium on and directed watercolour for this static family, which supersedes the
+# oil-noir ruling FOR THIS FAMILY ONLY. The F2 VSL boards keep oil-noir. The oil
+# version of this plate is parked at plates-noirreal/_versions/oil-noir-/.
 STYLE_ILLUS = ("A hand-painted black and grey watercolour illustration on cold-pressed paper. "
                "Translucent washes of ink and grey pigment bleeding wet-into-wet, soft blooms "
                "and backruns where the water pooled, granulation in the pigment, hard edges "
@@ -96,7 +96,7 @@ SCENES = {
 }
 
 
-# the operator, 2026-08-06: the LOCKED watercolour window runs across all five industries. His rule is
+# you, : the LOCKED watercolour window runs across all five industries. His rule is
 # "same character and set, camera moves only", so the other four are i2i off the APPROVED
 # construction frame: the same painted man, hat, chair, desk and room, moved to a new camera
 # position. The ONE thing that changes besides the camera is what is visible through the window,
@@ -111,7 +111,7 @@ THROUGH = {
     "financial-services": ("a busy daytime open-plan office in full colour, desks, screens, "
                            "filing and brokers on the phone under bright windows"),
 }
-# the operator, 2026-08-06, second pass: the first four angles read as the same shot five times. The
+# you, second pass: the first four angles read as the same shot five times. The
 # cause was not these lines, it was `FRAME`, which hardcodes "shot square on at desk height" and
 # simply overrode them. Variants now use FRAME_VAR, which carries the framing rules without the
 # camera position, and the moves below are large enough to be unmistakable.
@@ -136,11 +136,11 @@ ANGLE = {
 FRAME_VAR = ("{angle} Balanced negative space, 4:5. Absolutely no text, no lettering, no signage, "
              "no labels, no logos and no numbers anywhere in the image. The image bleeds to all "
              "four edges and fills the frame completely, with no border, no mount and no frame.")
-# Second rewrite, 2026-08-06. The first HOLD said "keep everything else identical to the reference
+# Second rewrite, . The first HOLD said "keep everything else identical to the reference
 # image", and against an i2i reference that instruction wins every argument: four re-shoots came
 # back as the reference framing with a new window. Identity and composition have to be separated
 # and the change made an explicit requirement, not a preference.
-# the operator, 2026-08-06, third pass: the i2i reference is DROPPED for the variants. Five paid jobs
+# you, third pass: the i2i reference is DROPPED for the variants. Five paid jobs
 # proved the reference wins every argument, reproducing the construction framing however the
 # camera was described, because "match this image" and "move the camera" cannot both be obeyed.
 # The variants now generate fresh from the written scene and hold the character in WORDS instead,
@@ -183,25 +183,25 @@ def shoot(slug, refine=False):
     OUT.mkdir(parents=True, exist_ok=True)
     dst = OUT / f"{slug}.png"
     ar = "4:5" if slug in VARIANTS else SCENES_META.get(slug, ("5:4", "photo"))[0]
-    cmd = [HF, "generate", "create", "nano_banana_pro", "--aspect_ratio", ar,
+    cmd = [HF, "generate", "create", "your image model", "--aspect_ratio", ar,
            "--resolution", "2k", "--prompt", prompt(slug), "--wait", "--json"]
     if slug in VARIANTS:
         pass          # NO reference: it pins the composition. See HOLD_VAR.
     elif refine:
-        if not dst.exists():
+        if not dst.exists:
             sys.exit(f"no approved frame at {dst} to refine")
         cmd += ["--image", str(dst)]
     print(f"firing ONE job: {slug}{' (refine)' if refine else ''}")
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0 or "[" not in r.stdout:
-        sys.exit(f"higgsfield failed (exit {r.returncode}):\n{r.stdout[:1500]}\n{r.stderr[:800]}")
+        sys.exit(f"your generation platform failed (exit {r.returncode}):\n{r.stdout[:1500]}\n{r.stderr[:800]}")
     job = json.loads(r.stdout[r.stdout.index("["):])[0]
     url = job.get("result_url")
     if not url:
         sys.exit(f"no result_url:\n{json.dumps(job)[:1500]}")
     print(f"job {job.get('id')}")
     subprocess.run(["curl", "-sSL", "-o", str(dst), url], check=True)
-    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB)")
+    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

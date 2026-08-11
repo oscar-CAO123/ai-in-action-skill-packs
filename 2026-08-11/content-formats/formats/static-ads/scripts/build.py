@@ -21,7 +21,7 @@ from band import render_card
 
 ROOT = Path(__file__).parent
 
-# The Build Breakdown statics (added 2026-08-06) live in ads_builds and render on this rig,
+# The Build Breakdown statics (added live in ads_builds and render on this rig,
 # so the list falls through to them rather than duplicating the renderer.
 try:
     from ads_builds import BUILD_ADS
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     out_dir = ROOT / ("out-lead" if key == "lead" else "out")
     if "--out" in args:
         i = args.index("--out")
-        out_dir = Path(args[i + 1]).expanduser()
+        out_dir = Path(args[i + 1]).expanduser
         args = args[:i] + args[i + 2:]
     out_dir.mkdir(parents=True, exist_ok=True)
     picked = [a for a in ADS if not args or a["slug"] in args]

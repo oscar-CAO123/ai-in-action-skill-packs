@@ -106,14 +106,14 @@ Read in this order. Stop and flag anything missing rather than guessing.
 | 1 | `the business/projects/content-engine/engine/config/brand-kit.house.md` | palette, typography, voice gate, banned tokens, aspect specs, visual do/don't |
 | 2 | `the business/projects/content-engine/engine/config/content-strategy.house.md` | the barbell, the format families, the operating contract |
 | 3 | `references/canon/angles-and-formats.md` | the strict angle matrix (A1-A12) and the strict format list (F1, F2, F3, F5, F7). Ideation picks from here only |
-| 3a | `references/canon/model-routing.md` | **which model owns which shot type**, with every id and parameter verified off the Higgsfield CLI. Load before anything is generated. Retro and authentic shots go to Soul Cinema, design and type-led plates to GPT Image 2, object-into-scene to Nano Banana Pro, multi-shot video to Seedance 2.0, video edits to Google Omni |
+| 3a | `references/canon/model-routing.md` | **which model owns which shot type**, with every id and parameter verified off the your generation platform CLI. Load before anything is generated. Retro and authentic shots go to your cinematic model, design and type-led plates to your design model, object-into-scene to your image model, multi-shot video to your video model, video edits to your video edit model |
 | 4 | `references/hooks/HOOKS.md` | **the hook bank.** Every hook structure house has: the mechanics floor, the scraped template library, the house's own hooks per pain, and the cleared concepts. Fill from here, never free-write a hook |
 | 5 | `../../context/personas/personas-and-avatars.md` | Part 0 the industry spine (which of the 21 report industries a persona belongs to), Part 1 the approved callout list, Part 2 the persona detail behind every code, Part 3 the census that decided the list |
 | 6 | `formats/<format>/SKILL.md` | the build spec for the chosen format, including its Faceless Reframe doctrine section |
 | 7 | `../../context/pain-wiki/INDEX.md` | **the discovery corpus, industry first.** 21 industry playbooks in `industries/`, 13 objection pages in `objections/`, 33 pain themes in `pains/`, 297 company profiles in `companies/`. `MARKET.md` is the corpus rollup: industry distribution, weighted pain, objection resolve rates. The angle almost always starts here |
 | 7a | `../../context/pain-wiki/industries/<slug>.md` | **the playbook for one industry.** Ranked pains in the owner's own words with an angle for each, ranked objections with a pre-empt-in-the-ad and a rebuttal-on-the-call line, the language they use and the language to avoid, a lead magnet, three carousel concepts, targeting, and the raw evidence behind all of it. Read this whenever the work is vertical-specific |
 | 7b | `references/candidate-knowledge-base.md` | **the evidence layer for builds, tools and workflows.** Load whenever the copy will name what to build, which tools to use, or how a workflow is structured. 177 validated Hub builds for the structure, 483 candidate interview summaries for the named tools |
-| 8 | `references/scripts/` | the written work: archetypes, the core-pain VSL scripts, the Perdriau teardowns, the raw idea dump |
+| 8 | `references/scripts/` | the written work: archetypes, the core-pain VSL scripts, the a reference brand teardowns, the raw idea dump |
 | 9 | `references/canon/CONCEPT-BANK.md` | worked examples per pain (reference, never lift lines verbatim). `references/canon/objection-bank.md` carries the 13 canonical objections with how often each is raised, how often the rep closes it on the call, and a pre-empt and rebuttal pair per industry |
 | 10 | Section 8 below | the evidence layer distilled from 1,954 scraped posts |
 
@@ -124,7 +124,7 @@ section 1's banned vocabulary.
 
 **`references/spine.md` is the single source of truth for what good looks like.** It is the
 one file that outranks everything else in this list, it is house-first, and it grows
-perpetually: the operator feeds a source, it gets extracted on the spot, and every entry needs his
+perpetually: you feeds a source, it gets extracted on the spot, and every entry needs his
 approval before it is canon. Entry shape and intake rules are in `references/README.md`.
 Everything above now lives inside this skill's folder (`references/`), which is the point: one folder holds the craft, the canon, the hooks, the scripts and every format skill.
 
@@ -139,8 +139,7 @@ spine entries to the ones that apply to it.
 
 These never bend, in any mode, for any audience.
 
-### The citation law (the operator, 2026-08-10)
-**Nothing is generated without a concrete reference from the bank, and the reference is shown
+### The citation law (you, **Nothing is generated without a concrete reference from the bank, and the reference is shown
 with the generation.** Not a description of a reference, an ID that resolves: `arch:S6`, not
 "modelled on a job ad". Every format declares what it is modelled on, the copy shape first and
 then the layout or look, and the id is resolved by a gate rather than trusted because it was
@@ -160,16 +159,16 @@ imitates), `tear` (the doctrine it obeys), `hex` (the measured corpus shape), `s
 competitor ad that ran and kept running), `tpl` (a Figma layout extract), `local` (a reference
 image a format was built on) and `style` (a locked plate look).
 
-**It is serviced on request.** Anything shown to the operator carries its reference: `sheet_fmt.py`
+**It is serviced on request.** Anything shown to you carries its reference: `sheet_fmt.py`
 draws a MODELLED ON strip above the cards with the referenced images thumbnailed, and
 `suite_copy.py --fmt <F>` prints each id with its title and the file and line it lives at.
 
-### The bottom-band law (layout, settled 2026-07-31)
+### The bottom-band law (layout
 **Scope: every type-led frame**, meaning any frame where the type IS the design. That is the
 statics (F7), every carousel slide (F5), and any title, hook or quote card set as type on black.
 It does not govern type laid over motion, which has two standing treatments of its own: the
 one-word Poppins captions that sit dead centre (F1, F2, F3), and the persistent top hook in the
-talk-show format. Those stay where they are until the operator rules otherwise.
+talk-show format. Those stay where they are until you rules otherwise.
 
 On a type-led frame, every mark lives in the **bottom 1.5/4 of the frame**. At 1080x1350 that
 band is 506px tall, top edge y=844. Nothing renders above that line.
@@ -179,7 +178,7 @@ single blue accent. No kicker, no standfirst, no second type tier, no rules, no 
 secondary tier is banned outright, it is what made every earlier pass read small.
 
 The face is set per format by a `band.py` theme, not by this law. Statics run `anton`; the
-news-carousel format runs `noir` (your display typeface 200 caps) as of 2026-08-06. Everything above holds either
+news-carousel format runs `noir` (your display typeface 200 caps) as of . Everything above holds either
 way.
 
 The block is **set flush on both margins and fills the band**, top to bottom and edge to edge.
@@ -190,7 +189,7 @@ Reference implementation, copy this mechanism into any rig:
 `skills/content-formats/formats/static-ads/scripts/build.py`, and section 0 of `skills/content-formats/formats/static-ads/SKILL.md` for the traps
 (the fallback-metrics font trap in particular).
 
-**The two exemptions (ruled 2026-08-07, and there are no others).** Both came out of the carousel
+**The two exemptions, and there are no others).** Both came out of the carousel
 reference batch in `projects/content-engine/engine/reference-bank/carousels/`, and each one is
 named to a specific layout so it cannot spread.
 
@@ -207,7 +206,7 @@ named to a specific layout so it cannot spread.
 Everything else stays inside the band, including the mounted-artefact curation layout, whose title
 line folds into the band above its caption line rather than sitting at the top of the frame.
 
-### The education law (settled 2026-07-31)
+### The education law
 **Every pain-led or callout asset teaches before it offers.** Naming the pain and cutting
 straight to "here is how we help" is banned in every format. The pain opens a question, the
 teaching is what answers it, and house arrives as the conclusion of the lesson.
@@ -225,7 +224,7 @@ pain, then a link, it is unfinished.
 slides. A single static card has one beat, so its card carries the hook and the teaching lives
 in the primary text; the card still has to point at the lesson rather than at the booking page.
 
-### The evidence law: builds, tools and workflows come from the knowledge base (settled 2026-07-31)
+### The evidence law: builds, tools and workflows come from the knowledge base
 
 **Never invent a build, a tool, a stack or a workflow.** Any time copy names what a business
 should build, which tools it should use, or how a workflow is put together, it comes from the
@@ -240,7 +239,7 @@ as an invented number.
   by design ("an automation platform", "a fast LLM"). It comes from the CRM interview evidence
   or the Hub's vetted repos and accounts, and it carries the same discipline as a number: name
   the tool only where the evidence names it.
-- **The counted stack, 483 candidate interview summaries, 2026-07-31:** Claude 198,
+- **The counted stack, 483 candidate interview summaries, :** Claude 198,
   ChatGPT/GPT 102, n8n 71, Supabase 37, Python 29, Gemini 26, Cursor 24, Lovable 17, Zapier 16,
   Copilot 16, LangChain 15, Notion 11, Twilio 11, HubSpot 9, Airtable 8, Salesforce 7,
   Make.com 6. Lead with the top of that list, because it is what the market actually runs.
@@ -257,7 +256,7 @@ are out: "it's not X, it's Y", "that's not X, that's Y", "not because X, but bec
 in a full sentence with a subject and a verb. If a draft contains one, rewrite the line
 before anyone sees it.
 
-This ban has no exceptions. One was carved out for an objection pre-empt on 2026-08-01 and
+This ban has no exceptions. One was carved out for an objection pre-empt on and
 reverted the same day when the clause it existed for was cut from the script.
 
 ### Other banned patterns
@@ -292,7 +291,7 @@ two in sync when either changes.
 
 **Master banlist:** `references/ai-tells-banlist.md` is the exhaustive register behind this
 section (every known AI-tell word, phrase, sentence structure, formatting habit, and
-per-channel giveaway, researched 2026-07-31 from Wikipedia's Signs of AI writing, the
+per-channel giveaway, researched from Wikipedia's Signs of AI writing, the
 tropes.fyi directory, and a dozen community and industry lists). The lists above stay the
 always-loaded core; run the master banlist's sweep procedure on every draft before the QA
 gate in section 10.
@@ -303,7 +302,7 @@ If you remove a word and the sentence still works, remove it.
 ### Specificity
 Every vague claim costs trust and every specific detail buys it. "Sixteen years" beats "many
 years". "$5-6k a month" beats "expensive". "Turning over $5M or more" beats "established".
-When you cannot be specific, ask the operator for the specific. Never invent a number.
+When you cannot be specific, ask you for the specific. Never invent a number.
 
 ### Register floor
 - **Contractions always.** Write to ONE owner, one human to one human, never "business owners".
@@ -362,7 +361,7 @@ and which spine or archetype. Guessing any of these produces work that gets thro
 
 ### The production table (the locked schema for any video script)
 
-Every video script is written as this five-column table. Folded in from `ad-scripting` 2026-07-31.
+Every video script is written as this five-column table. Folded in from `ad-scripting` .
 
 | Section | Script | Shot List | Filming Location | Music/Tone |
 |---|---|---|---|---|
@@ -454,13 +453,13 @@ Spine B names house early, which suspends the late-naming rule. One avatar and o
 Swapping industry and pain against a locked skeleton is how spine B batches into volume.
 
 **Beat 3 is what separates this from the version that failed.** The old canonical spine B ran
-callout, pain, "here's exactly how we help", CTA, and it was cut on 2026-07-31 for exactly that
+callout, pain, "here's exactly how we help", CTA, and it was cut on for exactly that
 reason. A callout that arrives at the offer without teaching is a brochure with a name on it.
 
 ### Spine C , the Story
 Use when one real, specific incident carries the argument better than any claim about it. It is
 format-agnostic: it runs as a LinkedIn post, a VSL open, a talk-show monologue, or the spine of
-a still-frame film. Folded in from the LinkedIn storytelling engine 2026-07-31.
+a still-frame film. Folded in from the LinkedIn storytelling engine .
 
 1. **Hook.** Drop into the scene, no preamble. "Three in the afternoon on a Friday and the
    quote still wasn't out."
@@ -506,7 +505,7 @@ testimonials, supply-based urgency that is actually plausible.
 
 ---
 
-## 7. Hook craft (the full doctrine, folded 2026-07-30)
+## 7. Hook craft (the full doctrine
 
 Hooks carry roughly 80% of view-through. For the same hour of work, 15 hooks x 2 bodies beats
 2 hooks x 5 bodies nearly always. Grade every hook before the script is written.
@@ -544,7 +543,7 @@ founder's letter (must be true) · social proof.
 
 ### Generation principles
 Index on winners first (40-50% of hooks vary proven angles before new territory) · education-first
-dominates (expose a problem they did not know they had; best performer across every the operator client) ·
+dominates (expose a problem they did not know they had; best performer across every you client) ·
 the 7am scroll test · first-person means a real founder or operator, never an actor · label every
 hook by type and angle · ten minimum per brief across at least four types before one gets picked.
 
@@ -606,9 +605,7 @@ Section 7 is written for copy that is spoken. A band card is silent, has no voic
 it, and gets one block of type at one size. The constraints below are not style preferences,
 they are what the renderer does to the words.
 
-### The character budget (measured off the rendered cards, 2026-07-31)
-
-Type size falls off as the square root of the character count. Across seventeen rendered cards
+### The character budget (measured off the rendered cards, Type size falls off as the square root of the character count. Across seventeen rendered cards
 the relationship holds to about 20%:
 
     size in px  ~=  887 / sqrt(characters)
@@ -648,7 +645,7 @@ credibility. Section 7's specificity criterion is the whole game here rather tha
 **Numbers keep the scope their source supports.** A figure from one discovery call says one
 business, on the card, in the same sentence. See section 8.
 
-### The information slide (new class, ruled 2026-08-07)
+### The information slide (new class
 
 Everything above governs a **band card**: one block of type, one size, in the bottom band. The
 information slide is the second class, and it is governed by none of it.
@@ -675,7 +672,7 @@ structures evidenced in the reference bank, in order of strength:
   it names comes from `context/pain-wiki/` or a named Hub build.
 
 **What is not settled.** The information slide's own type scale has not been measured. The band
-budget above was measured off seventeen rendered cards on 2026-07-31, and this class needs the same
+budget above was measured off seventeen rendered cards on and this class needs the same
 treatment before anything is shot. Until then, `527` to `578` characters a slide is the observed
 working range on the references, at four type sizes, on pure black.
 
@@ -744,7 +741,7 @@ read as well as heard, so a line that only works out loud gets caught on screen.
 credible third party in E-017 speaking in his own voice, so the authority claim never gets
 handed to anyone else here.
 
-**The teach beat: one build, plus its outcome (settled 2026-08-01).** The education law in
+**The teach beat: one build, plus its outcome.** The education law in
 section 1 binds here like everywhere else, and this is how it lands inside the word budget. One
 line names a real Hub build, the next line gives its recorded outcome scoped to one business.
 The three-build trio belongs to F5, where three separate slides carry it: inside thirty-eight
@@ -765,7 +762,7 @@ this is its natural home. It needs the full forty seconds and real builds from t
 (E-029) is also available when the pain is already conscious, and it suspends the late-naming
 rule for that clip only.
 
-**The three-system fork (full VSL mode only, LOCKED as the canonical style 2026-08-01).** This is
+**The three-system fork (full VSL mode only, LOCKED as the canonical style .** This is
 the style for the format, approved off the reference implementation at
 `formats/talkshow-vsl/IDEAS.md` V01, with the production detail in that format's SKILL.md
 Phase 2. Write every full VSL against it rather than composing a new arc. The 45 to 90 second mode
@@ -777,7 +774,7 @@ result beat in its own words, and change only this:
 1. **The hook**, from the source script. Either the dream outcome as a question or the pain
    agitated, whichever that script uses.
 2. **The turn.** "Well, you can. You just need these three AI systems." One line, and it goes
-   straight on. An objection pre-empt sat here until 2026-08-01 ("and no, it's not hiring another
+   straight on. An objection pre-empt sat here until ("and no, it's not hiring another
    admin") and was cut: it slowed the turn and bought nothing the three builds do not.
 3. **Straight into the systems.** Cut the source's machine walkthrough ("so here's your
    business, the work comes in here"). The job of this script is to educate, so the runtime goes
@@ -803,12 +800,11 @@ result beat in its own words, and change only this:
 6. **The quiz CTA**, in place of the source's "there's only one place in Australia you can hire
    them", carried in on "so" rather than starting cold.
 
-Roughly 120 to 240 spoken words. **The role is not named in this archetype** (settled
-2026-08-01): the video teaches and the quiz result introduces the category, which is why the close
+Roughly 120 to 240 spoken words. **The role is not named in this archetype**: the video teaches and the quiz result introduces the category, which is why the close
 is the quiz rather than the 7e canon. The guru-clip mode keeps the 55 to 110 word arc and the
 ordinary close.
 
-**Rebuild, do not copy, the source's two pivot beats.** Those scripts were written 2026-07-18 and
+**Rebuild, do not copy, the source's two pivot beats.** Those scripts were written and
 run "But the fix isn't X, it's Y" and "Not by hiring your replacement, but by hiring someone",
 both banned on 07-31. They sit inside the block this fork replaces, so the fork is clean by
 construction. Read the source for structure, and take its wording only from the beats you keep.
@@ -967,7 +963,7 @@ E-016 and E-017), and *Influence* (Robert Cialdini).
 ## 8. The evidence layer
 
 Distilled from 1,954 classified posts and 196 transcribed videos across 24 content-educator
-accounts, scraped 2026-07-22 and analysed 2026-07-24. Full corpus in your own reference store.
+accounts, scraped and analysed . Full corpus in your own reference store.
 
 **Read this as craft evidence, and apply the transferability filter.** These creators sell
 courses to creators. The attention mechanics transfer to house. The monetisation tactics
@@ -1019,7 +1015,7 @@ format, it carries the verified parameter schema for each model, and it holds th
 cost real money: `soul_cinematic` and `gpt_image_2` have no 4:5 ratio, and `gemini_omni` caps at
 720p. A format's own locked model set outranks it, and F2 noir-painterly is the one that does.
 
-The strict format list is `canon/angles-and-formats.md`, five formats as of 2026-07-30. Route by format:
+The strict format list is `canon/angles-and-formats.md`, five formats as of . Route by format:
 
 | Format | Route to |
 |---|---|
@@ -1041,7 +1037,7 @@ The strict format list is `canon/angles-and-formats.md`, five formats as of 2026
 | L-EDIT Editorial layer (archival bed and paper cutouts) | `the business/skills/content-formats/layers/editorial-layer/SKILL.md` |
 | L-PATH Path control (draw the camera move on the plate) | `the business/skills/content-formats/layers/path-control/SKILL.md` , unproven on the house account, one test outstanding |
 
-**Retired 2026-07-30, never pick these for a slot:** stitch-hook (was F4), best-time-carousel and
+**Retired never pick these for a slot:** stitch-hook (was F4), best-time-carousel and
 webinar-carousel (were F6). The skills still work and stay on disk for ad-hoc use; they are out of
 the canonical draw. Retired numbers are never reused.
 
@@ -1062,7 +1058,7 @@ audio. Rig at `content-engine/engine/tools/captions/`.
 restrained `#1269FF` radial accent, the line "Hire a house today." Music resolves and cuts on
 the card.
 
-**Moiré shimmer (optional, any asset, adopted 2026-08-05):** a house-wide finishing layer that
+**Moiré shimmer (optional, any asset, adopted :** a house-wide finishing layer that
 adds continuous movement to a frame for zero generation spend. Rig and full spec at
 `content-engine/engine/tools/moire/`. Locked look: `displace` mode, 6px carrier, 18px
 displacement, 0.32 opacity, 0.25 deg/sec drift. Reach for it whenever a held still needs life
@@ -1071,7 +1067,7 @@ layer, so both get motion here without a single credit).
 
 Three rules bind it. **It is never prompt-baked**, because moiré is an interference artifact
 rather than a texture and a model's decoder low-passes the very gratings that create it, so
-Higgsfield returns decorative op-art with a locked pitch and a paid regeneration per variant.
+your generation platform returns decorative op-art with a locked pitch and a paid regeneration per variant.
 Ask the plate for the carrier instead (mesh, louvre, corrugated sheet, perforated panel, in
 deep focus) and generate the beat in post. **It never runs behind the kinetic captions**, since
 92px pure white type vibrates against a moving high-frequency field; the rig's caption safe
@@ -1087,7 +1083,7 @@ card. No talking head, roughly 90% AI-buildable, cheap to batch. Full spec:
 
 | Element | Spec |
 |---|---|
-| **Voice** | Casual, deep, unmistakably Australian, male. Dry confidence, unhurried. Talks to one owner like a mate who has seen behind the curtain. ElevenLabs `eleven_multilingual_v2`, voice ID is a gated ear test. |
+| **Voice** | Casual, deep, unmistakably Australian, male. Dry confidence, unhurried. Talks to one owner like a mate who has seen behind the curtain. your voice model `eleven_multilingual_v2`, voice ID is a gated ear test. |
 | **Music** | Light bed, low. Near-silent open, lifts on the proof beat, resolves and cuts on the end card. Never wall to wall. |
 | **Visuals** | Semi-premium and precise. Clean macro, controlled lighting, shallow depth of field, real-material texture. One notch below full luxury on purpose. The operator's world: hands at a keyboard, a dashboard resolving, an inbox clearing. |
 | **Palette** | Deep navy `#1A1A2E`, one electric-blue accent `#1269FF` used with intent, text `#F4F6FB`, muted `#8A8FA3`. Never wash a frame in blue, one accent per shot. |

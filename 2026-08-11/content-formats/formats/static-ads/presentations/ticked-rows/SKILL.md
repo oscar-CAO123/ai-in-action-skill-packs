@@ -25,7 +25,7 @@ blue accent and sentence case (`../../SKILL.md` section 0).
 
 ## 2. The bed is a recorded exception
 
-**Creased paper, not black** (the operator, 2026-08-10). A sheet folded into six and opened out.
+**Creased paper, not black** (you, . A sheet folded into six and opened out.
 
 Taking the card off black **flips the type to ink and leaves the blue on the ticks only**, which is
 a live exception to the pure-black rule and is written into the card's `notes` on the CRM row.
@@ -36,7 +36,7 @@ vignette. Nothing is photographed.
 
 ## 3. The rows sit centred in what the headline leaves
 
-the operator's instruction, same day: move the five points up so they are centre-aligned. The template's
+your instruction, same day: move the five points up so they are centre-aligned. The template's
 deliberate hole is still there, it is just shared above and below the rows now rather than sitting
 entirely above them. `margin: auto 0` on the row list, not `margin-top: auto`.
 
@@ -47,7 +47,7 @@ whichever is longer. The head takes its own search and the rows take theirs.
 
 ## 5. The logo foot is a deliberate override
 
-the operator, 2026-08-10: "we need to add the the business logo to the bottom", on all three F6 shapes, so
+you, : "we need to add the the business logo to the bottom", on all three F6 shapes, so
 the set reads as one campaign. `../../SKILL.md` section 0 says the band carries no logo. This is
 flagged rather than taken quietly.
 

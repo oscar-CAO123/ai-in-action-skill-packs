@@ -18,10 +18,10 @@ from band import render_card  # noqa: E402
 OUT = Path(__file__).parent.parent / "candidate"
 PLATES = OUT / "plates"
 
-# Two layouts, settled with the operator 2026-08-07 after the first proof.
+# Two layouts, settled with you after the first proof.
 #   band    plate bleeds the whole 1080x1350 frame, ALL type in the bottom well, faded up from
 #           the foot so it carries white type. u1a only now: u4 became a carousel on
-#           2026-08-07 and lives in build_u4.py.
+#           and lives in build_u4.py.
 #   poster  type above the figure and below it, plate in the middle third. u1b ONLY, because
 #           the falling graduate is the one image that wants air above and below it.
 BAND = [
@@ -29,10 +29,10 @@ BAND = [
         "slug": "u1a-laptop",
         "unit": "U1a",
         "plate": "u1a-from-behind.png",
-        # The figure came out on 2026-08-07. "Almost two in three" rested on a 63 per cent that
+        # The figure came out on . "Almost two in three" rested on a 63 per cent that
         # only ever appeared in press write-ups of the Anyway / KPMG / Microsoft study; the
         # primary report is not published and the write-ups contradict each other on the
-        # remainder. the operator's call: drop the number, keep the shape, say "most".
+        # remainder. your call: drop the number, keep the shape, say "most".
         "lines": ["most young australians think ai is going to take their job,",
                   "but if you know how to use it properly, [[we want to hire you.]]"],
     },
@@ -53,13 +53,13 @@ POSTERS = [
 ]
 
 
-def main():
+def main:
     use_plates = "--plates" in sys.argv
     OUT.mkdir(parents=True, exist_ok=True)
 
     for b in BAND:
         plate = PLATES / b["plate"]
-        have = use_plates and plate.exists()
+        have = use_plates and plate.exists
         png = OUT / f"{b['slug']}.png"
         fit = render_card(b["lines"], png, plate=plate if have else None,
                           theme="noir-lower", plate_full=have, plate_fade=have,
@@ -69,7 +69,7 @@ def main():
 
     for p in POSTERS:
         plate = PLATES / p["plate"]
-        have = use_plates and plate.exists()
+        have = use_plates and plate.exists
         png = OUT / f"{p['slug']}.png"
         fit = render_poster(p["top"], p["bottom"], png, ground=p["ground"],
                             plate=plate if have else None)
@@ -78,4 +78,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main
