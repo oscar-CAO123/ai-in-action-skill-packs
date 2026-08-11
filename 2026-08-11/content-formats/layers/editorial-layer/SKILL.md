@@ -11,12 +11,12 @@ Two things one technique gives you: a **bed** that replaces flat black behind th
 **cutouts** of archival paper floating in it. Both are built from the same source material, real
 imagery that supports the subject, and both are graded the same way.
 
-**Reference:** a reference account\_\_ reel `instagram.com/p/DY7TSLJAQef/`, 42.4s, 720x1280, 1.22M plays,
+**Reference:** a reference account\_\_ reel `instagram.com/p/<id>/`, 42.4s, 720x1280, 1.22M plays,
 scraped and decoded frame by frame . Caption: *"One of the easiest ways to make motion
 graphics feel more editorial."* The reel is a tutorial, so it states the method rather than only
 demonstrating it. Decoded contact sheets are `reference-decode-a.png` and `reference-decode-b.png`
 in this folder; the source clip is
-`projects/content-engine/engine/reference-bank/reels/chrismoran-editorial-DY7TSLJAQef.mp4`.
+`projects/content-engine/engine/reference-bank/reels/ref-editorial-DY7TSLJAQef.mp4`.
 
 **The claim it makes, in its own words:** a solid background is fine because it does not distract
 from the main content, "but if every background is just a flat color, eventually the piece begins

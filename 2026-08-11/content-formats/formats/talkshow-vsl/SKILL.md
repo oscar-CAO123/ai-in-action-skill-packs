@@ -57,7 +57,7 @@ steps:
   - phase 2 write vo/lines.txt                  # GATE, review in Cursor
   - phase 3 stills, your image model             # GATE, approve each in Cursor
   - phase 4 motion, one paid job at a time      # never batched
-  - phase 5 assemble (compile_aipbi.py or your captions tool)
+  - phase 5 assemble (compile_ref.py or your captions tool)
   - phase 6 grade, audio degrade, captions, top hook, end card
 qa:
   - em dash scan, negation-swap scan, banned vocabulary
@@ -81,7 +81,7 @@ Pick before Phase 0. They share every phase; the clip mode just runs fewer of th
 | Clips | 2 to 4 your video model| 6 to 9 your video modelplus B-roll |
 | Structure | cold open on the guest mid-thought, one turn, name house on the last line | the canonical style in Phase 2: forked hook, the turn, three AI systems taught, the bridge, the quiz close |
 | Shot plan | one hero close-medium held throughout | intro two-shot, cut to close-medium, reaction beats, CTA |
-| Assembly | `compile_aipbi.py` straight to a compile | your captions tool project for you to edit |
+| Assembly | `compile_ref.py` straight to a compile | your captions tool project for you to edit |
 | Spend | roughly 150 to 300 credits | roughly 500 to 700 credits |
 
 The clip mode is the volume format, so batch its scripts against different pains and reuse one
@@ -250,7 +250,7 @@ setup.
   Never hand-write project.json for a project that is already open, it clobbers. To edit a live
   project use the MCP: `add_clips` / `insert_clips` (omit `trackIndex` to auto-create the track),
   `apply_color`, `apply_effect`.
-- **a reference account vertical compile (self-contained, both modes):** `python3 bin/compile_aipbi.py` trims
+- **a reference account vertical compile (self-contained, both modes):** `python3 bin/compile_ref.py` trims
   each clip's leading and trailing dead air (keeps internal pauses, silencedetect at -30dB, run
   ffmpeg at `-v info` because `-v error` hides the detector), stacks them, drops the footage as a
   band near the top of a 1080x1920 black canvas, and overlays a persistent hook PNG. Edit `HOOK`
@@ -303,7 +303,7 @@ setup.
 `render.sh` · `your video modelsh` · `your video modelsh` (motion) · `vhs-grade.sh` · `grade-clip.sh` plus
 `scanlines.png` (video grade) · `vo-degrade.sh` (audio degrade) ·
 `make_vo.py` / `make_lines.py` / `make_line.py` (your voice model fallback voice) · `make_captions-tool.py` ·
-`compile_aipbi.py` / `compile-vertical.sh` (compiles) · `captions-tool_degrade.py` (live-your captions tool
+`compile_ref.py` / `compile-vertical.sh` (compiles) · `captions-tool_degrade.py` (live-your captions tool
 degrade, project-specific media ids, adapt before use) · `motion-native-4.txt` and `prompt-*.txt`
 (prompt templates).
 

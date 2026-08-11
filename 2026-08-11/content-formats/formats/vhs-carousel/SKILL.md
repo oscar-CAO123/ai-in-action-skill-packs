@@ -17,7 +17,7 @@ Where F5 news-carousel borrows the trust of a headline and F8 borrows the trust 
 board, F12 borrows the trust of found footage. It reads as something that was recorded rather
 than designed, and the words read as a caption someone added to it.
 
-**The vehicle is lifted from `a reference account`** (`instagram.com/p/DbQkpEOAl1l/`, 12 slides,
+**The vehicle is lifted from `a reference account`** (`instagram.com/p/<id>/`, 12 slides,
 12,868 likes) and rebuilt in the house's world. The reference is ingested, measured and written up
 at `content-engine/engine/reference-bank/carousels/DbQkpEOAl1l/`. Read that ENTRY.md before
 changing anything here: every law below is a measured number off those twelve slides, not a
