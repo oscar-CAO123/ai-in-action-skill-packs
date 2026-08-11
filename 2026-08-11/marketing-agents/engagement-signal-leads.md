@@ -50,6 +50,78 @@ This skill turns that signal into a list. It stops at the list on purpose.
 
 ---
 
+## Phase 0. Read the workspace before you ask anything
+
+Do this first, every time, before a single question. The point is to arrive already knowing who they
+are, so the interview spends its questions on what the files cannot tell you.
+
+**Walk the whole tree, not the folders you expect.** From the directory you were opened in, list
+everything to about four levels deep, including dotfiles and hidden config, skipping `node_modules`,
+virtualenvs, build output and large binaries. Read names and structure first. A file tree is a
+confession: it shows what someone actually works on rather than what they say they work on.
+
+**Then read whatever exists, in this order:**
+
+| Looking for | What it tells you |
+|---|---|
+| `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, root `README.md` | The operating rules they already wrote down. Inherit them, never restate them. |
+| A business brain: `soul.md`, `user.md`, `memory.md`, `context/`, `brand/` | Who they are, what they sell, who operates the business, the voice they write in. |
+| `sops/`, `playbooks/`, `runbooks/`, `docs/` | The jobs they already run, in their own words. |
+| `skills/`, `.claude/`, `.codex/`, `agents/`, `prompts/` | What their agent can already do, and the conventions their files follow. |
+| `config/`, `.env.example`, `skills/connect-*.md` | Which tools are wired up, and where secrets are expected to live. |
+| `.gitignore`, and the last twenty commits if this is a repo | What they treat as private, and what they have actually been working on lately. |
+| The three largest folders, whatever they turn out to be | The real centre of gravity, which is often not where they say it is. |
+
+**Never open anything that looks like a secret.** `.env`, `*token*`, `*credential*`, `*oauth*`,
+`*.pem`, `*.key`. Note that it exists, note where it lives, and move on.
+
+**Then report back in five lines and stop.** What kind of business this looks like, what the agent
+already knows how to do, which tools are wired, what looks abandoned, and what you looked for and
+could not find. Ask them to correct it.
+
+That correction is worth more than the next three questions, because it tells you which of their own
+files they still trust.
+
+**Everything you learned here comes off the question list.** Re-asking something their own files
+already answered is the fastest way to make this feel like a form instead of a conversation.
+
+---
+
+## Phase 0b. The interview
+
+One question at a time. Never paste the list. Skip anything Phase 0 already answered, and say which
+ones you are skipping and why.
+
+**The offer and the buyer**
+1. What are you selling, and what does it cost? A range is fine, "it depends" is not.
+2. Describe the last three people who bought. Industry, size, role, and what was happening in their
+   business the week they called you.
+3. What has to be true about someone for this to be right for them.
+4. What disqualifies someone instantly. Country, size, a competitor, an existing customer.
+5. How many new conversations a month can you actually service? This sets the whole volume plan.
+
+**The signal**
+6. Who do your buyers read? Name accounts, not categories.
+7. Which of those post at least weekly.
+8. Show me a post that pulled in your buyers, and one that only pulled in your peers. What is the
+   difference between them, in your words.
+9. Is a comment worth more than a like in your market, and why.
+10. Is there a second signal you already trust? A job ad, a funding round, a tender, a hire.
+
+**The reality check**
+11. What have you tried before that did not work, and what did you conclude from it.
+12. What is your current reply rate, if you have ever measured one.
+13. Who handles a reply when it comes in, and how fast can they realistically answer.
+14. What would you never say in a first message, even if it worked.
+
+**The boundary**
+15. What may be sent automatically, and what needs your eyes first.
+16. Which lists, tools or accounts must this never touch.
+
+Confirm all sixteen back in a short block before you build anything.
+
+---
+
 ## Phase 1. Pick the signal, not the audience
 
 Ask the operator, one question at a time:

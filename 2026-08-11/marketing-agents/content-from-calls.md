@@ -50,6 +50,78 @@ This skill mines that and publishes it. The source material is the whole trick.
 
 ---
 
+## Phase 0. Read the workspace before you ask anything
+
+Do this first, every time, before a single question. The point is to arrive already knowing who they
+are, so the interview spends its questions on what the files cannot tell you.
+
+**Walk the whole tree, not the folders you expect.** From the directory you were opened in, list
+everything to about four levels deep, including dotfiles and hidden config, skipping `node_modules`,
+virtualenvs, build output and large binaries. Read names and structure first. A file tree is a
+confession: it shows what someone actually works on rather than what they say they work on.
+
+**Then read whatever exists, in this order:**
+
+| Looking for | What it tells you |
+|---|---|
+| `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, root `README.md` | The operating rules they already wrote down. Inherit them, never restate them. |
+| A business brain: `soul.md`, `user.md`, `memory.md`, `context/`, `brand/` | Who they are, what they sell, who operates the business, the voice they write in. |
+| `sops/`, `playbooks/`, `runbooks/`, `docs/` | The jobs they already run, in their own words. |
+| `skills/`, `.claude/`, `.codex/`, `agents/`, `prompts/` | What their agent can already do, and the conventions their files follow. |
+| `config/`, `.env.example`, `skills/connect-*.md` | Which tools are wired up, and where secrets are expected to live. |
+| `.gitignore`, and the last twenty commits if this is a repo | What they treat as private, and what they have actually been working on lately. |
+| The three largest folders, whatever they turn out to be | The real centre of gravity, which is often not where they say it is. |
+
+**Never open anything that looks like a secret.** `.env`, `*token*`, `*credential*`, `*oauth*`,
+`*.pem`, `*.key`. Note that it exists, note where it lives, and move on.
+
+**Then report back in five lines and stop.** What kind of business this looks like, what the agent
+already knows how to do, which tools are wired, what looks abandoned, and what you looked for and
+could not find. Ask them to correct it.
+
+That correction is worth more than the next three questions, because it tells you which of their own
+files they still trust.
+
+**Everything you learned here comes off the question list.** Re-asking something their own files
+already answered is the fastest way to make this feel like a form instead of a conversation.
+
+---
+
+## Phase 0b. The interview
+
+One question at a time. Skip anything Phase 0 already answered.
+
+**The people**
+1. Whose names will posts go out under? For each: their role, and whether they have ever posted.
+2. Who would rather not, and would be happier as a source than as an author.
+3. Who is the best explainer in the business? Their transcripts will carry the whole thing.
+
+**The material**
+4. What conversations already get recorded, and where do the recordings live.
+5. Do you have consent to use them, from your own people and from customers.
+6. What is in the support inbox that gets answered over and over.
+7. Where do the good internal explanations get written down, if anywhere.
+8. What is the last thing someone in the business said that made you think "that should be public".
+
+**The claims**
+9. Which numbers may be published, and where did each come from.
+10. Which customers may be named, and which may never be.
+11. What would a regulator or a professional body care about you claiming.
+
+**The voice**
+12. Paste two posts, one from your business you were happy with and one from anyone that you wish
+    you had written. What is the difference.
+13. What words does your business never use.
+14. How often should each person post before it starts feeling like a campaign.
+
+**The gate**
+15. Who approves before anything publishes, and what happens when they are away.
+
+Confirm all fifteen, then build one voice profile per person and show them a draft each before
+anything is scheduled.
+
+---
+
 ## Phase 1. Set up the source
 
 Pick the streams that already exist before creating new ones:

@@ -47,6 +47,79 @@ the agent optimises for sounding helpful, which produces long threads and no cal
 
 ---
 
+## Phase 0. Read the workspace before you ask anything
+
+Do this first, every time, before a single question. The point is to arrive already knowing who they
+are, so the interview spends its questions on what the files cannot tell you.
+
+**Walk the whole tree, not the folders you expect.** From the directory you were opened in, list
+everything to about four levels deep, including dotfiles and hidden config, skipping `node_modules`,
+virtualenvs, build output and large binaries. Read names and structure first. A file tree is a
+confession: it shows what someone actually works on rather than what they say they work on.
+
+**Then read whatever exists, in this order:**
+
+| Looking for | What it tells you |
+|---|---|
+| `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, root `README.md` | The operating rules they already wrote down. Inherit them, never restate them. |
+| A business brain: `soul.md`, `user.md`, `memory.md`, `context/`, `brand/` | Who they are, what they sell, who operates the business, the voice they write in. |
+| `sops/`, `playbooks/`, `runbooks/`, `docs/` | The jobs they already run, in their own words. |
+| `skills/`, `.claude/`, `.codex/`, `agents/`, `prompts/` | What their agent can already do, and the conventions their files follow. |
+| `config/`, `.env.example`, `skills/connect-*.md` | Which tools are wired up, and where secrets are expected to live. |
+| `.gitignore`, and the last twenty commits if this is a repo | What they treat as private, and what they have actually been working on lately. |
+| The three largest folders, whatever they turn out to be | The real centre of gravity, which is often not where they say it is. |
+
+**Never open anything that looks like a secret.** `.env`, `*token*`, `*credential*`, `*oauth*`,
+`*.pem`, `*.key`. Note that it exists, note where it lives, and move on.
+
+**Then report back in five lines and stop.** What kind of business this looks like, what the agent
+already knows how to do, which tools are wired, what looks abandoned, and what you looked for and
+could not find. Ask them to correct it.
+
+That correction is worth more than the next three questions, because it tells you which of their own
+files they still trust.
+
+**Everything you learned here comes off the question list.** Re-asking something their own files
+already answered is the fastest way to make this feel like a form instead of a conversation.
+
+---
+
+## Phase 0b. The interview
+
+One question at a time. Skip anything Phase 0 already answered.
+
+**The goal**
+1. In one sentence, what is a conversation for? Not "engage the lead". A named outcome.
+2. What does a good reply look like when a human writes it? Ask for two real examples, pasted in.
+3. What does a bad one look like? The one that made you wince.
+
+**The buckets**
+4. Of the last twenty replies you got, roughly how many were positive, questions, not-now, wrong
+   person, or no.
+5. What is the most common question, word for word.
+6. What do you say to someone who is interested but wrong for the offer.
+7. What is your usual answer to the "how much is it" reply, and are you willing to have that sent
+   without you.
+
+**The facts it may use**
+8. Where does the true answer live for price, scope, timelines and availability.
+9. What has changed recently that an old document would get wrong.
+10. What must never be promised, even if a customer asks directly.
+
+**The handoff**
+11. What is the booking link, and who owns the calendar behind it.
+12. What happens after a booking is made? Who prepares, and what do they need.
+13. How do you want to be told when something needs you: notification, a queue, a daily digest.
+
+**The boundary**
+14. What may send with no human. Be specific and start narrow.
+15. What must always be drafted and held.
+16. What should stop the machine entirely and escalate.
+
+Confirm all sixteen, then write the lane into config in front of them.
+
+---
+
 ## Phase 1. The lane
 
 Decide, explicitly, what the agent may do without a person. Write it into the config, not the prompt.

@@ -58,7 +58,44 @@ Run a ban scan over any file before you emit it.
 
 ---
 
-## Phase 0. Find what already exists
+## Phase 0. Read the workspace before you ask anything
+
+Do this first, every time, before a single question. The point is to arrive already knowing who they
+are, so the interview spends its questions on what the files cannot tell you.
+
+**Walk the whole tree, not the folders you expect.** From the directory you were opened in, list
+everything to about four levels deep, including dotfiles and hidden config, skipping `node_modules`,
+virtualenvs, build output and large binaries. Read names and structure first. A file tree is a
+confession: it shows what someone actually works on rather than what they say they work on.
+
+**Then read whatever exists, in this order:**
+
+| Looking for | What it tells you |
+|---|---|
+| `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, root `README.md` | The operating rules they already wrote down. Inherit them, never restate them. |
+| A business brain: `soul.md`, `user.md`, `memory.md`, `context/`, `brand/` | Who they are, what they sell, who operates the business, the voice they write in. |
+| `sops/`, `playbooks/`, `runbooks/`, `docs/` | The jobs they already run, in their own words. |
+| `skills/`, `.claude/`, `.codex/`, `agents/`, `prompts/` | What their agent can already do, and the conventions their files follow. |
+| `config/`, `.env.example`, `skills/connect-*.md` | Which tools are wired up, and where secrets are expected to live. |
+| `.gitignore`, and the last twenty commits if this is a repo | What they treat as private, and what they have actually been working on lately. |
+| The three largest folders, whatever they turn out to be | The real centre of gravity, which is often not where they say it is. |
+
+**Never open anything that looks like a secret.** `.env`, `*token*`, `*credential*`, `*oauth*`,
+`*.pem`, `*.key`. Note that it exists, note where it lives, and move on.
+
+**Then report back in five lines and stop.** What kind of business this looks like, what the agent
+already knows how to do, which tools are wired, what looks abandoned, and what you looked for and
+could not find. Ask them to correct it.
+
+That correction is worth more than the next three questions, because it tells you which of their own
+files they still trust.
+
+**Everything you learned here comes off the question list.** Re-asking something their own files
+already answered is the fastest way to make this feel like a form instead of a conversation.
+
+---
+
+## Phase 0b. Find what already exists
 
 Do this before asking anything. Report what you found in three lines, then move on.
 

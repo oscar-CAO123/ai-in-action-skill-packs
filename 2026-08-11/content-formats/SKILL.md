@@ -25,6 +25,77 @@ job and get expensive in the second, so the gates below sit before spend, never 
 
 ---
 
+## Phase 0. Read the workspace before you ask anything
+
+Do this first, every time, before a single question. The point is to arrive already knowing who they
+are, so the interview spends its questions on what the files cannot tell you.
+
+**Walk the whole tree, not the folders you expect.** From the directory you were opened in, list
+everything to about four levels deep, including dotfiles and hidden config, skipping `node_modules`,
+virtualenvs, build output and large binaries. Read names and structure first. A file tree is a
+confession: it shows what someone actually works on rather than what they say they work on.
+
+**Then read whatever exists, in this order:**
+
+| Looking for | What it tells you |
+|---|---|
+| `CLAUDE.md`, `AGENTS.md`, `.cursorrules`, root `README.md` | The operating rules they already wrote down. Inherit them, never restate them. |
+| A business brain: `soul.md`, `user.md`, `memory.md`, `context/`, `brand/` | Who they are, what they sell, who operates the business, the voice they write in. |
+| `sops/`, `playbooks/`, `runbooks/`, `docs/` | The jobs they already run, in their own words. |
+| `skills/`, `.claude/`, `.codex/`, `agents/`, `prompts/` | What their agent can already do, and the conventions their files follow. |
+| `config/`, `.env.example`, `skills/connect-*.md` | Which tools are wired up, and where secrets are expected to live. |
+| `.gitignore`, and the last twenty commits if this is a repo | What they treat as private, and what they have actually been working on lately. |
+| The three largest folders, whatever they turn out to be | The real centre of gravity, which is often not where they say it is. |
+
+**Never open anything that looks like a secret.** `.env`, `*token*`, `*credential*`, `*oauth*`,
+`*.pem`, `*.key`. Note that it exists, note where it lives, and move on.
+
+**Then report back in five lines and stop.** What kind of business this looks like, what the agent
+already knows how to do, which tools are wired, what looks abandoned, and what you looked for and
+could not find. Ask them to correct it.
+
+That correction is worth more than the next three questions, because it tells you which of their own
+files they still trust.
+
+**Everything you learned here comes off the question list.** Re-asking something their own files
+already answered is the fastest way to make this feel like a form instead of a conversation.
+
+---
+
+## 0a. The interview, before you write a word
+
+One question at a time. Never paste the list. Skip whatever Phase 0 already answered.
+
+**The business**
+1. What do you sell, to whom, and what does it cost.
+2. What does the buyer believe before they meet you that you have to change.
+3. What is the one thing you want someone to remember a week later.
+
+**The evidence**
+4. What can you prove? Numbers, named customers, screenshots, results.
+5. Where did each of those come from, and is it published anywhere.
+6. What may never be claimed.
+
+**The voice**
+7. Paste three pieces of your own copy you were happy with, and say what you liked about each.
+8. Paste one you hated. What was wrong with it.
+9. What words does your business never use.
+10. Formal or blunt? Australian or American spelling? First person singular or plural?
+
+**The look**
+11. What are your brand colours and typefaces, and where is that written down.
+12. Show me two pieces of creative from anyone at all that you wish were yours.
+13. What visual thing would be instantly wrong for your brand.
+
+**The job**
+14. What is this piece for: attention, teaching, or a sale? Only one of the three.
+15. Where will it be seen, at what size, and with sound or without.
+
+Confirm all fifteen back before drafting. What you learn in questions 7 to 13 is what the removed
+brand kit and hook bank used to hold, so write it down as files and stop re-asking.
+
+---
+
 ## 0. Load order (do this before writing a word)
 
 Read in this order. Stop and flag anything missing rather than guessing.
