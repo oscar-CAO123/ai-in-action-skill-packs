@@ -20,7 +20,7 @@ them together or the two formats drift.
 
 THE MOIRE IS NEVER PROMPT-BAKED. `engine/tools/moire/README.md` is explicit: a model low-passes
 the 2 to 6px gratings that create interference and paints decorative op-art instead. The plate
-asks for the CARRIER, a fine metal mesh in deep focus, and `grade` beats the real pattern out
+asks for the CARRIER, a fine metal mesh in deep focus, and `grade()` beats the real pattern out
 of it afterwards. That chain is lifted from the F8 `grade_plate.sh` `moire` case.
 """
 import json
@@ -44,7 +44,7 @@ INK = "#F4F3EC"
 VEIL = (0.36, 0.62, 0.80)      # the moire-sculpture style's own three stops
 
 CSS = """
-@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{a}/jost-300.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{a}/display-300.ttf'); }}
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 html,body {{ width:{w}px; height:{h}px; overflow:hidden; background:#06060e; }}
 .stage {{ position:relative; width:{w}px; height:{h}px; overflow:hidden; background:#06060e; }}
@@ -96,17 +96,17 @@ def grade(src, dest=None):
     return dest
 
 
-def monuments:
+def monuments():
     """The scraped bank. Reference only: the plate is generated, never composited from these."""
-    return json.loads(MONUMENTS.read_text)["items"] if MONUMENTS.exists else []
+    return json.loads(MONUMENTS.read_text())["items"] if MONUMENTS.exists() else []
 
 
 def render(png, lines, cta, plate=None, note=""):
     """One end card. `lines` is the white block, `cta` the blue line under it."""
     css = CSS.format(a=ASSETS, w=W, h=H, blue=BLUE,
                      v0=VEIL[0], v1=VEIL[1], v2=VEIL[2])
-    if plate and Path(plate).exists:
-        art = f'<img class="plate" src="{Path(plate).resolve.as_uri}">'
+    if plate and Path(plate).exists():
+        art = f'<img class="plate" src="{Path(plate).resolve().as_uri()}">'
     else:
         art = f'<div class="ph">{note or "no sculpture plate yet"}</div>'
     logo = (ASSETS / "house-logo.svg").resolve.as_uri
@@ -124,21 +124,21 @@ def render(png, lines, cta, plate=None, note=""):
     try:
         subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
                         "--force-device-scale-factor=1", f"--window-size={W},{H}",
-                        f"--screenshot={png}", Path(tmp).as_uri],
+                        f"--screenshot={png}", Path(tmp).as_uri()],
                        check=True, capture_output=True)
     finally:
         os.unlink(tmp)
     return png
 
 
-def main:
+def main():
     if "--demo" not in sys.argv:
         sys.exit("usage: endcard.py --demo")
     out = ROOT.parent / "candidate" / "u3" / "_endcard-demo.png"
     render(out, ["Find out if you qualify", "in three minutes."], "Click the link below.",
            note="sculpture plate goes here")
-    print("wrote", out.name, f"({len(monuments)} monuments in the bank)")
+    print("wrote", out.name, f"({len(monuments())} monuments in the bank)")
 
 
 if __name__ == "__main__":
-    main
+    main()

@@ -22,7 +22,7 @@ from suite_copy import BY_FMT, INDUSTRIES  # noqa: E402
 import refs  # noqa: E402
 
 OUT = ROOT / "out-suite"
-FONT = ROOT.parent / "assets" / "jost-300.ttf"
+FONT = ROOT.parent / "assets" / "display-300.ttf"
 COLS, W, GAP, PAD, BG = 3, 640, 36, 40, (18, 18, 18)
 REF_W, REF_H = 260, 200          # the reference strip's thumbnails
 
@@ -39,7 +39,7 @@ NOTES = {
         "professional-services": "marble atlas, cracked",
     },
     # One scene seven ways, so the note is the role that gets struck out on each page.
-    "F4": {k: v.lower for k, v in __import__("plates_suite").F4_ROLES.items},
+    "F4": {k: v.lower() for k, v in __import__("plates_suite").F4_ROLES.items()},
 }
 
 
@@ -62,14 +62,14 @@ def fit(d, text, font, width):
         return text
     while text and d.textlength(text + "...", font=font) > width:
         text = text[:-1]
-    return text.rstrip + "..."
+    return text.rstrip() + "..."
 
 
 def wrap(d, text, font, width, max_lines=4):
     """Greedy wrap to the measured column width. The last line truncates rather than overflowing."""
-    words, lines, line = text.split, [], ""
+    words, lines, line = text.split(), [], ""
     for w in words:
-        trial = f"{line} {w}".strip
+        trial = f"{line} {w}".strip()
         if d.textlength(trial, font=font) <= width or not line:
             line = trial
         else:
@@ -79,7 +79,7 @@ def wrap(d, text, font, width, max_lines=4):
             break
     if line and len(lines) < max_lines:
         lines.append(line)
-    if len(lines) == max_lines and len(" ".join(lines).split) < len(words):
+    if len(lines) == max_lines and len(" ".join(lines).split()) < len(words):
         lines[-1] = fit(d, lines[-1] + " ...", font, width)
     return lines
 
@@ -107,7 +107,7 @@ def ref_strip(d, im, entries, x0, y0, width, label, small, tiny):
     x = x0
     for e in entries:
         img = e.get("image")
-        if img and Path(img).suffix.lower != ".svg":
+        if img and Path(img).suffix.lower() != ".svg":
             thumb = Image.open(img).convert("RGB")
             thumb.thumbnail((REF_W, REF_H), Image.LANCZOS)
             im.paste(thumb, (x, y))
@@ -132,7 +132,7 @@ def sheet(fmt):
     cards = []
     for i in INDUSTRIES:
         p = OUT / fmt / f"{fmt}-{i['key']}.png"
-        cards.append((i, p if p.exists else None))
+        cards.append((i, p if p.exists() else None))
 
     tiny = ImageFont.truetype(str(FONT), 19)
     entries = references(fmt)

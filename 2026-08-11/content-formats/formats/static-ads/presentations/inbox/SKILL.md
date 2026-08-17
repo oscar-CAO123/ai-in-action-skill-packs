@@ -1,6 +1,6 @@
 ---
 name: static-ads-inbox
-description: Presentation sub-skill. A cropped email screenshot, mail chrome in the platform's system font, the argument spoken by an invented sender to somebody else. Use when the card should read as trespass rather than as an ad. Shipped as the F5 inbox variant, LIVE on the CRM. Read formats/static-ads/presentations/SKILL.md, formats/static-ads/ui-mock/SKILL.md and formats/static-ads/SKILL.md first.
+description: Presentation sub-skill. A cropped email screenshot, mail chrome in the platform's system font, the argument spoken by an invented sender to somebody else. Use when the card should read as trespass rather than as an ad. Shipped as the F5 inbox variant, shipped and live. Read formats/static-ads/presentations/SKILL.md, formats/static-ads/ui-mock/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
 cites: local:a competitor-8-statics/04-inbox-screenshot
 renderer: scripts/f5_variants.py build_inbox
@@ -25,7 +25,7 @@ Subject row, inbox chip, sender line, timestamp. That is what authenticates it.
 - **No interface branding**, per `../../ui-mock/SKILL.md` section 3. No mail client logo, no
   platform name. A logo here is a competitor mark on a house ad and reads as a platform endorsement.
 - **The face is the platform's system stack, never your display typeface.** A mail client set in your display typeface stops reading
-  as a screenshot and the format's whole mechanism is that it reads as one. your display typeface returns on the
+  as a screenshot and the format's whole mechanism is that it reads as one. Your display typeface returns on the
   foot strip, which is the ad speaking rather than the mail.
 
 ## 3. The gate that cannot move
@@ -46,7 +46,7 @@ The card that shipped uses `Dave Corrigan`, subject "the AI stuff is not working
 2. **There is a negation swap in the body** ("We're a business, not a tech company"). It is your
    dictated wording and it is flagged rather than silently rewritten. The house ban is on the house's own
    voice doing it; this is a character speaking. **Ruling pending**, and it is written into the
-   card's `notes` on the CRM row.
+   card's `notes` in the card's own notes.
 
 ## 5. Writing the body
 

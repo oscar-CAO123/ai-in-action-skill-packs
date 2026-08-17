@@ -49,7 +49,7 @@ DOC_BANKS = {
 
 
 def slug(text):
-    return re.sub(r"[^a-z0-9]+", "-", text.lower).strip("-")[:40]
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")[:40]
 
 
 def doc_entries(bank):
@@ -58,7 +58,7 @@ def doc_entries(bank):
     sources, pattern = DOC_BANKS[bank]
     out = []
     for src in (sources if isinstance(sources, list) else [sources]):
-        lines = src.read_text.splitlines
+        lines = src.read_text().splitlines()
         hits = []
         for n, line in enumerate(lines):
             m = re.match(pattern, line)
@@ -70,7 +70,7 @@ def doc_entries(bank):
             hits.append(dict(id=rid, title=title, line=n, src=src))
         for a, b in zip(hits, hits[1:] + [None]):
             end = b["line"] if b else len(lines)
-            a["body"] = "\n".join(lines[a["line"]:end]).rstrip
+            a["body"] = "\n".join(lines[a["line"]:end]).rstrip()
         out += hits
     return out
 
@@ -88,36 +88,36 @@ def image_bank(d, what, recurse=False):
 
     `recurse` walks subfolders and prefixes the id with the folder, so a set extracted from one
     source stays together and cites as `local:a competitor-8-statics/03-apology-letter`."""
-    if not d.is_dir:
+    if not d.is_dir():
         return []
-    it = sorted(d.rglob("*")) if recurse else sorted(d.iterdir)
-    files = [f for f in it if f.suffix.lower in (".png", ".jpg", ".svg", ".webp")]
+    it = sorted(d.rglob("*")) if recurse else sorted(d.iterdir())
+    files = [f for f in it if f.suffix.lower() in (".png", ".jpg", ".svg", ".webp")]
     stems = [f.stem if f.parent == d else f"{f.parent.name}/{f.stem}" for f in files]
-    # `.strip`: one export is named "VetNotes Static Ads .png", and a trailing space in an id is
+    # `.strip()`: one export is named "VetNotes Static Ads .png", and a trailing space in an id is
     # invisible in a listing and undebuggable in a citation. The gate found it on its first run.
     out = []
     for f, sid in zip(files, stems):
         rid = sid if stems.count(sid) == 1 else f"{sid}{f.suffix}"
-        out.append(dict(id=rid.strip, title=f.name, body=f"{what}: {f.name}", src=f, image=f))
+        out.append(dict(id=rid.strip(), title=f.name, body=f"{what}: {f.name}", src=f, image=f))
     return out
 
 
-def tpl_entries:
+def tpl_entries():
     return image_bank(ADS_BANK / "templates", "Figma layout extract")
 
 
-def local_entries:
+def local_entries():
     return image_bank(ROOT.parent / "references", "Format reference image", recurse=True)
 
 
-def style_entries:
-    if not STYLES.exists:
+def style_entries():
+    if not STYLES.exists():
         return []
-    data = json.loads(STYLES.read_text)
+    data = json.loads(STYLES.read_text())
     return [dict(id=k, title=(v.get("name") if isinstance(v, dict) else str(k)),
                  body=json.dumps(v, indent=2) if isinstance(v, dict) else str(v),
                  src=STYLES)
-            for k, v in data.get("styles", {}).items]
+            for k, v in data.get("styles", {}).items()]
 
 
 BANKS = {
@@ -135,13 +135,13 @@ def resolve(ref):
     bank, rid = ref.split(":", 1)
     if bank not in BANKS:
         raise KeyError(f"{ref}: no bank called '{bank}'. Banks: {', '.join(sorted(BANKS))}")
-    entries = BANKS[bank]
+    entries = BANKS[bank]()
     for e in entries:
-        if e["id"].lower == rid.lower:
+        if e["id"].lower() == rid.lower():
             return {**e, "bank": bank, "ref": f"{bank}:{e['id']}"}
     # The prose banks slugify their headings, so ids there run long. A UNIQUE prefix resolves,
     # which makes `tear:4` usable; an ambiguous one is an error rather than a coin toss.
-    hits = [e for e in entries if e["id"].lower.startswith(rid.lower)]
+    hits = [e for e in entries if e["id"].lower().startswith(rid.lower())]
     if len(hits) == 1:
         return {**hits[0], "bank": bank, "ref": f"{bank}:{hits[0]['id']}"}
     if len(hits) > 1:
@@ -161,7 +161,7 @@ def cmd_show(args):
     e = resolve(ref)
     print(f"{e['ref']}  {e['title']}")
     print(line_of(e))
-    print
+    print()
     print(e["body"])
     if "--open" in args:
         target = e.get("image") or e["src"]
@@ -171,7 +171,7 @@ def cmd_show(args):
 def cmd_list(args):
     banks = args or sorted(BANKS)
     for b in banks:
-        entries = BANKS[b]
+        entries = BANKS[b]()
         print(f"\n=== {b}  ({len(entries)}) ===")
         for e in entries:
             print(f"  {b}:{e['id']:<28} {e['title']}")
@@ -192,12 +192,12 @@ def cmd_check(args):
     print("\nclean")
 
 
-def main:
+def main():
     argv = sys.argv[1:]
     if not argv:
         total = 0
         for b in sorted(BANKS):
-            n = len(BANKS[b])
+            n = len(BANKS[b]())
             total += n
             src = DOC_BANKS[b][0] if b in DOC_BANKS else {"tpl": ADS_BANK / "templates",
                                                           "local": ROOT.parent / "references",
@@ -219,4 +219,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

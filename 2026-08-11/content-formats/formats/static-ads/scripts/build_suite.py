@@ -11,7 +11,7 @@ from black and costs nothing.
 
 ## Which renderer a format gets
 
-**Tier A**, `band.py`: the card is one justified block. `render_card` flattens whatever lines it
+**Tier A**, `band.py`: the card is one justified block. `render_card()` flattens whatever lines it
 is given into that block, which is why a format whose argument is a list cannot use it.
 
 **Tier B**, `band_rows.py`: rows or columns inside the same 506px well. Written because
@@ -66,7 +66,7 @@ def kicker(label, y=96, size=30):
     from PIL import ImageFont
     margin = 64
     while size > 16:
-        f = ImageFont.truetype(str(ROOT.parent / "assets" / "jost-300.ttf"), size)
+        f = ImageFont.truetype(str(ROOT.parent / "assets" / "display-300.ttf"), size)
         tw = f.getlength(label) + 0.09 * size * max(len(label) - 1, 0)
         if tw <= W - 2 * margin:
             break
@@ -179,10 +179,10 @@ def snap_bar(text):
            "color:#fff;white-space:nowrap;line-height:1}")
     # shrink to fit rather than wrap, which is what the real tool does. AVAIL is passed in
     # because clientWidth counts the padding.
-    js = (f"(function{{var s=document.querySelector('.snap span');var size={round(bar*0.56)};"
+    js = (f"(function(){{var s=document.querySelector('.snap span');var size={round(bar*0.56)};"
           f"s.style.fontSize=size+'px';"
           f"while(s.scrollWidth>{1080 - 2 * pad}&&size>10){{size-=1;s.style.fontSize=size+'px';}}"
-          "});")
+          "})();")
     return css, f'<div class="snap"><span>{html.escape(text)}</span></div>', js
 
 
@@ -239,16 +239,16 @@ def render_special(geo, f, i, c, plate, out):
                f'.card{{position:relative;width:1080px;height:1350px;overflow:hidden}}'
                f'.plate{{position:absolute;inset:0;width:1080px;height:1350px;object-fit:cover}}'
                f'{css}</style>'
-               f'<div class="card"><img class="plate" src="{plate.resolve.as_uri}">'
+               f'<div class="card"><img class="plate" src="{plate.resolve().as_uri()}">'
                f'{bar}</div><script>{js}</script>')
         return shoot(doc, out)
 
     # poster: the falling-graduate geometry, plus the annotation layer
     from poster import render_poster
     key = (f["id"], i["key"])
-    top = POSTER_LINES.get(key) or [c["head"].replace("[[", "").replace("]]", "").lower]
+    top = POSTER_LINES.get(key) or [c["head"].replace("[[", "").replace("]]", "").lower()]
     anno = anno_svg(ANNOTATE.get(key, []))
-    return render_poster(top, [c["cta"].lower], out, ground="plate", plate=plate,
+    return render_poster(top, [c["cta"].lower()], out, ground="plate", plate=plate,
                          overlay=anno)
 
 
@@ -261,7 +261,7 @@ def shoot(doc, out):
                     "--force-device-scale-factor=1", "--virtual-time-budget=4000",
                     "--window-size=1080,1350", f"--screenshot={out}", f"file://{tmp}"],
                    stderr=subprocess.DEVNULL, check=True)
-    Path(tmp).unlink
+    Path(tmp).unlink()
     return "composited"
 
 
@@ -279,7 +279,7 @@ def build_one(f, i, c):
     # The founder statement keeps `band.py`, because its attribution is an SVG overlay across the
     # top of the frame and the band engine is the only one that carries an overlay layer.
     if c.get("quote_key"):
-        over = kicker(c["kicker"].rstrip(".").upper)
+        over = kicker(c["kicker"].rstrip(".").upper())
         return render_card([c["head"], c["cta"]], out, theme="noir-lower", overlay=over), None
 
     plate = suite_plate(f, i)
@@ -303,7 +303,7 @@ if __name__ == "__main__":
     argv = sys.argv[1:]
     want_fmt = argv[argv.index("--fmt") + 1] if "--fmt" in argv else None
     want_batch = int(argv[argv.index("--batch") + 1]) if "--batch" in argv else None
-    keys = [a for a in argv if not a.startswith("--") and not a.isdigit
+    keys = [a for a in argv if not a.startswith("--") and not a.isdigit()
             and not a.startswith("F")] or None
 
     n = skipped = 0

@@ -82,7 +82,7 @@ Use AskUserQuestion, batch 4.
 ## Phase 1. Environment
 
 your generation platform CLI (`your generation platform account status` for credits), ffmpeg/ffprobe, `/usr/bin/python3` for
-PIL and numpy (homebrew python lacks PIL), the your voice model key in the engine config `.env`, whisper
+PIL and numpy (homebrew python lacks PIL), your voice model key in the engine config `.env`, whisper
 `small.en`, and the captions fonts. `scripts/` here holds the rig; every script resolves its own
 directory, so copy the folder into the project and run in place.
 
@@ -158,12 +158,12 @@ It writes the silent body plus the SFX cue lists.
 ## Phase 9. Deliver
 
 Master at CRF 18 is enormous under tape grain (105MB for 87s). Ship a CRF 21 encode capped around
-6 Mbps with faststart, which lands in the 20-45MB range the CRM's other videos sit in. Thumbnail
+6 Mbps with faststart, which lands in the 20-45MB range your content store's other videos sit in. Thumbnail
 comes from the **graded body before captions**, or a caption word gets baked into it.
 
-Then the CRM: upload to the `content-media` bucket with the service-role key, and insert one row
+Then your content store: upload to the `content-media` bucket with the service-role key, and insert one row
 into `content_items` (`content_type='video'`, `production_status='ready'`). Show the exact write
-and wait for your go, per the standing Supabase gate.
+and wait for your go, per your own write gate.
 
 ---
 

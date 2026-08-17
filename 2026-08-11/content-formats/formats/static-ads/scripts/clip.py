@@ -74,7 +74,7 @@ HDR_AVAIL = HDR_BOTTOM - HDR_TOP - HDR_GAP - HDR_CTA
 
 
 def _rng(key):
-    return np.random.default_rng(zlib.crc32(key.encode) & 0xFFFFFFFF)
+    return np.random.default_rng(zlib.crc32(key.encode()) & 0xFFFFFFFF)
 
 
 def _scan_crop(key, salt, ar, out_w, lo, hi, grain=0.045, zoom=(0.55, 0.85), blur=0.0):
@@ -105,11 +105,11 @@ def _scan_crop(key, salt, ar, out_w, lo, hi, grain=0.045, zoom=(0.55, 0.85), blu
     if blur:
         im = im.filter(ImageFilter.GaussianBlur(blur))
     a = np.asarray(im, dtype=np.float32) / 255.0
-    a = lo + (a - a.min) / max(float(np.ptp(a)), 1e-6) * (hi - lo)
+    a = lo + (a - a.min()) / max(float(np.ptp(a)), 1e-6) * (hi - lo)
     g = r.normal(0, 1, a.shape).astype(np.float32)
     g = np.asarray(Image.fromarray(((g * 40 + 128).clip(0, 255)).astype(np.uint8))
 .filter(ImageFilter.GaussianBlur(0.5)), dtype=np.float32) / 255.0
-    return np.clip(a + (g - g.mean) * grain, 0, 1)
+    return np.clip(a + (g - g.mean()) * grain, 0, 1)
 
 
 def paper(key):
@@ -185,7 +185,7 @@ def censor_bar(plate_png, pad_along=1.12, pad_across=1.55):
         return None
     sizes = ndimage.sum(np.ones_like(lab), lab, range(1, n + 1))
     keep = np.isin(lab, [i + 1 for i in range(n) if sizes[i] > LENS_MIN_PX])
-    if not keep.any:
+    if not keep.any():
         return None
     ys, xs = np.where(keep)
     pts = np.stack([xs, ys], axis=1).astype(np.float64)
@@ -198,8 +198,8 @@ def censor_bar(plate_png, pad_along=1.12, pad_across=1.55):
     # inputs above); silenced rather than left to spam three lines of noise per card.
     with np.errstate(all="ignore"):
         proj_m, proj_n = (pts - mean) @ major, (pts - mean) @ minor
-    half_w = float(max(abs(proj_m.min), abs(proj_m.max))) * pad_along
-    half_h = float(max(abs(proj_n.min), abs(proj_n.max))) * pad_across
+    half_w = float(max(abs(proj_m.min()), abs(proj_m.max()))) * pad_along
+    half_h = float(max(abs(proj_n.min()), abs(proj_n.max()))) * pad_across
     angle = math.degrees(math.atan2(major[1], major[0]))
     angle = angle - 180 if angle > 90 else (angle + 180 if angle < -90 else angle)
     return float(mean[0]), float(mean[1]), half_w * 2, half_h * 2, angle
@@ -231,15 +231,15 @@ def _autosize_js(sel, avail, min_, max_):
     way the house band does, so there is no line-count search to run here.
     """
     return f"""
-(function{{
+(function(){{
   var el=document.querySelector('{sel}');
   if(!el) return;
   var size={max_};
   for(;size>={min_};size-=1){{
     el.style.fontSize=size+'px';
-    if(el.getBoundingClientRect.height<=({avail})) break;
+    if(el.getBoundingClientRect().height<=({avail})) break;
   }}
-}});
+}})();
 """
 
 
@@ -253,7 +253,7 @@ def render_card(topline, cta, head, deck, png, plate, chrome=None):
     """
     key = Path(png).stem.split("-clip")[0]
     extract = WORK / f"{key}-news.png"
-    if extract.exists:
+    if extract.exists():
         return _render(png, plate, extract, None, None, topline, cta, chrome)
     # No body strip on the synthetic ground: the type fills the cutting, so there is no white
     # left under it for a column of newsprint to sit in.
@@ -269,8 +269,8 @@ def _render(png, plate, ground, bod, type_, topline, cta, chrome):
    first pass set this header in your display typeface Bold 700 and it stopped looking like house on sight, which
    is the exact failure that file warns about: "a bold heading is the single fastest way to make
    a page stop being ours". */
-@font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{ASSETS}/jost-200.ttf'); }}
-@font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{ASSETS}/jost-500.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{ASSETS}/display-200.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{ASSETS}/display-500.ttf'); }}
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 html,body {{ width:{W}px; height:{H}px; overflow:hidden; background:#000; }}
 .card {{ position:relative; width:{W}px; height:{H}px; background:#000; overflow:hidden; }}
@@ -331,9 +331,9 @@ html,body {{ width:{W}px; height:{H}px; overflow:hidden; background:#000; }}
                   f'<div class="cta">{html.escape(cta)}</div></div>')
     layers.append('<div class="vig"></div>')
     cls = "ground" if type_ else "extract"
-    clip_inner = f'<img class="{cls}" src="{Path(ground).resolve.as_uri}">'
+    clip_inner = f'<img class="{cls}" src="{Path(ground).resolve().as_uri()}">'
     if bod:
-        clip_inner += f'<img class="body" src="{Path(bod).resolve.as_uri}">'
+        clip_inner += f'<img class="body" src="{Path(bod).resolve().as_uri()}">'
     if type_:
         clip_inner += (f'<div class="type"><div class="kicker"></div>'
                        f'<div class="head">{markup(type_[0])}</div>'
@@ -346,11 +346,11 @@ html,body {{ width:{W}px; height:{H}px; overflow:hidden; background:#000; }}
     report = ('var _t=document.querySelector(".topline");'
               'document.documentElement.dataset.fitted="topline "'
               '+getComputedStyle(document.querySelector(".topline .headline")).fontSize'
-              '+", block ends y="+Math.round(_t.getBoundingClientRect.bottom)'
+              '+", block ends y="+Math.round(_t.getBoundingClientRect().bottom)'
               '+(document.querySelector(".head")?", head "'
               '+getComputedStyle(document.querySelector(".head")).fontSize:"");')
     doc = (f'<meta charset="utf-8"><style>{css}</style><div class="card">'
-           f'<img class="plate" src="{Path(plate).resolve.as_uri}">'
+           f'<img class="plate" src="{Path(plate).resolve().as_uri()}">'
            f'{"".join(layers)}</div>'
            # The headline text is in the markup from the start (unlike band.py, which injects
            # into an empty div after load), so the browser requests your display typeface as the DOM parses. Both
@@ -359,8 +359,8 @@ html,body {{ width:{W}px; height:{H}px; overflow:hidden; background:#000; }}
            # against fallback metrics about 1.4x wider.
            f'<script>Promise.all([document.fonts.load(\'200 100px "your display typeface"\', "AZ09"),'
            f'document.fonts.load(\'500 24px "your display typeface"\', "AZ09")])'
-           f'.then(function{{ return document.fonts.ready; }})'
-           f'.then(function{{ {js}\n{report} }});</script>')
+           f'.then(function(){{ return document.fonts.ready; }})'
+           f'.then(function(){{ {js}\n{report} }});</script>')
     with tempfile.NamedTemporaryFile("w", suffix=".html", dir=ROOT, delete=False) as f:
         f.write(doc)
         tmp = f.name
@@ -374,7 +374,7 @@ html,body {{ width:{W}px; height:{H}px; overflow:hidden; background:#000; }}
                    stderr=subprocess.DEVNULL, check=True)
     dom = subprocess.run([exe, "--headless", "--disable-gpu", "--virtual-time-budget=6000",
                           "--dump-dom", f"file://{tmp}"], capture_output=True, text=True).stdout
-    Path(tmp).unlink
+    Path(tmp).unlink()
     if not bar:
         print("  no censor bar placed, no lens colour found on the plate")
     m = re.search(r'data-fitted="([^"]+)"', dom)

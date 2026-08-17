@@ -18,7 +18,7 @@ F5 news-carousel borrows the trust of a news headline, F8 borrows the trust of a
 it reads as the actual system someone would hand you, drawn rather than designed at you.
 
 **One carousel per vertical, and the vertical list is fixed.** The 21 industries in
-`context/pain-wiki/industries/` are the only valid verticals; each one has a playbook with its pains
+`context/research-corpus/industries/` are the only valid verticals; each one has a playbook with its pains
 already ranked, an angle written per pain, and a named lead magnet. The workflows are chosen from
 that playbook, never guessed. Construction is batch 1 because it is the largest industry in the
 corpus (55 calls, 50 businesses) and the deepest well in the wiki (262 mined records across 56
@@ -90,7 +90,7 @@ plate_style: per QUADRANT in each quadrant's `style`. plateStyle is only the fal
 quadrants: 4 per page          # 21 stills for a full carousel: 16 slides, 4 cover cutouts, 1 closing
 renderer: headless-chrome      # CHROME_BIN env, macOS default fallback
 fonts:
-  - jost-400.ttf               # EVERYTHING on every page. No second face anywhere
+  - display-400.ttf               # EVERYTHING on every page. No second face anywhere
 logo: assets/house-logo.svg      # the closing page ONLY, forced white by CSS filter
 rig:
   slides: projects/content-engine/ideas/industry-build-carousels/loop_diagram.py   # CANONICAL
@@ -106,7 +106,7 @@ inputs:
   style: one per QUADRANT, cast to its beat. Four formats inside every grid
   systems: 4 named systems, one per slide, chosen from that vertical's ranked pains in the wiki
   workflow: 4 to 8 nodes per system, each tagged trigger | ai | you
-  stat: one figure per system with its pain-wiki provenance recorded in pillSrc
+  stat: one figure per system with its research-corpus provenance recorded in pillSrc
   quadrants: 4 shot briefs per slide, narrating trigger, old way, the build, the result
   magnet: the vertical's named quiz. The default CTA is the soft generic line
 steps:
@@ -148,7 +148,7 @@ qa:
       [print(p, (np.asarray(Image.open(p).convert('RGB')).astype(int).max(2) -
        np.asarray(Image.open(p).convert('RGB')).astype(int).min(2)).max)
        for p in sorted(glob.glob('assets/s*-q*-paint.png'))]"
-    Anything above about 12 is colour. **That number is a candidate, not a defect** (you,
+    Anything above about 12 is colour. **That number is a candidate, not a defect.**
     : he closed all 18 F8 flags unfixed, because variation across the set is wanted and
     a batch desaturated to pass a measurement reads as one template. Fix only where the colour is
     clearly a GRADE BUG, a cast across every plate in one style or a plate that disagrees with the
@@ -170,7 +170,7 @@ outputs: render/cover.png, render/slide-1..4.png, render/closing.png
 **The cover and closing were restyled onto the locked system on ** and now render from
 `loop_diagram.py` with the slides. `build.py` and its navy serif treatment are superseded.
 
-**The two end cards do not use the grid** (you, . The four-up montage is for the four
+**The two end cards do not use the grid.** The four-up montage is for the four
 system slides only. The cards each carry one idea:
 
 - **Cover: a pasted collage of four cutouts.** A 2x2 that looks torn out rather than laid out:
@@ -188,11 +188,10 @@ system slides only. The cards each carry one idea:
   scrim, in your display typeface 400 at 76px with a **drawn** blue underline on the key phrase (an SVG path through
   the `#rough` filter, never a text-decoration).
 
-  **The part tag is `part 1`, on the cover, and appears on no other page** (you, .
-  Every vertical opens its own series at part 1 rather than announcing itself as number N of twenty,
+  **The part tag is `part 1`, on the cover, and appears on no other page.** Every vertical opens its own series at part 1 rather than announcing itself as number N of twenty,
   which reads as a back catalogue nobody has seen. Follow-ups inside an industry take part 2 onward.
 
-  **The hook rotates across THREE patterns (you, .** One line run twenty times is one
+  **The hook rotates across THREE patterns.** One line run twenty times is one
   post duplicated twenty times, the same argument that rotates the cover angle. Each pattern is
   three parts, and the middle one carries the drawn blue rule:
 
@@ -208,7 +207,7 @@ system slides only. The cards each carry one idea:
   question that does not match the vertical's own top pain is worse than the generic line.
 
   **`{company type}` comes from that industry's Targeting section in
-  `context/pain-wiki/industries/<slug>.md`, never from what fits the sentence** (you,
+  `context/research-corpus/industries/<slug>.md`, never from what fits the sentence.**
 . Two labels were wrong about who house sells to before this was a rule: "motor trade
   businesses" for a corpus of dealerships, crash repair and mechanic workshops, and "software
   businesses" for a corpus of SMB SaaS and MSP founders. **Financial Services is "brokerages", not
@@ -225,7 +224,7 @@ system slides only. The cards each carry one idea:
   write `{n}` in any of the three parts and `build_cover` fills it, so a cover cannot promise more
   systems than the carousel teaches.
 
-  **The angle changes every single time (you, .** The scene is fixed, the camera is
+  **The angle changes every single time.** The scene is fixed, the camera is
   not. `cover-angles.json` holds eight named angles and a `used` ledger; a new carousel takes an
   angle no recent carousel has taken, and never the one immediately before it. Twenty covers of one
   idea from one camera reads as a post duplicated twenty times; from twenty positions it reads as a
@@ -234,7 +233,7 @@ system slides only. The cards each carry one idea:
   photographed off a screen so interference banding and dot crawl ripple across it. The oldest
   image of thinking work arriving through the newest medium.
 
-  **Two type blocks, and only two** (you, . The `One operator. Four systems. Live in
+  **Two type blocks, and only two.** The `One operator. Four systems. Live in
   90 days.` offer block is CUT. What remains is the line, then the CTA under it:
 
   ```
@@ -302,7 +301,7 @@ the vertical's world, so the world changes with the vertical while the diagram n
 
 **The laws.**
 
-- **The style is per QUADRANT, and one grid deliberately carries four of them** (you,
+- **The style is per QUADRANT, and one grid deliberately carries four of them.**
 . The grid reads as a wall of footage of the same business pulled from four different
   places: someone's home video, the office security camera, a screen recording, the broadcast
   package. **Mixing the formats inside the grid is the effect.** A grid in one uniform treatment is
@@ -401,7 +400,7 @@ when it was brought up to the reference set. `slides.json` stays on disk as the 
 of the retired four-slide build and the rig reads it only for the slug `slides`.
 
 ```
-vertical, name              the slug and the display name, matching the pain-wiki folder
+vertical, name              the slug and the display name, matching the research-corpus folder
 part                        its number in the batch, per VERTICALS.md
 plateStyle                  a key from styles.json. The FALLBACK only, for a quadrant naming none
 styleNote                   the one-line restatement of that, kept in the file so it travels with it
@@ -440,11 +439,11 @@ the only thing standing between the format and a claim it cannot support.
 
 ## 5. Spinning a new vertical, or a new lead magnet
 
-1. Open that vertical's playbook at `context/pain-wiki/industries/<slug>.md`. Its "Pains, ranked"
+1. Open that vertical's playbook at `context/research-corpus/industries/<slug>.md`. Its "Pains, ranked"
    section already gives the top pains in the owner's own words, each with a call count, a strongest
    quote and a written angle. Pick the four systems that answer its top four pains, and record the
    call counts as provenance. If the vertical has no playbook, fall back to the theme pages in
-   `context/pain-wiki/pains/` and say so in the brief.
+   `context/research-corpus/pains/` and say so in the brief.
 2. Write the four workflows node by node. Check the `you` node is exactly one per system.
 3. Write the stat for each, with provenance, at the scope the source supports.
 4. Write four quadrant briefs per slide against the narrative roles in section 2.
@@ -484,8 +483,7 @@ playbook's "Result framing" paragraph is also the copy for the quiz result page 
 - Annotations 21.5px your display typeface 400, 272px wide, 76px off the tile, on 54px leaders.
 - Title at `bottom:258px` in your display typeface 400 at 48px with a blue step number. The Minecraft pixel face
   is retired: every piece of type on the slide is now your display typeface.
-- **The house lockup appears ONCE per carousel, on the closing page only** (you, .
-  Cover and slides 1 to 4 carry no mark at all. Six lockups in six swipes reads as branding; one
+- **The house lockup appears ONCE per carousel, on the closing page only.** Cover and slides 1 to 4 carry no mark at all. Six lockups in six swipes reads as branding; one
   at the end reads as a signature. `lockup` in `loop_diagram.py` is the single gate, and only
   the closing passes `brand=True`.
 - On that last page: the lockup at `bottom:46px`, 84px tall, forced white by
@@ -531,7 +529,7 @@ image is also the strongest series signature available, and regenerating it risk
 different Thinkers.
 
 ## 8b. What the first three shot runs taught Real Estate, Construction and Hospitality are shot, 63 paid plates, **zero job failures across all
-three**. All three are live in the CRM at `board_order` 23 to 25 with their six pages in
+three**. All three are live in your content store at `board_order` 23 to 25 with their six pages in
 `content-media/f8-<slug>/`. What they changed:
 
 **Two grade bugs, both batch-wide, both found by measuring rather than looking.**
@@ -635,8 +633,8 @@ the best in the set and its slides 1 to 3 came back clean. Judge a new vertical'
   second layer.
 - `projects/content-formats-studio/palette-refs/`, the studio's cinematography reference library, which
   is where the style anchors and the shot-size vocabulary come from.
-- `context/pain-wiki/industries/`, the 21 valid verticals. Each playbook holds that vertical's ranked
+- `context/research-corpus/industries/`, the 21 valid verticals. Each playbook holds that vertical's ranked
   pains with an angle per pain, its lead magnet, its language do and do-not lists, and its targeting.
-- `context/pain-wiki/MARKET.md`, the industry distribution, which is the batch-order argument.
+- `context/research-corpus/MARKET.md`, the industry distribution, which is the batch-order argument.
 - `projects/content-engine/ideas/museum-gallery-carousels/`, the same job in a different vehicle,
   parked pending this format's lock.

@@ -229,7 +229,7 @@ The end card stays caption-free, which is what `--endclean` protects.
 ## Related
 
 - Canon: `skills/content-formats/references/canon/angles-and-formats.md` (F3), `canon/angles-and-formats.md`, `context/personas/personas-and-avatars.md`.
-- Evidence: `context/pain-wiki/INDEX.md`. Vertical-specific work starts at `context/pain-wiki/industries/<slug>.md` (ranked pains with angles, language, targeting); general-pain work at `context/pain-wiki/pains/<slug>.md`; objection beats at `context/pain-wiki/objections/<slug>.md` and `references/canon/objection-bank.md`.
+- Evidence: `context/research-corpus/INDEX.md`. Vertical-specific work starts at `context/research-corpus/industries/<slug>.md` (ranked pains with angles, language, targeting); general-pain work at `context/research-corpus/pains/<slug>.md`; objection beats at `context/research-corpus/objections/<slug>.md` and `references/canon/objection-bank.md`.
 - Copy craft, hook doctrine and the QA gate: `skills/content-formats/SKILL.md`.
 - Look bible and worked prompts: `projects/content-engine/archive/nighthawks/` (`plan.md`,
   `brief.md`, `refs/`), shipped master in `projects/content-engine/finished/nighthawks/`.

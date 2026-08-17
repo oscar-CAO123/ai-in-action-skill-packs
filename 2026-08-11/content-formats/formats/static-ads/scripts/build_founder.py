@@ -77,7 +77,7 @@ def composite(who):
     if not spec:
         return None, f"no split set for {who}"
     paths = {s: PLATES / spec[s]["plate"] for s in ("left", "right")}
-    missing = [s for s, p in paths.items if not p.exists]
+    missing = [s for s, p in paths.items() if not p.exists()]
     if missing:
         return None, f"no plate for {', '.join(missing)}"
 
@@ -112,7 +112,7 @@ def kicker(label, y=96, size=30):
     from PIL import ImageFont
     margin = 64
     while size > 16:
-        f = ImageFont.truetype(str(ROOT.parent / "assets" / "jost-300.ttf"), size)
+        f = ImageFont.truetype(str(ROOT.parent / "assets" / "display-300.ttf"), size)
         tw = f.getlength(label) + 0.09 * size * max(len(label) - 1, 0)
         if tw <= W - 2 * margin:
             break
@@ -128,7 +128,7 @@ def build_statement(card):
     q = QUOTES[card["quote"]]
     out = OUT / f"{card['id']}-statement.png"
     return render_card([quoted(card["quote"]), CTA], out, theme="noir-lower",
-                       overlay=kicker(attribution(q).rstrip(".").upper))
+                       overlay=kicker(attribution(q).rstrip(".").upper()))
 
 
 def build_split(card):
@@ -141,7 +141,7 @@ def build_split(card):
     report = render_card([quoted(card["quote"]), CTA], out,
                          plate=plate, theme="noir-lower", plate_full=True,
                          plate_fade=True, lift=64,
-                         overlay=kicker(attribution(q).rstrip(".").upper))
+                         overlay=kicker(attribution(q).rstrip(".").upper()))
     return report, note
 
 

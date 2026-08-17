@@ -43,7 +43,7 @@ def load(name):
     return np.asarray(im.crop((l, t, l + W, t + H)), dtype=np.uint8)
 
 
-def main:
+def main():
     beats = json.load(open(HERE / "work/beats.json"))
     timeline = json.load(open(HERE / "vo/timeline.json"))
     total = timeline["total"] + TAIL
@@ -66,7 +66,7 @@ def main:
         e = starts[i + 1] if i + 1 < len(starts) else nframes
         owner[s:e] = i
 
-    black = set
+    black = set()
     slide = {}
     for i in major:
         if i == 0:
@@ -87,16 +87,16 @@ def main:
     blank = np.zeros((H, W, 3), dtype=np.uint8)
     for f in range(nframes):
         if f in black:
-            enc.stdin.write(blank.tobytes)
+            enc.stdin.write(blank.tobytes())
             continue
         img = plates[beats[owner[f]]["still"]]
         p = slide.get(f)
         if p is None:
-            enc.stdin.write(img.tobytes)
+            enc.stdin.write(img.tobytes())
             continue
         # offset > 0 draws the slide lower in frame; back_out overshoots past 0 then settles
         off = int(round(TRAVEL * H * (1.0 - back_out(p))))
-        out = blank.copy
+        out = blank.copy()
         if off > 0:
             keep = H - off
             if keep > 0:
@@ -107,13 +107,13 @@ def main:
                 out[:keep, :] = img[-off:, :]
         else:
             out = img
-        enc.stdin.write(out.tobytes)
+        enc.stdin.write(out.tobytes())
 
-    enc.stdin.close
-    if enc.wait != 0:
+    enc.stdin.close()
+    if enc.wait() != 0:
         raise SystemExit("encode failed")
     print(f"[carousel] work/carousel_body.mp4  {nframes} frames, {len(major)} majors, {len(cues)} clunks, {len(minor)} ticks")
 
 
 if __name__ == "__main__":
-    main
+    main()

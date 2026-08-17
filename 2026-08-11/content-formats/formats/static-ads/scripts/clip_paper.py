@@ -116,7 +116,7 @@ def prompt(key):
         f"sentence case, set on two or three lines, and it reads exactly and only: "
         f"\"{head}\" Directly under it, separated by a thin horizontal rule, one standfirst line "
         f"in much smaller roman type reads exactly and only: \"{deck_plain}\" "
-        f"The headline is exactly {len(head.split)} words long, in that order, and no word in "
+        f"The headline is exactly {len(head.split())} words long, in that order, and no word in "
         f"it is printed twice: it came back with \"admin admin\" on two runs of the real estate "
         f"page, so count the words. Every word of both is spelled exactly as given, with no "
         f"extra words, and the type is crisp and completely legible. "
@@ -125,11 +125,11 @@ def prompt(key):
 
 def shoot(key):
     ref = SRC / REF[key]
-    if not ref.exists:
+    if not ref.exists():
         sys.exit(f"no reference scan at {ref}")
     OUT.mkdir(parents=True, exist_ok=True)
     dst = OUT / f"{key}-news.png"
-    if dst.exists:
+    if dst.exists():
         dst.replace(OUT / f"{key}-news.prev.png")
         print(f"kept the old extract at {key}-news.prev.png")
     cmd = [HF, "generate", "create", "your image model", "--prompt", prompt(key),
@@ -145,7 +145,7 @@ def shoot(key):
         sys.exit(f"no result_url:\n{json.dumps(job)[:1500]}")
     print(f"job {job.get('id')}")
     subprocess.run(["curl", "-sSL", "-o", str(dst), url], check=True)
-    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB)")
+    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

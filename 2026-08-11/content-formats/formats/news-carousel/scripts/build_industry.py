@@ -43,7 +43,7 @@ RISER = 706           # height the leader climbs before it turns toward the subj
 FONT_PX = 30
 TRACKING = 0.09       # em, matches the .anno class in band.py
 FONT = (ROOT.parents[3] / "content-formats" / "formats" / "static-ads" / "assets"
-        / "jost-300.ttf")
+        / "display-300.ttf")
 
 
 def generate(prompt, dest, tries=4):
@@ -90,7 +90,7 @@ def subject_point(png):
     off_x, off_y = (W - w * s) / 2, (PLATE_H - h * s) / 2
 
     small = im.resize((120, int(120 * h / w)))
-    px = list(small.getdata)
+    px = list(small.getdata())
     sw, sh = small.size
     # Ignore the bottom third: the plate fades to black there and the label already sits in it.
     live = [(i % sw, i // sw, v) for i, v in enumerate(px) if i // sw < sh * 0.68]
@@ -150,15 +150,15 @@ def plate_path(name, industry=None, slug=None):
     """
     if industry and slug:
         real = REAL / industry / f"{slug}.png"
-        if real.exists:
+        if real.exists():
             return real
     folder = name if name.startswith("industry-") else f"noir-pain-{name}"
     return PLATES / folder / "slide-01.png"
 
 
-def ensure_plates:
+def ensure_plates():
     """Generate any `industry-` plate that is not on disk yet. One paid job at a time."""
-    missing = [n for n in NEW_PLATES if not plate_path(n).exists]
+    missing = [n for n in NEW_PLATES if not plate_path(n).exists()]
     if not missing:
         print("all plates present, nothing to generate")
         return
@@ -169,12 +169,12 @@ def ensure_plates:
         print(f"{name}  done", flush=True)
 
 
-def main:
+def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     if "--plates" in sys.argv:
-        ensure_plates
+        ensure_plates()
         return
-    ensure_plates
+    ensure_plates()
     only = set(args)
     for deck in INDUSTRY_STATICS:
         if only and deck["industry"] not in only:
@@ -183,7 +183,7 @@ def main:
         out = OUT / deck["industry"]
         for card in deck["cards"]:
             plate = plate_path(card["plate"], deck["industry"], card["slug"])
-            if not plate.exists:
+            if not plate.exists():
                 print(f"{card['slug']}  SKIPPED, no plate at {plate}")
                 continue
             # No overlay. you cut the leader-arrow annotation on puts these
@@ -197,4 +197,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

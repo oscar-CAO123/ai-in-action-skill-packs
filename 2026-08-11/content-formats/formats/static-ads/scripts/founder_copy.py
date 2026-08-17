@@ -95,7 +95,7 @@ QUOTES = {
         source="simon-vsl-16x9.mp4 @ 1:46",
         public=False,
         corroborated=("welcome-pack Civil Plumbing NT; "
-                      "context/pain-wiki/companies/territory-water-solutions.md:43"),),
+                      "context/research-corpus/companies/territory-water-solutions.md:43"),),
     "biggest-hire": dict(
         who="simon",
         text="This is the biggest hire that you could do in 2026.",
@@ -151,16 +151,16 @@ CARDS = [
 ]
 
 
-def check:
+def check():
     bad = []
-    for key, q in QUOTES.items:
+    for key, q in QUOTES.items():
         if not q.get("source"):
             bad.append(f"{key}: NO SOURCE, refuses to render")
         if q["accent"] and q["accent"] not in q["text"]:
             bad.append(f"{key}: accent '{q['accent']}' is not in the quote")
         if "—" in q["text"] or "--" in q["text"]:
             bad.append(f"{key}: em dash in the quote")
-        low = q["text"].lower
+        low = q["text"].lower()
         if "it's not" in low and ", it's" in low:
             bad.append(f"{key}: reads as the banned negation swap")
     for c in CARDS:
@@ -168,7 +168,7 @@ def check:
             bad.append(f"{c['id']}: unknown quote {c['quote']}")
         if quoted(c["quote"]).count(BLUE_OPEN) > 1:
             bad.append(f"{c['id']}: more than one accent")
-    for k, f in FOUNDERS.items:
+    for k, f in FOUNDERS.items():
         if not f.get("credential_source"):
             bad.append(f"{k}: credential has no source")
     return bad
@@ -176,7 +176,7 @@ def check:
 
 if __name__ == "__main__":
     if "--check" in sys.argv:
-        problems = check
+        problems = check()
         print("\n".join(f"  {p}" for p in problems) if problems else "clean")
         sys.exit(1 if problems else 0)
     for c in CARDS:

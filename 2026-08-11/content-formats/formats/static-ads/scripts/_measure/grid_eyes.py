@@ -13,7 +13,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-SCRIPTS = Path(__file__).resolve.parent.parent
+SCRIPTS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SCRIPTS))
 from build_split import CROP, HALF, H, PLATES, half_image  # noqa: E402
 
@@ -32,7 +32,7 @@ crop = half.crop((0, y0, HALF, y1))
 Z = 2
 crop = crop.resize((HALF * Z, (y1 - y0) * Z), Image.LANCZOS)
 d = ImageDraw.Draw(crop, "RGBA")
-f = ImageFont.truetype(str(SCRIPTS.parent / "assets" / "jost-300.ttf"), 22)
+f = ImageFont.truetype(str(SCRIPTS.parent / "assets" / "display-300.ttf"), 22)
 
 # horizontal lines every 0.01 of the full half height, labelled in full-half fractions
 yf = round(ytop, 2)

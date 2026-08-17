@@ -84,18 +84,18 @@ SECTIONS = [
 def thumb(p):
     im = Image.open(p).convert("RGB")
     im.thumbnail((THUMB_W, THUMB_W * 3), Image.LANCZOS)
-    buf = io.BytesIO
+    buf = io.BytesIO()
     im.save(buf, "JPEG", quality=72)
-    return base64.b64encode(buf.getvalue).decode
+    return base64.b64encode(buf.getvalue()).decode()
 
 
 def collect(dirs, suffixes):
     out = []
     for d in dirs:
-        if not d.exists:
+        if not d.exists():
             continue
         for p in sorted(d.rglob("*.png")):
-            if p.name.startswith("_") or "sheet" in p.name.lower:
+            if p.name.startswith("_") or "sheet" in p.name.lower():
                 continue
             if not any(p.name.endswith(s) for s in suffixes):
                 continue
@@ -103,7 +103,7 @@ def collect(dirs, suffixes):
     return out
 
 
-def main:
+def main():
     parts, total = [], 0
     for title, blurb, dirs, sfx in SECTIONS:
         files = collect(dirs, sfx)
@@ -158,8 +158,8 @@ Every other cell has its copy written and nothing rendered in its assigned forma
 <tr><th>Industry</th><th>Pain</th><th>Format</th><th>Funnel</th><th>Sub-skill</th>
 <th>What it still needs</th></tr>{rows}</table></div></section>
 """, encoding="utf-8")
-    print(f"{OUT}  ({OUT.stat.st_size // 1024} KB, {total} cards)")
+    print(f"{OUT}  ({OUT.stat().st_size // 1024} KB, {total} cards)")
 
 
 if __name__ == "__main__":
-    main
+    main()

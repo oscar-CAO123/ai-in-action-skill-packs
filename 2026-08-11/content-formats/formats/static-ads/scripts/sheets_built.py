@@ -28,22 +28,22 @@ THUMB = 300
 
 
 def font(name):
-    return base64.b64encode((ASSETS / name).read_bytes).decode
+    return base64.b64encode((ASSETS / name).read_bytes()).decode()
 
 
 def thumb(p):
     im = Image.open(p).convert("RGB")
     im.thumbnail((THUMB, THUMB * 3), Image.LANCZOS)
-    buf = io.BytesIO
+    buf = io.BytesIO()
     im.save(buf, "JPEG", quality=78)
-    return base64.b64encode(buf.getvalue).decode
+    return base64.b64encode(buf.getvalue()).decode()
 
 
 CSS = f"""
 @font-face {{ font-family:'your display typeface'; font-weight:300;
-  src:url(data:font/ttf;base64,{font('jost-300.ttf')}) format('truetype'); }}
+  src:url(data:font/ttf;base64,{font('display-300.ttf')}) format('truetype'); }}
 @font-face {{ font-family:'your display typeface'; font-weight:500;
-  src:url(data:font/ttf;base64,{font('jost-500.ttf')}) format('truetype'); }}
+  src:url(data:font/ttf;base64,{font('display-500.ttf')}) format('truetype'); }}
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{background:#0B0B0F;color:#E8E8ED;font-family:'your display typeface',system-ui;font-weight:300;
      padding:44px 52px 140px}}
@@ -82,7 +82,7 @@ def build(only_batch=None):
             for i, c in cards_for(f):
                 key = i["key"] if i else c.get("quote_key", "card")
                 p = OUT / f["id"] / f"{f['id']}-{key}.png"
-                if p.exists:
+                if p.exists():
                     n += 1
                     cells.append(f'<figure data-ind="{i["key"] if i else "founder"}">'
                                  f'<img src="data:image/jpeg;base64,{thumb(p)}">'
@@ -111,7 +111,7 @@ def build(only_batch=None):
 
     js = """
 const bs=[...document.querySelectorAll('button')];
-bs.forEach(b=>b.onclick==>{
+bs.forEach(b=>b.onclick=()=>{
   bs.forEach(x=>x.classList.remove('on')); b.classList.add('on');
   const f=b.dataset.f;
   document.querySelectorAll('figure').forEach(c=>{

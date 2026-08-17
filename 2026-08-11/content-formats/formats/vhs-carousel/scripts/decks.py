@@ -24,8 +24,8 @@ DECK = {
     "audience": "employer side, cross industry",
     "hook_structure": "P3, Most [avatars] [problem] because [cause] (references/hooks/HOOKS.md)",
     "sources": [
-        "context/pain-wiki/MARKET.md, 238 usable discovery calls across 208 businesses",
-        "context/pain-wiki/MARKET.md, Owner Bottleneck raised on 142 calls, weighted 335, "
+        "context/research-corpus/MARKET.md, 238 usable discovery calls across 208 businesses",
+        "context/research-corpus/MARKET.md, Owner Bottleneck raised on 142 calls, weighted 335, "
         "third-ranked pain in the corpus",
     ],
 }

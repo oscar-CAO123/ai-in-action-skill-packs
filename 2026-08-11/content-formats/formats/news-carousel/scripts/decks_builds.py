@@ -23,14 +23,14 @@ a name means rather than by dropping the rule:
   - A tool may only be named if it clears the gate in
     `projects/content-engine/ideas/build-breakdown-carousels/PLAN.md` section 3: counted in
     five or more of the 153 candidate call summaries, or already named by that industry's
-    own pain-wiki playbook. A rare stack fingerprints one candidate, so a rare stack is out.
+    own research-corpus playbook. A rare stack fingerprints one candidate, so a rare stack is out.
   - The other four tells in section 1c still bind: no build-identifying counts, no
     candidate's named method, no sector-plus-scale pairing, nothing the record flags as the
     candidate's own edge.
 
 Everything else is unchanged: the six-slide pain arc, the teach law (name, plain
 definition, mechanics, and never the result), every figure held back to slide 5 at
-one-business scope, one blue accent per slide, the bottom-band law and the your display typeface 200 noir
+one-business scope, one blue accent per slide, the bottom-band law and your display typeface 200 noir
 theme.
 
 Each deck's three builds are the first three systems of the matching F8 carousel in
@@ -72,7 +72,7 @@ BUILD_DECKS = [
              "IS ITS OWN RESUMABLE STEP, EVERY RATE COMES FROM YOUR LIBRARY,",
              "AND YOUR ESTIMATOR SIGNS THE [[NUMBER.]]"],
             ["THREE. THE STANDARDS DESK. THE SPEC ANSWERS ITSELF, WITH THE",
-             "DRAWING. YOUR DOCUMENTS SIT IN SUPABASE AS VECTORS, A QUESTION",
+             "DRAWING. YOUR DOCUMENTS SIT IN A VECTOR STORE, A QUESTION",
              "FROM SITE SEARCHES THEM AND NEVER THE INTERNET, AND EVERY ANSWER",
              "IS [[LOGGED]] AGAINST THE JOB."],
             ["THE RESULT, ONE BUSINESS EACH: A FULL OPERATING SYSTEM ROLLED OUT",
@@ -231,7 +231,7 @@ BUILD_DECKS = [
              "HAPPENS. EVERYTHING RUNS INSIDE YOUR OWN NETWORK BOUNDARY, EVERY",
              "STEP WRITES A LOG LINE NOBODY CAN EDIT, AND A PERSON STILL SIGNS",
              "ANYTHING THAT [[COSTS MONEY.]]"],
-            ["THE RESULT, ONE BUSINESS EACH: A MULTI-THOUSAND DOLLAR CRM",
+            ["THE RESULT, ONE BUSINESS EACH: A MULTI-THOUSAND DOLLAR content store",
              "SUBSCRIPTION RETIRED, FACT-FINDING CUT FROM THREE WEEKS TO DAYS,",
              "AND CLAIMS PROCESSING COST DOWN [[NINETY FIVE PERCENT.]]"],
             ["TAKE THE BROKER AND ADVISER AI READINESS CHECK AND SEE",

@@ -117,7 +117,7 @@ band. F-M1 uses the `noir-lower` theme with `lift=64`.
 ## State, **ALL 35 CARDS BUILT.** 7 industries x 5 formats. Every paid plate is shot; the whole set is now
 free to re-render.
 
-**Construction is on the CRM board**, 5 rows, `crm_magnet.py`, snapshot and REVERSE written. The
+**Construction is on your content store board**, 5 rows, `crm_magnet.py`, snapshot and REVERSE written. The
 other 30 are built and waiting on your review before they go anywhere.
 
 Known defects, none blocking:

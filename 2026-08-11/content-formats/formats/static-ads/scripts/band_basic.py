@@ -31,9 +31,9 @@ BLUE = "#1269FF"
 PAD = 84
 
 CSS = f"""
-@font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{ASSETS}/jost-200.ttf'); }}
-@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{ASSETS}/jost-300.ttf'); }}
-@font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{ASSETS}/jost-500.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{ASSETS}/display-200.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{ASSETS}/display-300.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{ASSETS}/display-500.ttf'); }}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:{W}px;height:{H}px;overflow:hidden;background:#000}}
 .card{{position:relative;width:{W}px;height:{H}px;background:#000;overflow:hidden;
@@ -72,9 +72,9 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;background:#000}}
 # headline drives it and everything else is a ratio of it, so a card never mixes two scales.
 FIT = """
 document.fonts.load('300 100px "your display typeface"','AZ09')
- .then(function{return document.fonts.load('200 100px "your display typeface"','AZ09');})
- .then(function{return document.fonts.ready;})
- .then(function{
+ .then(function(){return document.fonts.load('200 100px "your display typeface"','AZ09');})
+ .then(function(){return document.fonts.ready;})
+ .then(function(){
   var card=document.querySelector('.card');
   var avail=card.clientHeight-2*PADPX, base=card.clientWidth-2*PADPX;
   var lo=20, hi=420, best=lo;
@@ -83,11 +83,11 @@ document.fonts.load('300 100px "your display typeface"','AZ09')
     card.style.fontSize=mid+'px';
     var h=0, over=false;
     var kids=card.children;
-    for(var k=0;k<kids.length;k++) h+=kids[k].getBoundingClientRect.height;
+    for(var k=0;k<kids.length;k++) h+=kids[k].getBoundingClientRect().height;
     // a line that cannot fit the column width at this size is an overflow too
     var spans=card.querySelectorAll('.measure');
     for(var s=0;s<spans.length;s++)
-      if(spans[s].getBoundingClientRect.width>base+1) over=true;
+      if(spans[s].getBoundingClientRect().width>base+1) over=true;
     // a wrapping block overflows the column when a single word is wider than it
     var blocks=card.querySelectorAll('.head,.sub,.colhead,.colrow,.cta');
     for(var b=0;b<blocks.length;b++)
@@ -96,7 +96,7 @@ document.fonts.load('300 100px "your display typeface"','AZ09')
   }
   card.style.fontSize=best+'px';
   var used=0, kids=card.children;
-  for(var k=0;k<kids.length;k++) used+=kids[k].getBoundingClientRect.height;
+  for(var k=0;k<kids.length;k++) used+=kids[k].getBoundingClientRect().height;
   document.documentElement.dataset.fitted=
     Math.round(best)+'px, fill '+Math.round(used/avail*100)+'%';
 });
@@ -181,6 +181,6 @@ def render(spec, png):
     dom = subprocess.run([CHROME, "--headless", "--disable-gpu",
                           "--virtual-time-budget=4000", "--dump-dom", f"file://{tmp}"],
                          capture_output=True, text=True).stdout
-    Path(tmp).unlink
+    Path(tmp).unlink()
     m = re.search(r'data-fitted="([^"]+)"', dom)
     return m.group(1) if m else "?"

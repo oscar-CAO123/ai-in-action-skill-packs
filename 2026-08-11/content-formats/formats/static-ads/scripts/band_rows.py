@@ -67,7 +67,7 @@ def markup(s):
 # Caps is NOT available as a lever. It belongs to the news-carousel doctrine and nothing else.
 # What is left, and what this table varies: weight, measure, alignment and a hairline rule.
 TREATMENTS = {
-    "F1":  dict,                                            # the control, the house band
+    "F1":  dict(),                                            # the control, the house band
     # F3 opened out on . At measure 700 the question set in four short lines against a
     # 316px right margin, which you read as cramped rather than as a column: "fit it into three
     # lines and spread it out, increase the margin." A wider measure buys the three lines, the
@@ -129,7 +129,7 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;background:#000}}
    to the well by default; its content then spills out through the TOP of the padding box, and
    `scrollHeight` does not count overflow in that direction. The fit search read 412px against
    442px available and passed at a size whose real content is 522px. Never let it shrink. */
-/* `font-variant-ligatures:none` is not cosmetic. your display typeface's ff ligature reads as "tt" at display
+/* `font-variant-ligatures:none` is not cosmetic. Your display typeface's ff ligature reads as "tt" at display
    size, and the F3 hospitality card shipped a headline saying "two weeks ott". */
 .block{{flex:0 0 auto;width:{col}px;font-family:'your display typeface';font-weight:{weight};color:#fff;
       line-height:{lead};text-align:{align};font-variant-ligatures:none;
@@ -160,11 +160,11 @@ html,body{{width:{W}px;height:{H}px;overflow:hidden;background:#000}}
 #
 # `document.fonts.ready` alone does not fix it. The card starts empty, nothing has requested the
 # face, and the promise resolves instantly against the fallback. The face has to be asked for by
-# name first, which is what `load` does here.
+# name first, which is what `load()` does here.
 FIT = """
-document.fonts.load('%WEIGHT% 100px "your display typeface"', 'AZ09').then(function{
+document.fonts.load('%WEIGHT% 100px "your display typeface"', 'AZ09').then(function(){
   return document.fonts.ready;
-}).then(function{
+}).then(function(){
   const block = document.querySelector('.block');
   const well  = document.querySelector('.well');
   // the usable height is the well minus its own bottom padding, measured once
@@ -236,10 +236,10 @@ def render_rows(c, png, plate=None, chrome=None, treatment=None,
     you, : that pair is the F1 treatment.
     """
     t = treatment or {}
-    font_files = [(200, "jost-200.ttf"), (300, "jost-300.ttf"), (500, "jost-500.ttf")]
+    font_files = [(200, "display-200.ttf"), (300, "display-300.ttf"), (500, "display-500.ttf")]
     art = ""
     if plate:
-        src = Path(plate).resolve.as_uri
+        src = Path(plate).resolve().as_uri()
         if plate_full:
             art = f'<img class="plate" src="{src}" style="height:{H}px">'
             if plate_fade:

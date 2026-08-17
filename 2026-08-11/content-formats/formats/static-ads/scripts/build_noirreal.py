@@ -25,9 +25,9 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 W, H = 1080, 1350
 
 CSS = f"""
-@font-face{{font-family:'your display typeface';font-weight:200;src:url('{ASSETS}/jost-200.ttf')}}
-@font-face{{font-family:'your display typeface';font-weight:300;src:url('{ASSETS}/jost-300.ttf')}}
-@font-face{{font-family:'your display typeface';font-weight:500;src:url('{ASSETS}/jost-500.ttf')}}
+@font-face{{font-family:'your display typeface';font-weight:200;src:url('{ASSETS}/display-200.ttf')}}
+@font-face{{font-family:'your display typeface';font-weight:300;src:url('{ASSETS}/display-300.ttf')}}
+@font-face{{font-family:'your display typeface';font-weight:500;src:url('{ASSETS}/display-500.ttf')}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:{W}px;height:{H}px;background:var(--paper);overflow:hidden}}
 :root{{--paper:#f4f2ee;--ink:#0f1020;--blue:#1269ff;--t3:rgba(15,16,32,.58)}}
@@ -122,11 +122,11 @@ for _ind in ("real-estate", "hospitality", "retail", "financial-services"):
 def build(key):
     c = CARDS[key]
     p = PLATES / c["plate"]
-    if not p.exists:
+    if not p.exists():
         print(f"  skip {key}: no plate at {p}")
         return
     doc = (f'<meta charset="utf-8"><style>{CSS}</style><div class="card">'
-           f'<img class="plate" src="{p.resolve.as_uri}"><div class="wash"></div>'
+           f'<img class="plate" src="{p.resolve().as_uri()}"><div class="wash"></div>'
            f'<div class="top"><div class="head">{markup(c["head"])}</div>'
            f'<div class="sub">{html.escape(c["sub"])}</div>'
            f'<div class="cta"><span>{html.escape(c["cta"])}</span><i></i></div></div></div>')
@@ -138,7 +138,7 @@ def build(key):
                     "--force-device-scale-factor=1", f"--window-size={W},{H}",
                     f"--screenshot={png}", f"file://{tmp}"],
                    stderr=subprocess.DEVNULL, check=True)
-    Path(tmp).unlink
+    Path(tmp).unlink()
     print(f"  {png}")
 
 

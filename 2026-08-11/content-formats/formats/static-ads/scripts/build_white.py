@@ -26,9 +26,9 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 W, H = 1080, 1350
 
 CSS = f"""
-@font-face{{font-family:'your display typeface';font-weight:200;src:url('{ASSETS}/jost-200.ttf')}}
-@font-face{{font-family:'your display typeface';font-weight:300;src:url('{ASSETS}/jost-300.ttf')}}
-@font-face{{font-family:'your display typeface';font-weight:500;src:url('{ASSETS}/jost-500.ttf')}}
+@font-face{{font-family:'your display typeface';font-weight:200;src:url('{ASSETS}/display-200.ttf')}}
+@font-face{{font-family:'your display typeface';font-weight:300;src:url('{ASSETS}/display-300.ttf')}}
+@font-face{{font-family:'your display typeface';font-weight:500;src:url('{ASSETS}/display-500.ttf')}}
 :root{{--ink:#0f1020;--blue:#1269ff;--rule:rgba(15,16,32,.16);--t3:rgba(15,16,32,.55);--ground:#f5f7f6}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:{W}px;height:{H}px;background:var(--ground);overflow:hidden}}
@@ -104,7 +104,7 @@ WRONG = {"construction": "hire more admin staff", "real-estate": "hire another a
 
 # Where the two figures actually stand, per card, as x in the 1080 frame. Read off each rendered
 # plate: the camera moved for every industry, so a single hardcoded pair of arrows lands on a
-# cubicle wall instead of a head. (consultant, chief agent officer).
+# cubicle wall instead of a head. (consultant, your offer).
 VERSUS_X = {
     "versus": (220, 703),
     "versus-construction": (302, 832),
@@ -167,13 +167,13 @@ for _ind in ("construction", "hospitality", "retail", "financial-services"):
 def build(key):
     c = CARDS[key]
     p = PLATES / c["plate"]
-    if not p.exists:
+    if not p.exists():
         print(f"  skip {key}: no plate at {p}")
         return
     # An empty sub renders nothing at all, rather than an empty div still carrying its margin.
     sub = f'<div class="sub">{html.escape(c["sub"])}</div>' if c["sub"] else ""
     doc = (f'<meta charset="utf-8"><style>{CSS}</style><div class="card">'
-           f'<img class="plate" src="{p.resolve.as_uri}">'
+           f'<img class="plate" src="{p.resolve().as_uri()}">'
            f'<div class="top"><div class="head">{markup(c["head"])}</div>{sub}'
            f'<div class="cta"><span>{html.escape(c["cta"])}</span><i></i></div></div>'
            f'<svg class="overlay" viewBox="0 0 {W} {H}" width="{W}" height="{H}">'
@@ -186,7 +186,7 @@ def build(key):
                     "--force-device-scale-factor=1", f"--window-size={W},{H}",
                     f"--screenshot={png}", f"file://{tmp}"],
                    stderr=subprocess.DEVNULL, check=True)
-    Path(tmp).unlink
+    Path(tmp).unlink()
     print(f"  {png}")
 
 

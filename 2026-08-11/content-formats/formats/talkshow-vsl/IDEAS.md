@@ -13,7 +13,7 @@ are already resolved, so Phase 0 only has to confirm mode, aspect and the hero s
 
 **These twelve are deliberately not avatar-specific.** No trade, no vertical, no named persona,
 no industry callout appears in any script. The selection rule is company spread in
-`context/pain-wiki/INDEX.md`: every pain below is carried by at least 31 separate companies, so
+`context/research-corpus/INDEX.md`: every pain below is carried by at least 31 separate companies, so
 each script is written to the pain a business owner has regardless of what the business sells.
 
 The wiki's 33 themes collapse to these twelve families once the duplicates the queue already
@@ -23,9 +23,9 @@ with `failed-diy-ai`, `ai-know-how-gap` with `option-overwhelm` and `no-time-to-
 **Still the right selection rule after the restructure.** The wiki now leads with 21
 industry playbooks, but this set is deliberately general-pain, so it draws from `pains/<slug>.md`
 rather than `industries/<slug>.md` and that is correct. Two things to carry across: rank additions
-off the weighted table in `context/pain-wiki/MARKET.md` rather than off record counts, and note that
+off the weighted table in `context/research-corpus/MARKET.md` rather than off record counts, and note that
 four of these twelve families (the DIY-AI ones, the know-how ones) are scored as objections in the
-report, not pains, so their evidence sits in `context/pain-wiki/objections/` under Prior Bad
+report, not pains, so their evidence sits in `context/research-corpus/objections/` under Prior Bad
 Experience and Proof And Scepticism.
 
 | # | Pain family | Companies | Angle |
@@ -50,7 +50,7 @@ companies), A7 quoting and estimating (21), A11 risk and governance (8 for `ai-g
 twelve slots aimed at the whole market. The persona-keyed version of this file is preserved at
 `_versions/IDEAS-avatar-keyed-20260801.md`.
 
-**Grounding.** Every pain traces to a theme page in `context/pain-wiki/pains/`, cited in the
+**Grounding.** Every pain traces to a theme page in `context/research-corpus/pains/`, cited in the
 concept's Wiki line. Every build named in a teach line traces to a published Hub build with its
 recorded outcome, cited in the Teach line. **No verbatim, company name or census count appears in
 any script**: the wiki records are client PII, so they select the concept and never enter the
@@ -103,7 +103,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook** `core-pain-vsl-scripts.md` #1, positive rebuild of "The reason you're still at your
   desk at 9pm... you accepted that four hours of admin a day was your job."
   `[Curiosity Gap]` `[Problem Agitation]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/manual-admin.md`, the largest theme in the wiki and the
+- **Wiki** `context/research-corpus/pains/manual-admin.md`, the largest theme in the wiki and the
   widest spread of any pain in it.
 - **Teach** `noir-pain-admin`, build one: the receipt reader (every receipt snapped, classified
   and coded before it reaches a person) with the invoice check folded in. Recorded outcome:
@@ -129,7 +129,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook** `core-pain-vsl-scripts.md` #8, verbatim "What if you could spend more time with your
   kids on the weekend without feeling behind on Monday morning?" `[Curiosity Gap]`
   `[Problem Agitation]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/owner-bottleneck.md`, second-largest theme.
+- **Wiki** `context/research-corpus/pains/owner-bottleneck.md`, second-largest theme.
 - **Teach** `noir-pain-bottleneck`, build two: the owners-corporation email fleet. Recorded
   outcome: two to three hour workflows cut to about thirty minutes, ten hours a week to about
   one, one business.
@@ -154,7 +154,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook** `core-pain-vsl-scripts.md` #2, verbatim "You're paying three different people to type
   the same information into three different systems, and you're still calling that a tech
   stack?" `[Curiosity Gap]` `[Callout]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/disconnected-systems.md`.
+- **Wiki** `context/research-corpus/pains/disconnected-systems.md`.
 - **Teach** `noir-pain-systems`, build one: the shadow warehouse (every system read into one
   place, never written back). Recorded outcome: one source of truth, no re-entering, rollout in
   about eight weeks, one business.
@@ -179,7 +179,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook** `core-pain-vsl-scripts.md` #3, verbatim "You probably already know exactly what AI
   could do for your business. The real problem is nobody can actually build it."
   `[Curiosity Gap]` `[Problem Agitation]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/ai-know-how-gap.md`, plus `option-overwhelm.md` and
+- **Wiki** `context/research-corpus/pains/ai-know-how-gap.md`, plus `option-overwhelm.md` and
   `no-time-to-implement.md`. The queue merges all three: same buyer posture, one arc.
 - **Teach** `noir-pain-execution-gap`, build two: the email router. Recorded outcome: roughly
   four full-time-equivalent roles of manual email routing saved, one organisation.
@@ -204,7 +204,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook line** YOU WERE RIGHT ABOUT THE TECHNOLOGY
 - **Hook** `core-pain-vsl-scripts.md` #4, verbatim "You downloaded the Openclaw. You gave it a
   weekend. It broke by Monday." `[Stakes/Counter]` `[Guilt/Empathy]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/fragile-diy-systems.md` and `failed-diy-ai.md`. The queue
+- **Wiki** `context/research-corpus/pains/fragile-diy-systems.md` and `failed-diy-ai.md`. The queue
   merges them: both resolve to reliability and ownership.
 - **Teach** `noir-pain-diy`, build one: the autonomous SRE agent (triages the break into a
   reviewed pull request, human approval before merge), closing on build three's recorded
@@ -231,7 +231,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook** `core-pain-vsl-scripts.md` #7, verbatim "Your business is more profitable than your
   bank account says. The difference is leaking out through costs you can't even see."
   `[Curiosity Gap]` `[Problem Agitation]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/margin-cost-pressure.md`.
+- **Wiki** `context/research-corpus/pains/margin-cost-pressure.md`.
 - **Teach** `noir-ext-fin-bought-it`, build one: OCR invoice validation (every bill read and
   matched to the agreed rate before it is paid). Recorded outcome: about thirty-five thousand
   dollars of invoice fraud prevented, one company.
@@ -255,7 +255,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook line** YOU ALREADY PAID FOR THAT LEAD
 - **Hook** `core-pain-vsl-scripts.md` #6, verbatim "You paid for that lead. Then you let it die
   in an inbox." `[Stakes/Counter]` `[Guilt/Empathy]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/lead-follow-up.md`.
+- **Wiki** `context/research-corpus/pains/lead-follow-up.md`.
 - **Teach** `noir-pain-execution-gap`, build three: the sales agent with auto-quoting, with
   `noir-pain-leads` build one (the lead catcher) as the mechanism. Recorded outcome:
   speed to lead cut from about four days to about five minutes, one business.
@@ -281,7 +281,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook** `core-pain-vsl-scripts.md` #9, verbatim "You have more demand than you can serve, and
   your only plan to fix that is to hire your way out of your own margin."
   `[Stakes/Counter]` `[Problem Agitation]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/growth-capped.md` and `scaling-without-headcount.md`. The
+- **Wiki** `context/research-corpus/pains/growth-capped.md` and `scaling-without-headcount.md`. The
   queue resolved these as one family.
 - **Teach** `noir-pain-headcount`, build one: the support hub (repeat work absorbed before it
   reaches a desk). Recorded outcome: volume up nearly five times on the same team, whole roles
@@ -308,7 +308,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook** `core-pain-vsl-scripts.md` #13, verbatim "You've been trying to hire this person for
   18 months. Every agency shrugged. Every candidate was a vibe coder." `[Stakes/Counter]`
   `[Authority]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/hiring-talent-gap.md`. This is the angle where the house's own
+- **Wiki** `context/research-corpus/pains/hiring-talent-gap.md`. This is the angle where the house's own
   offer is the mechanism, so it carries more weight than its rank suggests.
 - **Teach** `noir-pain-hiring`, build two: voice-avatar assessment at scale, with build one (the
   screening agent) as the mechanism. Recorded outcome: one employer ran one hundred concurrent
@@ -333,7 +333,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook** the hidden-cost reframe from `core-pain-vsl-scripts.md` #7 ("more profitable than
   your bank account says"), refilled for delivery. No script in that corpus covers this pain.
   `[Curiosity Gap]` `[Problem Agitation]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/ops-delivery-drag.md`.
+- **Wiki** `context/research-corpus/pains/ops-delivery-drag.md`.
 - **Teach** `noir-pain-delivery`, build two: the process runner (warranty and process automation
   for SMBs). Recorded outcome: a twenty-one day process cut to about four days, one business.
 
@@ -356,7 +356,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook** `core-pain-vsl-scripts.md` #16, verbatim "You're running a business you can't
   actually see. The numbers come out of your own systems and you don't believe a single one of
   them." `[Curiosity Gap]` `[Problem Agitation]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/data-mess.md`.
+- **Wiki** `context/research-corpus/pains/data-mess.md`.
 - **Teach** `noir-pain-numbers`, build three: the board pack (the whole thing assembles on a
   button click), citing `noir-ext-hosp-numbers`' recorded outcome: quarterly board-pack assembly
   cut from about two and a half weeks to a button click, one business.
@@ -381,7 +381,7 @@ thirty-eight seconds of one man talking, three builds eat the pain arc and land 
 - **Hook** `core-pain-vsl-scripts.md` #11, verbatim "Six inboxes. None of them triaged. Hundreds
   of emails a day, and every single one is somehow your problem." `[Visual Provocation]`
   `[Problem Agitation]` · **Spine A**
-- **Wiki** `context/pain-wiki/pains/staff-overload.md`.
+- **Wiki** `context/research-corpus/pains/staff-overload.md`.
 - **Teach** `noir-pain-staff`, build two: the document analyst. Recorded outcome: a four-person
   workflow reduced to one, about forty percent less admin, one business.
 
@@ -443,7 +443,7 @@ it. The style is written down in `talkshow-vsl/SKILL.md` Phase 2 and in `content
 - **Hook line (persistent, top of frame)** EVERY DECISION STILL WAITING ON YOU
 - **Fork source** `references/scripts/core-pain-vsl-scripts.md` #8. The hook is that script's own
   words. Its machine walkthrough is cut, and its hire block is replaced by the three AI systems.
-- **Builds, all three published in the Hub `builds` table** (project `aksmtvpubuinqhhmkzxd`),
+- **Builds, all three published in the Hub `builds` table** (project `your-project-ref`),
   chosen for the size of the recorded time saving and because each one takes the owner out of a
   different moment: the doing, the answering, the reporting. **All three have to be industry
   agnostic**, because this asset is aimed at the whole market rather than a vertical. The three in
@@ -475,7 +475,7 @@ it. The style is written down in `talkshow-vsl/SKILL.md` Phase 2 and in `content
    Monday morning?
 2. Well, you can. You just need these three AI systems.
 3. One. The AI operations assistant.
-4. It sits on top of the software you already pay for, your email, your CRM, your accounting,
+4. It sits on top of the software you already pay for, your email, your content store, your accounting,
    whatever you run the work in.
 5. You ask it for something the way you'd ask a person, it does the whole job, and it only comes
    back when the decision actually matters.

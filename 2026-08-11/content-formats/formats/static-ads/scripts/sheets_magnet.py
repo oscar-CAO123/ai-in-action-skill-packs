@@ -31,8 +31,8 @@ FILES = {
 }
 
 CSS = f"""
-@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{ASSETS}/jost-300.ttf'); }}
-@font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{ASSETS}/jost-500.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{ASSETS}/display-300.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{ASSETS}/display-500.ttf'); }}
 *{{margin:0;padding:0;box-sizing:border-box}}
 body{{background:#0B0B0F;color:#E8E8ED;font-family:'your display typeface',system-ui;font-weight:300;
      padding:48px 56px 120px}}
@@ -59,12 +59,12 @@ def cell(industry, hook_key):
     h = HOOKS[hook_key]
     c = COPY[hook_key](industry)
     png = OUT / industry["key"] / FILES[hook_key]
-    if png.exists:
-        art = f'<img src="{png.resolve.as_uri}">'
+    if png.exists():
+        art = f'<img src="{png.resolve().as_uri()}">'
     else:
         art = (f'<div class="gap">{h["fmt"]} not built<br>'
                f'waiting on a paid plate</div>')
-    body = " ".join(v if isinstance(v, str) else " ".join(v) for v in c.values)
+    body = " ".join(v if isinstance(v, str) else " ".join(v) for v in c.values())
     body = body.replace("[[", "<b>").replace("]]", "</b>")
     return (f'<div class="cell">{art}'
             f'<div class="tag">{h["fmt"]} &middot; {html.escape(h["label"])}</div>'
@@ -72,7 +72,7 @@ def cell(industry, hook_key):
             f'<div class="id">{html.escape(h["hooks_id"])}</div></div>')
 
 
-def build:
+def build():
     rows = []
     for i in INDUSTRIES:
         cells = "".join(cell(i, k) for k in HOOKS)
@@ -83,7 +83,7 @@ def build:
             f'{html.escape(i["magnet"])} &nbsp;&middot;&nbsp; {html.escape(i["route"])} '
             f'&nbsp;&middot;&nbsp; plate: {html.escape(plate)}</div>'
             f'<div class="row">{cells}</div>')
-    built = sum(1 for i in INDUSTRIES for k in HOOKS if (OUT / i["key"] / FILES[k]).exists)
+    built = sum(1 for i in INDUSTRIES for k in HOOKS if (OUT / i["key"] / FILES[k]).exists())
     doc = (f'<meta charset="utf-8"><title>Lead-magnet statics</title><style>{CSS}</style>'
            f'<h1>Lead-magnet statics</h1>'
            f'<p class="lede">Five hooks, seven industries, 35 cards. Every card closes on a lead '
@@ -96,11 +96,11 @@ def build:
     return DOSSIER
 
 
-def sheet:
+def sheet():
     """A flat contact sheet of everything built, for a thumbnail-size read."""
     from PIL import Image
     pngs = [OUT / i["key"] / FILES[k] for i in INDUSTRIES for k in HOOKS]
-    pngs = [p for p in pngs if p.exists]
+    pngs = [p for p in pngs if p.exists()]
     if not pngs:
         return None
     tw, th, cols = 270, 338, 5
@@ -116,7 +116,7 @@ def sheet:
 
 
 if __name__ == "__main__":
-    d = build
+    d = build()
     if "--sheet" in sys.argv:
-        sheet
+        sheet()
     subprocess.run(["open", "-a", "Google Chrome", str(d)], check=False)

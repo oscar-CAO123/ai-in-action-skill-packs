@@ -188,7 +188,7 @@ def shoot(slug, refine=False):
     if slug in VARIANTS:
         pass          # NO reference: it pins the composition. See HOLD_VAR.
     elif refine:
-        if not dst.exists:
+        if not dst.exists():
             sys.exit(f"no approved frame at {dst} to refine")
         cmd += ["--image", str(dst)]
     print(f"firing ONE job: {slug}{' (refine)' if refine else ''}")
@@ -201,7 +201,7 @@ def shoot(slug, refine=False):
         sys.exit(f"no result_url:\n{json.dumps(job)[:1500]}")
     print(f"job {job.get('id')}")
     subprocess.run(["curl", "-sSL", "-o", str(dst), url], check=True)
-    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB)")
+    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

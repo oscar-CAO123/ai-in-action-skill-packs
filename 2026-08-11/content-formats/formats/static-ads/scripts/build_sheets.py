@@ -45,7 +45,7 @@ UNITS = {
 }
 
 
-def main:
+def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     if not args or args[0] not in UNITS:
         sys.exit(f"usage: build_sheets.py <{'|'.join(UNITS)}> [--slides N] [--amp F]")
@@ -53,8 +53,8 @@ def main:
     slides = int(_opt("--slides", 4))
     amp = float(_opt("--amp", SHEET_AMPLITUDE))
 
-    if not SHEET.exists:
-        build_sheet
+    if not SHEET.exists():
+        build_sheet()
     print(f"{unit}: {slides} sheets at amplitude {amp}, {SHEET_LAYERS} layers")
     for i in range(2, 2 + slides):
         dest = PLATES / UNITS[unit].format(i=i)
@@ -69,4 +69,4 @@ def _opt(flag, default):
 
 
 if __name__ == "__main__":
-    main
+    main()

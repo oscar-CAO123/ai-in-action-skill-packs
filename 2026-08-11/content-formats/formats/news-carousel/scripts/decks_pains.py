@@ -9,15 +9,14 @@ Same exact structure as `three-automations` in decks2.py, which you:
     5  results      the primary results a business gets, no case study
     6  CTA          the AI Readiness quiz
 
-**Every automation on every slide is a real published build in the Candidate Knowledge Hub**
-(Supabase `aksmtvpubuinqhhmkzxd`, `builds` table, 170 published rows), per the evidence law in
-`content-formats/SKILL.md` section 1. The build behind each slide is named in the comment above it,
-with its recorded `outcome` where the slide leans on one. Nothing here is invented.
+**Every automation on every slide must be a real build in your own evidence store**, per the
+evidence law in `content-formats/SKILL.md` section 1. Name the build behind each slide in the
+comment above it, with its recorded outcome where the slide leans on one. Nothing here is invented.
 
-Named tools appear only where the CRM interview evidence names them
-(`your_table.transcript_summary`, 483 rows: Claude 198, n8n 71, Supabase 37).
+Named tools appear only where your own interview evidence names them. Count the mentions in your
+transcript store first, and let that ranking decide which tools earn a slide.
 
-`plates` carries the your generation platform prompt for each slide, consumed by plates.py.
+`plates` carries your generation platform prompt for each slide, consumed by plates.py.
 """
 
 QUIZ = ["TAKE THE AI READINESS QUIZ AND SEE", "WHERE [[YOUR BUSINESS STANDS.]]"]
@@ -310,7 +309,7 @@ PAIN_DECKS = [
         #   ~8 weeks."
         # 2 "Computer-use automation for a third-party system with no API": the agent drives
         #   the UI like a human because the target system offers no API access.
-        # 3 "Custom CRM with event automation for a VC portfolio": a scheduled task each
+        # 3 "Custom content store with event automation for a VC portfolio": a scheduled task each
         #   morning pulls data and enriches profiles from communication history.
         "slides": [
             ["TYPING THE SAME JOB INTO FOUR DIFFERENT SYSTEMS?",

@@ -7,7 +7,7 @@ Writes `out-industry/_dossiers/INDUSTRY-STATICS-DOSSIER.html`, self-contained: i
 embedded as data URIs, so the dossier can be opened, moved or sent on its own.
 
 Every card is shown against the evidence it was built from, pulled live out of that industry's
-playbook at `context/pain-wiki/industries/<slug>.md`: the ranked pain in the owner's own words,
+playbook at `context/research-corpus/industries/<slug>.md`: the ranked pain in the owner's own words,
 the call count, the verbatim quote, the house's angle on it, and the lead-magnet question the card
 walks the reader into.
 
@@ -30,7 +30,7 @@ from decks_industry import (INDUSTRY_STATICS, MAGNETS,  # noqa: E402
                             band_lines)
 from plates_real import PLATE_STYLES, SCENES  # noqa: E402
 
-WIKI = ROOT.parents[4] / "context" / "pain-wiki"
+WIKI = ROOT.parents[4] / "context" / "research-corpus"
 OUT = ROOT / "out-industry"
 DEST = OUT / "_dossiers" / "INDUSTRY-STATICS-DOSSIER.html"
 IMG_W = 820
@@ -38,7 +38,7 @@ IMG_W = 820
 
 def parse_playbook(slug):
     """Ranked pains and the lead-magnet questions out of one industry playbook."""
-    src = (WIKI / "industries" / f"{slug}.md").read_text
+    src = (WIKI / "industries" / f"{slug}.md").read_text()
 
     pains = []
     block = re.search(r"^## Pains, ranked\n(.*?)^## ", src, re.S | re.M)
@@ -47,26 +47,26 @@ def parse_playbook(slug):
         body = m.group(3)
         def field(name):
             f = re.search(rf"\*\*{name}\.\*\* (.+?)(?=\n\n|\Z)", body, re.S)
-            return " ".join(f.group(1).split) if f else ""
-        desc = re.split(r"\n\*\*", body.strip)[0]
-        pains.append({"rank": int(m.group(1)), "title": m.group(2).strip,
-                      "desc": " ".join(desc.split),
+            return " ".join(f.group(1).split()) if f else ""
+        desc = re.split(r"\n\*\*", body.strip())[0]
+        pains.append({"rank": int(m.group(1)), "title": m.group(2).strip(),
+                      "desc": " ".join(desc.split()),
                       "evidence": field("Evidence"), "angle": field("Angle")})
 
     lm = re.search(r"^## Lead magnet: (.+?)\n(.*?)^## ", src, re.S | re.M)
     questions, lede = [], ""
     if lm:
-        lede = " ".join(lm.group(2).strip.split("\n")[0].split)
+        lede = " ".join(lm.group(2).strip().split("\n")[0].split())
         for q in re.finditer(r"^(\d+)\. (.+?)$", lm.group(2), re.M):
-            questions.append({"n": int(q.group(1)), "q": q.group(2).strip})
+            questions.append({"n": int(q.group(1)), "q": q.group(2).strip()})
     return pains, questions, lede
 
 
 def corpus_row(slug):
     """The industry's line from the wiki INDEX, so the dossier states its own sample size."""
-    for line in (WIKI / "INDEX.md").read_text.splitlines:
+    for line in (WIKI / "INDEX.md").read_text().splitlines():
         if line.startswith(f"| [[{slug}]]"):
-            c = [x.strip for x in line.strip("|").split("|")]
+            c = [x.strip() for x in line.strip("|").split("|")]
             return {"calls": int(c[1]), "businesses": int(c[2]), "records": int(c[4])}
     return {"calls": 0, "businesses": 0, "records": 0}
 
@@ -74,9 +74,9 @@ def corpus_row(slug):
 def data_uri(png):
     im = Image.open(png).convert("RGB")
     im.thumbnail((IMG_W, IMG_W * 4))
-    buf = io.BytesIO
+    buf = io.BytesIO()
     im.save(buf, "JPEG", quality=86)
-    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue).decode
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
 
 
 def accent_html(lines):
@@ -86,7 +86,7 @@ def accent_html(lines):
 
 
 def title_of(slug):
-    return slug.replace("-and-", " & ").replace("-", " ").title
+    return slug.replace("-and-", " & ").replace("-", " ").title()
 
 
 CSS = """
@@ -220,7 +220,7 @@ def industry_section(deck, keepers=False):
 </section>"""
 
 
-def main:
+def main():
     keepers = "--keepers" in sys.argv
     sections, totals, nav = [], {"calls": 0, "businesses": 0, "records": 0}, []
     for deck in INDUSTRY_STATICS:
@@ -263,9 +263,9 @@ def main:
   number into an industry claim, which section 3 forbids. The pain clauses are therefore
   qualitative and every figure stays down here, as the evidence behind the card.</div>
   <div class="sub">Nothing here is invented. Industries are the top five by call volume in
-  <code>context/pain-wiki/INDEX.md</code>, and the same five
+  <code>context/research-corpus/INDEX.md</code>, and the same five
   <code>ideas/industry-build-carousels/VERTICALS.md</code> maps. Pains, evidence quotes and angles
-  are pulled live from each <code>context/pain-wiki/industries/&lt;slug&gt;.md</code> playbook at
+  are pulled live from each <code>context/research-corpus/industries/&lt;slug&gt;.md</code> playbook at
   build time. Magnet names are the ones those playbooks already carry.</div>
   <div class="sub"><b>Card N answers playbook pain N.</b> The magnet question is named per card and
   is not positional: hospitality, retail and financial services order their questions differently
@@ -288,7 +288,7 @@ def main:
   <ul>
     <li><b>The lead magnet named on every card has no page built.</b> Five quizzes, spec'd in full
     in the playbooks, are a separate build.</li>
-    <li><b>Nothing is uploaded to the CRM.</b> Archiving the 22 carousels is a Supabase write and
+    <li><b>Nothing is uploaded to your content store.</b> Archiving the 22 carousels is a your content store write and
     has not been made.</li>
     {'''<li><b>One of these five plates carries a flagged issue.</b> Real estate/leadgen still shows
     "APPRAISAL REQUEST SLIPS - UNOPENED" legibly on the folder. The other four were checked at full
@@ -307,8 +307,8 @@ def main:
     dest = DEST.with_name("INDUSTRY-STATICS-KEEPERS.html") if keepers else DEST
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(doc)
-    print(f"{dest}  {dest.stat.st_size/1024/1024:.1f} MB")
+    print(f"{dest}  {dest.stat().st_size/1024/1024:.1f} MB")
 
 
 if __name__ == "__main__":
-    main
+    main()

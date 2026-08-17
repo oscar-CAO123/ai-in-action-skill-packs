@@ -1,13 +1,13 @@
 """Copy decks for the house news-headline carousels.
 
 Every headline, number and quoted phrase is grounded in `skills/content-formats/references/canon/CONCEPT-BANK.md`
-(18 ranked pains, each from real discovery calls), `context/pain-wiki/` and
+(18 ranked pains, each from real discovery calls), `context/research-corpus/` and
 `context/personas/personas-and-avatars.md`. Nothing invented, no real company or person names.
 
 The CONCEPT-BANK's 18-pain numbering predates the Discovery Intelligence Report and its
 15 weighted pain labels. The pain numbers below still resolve inside CONCEPT-BANK; for anything new,
-rank off `context/pain-wiki/MARKET.md` and pull vertical copy from
-`context/pain-wiki/industries/<slug>.md`.
+rank off `context/research-corpus/MARKET.md` and pull vertical copy from
+`context/research-corpus/industries/<slug>.md`.
 
 Each deck is tagged with its CONCEPT-BANK pain number, its persona code, and its headline
 template from `ideas/news-carousels/IDEATION.md`. Build order follows the CONCEPT-BANK
@@ -42,7 +42,7 @@ DECKS = [
         "caption": "Separate problems on the surface. One job description underneath, and it "
                    "has sat vacant in most Australian businesses since the day it was invented.",
         "reveal": ["THE OWNERS WHO", "STOPPED FIREFIGHTING", "HIRED A",
-                   "[[CHIEF AGENT OFFICER]]"],
+                   "[[YOUR OFFER]]"],
     },
     {
         # Pain 12, X-01, the owner in the bunker. The flagship. Template 8.
@@ -61,7 +61,7 @@ DECKS = [
                    "company. Priced at what his hour is actually worth, that is the most "
                    "expensive engineering in the building.",
         "reveal": ["THE OWNERS WHO GOT", "THEIR WEEK BACK", "HIRED A",
-                   "[[CHIEF AGENT OFFICER]]"],
+                   "[[YOUR OFFER]]"],
     },
     {
         # Pain 4, X-02, already burned. The strongest message we have. Template 8.
@@ -80,7 +80,7 @@ DECKS = [
         "caption": "Of the Australian market has already tried AI and watched it stall. They "
                    "need no convincing about the tools. They were never given anybody "
                    "accountable for them.",
-        "reveal": ["THE ONES WHO GOT IT", "WORKING HIRED A", "[[CHIEF AGENT OFFICER]]"],
+        "reveal": ["THE ONES WHO GOT IT", "WORKING HIRED A", "[[YOUR OFFER]]"],
     },
     {
         # Pain 1, CON-01, back-office admin. Biggest pain in the dataset. Template 7.
@@ -98,7 +98,7 @@ DECKS = [
         "caption": "A year in evenings, at eight to ten hours a week on timesheets alone, paid "
                    "in the only currency an owner cannot invoice for.",
         "reveal": ["THE FIRMS THAT GOT", "THEIR EVENINGS BACK", "HIRED A",
-                   "[[CHIEF AGENT OFFICER]]"],
+                   "[[YOUR OFFER]]"],
     },
     {
         # Pain 5, CON-02, quoting caps revenue. Prospects price this one themselves. Template 4.
@@ -116,7 +116,7 @@ DECKS = [
         "figure": "8 SECONDS",
         "caption": "What a twenty-five million dollar quoting pipeline now takes, down from "
                    "three weeks, after one operator rebuilt it from inside the business.",
-        "reveal": ["THE FIRMS QUOTING", "IN A DAY HIRED A", "[[CHIEF AGENT OFFICER]]"],
+        "reveal": ["THE FIRMS QUOTING", "IN A DAY HIRED A", "[[YOUR OFFER]]"],
     },
     {
         # Pain 8, TRD-03, the octopus. Owner as bottleneck. Template 7.
@@ -135,7 +135,7 @@ DECKS = [
                    "it. He works harder than anyone in the building, and the building cannot "
                    "run a day without him.",
         "reveal": ["THE OWNERS WHO GOT", "A BUSINESS BACK", "HIRED A",
-                   "[[CHIEF AGENT OFFICER]]"],
+                   "[[YOUR OFFER]]"],
     },
     {
         # Pain 6, TRD-02, leads leak. Most urgent once named, the money is already spent.
@@ -153,7 +153,7 @@ DECKS = [
         "caption": "The share of paid leads that get followed up, purely from capacity. The "
                    "other eighty-five percent were bought, billed, and left to go cold.",
         "reveal": ["THE OWNERS WHO", "PLUGGED THE LEAK", "HIRED A",
-                   "[[CHIEF AGENT OFFICER]]"],
+                   "[[YOUR OFFER]]"],
     },
     {
         # Pain 2, CON-03, systems don't talk. Template 2, expose.
@@ -170,7 +170,7 @@ DECKS = [
         "figure": "$30,000",
         "caption": "The cost of one rework on a major job, traced back to a single number typed "
                    "wrong at handoff four. Six to seven handoffs run on every job.",
-        "reveal": ["THE FIRMS THAT", "FIXED IT HIRED A", "[[CHIEF AGENT OFFICER]]"],
+        "reveal": ["THE FIRMS THAT", "FIXED IT HIRED A", "[[YOUR OFFER]]"],
     },
     {
         # Pain 7, ECOM-02, margin bleeding into unmeasured spend. Template 2.
@@ -189,7 +189,7 @@ DECKS = [
         "caption": "Spent on paid media in a year, with no attribution anybody in the business "
                    "trusts. Every scaling decision after that is a guess with a seven-figure "
                    "price on it.",
-        "reveal": ["THE BRANDS THAT", "FIXED IT HIRED A", "[[CHIEF AGENT OFFICER]]"],
+        "reveal": ["THE BRANDS THAT", "FIXED IT HIRED A", "[[YOUR OFFER]]"],
     },
     {
         # Pain 9, the headcount trap. Growth capped by people. Template 1.
@@ -209,7 +209,7 @@ DECKS = [
                    "no proportional headcount. A builder on half a billion in projects simply "
                    "cannot hire fast enough.",
         "reveal": ["THE FIRMS THAT GREW", "WITHOUT HEADCOUNT", "HIRED A",
-                   "[[CHIEF AGENT OFFICER]]"],
+                   "[[YOUR OFFER]]"],
     },
     {
         # Pain 11, ECOM-06, inbox volume. Template 2.
@@ -227,7 +227,7 @@ DECKS = [
         "caption": "Unread messages in one account, the oldest of them four months old. "
                    "Somebody in there was ready to buy.",
         "reveal": ["THE BRANDS ANSWERING", "BEFORE A HUMAN WAKES", "HIRED A",
-                   "[[CHIEF AGENT OFFICER]]"],
+                   "[[YOUR OFFER]]"],
     },
     {
         # Pain 13, AGY-03, cannot vet AI talent. This one goes direct to site. Template 5.
@@ -245,7 +245,7 @@ DECKS = [
         "caption": "One Australian business searched that long for an AI operator and came up "
                    "empty. Nobody can hire for a skill they have no way to assess.",
         "reveal": ["THERE IS ONE FIRM", "IN AUSTRALIA THAT", "VETS AND PLACES",
-                   "[[CHIEF AGENT OFFICERS]]"],
+                   "[[YOUR OFFER]]"],
     },
     {
         # Pain 16, HOSP-02, nobody trusts the numbers. Small count, enormous deal size.
@@ -264,6 +264,6 @@ DECKS = [
                    "it, and hiring another analyst pulls the same numbers out of the same "
                    "system.",
         "reveal": ["THE GROUPS THAT", "TRUST THEIR NUMBERS", "HIRED A",
-                   "[[CHIEF AGENT OFFICER]]"],
+                   "[[YOUR OFFER]]"],
     },
 ]

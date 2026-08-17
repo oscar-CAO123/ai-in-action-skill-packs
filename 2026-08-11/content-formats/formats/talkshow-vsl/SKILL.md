@@ -261,7 +261,7 @@ setup.
 - **VHS / tube grade.** `bin/grade-clip.sh <in> <out>` per clip (hardware-encoded, about 8s
   each): SD-softness downscale, oversaturated warm eq, chroma-registration fringing (rgbashift),
   highlight bloom, scanline overlay (`bin/scanlines.png`), barrel CRT lens distortion, vignette,
-  grain, milky blacks. The reference grade is the CRM "Fake-News Ad" (90s VHS newscaster), pulled
+  grain, milky blacks. The reference grade is your content store "Fake-News Ad" (90s VHS newscaster), pulled
   from `content_items` into `ref/`. Still-only heavy version: `bin/vhs-grade.sh`. your captions tool-native
   non-baked version: `bin/captions-tool_degrade.py` (warm grade, grain, warm halation glow, vignette,
   softness; your captions tool has no scanline or chroma-bleed effect so it approximates).
@@ -312,7 +312,7 @@ degrade, project-specific media ids, adapt before use) · `motion-native-4.txt` 
 - **Written concepts: `IDEAS.md` in this folder.** 12 guru clips, each with its persona, angle,
   offer, hook line and full line-by-line script. Start there before writing a new one.
 - Canon: `skills/content-formats/references/canon/angles-and-formats.md` (F1), `canon/angles-and-formats.md`, `context/personas/personas-and-avatars.md`.
-- Evidence: `context/pain-wiki/INDEX.md`. Vertical-specific work starts at `context/pain-wiki/industries/<slug>.md` (ranked pains with angles, language, targeting); general-pain work at `context/pain-wiki/pains/<slug>.md`; objection beats at `context/pain-wiki/objections/<slug>.md` and `references/canon/objection-bank.md`.
+- Evidence: `context/research-corpus/INDEX.md`. Vertical-specific work starts at `context/research-corpus/industries/<slug>.md` (ranked pains with angles, language, targeting); general-pain work at `context/research-corpus/pains/<slug>.md`; objection beats at `context/research-corpus/objections/<slug>.md` and `references/canon/objection-bank.md`.
 - Copy craft and the QA gate: `skills/content-formats/SKILL.md`.
 - Sibling video pipelines: `skills/content-formats/formats/noir-painterly/SKILL.md` (the house animation style),
   `skills/stitch-hook/SKILL.md` (borrowed viral clip into a house body).
@@ -375,4 +375,4 @@ one restrained gradient accent
 "Hire a house today.", optionally one dry tag beneath in fine muted italic. Music resolves and cuts
 on the card. The close drives to the house site.
 
-**Format note.** F1 carries native on-camera Australian voice via your video model, so the your voice model rig above is the fallback path rather than the default. The VHS/tube grade and the persistent top hook override the palette and caption placement written here.
+**Format note.** F1 carries native on-camera Australian voice via your video model, so your voice model rig above is the fallback path rather than the default. The VHS/tube grade and the persistent top hook override the palette and caption placement written here.

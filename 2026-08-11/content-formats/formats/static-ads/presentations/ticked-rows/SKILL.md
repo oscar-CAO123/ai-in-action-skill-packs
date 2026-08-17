@@ -1,6 +1,6 @@
 ---
 name: static-ads-ticked-rows
-description: Presentation sub-skill. A headline held at the top and evenly ticked rows carrying the bottom, set in ink on a sheet of creased paper. Use as the control shape for any list or symptom stack. Shipped as the F6 rows variant, LIVE on the CRM. Read formats/static-ads/presentations/SKILL.md and formats/static-ads/SKILL.md first.
+description: Presentation sub-skill. A headline held at the top and evenly ticked rows carrying the bottom, set in ink on a sheet of creased paper. Use as the control shape for any list or symptom stack. Shipped as the F6 rows variant, shipped and live. Read formats/static-ads/presentations/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
 cites: tpl:Frame 466
 renderer: scripts/f6_variants.py build_rows
@@ -25,10 +25,10 @@ blue accent and sentence case (`../../SKILL.md` section 0).
 
 ## 2. The bed is a recorded exception
 
-**Creased paper, not black** (you, . A sheet folded into six and opened out.
+**Creased paper, not black.** A sheet folded into six and opened out.
 
 Taking the card off black **flips the type to ink and leaves the blue on the ticks only**, which is
-a live exception to the pure-black rule and is written into the card's `notes` on the CRM row.
+a live exception to the pure-black rule and is written into the card's `notes` in the card's own notes.
 
 **A crease is a shadow with a highlight on its other side**, which is why one gradient draws it and
 a plain line does not. Two vertical folds and two horizontal, plus the shared tooth, plus a

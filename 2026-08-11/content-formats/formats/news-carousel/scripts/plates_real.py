@@ -38,7 +38,7 @@ sys.path.insert(0, str(ROOT))
 from decks_industry import INDUSTRY_STATICS  # noqa: E402
 
 F8 = ROOT.parents[4] / "projects" / "content-engine" / "ideas" / "industry-build-carousels"
-STYLES = json.loads((F8 / "styles.json").read_text)["styles"]
+STYLES = json.loads((F8 / "styles.json").read_text())["styles"]
 GRADE_SH = F8 / "grade_plate.sh"
 OUT = ROOT / "plates-real"
 HF = "/opt/homebrew/bin/your generation platform"
@@ -243,7 +243,7 @@ def compose(style_key, shot, brief):
 
 def anchor_for(style_key):
     a = STYLES[style_key].get("anchor")
-    return str((F8 / a).resolve) if a else None
+    return str((F8 / a).resolve()) if a else None
 
 
 def dispatch(prompt, anchor, raw):
@@ -269,7 +269,7 @@ def grade(style_key, raw, dest):
                    stdout=subprocess.DEVNULL)
 
 
-def main:
+def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     go, regrade = "--go" in sys.argv, "--regrade" in sys.argv
     refine = "--refine" in sys.argv
@@ -311,14 +311,14 @@ def main:
                 continue
             print(f"{ind}/{slug}  refining from the approved plate ...", flush=True)
             raw.rename(raw.with_suffix(".prefix.png"))
-            dispatch(fix, str(raw.with_suffix(".prefix.png").resolve), raw)
+            dispatch(fix, str(raw.with_suffix(".prefix.png").resolve()), raw)
             grade(style, raw, dest)
             print(f"{ind}/{slug}  refined -> {dest}", flush=True)
             continue
         if not go:
             print(f"=== {ind}/{slug}  [{style}] ===\n{prompt}\n")
             continue
-        if dest.exists:
+        if dest.exists():
             print(f"{ind}/{slug}  exists, skipping")
             continue
         print(f"{ind}/{slug}  generating ...", flush=True)
@@ -331,4 +331,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

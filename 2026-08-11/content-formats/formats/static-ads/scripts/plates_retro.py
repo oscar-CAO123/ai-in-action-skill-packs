@@ -7,7 +7,7 @@
     python3 plates_retro.py <slug> --refine --go
 
 your direction off an `a reference account` reference post. **The reference images were not
-visible**: Instagram blocks Firecrawl and the your scraping API quota was exhausted, so only the caption
+visible**: Instagram blocks Firecrawl and your scraping API quota was exhausted, so only the caption
 was read verbatim and the visual is built from your own description, "a retro sort of
 VSL-style image on a shot relevant to the pain point". Treat the look as unverified against
 the reference until you confirms it.
@@ -67,7 +67,7 @@ def shoot(slug, refine=False):
     cmd = [HF, "generate", "create", "your image model", "--aspect_ratio", "5:4",
            "--resolution", "2k", "--prompt", prompt(slug), "--wait", "--json"]
     if refine:
-        if not dst.exists:
+        if not dst.exists():
             sys.exit(f"no approved frame at {dst} to refine")
         cmd += ["--image", str(dst)]
     print(f"firing ONE job: {slug}{' (refine)' if refine else ''}")
@@ -80,7 +80,7 @@ def shoot(slug, refine=False):
         sys.exit(f"no result_url:\n{json.dumps(job)[:1500]}")
     print(f"job {job.get('id')}")
     subprocess.run(["curl", "-sSL", "-o", str(dst), url], check=True)
-    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB)")
+    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

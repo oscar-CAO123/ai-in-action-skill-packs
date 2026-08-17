@@ -53,13 +53,13 @@ POSTERS = [
 ]
 
 
-def main:
+def main():
     use_plates = "--plates" in sys.argv
     OUT.mkdir(parents=True, exist_ok=True)
 
     for b in BAND:
         plate = PLATES / b["plate"]
-        have = use_plates and plate.exists
+        have = use_plates and plate.exists()
         png = OUT / f"{b['slug']}.png"
         fit = render_card(b["lines"], png, plate=plate if have else None,
                           theme="noir-lower", plate_full=have, plate_fade=have,
@@ -69,7 +69,7 @@ def main:
 
     for p in POSTERS:
         plate = PLATES / p["plate"]
-        have = use_plates and plate.exists
+        have = use_plates and plate.exists()
         png = OUT / f"{p['slug']}.png"
         fit = render_poster(p["top"], p["bottom"], png, ground=p["ground"],
                             plate=plate if have else None)
@@ -78,4 +78,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

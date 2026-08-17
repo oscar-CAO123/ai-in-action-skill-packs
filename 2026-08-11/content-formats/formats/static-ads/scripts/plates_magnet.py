@@ -52,7 +52,7 @@ from magnet_copy import INDUSTRIES, BY_KEY  # noqa: E402
 VAULT = ROOT.parents[5]
 F8 = (VAULT / "the business" / "projects" / "content-engine" / "ideas"
       / "industry-build-carousels")
-STYLES = json.loads((F8 / "styles.json").read_text)["styles"]
+STYLES = json.loads((F8 / "styles.json").read_text())["styles"]
 GRADE_SH = F8 / "grade_plate.sh"
 OUT = ROOT / "plates-magnet"
 HF = "/opt/homebrew/bin/your generation platform"
@@ -485,7 +485,7 @@ def assert_same_subject(key):
 
 def grade(raw, dst, style):
     if style == "none":
-        dst.write_bytes(raw.read_bytes)
+        dst.write_bytes(raw.read_bytes())
         return
     subprocess.run(["bash", str(GRADE_SH), style, str(raw), str(dst)], check=True)
 
@@ -503,9 +503,9 @@ def dispatch(job, refine_from=None, also_ref=None):
     cmd = [HF, "generate", "create", "your image model", "--prompt", job["prompt"],
            "--aspect_ratio", job["aspect"], "--resolution", "2k", "--wait", "--json"]
     if refine_from:
-        cmd += ["--image-references", str(Path(refine_from).resolve)]
+        cmd += ["--image-references", str(Path(refine_from).resolve())]
     if also_ref:
-        cmd += ["--image-references", str(Path(also_ref).resolve)]
+        cmd += ["--image-references", str(Path(also_ref).resolve())]
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0 or "[" not in r.stdout:
         raise SystemExit(f"generation failed:\n{r.stderr[-800:]}")
@@ -516,7 +516,7 @@ def dispatch(job, refine_from=None, also_ref=None):
     return dst
 
 
-def main:
+def main():
     argv = sys.argv[1:]
     flags = [a for a in argv if a.startswith("--")]
     args = [a for a in argv if not a.startswith("--")]
@@ -536,7 +536,7 @@ def main:
     if "--regrade" in flags:
         for j in js:
             raw, dst = paths(j)
-            if raw.exists:
+            if raw.exists():
                 grade(raw, dst, j["grade"])
                 print(f"  regraded {dst}")
         return
@@ -554,7 +554,7 @@ def main:
         if not prompt:
             raise SystemExit(f"no refine written for {j['fmt']}/{j['role']}")
         raw, dst = paths(j)
-        if not dst.exists:
+        if not dst.exists():
             raise SystemExit(f"nothing to refine from: {dst} does not exist")
         print(f"\n{j['industry']} {j['fmt']}/{j['role']}  REFINE off {dst.name}\n\n{prompt}\n")
         if "--go" not in flags:
@@ -564,8 +564,8 @@ def main:
         vers = dst.parent / "_versions"
         vers.mkdir(exist_ok=True)
         for f in (raw, dst):
-            if f.exists:
-                (vers / f.name).write_bytes(f.read_bytes)
+            if f.exists():
+                (vers / f.name).write_bytes(f.read_bytes())
         # the arm refine is shown the construction plate as its second reference
         also = None
         if role == "arm" and j["industry"] != "construction":
@@ -588,7 +588,7 @@ def main:
         assert_same_subject(key)
     for j in js:
         raw, dst = paths(j)
-        state = "ON DISK" if dst.exists else "not shot"
+        state = "ON DISK" if dst.exists() else "not shot"
         print(f"\n{'=' * 92}\n{j['industry']}  {j['fmt']}/{j['role']}  "
               f"{j['aspect']}  grade={j['grade']}  [{state}]\n\n{j['prompt']}")
     print(f"\n\n{len(js)} paid jobs selected. DRY RUN, nothing spent. "
@@ -596,4 +596,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

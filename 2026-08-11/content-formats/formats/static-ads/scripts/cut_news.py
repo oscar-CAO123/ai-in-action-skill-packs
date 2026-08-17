@@ -9,7 +9,7 @@ still left the scaffolding half-green. It is a script so the other four industri
 repeatable path, and so the prompt is reviewable before anything is spent.
 
 Method is `bin_gen_cut.sh` from cio-1981-noir: i2i off the approved plate onto flat chroma green,
-which keeps the face, the clothing and the lighting while giving `key_green` something it can
+which keeps the face, the clothing and the lighting while giving `key_green()` something it can
 actually key. The reference is the RAW plate, not the graded one, so the cutout carries clean
 colour instead of the VHS degrade. The graded plate is still what fills the right of the tear.
 
@@ -119,11 +119,11 @@ def prompt(slug):
 
 def shoot(slug):
     ref = PLATES / f"{slug}.raw.png"
-    if not ref.exists:
+    if not ref.exists():
         sys.exit(f"no reference plate at {ref}, run plates_news.py {slug} --go first")
     OUT.mkdir(parents=True, exist_ok=True)
     dst = OUT / f"{slug}.png"
-    if dst.exists:
+    if dst.exists():
         dst.replace(OUT / f"{slug}.prev.png")
         print(f"kept the old cut at {slug}.prev.png")
     cmd = [HF, "generate", "create", "your image model", "--prompt", prompt(slug),
@@ -139,7 +139,7 @@ def shoot(slug):
         sys.exit(f"no result_url:\n{json.dumps(job)[:1500]}")
     print(f"job {job.get('id')}")
     subprocess.run(["curl", "-sSL", "-o", str(dst), url], check=True)
-    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB)")
+    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

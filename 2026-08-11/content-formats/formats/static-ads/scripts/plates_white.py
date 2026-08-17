@@ -110,11 +110,11 @@ def shoot(slug, refine=False):
            "--resolution", "2k", "--prompt", prompt(slug), "--wait", "--json"]
     if slug in VARIANTS:
         ref = OUT / f"{VARIANTS[slug]}.png"
-        if not ref.exists:
+        if not ref.exists():
             sys.exit(f"no approved base frame at {ref}")
         cmd += ["--image-references", str(ref)]
     elif refine:
-        if not dst.exists:
+        if not dst.exists():
             sys.exit(f"no approved frame at {dst} to refine")
         cmd += ["--image", str(dst)]
     print(f"firing ONE job: {slug}{' (refine)' if refine else ''}")
@@ -131,7 +131,7 @@ def shoot(slug, refine=False):
         sys.exit(f"job returned no result_url:\n{json.dumps(job)[:2000]}")
     print(f"job {job.get('id')}  {url[:90]}")
     subprocess.run(["curl", "-sSL", "-o", str(dst), url], check=True)
-    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB)")
+    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

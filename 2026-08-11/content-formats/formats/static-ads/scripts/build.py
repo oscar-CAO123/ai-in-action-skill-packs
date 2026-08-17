@@ -43,7 +43,7 @@ if __name__ == "__main__":
     out_dir = ROOT / ("out-lead" if key == "lead" else "out")
     if "--out" in args:
         i = args.index("--out")
-        out_dir = Path(args[i + 1]).expanduser
+        out_dir = Path(args[i + 1]).expanduser()
         args = args[:i] + args[i + 2:]
     out_dir.mkdir(parents=True, exist_ok=True)
     picked = [a for a in ADS if not args or a["slug"] in args]

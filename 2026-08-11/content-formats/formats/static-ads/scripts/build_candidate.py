@@ -77,7 +77,7 @@ CARDS = [
 ]
 
 
-def main:
+def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for card in CARDS:
         png = OUT / f"{card['slug']}.png"
@@ -86,4 +86,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

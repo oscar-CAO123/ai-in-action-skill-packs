@@ -1,6 +1,6 @@
 ---
 name: static-ads-news-banner
-description: Presentation sub-skill. A white news banner laid across a full-bleed workplace plate, pure black condensed caps, with a topic chip. Use when a static should read as a report about the reader's market rather than a message to the reader. Shipped as the F5 news variant, LIVE on the CRM. Read formats/static-ads/presentations/SKILL.md and formats/static-ads/SKILL.md first.
+description: Presentation sub-skill. A white news banner laid across a full-bleed workplace plate, pure black condensed caps, with a topic chip. Use when a static should read as a report about the reader's market rather than a message to the reader. Shipped as the F5 news variant, shipped and live. Read formats/static-ads/presentations/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
 cites: local:a competitor-8-statics/06-editorial-headline-still
 renderer: scripts/f5_variants.py build_news
@@ -62,7 +62,7 @@ participle, no source named.
 
 **The plate is a STAND-IN.** `plates-suite/F1/professional-services.png` is reused so the format
 could be judged for free. The real one is a workplace still shot for this card and it is a paid
-job. This is written into the card's `notes` on the CRM row.
+job. This is written into the card's `notes` in the card's own notes.
 
 ## 6. Running it
 

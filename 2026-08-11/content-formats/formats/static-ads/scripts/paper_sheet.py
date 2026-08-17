@@ -35,7 +35,7 @@ W, H = 1080, 1350
 PAD = 96
 INK = "#0a0a0a"
 
-# THE LEFT-WEIGHTED COLUMN (you, revised the same day).
+# THE LEFT-WEIGHTED COLUMN (revised the same day).
 #
 # Type is the main feature of an information page, so it takes the card's own left margin, the
 # same 64px the band gives the cover, and runs 58 per cent of the width. The right band is left
@@ -122,9 +122,9 @@ def build_sheet(src=SOURCE, dest=SHEET):
 
 
 CSS = """
-@font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{a}/jost-200.ttf'); }}
-@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{a}/jost-300.ttf'); }}
-@font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{a}/jost-500.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{a}/display-200.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{a}/display-300.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{a}/display-500.ttf'); }}
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 html,body {{ width:{w}px; height:{h}px; overflow:hidden; }}
 .card {{ position:relative; width:{w}px; height:{h}px; }}
@@ -188,9 +188,9 @@ html,body {{ width:{w}px; height:{h}px; overflow:hidden; }}
 # header. Here the number and header take their own sizes, shrinking only if a long header would
 # overrun the column, and the body gets whatever height is left.
 FIT_JS = """
-document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function{
+document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function(){
   return document.fonts.ready;
-}).then(function{
+}).then(function(){
   const el = document.querySelector('.t'), box = el.parentElement;
   const cs = getComputedStyle(box);
   const room = box.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
@@ -208,7 +208,7 @@ document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function{
     let hp = HDRPX;
     hdr.style.fontSize = hp + 'px';
     while (hp > 24 && hdr.scrollWidth > wide + 1) { hp -= 2; hdr.style.fontSize = hp + 'px'; }
-    headH = head.getBoundingClientRect.height + parseFloat(getComputedStyle(el).marginTop);
+    headH = head.getBoundingClientRect().height + parseFloat(getComputedStyle(el).marginTop);
   }
   const avail = room - headH;
   // The cap is layout-dependent. Raising it globally let U4's and U7's closes, which
@@ -218,13 +218,13 @@ document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function{
   while (lo <= hi) {
     const mid = (lo + hi) >> 1;
     el.style.fontSize = mid + 'px';
-    if (el.getBoundingClientRect.height <= avail && el.scrollWidth <= wide + 1) {
+    if (el.getBoundingClientRect().height <= avail && el.scrollWidth <= wide + 1) {
       best = mid; lo = mid + 1;
     } else { hi = mid - 1; }
   }
   if (FORCEPX) best = FORCEPX;
   el.style.fontSize = best + 'px';
-  document.title = best + 'px ' + Math.round(el.getBoundingClientRect.height) + '/' + Math.round(avail);
+  document.title = best + 'px ' + Math.round(el.getBoundingClientRect().height) + '/' + Math.round(avail);
 });
 """.replace("NUMPX", "104").replace("HDRPX", "62")
 
@@ -262,8 +262,8 @@ def render_sheet(lines, png, sheet=SHEET, chrome=None, header=None, n=None, forc
     rather than for the most lines.
     """
     css = CSS.format(a=ASSETS, w=W, h=H, pad=PAD, ink=INK, left=LEFT, colw=COLW,
-                     hgap=HEAD_GAP, hl=highlighter)
-    art = f'<img class="sheet" src="{Path(sheet).resolve.as_uri}">'
+                     hgap=HEAD_GAP, hl=highlighter())
+    art = f'<img class="sheet" src="{Path(sheet).resolve().as_uri()}">'
     head = ""
     if header:
         num = f"O{n}" if n else ""
@@ -281,11 +281,11 @@ def render_sheet(lines, png, sheet=SHEET, chrome=None, header=None, n=None, forc
     try:
         subprocess.run([chrome or CHROME, "--headless", "--disable-gpu",
                         "--virtual-time-budget=4000", "--hide-scrollbars",
-                        f"--window-size={W},{H}", f"--screenshot={png}", Path(tmp).as_uri],
+                        f"--window-size={W},{H}", f"--screenshot={png}", Path(tmp).as_uri()],
                        check=True, capture_output=True)
         dom = subprocess.run([chrome or CHROME, "--headless", "--disable-gpu",
                               "--virtual-time-budget=4000", "--hide-scrollbars",
-                              f"--window-size={W},{H}", "--dump-dom", Path(tmp).as_uri],
+                              f"--window-size={W},{H}", "--dump-dom", Path(tmp).as_uri()],
                              capture_output=True, text=True)
         m = re.search(r"<title>(.*?)</title>", dom.stdout)
         return m.group(1) if m else "?"
@@ -294,4 +294,4 @@ def render_sheet(lines, png, sheet=SHEET, chrome=None, header=None, n=None, forc
 
 
 if __name__ == "__main__":
-    print("sheet ->", build_sheet)
+    print("sheet ->", build_sheet())

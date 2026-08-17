@@ -88,7 +88,7 @@ Kasun D is candidate-side and stays out of employer-facing cards entirely.
 
 ## 6. `lead-magnet` , closes on one of the seven built magnets (5 formats)
 
-**All five BUILT across all seven industries, 35 cards, all live on the CRM board.** Roughly 63 paid
+**All five BUILT across all seven industries, 35 cards, all shipped and live board.** Roughly 63 paid
 `your image model` jobs spent. Every plate is shot, so all five re-render free from here.
 
 | # | Format | Sub-skill | Paid plates |

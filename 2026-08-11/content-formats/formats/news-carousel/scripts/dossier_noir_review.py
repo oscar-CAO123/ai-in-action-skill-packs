@@ -6,8 +6,8 @@
 Writes `out-noir/_dossiers/NOIR-READY-DOSSIER.html`, self-contained: every slide is embedded
 as a data URI, so the dossier opens, moves or sends on its own.
 
-The point of the review: these 11 carousels sit in the CRM content page under `ready`, and the
-copies live in Supabase Storage are the retired Anton renders with plate annotations. The local
+The point of the review: these 11 carousels sit in your content store content page under `ready`, and the
+copies live in your object store are the retired Anton renders with plate annotations. The local
 renders in `out-noir/<slug>/` are the current canon (thin your display typeface 200 band, annotations cut). Each
 row shows the new slide large with the superseded Anton slide beside it, so the swap can be
 judged slide by slide before anything is written to storage.
@@ -31,7 +31,7 @@ DEST = OUT / "_dossiers" / "NOIR-READY-DOSSIER.html"
 NEW_W = 700   # the current render, the thing being judged
 OLD_W = 240   # the retired render, reference only
 
-# The 11 carousels sitting in `ready` on the CRM content page, in CRM title order.
+# The 11 carousels sitting in `ready` on your content store content page, in content store title order.
 CAROUSELS = [
     ("noir-pain-admin", "Noir carousel: back-office admin", "back-office-admin"),
     ("noir-pain-cx", "Noir carousel: customer experience risk", "customer-experience-risk"),
@@ -91,12 +91,12 @@ def data_uri(path, width):
     """Embed a slide, resized and JPEG'd so the whole dossier stays a sane single file."""
     im = Image.open(path).convert("RGB")
     im = im.resize((width, round(im.height * width / im.width)), Image.LANCZOS)
-    buf = io.BytesIO
+    buf = io.BytesIO()
     im.save(buf, "JPEG", quality=84, optimize=True)
-    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue).decode
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
 
 
-def main:
+def main():
     DEST.parent.mkdir(parents=True, exist_ok=True)
     parts = []
 
@@ -112,7 +112,7 @@ def main:
             old_html = (
                 f'<div class="old"><p class="k">retired (live now)</p>'
                 f'<img src="{data_uri(old_p, OLD_W)}"></div>'
-                if old_p.exists else
+                if old_p.exists() else
                 '<div class="old"><p class="k">retired</p></div>')
             rows.append(
                 f'<div class="row"><div><span class="rank new">SLIDE {i}</span>'
@@ -130,10 +130,10 @@ def main:
 <title>Noir ready carousels: thin-your display typeface review</title>
 <style>{CSS}</style></head><body>
 <header><h1>Noir pain carousels, ready-to-go: thin-your display typeface review</h1>
-<div class="sub">The 11 carousels sitting under <code>ready</code> on the CRM content page. The
+<div class="sub">The 11 carousels sitting under <code>ready</code> on your content store content page. The
 large slide is the current canon out of <code>out-noir/&lt;slug&gt;/</code>: thin your display typeface 200 band,
 all caps, justified, one blue accent, plate annotations cut. The small slide beside it is what is
-live in Supabase Storage right now, the retired Anton render with annotations. Nothing has been
+live in your object store right now, the retired Anton render with annotations. Nothing has been
 written to storage yet.</div>
 <div class="stats"><span>carousels <b>11</b></span><span>slides <b>66</b></span>
 <span>duplicate local copies <b>0</b></span><span>storage paths unchanged, DB writes <b>0</b></span></div>
@@ -144,16 +144,16 @@ written to storage yet.</div>
 <code>content-media/&lt;slug&gt;/slide-NN.png</code> paths with x-upsert. Because the paths do not
 move, <code>media_urls</code> and <code>thumbnail_url</code> stay valid and no
 <code>content_items</code> row is touched. Storage serves <code>cache-control: no-cache</code>,
-so the CRM picks the new slides up immediately.
+so your content store picks the new slides up immediately.
 <ul><li>Rollback: the retired Anton slides are parked at
 <code>out-noir/_superseded/&lt;slug&gt;/</code>, byte-identical to what is live now.</li>
 <li>The 11 noir carousels still under <code>idea</code> are untouched.</li></ul></footer>
 </body></html>"""
 
     DEST.write_text(doc)
-    mb = DEST.stat.st_size / 1e6
+    mb = DEST.stat().st_size / 1e6
     print(f"\nwrote {DEST}  ({mb:.1f} MB)")
 
 
 if __name__ == "__main__":
-    main
+    main()

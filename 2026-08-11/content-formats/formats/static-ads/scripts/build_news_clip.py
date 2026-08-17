@@ -82,7 +82,7 @@ HEADER = {
 
 def build(key):
     plate = PLATES / f"{key}.png"
-    if not plate.exists:
+    if not plate.exists():
         sys.exit(f"no collage plate at {plate}, run collage_news.py first")
     avatar, pain = HEADER[key]
     topline = f"Breaking: {avatar} can finally stop [[{pain}]]."

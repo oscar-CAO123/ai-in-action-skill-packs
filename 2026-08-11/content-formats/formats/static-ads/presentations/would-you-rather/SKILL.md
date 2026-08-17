@@ -1,6 +1,6 @@
 ---
 name: static-ads-would-you-rather
-description: Presentation sub-skill. A forced binary on black, two options with a drawn house graphic each, answered in the reader's head before the CTA. Use when the argument is a choice between the reader's current move and the hire. Shipped as the F5 rather variant, LIVE on the CRM. Read formats/static-ads/presentations/SKILL.md and formats/static-ads/SKILL.md first.
+description: Presentation sub-skill. A forced binary on black, two options with a drawn house graphic each, answered in the reader's head before the CTA. Use when the argument is a choice between the reader's current move and the hire. Shipped as the F5 rather variant, shipped and live. Read formats/static-ads/presentations/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
 cites: local:a competitor-8-statics/05-would-you-rather
 renderer: scripts/f5_variants.py build_rather
@@ -57,7 +57,7 @@ of that shape is the blue quadrant, so the ground does not also have to move.
 ## 5. Known, and shipped knowingly
 
 **This card carries NO route.** No CTA line, no quiz sentence, no foot strip. Written into its
-`notes` on the CRM row. It ships that way because the binary closes itself, and it is the open item
+`notes` in the card's own notes. It ships that way because the binary closes itself, and it is the open item
 if the format is scaled.
 
 ## 6. Running it

@@ -38,7 +38,7 @@ def sample(im, dx, dy):
     return statistics.mean(px), statistics.pstdev(px)
 
 
-def main:
+def main():
     only = set(sys.argv[1:])
     flagged = checked = skipped = 0
     for deck in NOIR_DECKS:
@@ -48,7 +48,7 @@ def main:
         out = ROOT / "out-noir" / deck["slug"]
         for i, marks in enumerate(deck.get("annotations", []), 1):
             slide = out / f"slide-{i:02d}.png"
-            if not (plates / f"slide-{i:02d}.png").exists or not slide.exists:
+            if not (plates / f"slide-{i:02d}.png").exists() or not slide.exists():
                 skipped += len(marks)
                 continue
             im = Image.open(slide).convert("L")
@@ -64,4 +64,4 @@ def main:
 
 
 if __name__ == "__main__":
-    sys.exit(main)
+    sys.exit(main())

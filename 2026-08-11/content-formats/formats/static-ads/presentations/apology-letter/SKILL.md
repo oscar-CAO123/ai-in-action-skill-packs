@@ -1,6 +1,6 @@
 ---
 name: static-ads-apology-letter
-description: Presentation sub-skill. A brand apology set as a letter on warm paper, where the apology is for not having said the useful thing sooner. Use when a card needs to promise information rather than persuasion. Shipped as the F5 apology variant, LIVE on the CRM. Read formats/static-ads/presentations/SKILL.md and formats/static-ads/SKILL.md first.
+description: Presentation sub-skill. A brand apology set as a letter on warm paper, where the apology is for not having said the useful thing sooner. Use when a card needs to promise information rather than persuasion. Shipped as the F5 apology variant, shipped and live. Read formats/static-ads/presentations/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
 cites: local:a competitor-8-statics/03-apology-letter
 renderer: scripts/f5_variants.py build_apology
@@ -53,7 +53,7 @@ owners."
 **Warm off-white paper, not black.** The format needs it: a letter on void is a statement, not a
 letter. `news-carousel/SKILL.md` permits a warm paper canvas on the Hub-build curation carousel
 "and nowhere else", so this card is a live exception and it is flagged as one rather than quietly
-taken. It is written into the card's `notes` on the CRM row.
+taken. It is written into the card's `notes` in the card's own notes.
 
 **The fallback exists.** If the bed is ever refused, the same layout renders on black with the
 headline in blue and the body in white. Nothing else in the card changes.

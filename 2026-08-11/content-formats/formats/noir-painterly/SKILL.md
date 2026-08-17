@@ -355,7 +355,7 @@ so the entire cost risk of this format sits in this phase.
 - **Written concepts: `IDEAS.md` in this folder.** Six films, each with its motif, beat list, lane
   map and VO. Start there before writing a new one.
 - Canon: `skills/content-formats/references/canon/angles-and-formats.md` (F2), `canon/angles-and-formats.md`, `context/personas/personas-and-avatars.md`.
-- Evidence: `context/pain-wiki/INDEX.md`. Vertical-specific work starts at `context/pain-wiki/industries/<slug>.md` (ranked pains with angles, language, targeting); general-pain work at `context/pain-wiki/pains/<slug>.md`; objection beats at `context/pain-wiki/objections/<slug>.md` and `references/canon/objection-bank.md`.
+- Evidence: `context/research-corpus/INDEX.md`. Vertical-specific work starts at `context/research-corpus/industries/<slug>.md` (ranked pains with angles, language, targeting); general-pain work at `context/research-corpus/pains/<slug>.md`; objection beats at `context/research-corpus/objections/<slug>.md` and `references/canon/objection-bank.md`.
 - Copy craft and the QA gate: `skills/content-formats/SKILL.md`.
 - The other noir pipeline: `skills/noir-painter-ad/SKILL.md` is the **photoreal** B&W character
   spot (a painter in a black room painting the house logo), a different look with a different

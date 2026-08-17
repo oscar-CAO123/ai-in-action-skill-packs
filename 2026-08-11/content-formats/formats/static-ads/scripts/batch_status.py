@@ -4,7 +4,7 @@
     python3 batch_status.py            # -> ../BATCH-STATUS.html, then opens it
 
 Every number on the page is READ, not remembered: format and card counts come from the copy
-layer, render counts from the folders on disk, CRM counts from the board itself (pass --crm,
+layer, render counts from the folders on disk, content store counts from the board itself (pass --store,
 which costs two reads). Anything that could not be checked in this run is labelled UNVERIFIED
 on the page rather than being quietly asserted.
 
@@ -79,9 +79,9 @@ ASSETS = [
 
 # Not verifiable from this folder. Stated as coming from the handovers, and labelled as such.
 CAROUSELS = [
-    ("Industry-build carousels (F8)", "19 verticals x 6 pages", "114 pages live on the CRM",
+    ("Industry-build carousels (F8)", "19 verticals x 6 pages", "114 pages shipped and live",
      "handover industry-build-carousel, "),
-    ("Noir pain decks (F5)", "22 decks", "All 22 generated, 14 live on the CRM",
+    ("Noir pain decks (F5)", "22 decks", "All 22 generated, 14 shipped and live",
      "handover noir-carousel-pain-queue, "),
     ("Build Breakdown series", "157 unique cases", "Built, UNSHOT",
      "handover build-breakdown-series, "),
@@ -119,24 +119,24 @@ def tag(kind, text):
 
 def rendered(fmt):
     d = OUT_SUITE / fmt
-    return len([f for f in d.glob("*.png") if not f.name.startswith("_")]) if d.is_dir else 0
+    return len([f for f in d.glob("*.png") if not f.name.startswith("_")]) if d.is_dir() else 0
 
 
-def crm_counts:
+def store_counts():
     """Read the board. Two calls, both read-only, and both may be skipped."""
     out = {}
     for name, script in (("suite", "crm_suite.py"), ("magnet", "crm_magnet.py")):
         try:
             r = subprocess.run([sys.executable, str(ROOT / script), "--status"],
                                capture_output=True, text=True, timeout=120)
-            last = [ln for ln in r.stdout.strip.splitlines if ln.strip][-1]
-            out[name] = last.strip
+            last = [ln for ln in r.stdout.strip().splitlines() if ln.strip()][-1]
+            out[name] = last.strip()
         except Exception as e:                                   # noqa: BLE001
             out[name] = f"UNREAD ({e.__class__.__name__})"
     return out
 
 
-def build(crm=None):
+def build(store=None):
     n_cards = sum(len(cards_for(f)) for f in FORMATS)
     n_rendered = sum(rendered(f["id"]) for f in FORMATS)
     live = [f for f in FORMATS if DECIDED.get(f["id"], ("", ""))[0] == "LIVE"]
@@ -167,7 +167,7 @@ def build(crm=None):
         f'<td class="num">7</td><td class="num">7</td>'
         f'<td>{tag("done", "BUILT")}</td>'
         f'<td class="dim">{", ".join(ref for ref, _ in h["model"])}</td></tr>'
-        for h in HOOKS.values)
+        for h in HOOKS.values())
 
     asset_rows = "".join(
         f'<tr><td>{n}</td><td class="dim">{fmt}</td>'
@@ -179,9 +179,9 @@ def build(crm=None):
         f'<td class="dim">{state}</td><td class="dim">{src}</td></tr>'
         for n, scale, state, src in CAROUSELS)
 
-    crm_line = ("" if not crm else
-                f'<p class="sub">Board, read this run: <b class="num">{crm["suite"]}</b> '
-                f'&nbsp;·&nbsp; <b class="num">{crm["magnet"]}</b></p>')
+    store_line = ("" if not store else
+                f'<p class="sub">Board, read this run: <b class="num">{store["suite"]}</b> '
+                f'&nbsp;·&nbsp; <b class="num">{store["magnet"]}</b></p>')
 
     html = f"""<!doctype html><meta charset="utf-8">
 <title>house creative batch, ground truth</title><style>{CSS}</style>
@@ -198,7 +198,7 @@ this run says so.</p>
   <div><b>{len(live)} / {len(FORMATS)}</b><span>suite formats live</span></div>
   <div><b>{len(FORMATS) - len(live)}</b><span>suite formats left</span></div>
 </div>
-{crm_line}
+{store_line}
 
 <h2>1. The lead magnets themselves</h2>
 <p class="sub">Fourteen assets. All fourteen are shelled, staged and gated;
@@ -209,7 +209,7 @@ to push.</p>
 <h2>2. Lead-magnet statics, the promo cards for those assets</h2>
 <p class="sub">Five formats across seven industries. This set is FINISHED: every card is built and
 every one is on the board. The magnet names and routes were renamed so the PNGs on
-disk are current and the CRM row titles still carry the old names.</p>
+disk are current and the card's own record titles still carry the old names.</p>
 <table><tr><th>Fmt</th><th>Format</th><th>Cards</th><th>Built</th><th>State</th>
 <th>Modelled on</th></tr>{magnet_rows}</table>
 
@@ -247,7 +247,7 @@ so none of the four can be built its way around.</li>
 from scratch. <code>f11_news_headline</code> also still carries the job-title bug that killed
 F2.</li>
 <li><b>Seven magnets are staged but unpushed</b>, waiting on your go.</li>
-<li><b>The 35 CRM rows carry pre-rename magnet names</b> in their titles. Fixing that is a prod
+<li><b>The 35 content store rows carry pre-rename magnet names</b> in their titles. Fixing that is a prod
 write and needs your go.</li>
 </ul>
 """
@@ -258,8 +258,8 @@ write and needs your go.</li>
 
 
 if __name__ == "__main__":
-    crm = crm_counts if "--crm" in sys.argv else None
-    path = build(crm)
+    store = store_counts if "--store" in sys.argv else None
+    path = build(store)
     # Plain `open`, so it lands in the browser. House rule, : dossiers are HTML and
     # they are reviewed in the browser, never in Cursor.
     subprocess.run(["open", str(path)])

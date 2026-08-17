@@ -8,11 +8,11 @@ before a whole deck is written. Every candidate is a FILL of a named structure i
 `references/hooks/HOOKS.md`, and `ref` records the exact entry and line number so the
 provenance is checkable rather than asserted.
 
-The carousel formula this auditions against (you, :
+The carousel formula this auditions against:
     curiosity gap through pain agitation  ->  education  ->  CTA to the lead magnet
 The lead magnet is the AI Readiness quiz. The cover is the only slide being auditioned.
 
-Avatar rule (you, : never call a prospect an "operator". Name the avatar:
+Avatar rule: never call a prospect an "operator". Name the avatar:
 "your logistics company", "a transport business", "[industry] business owner".
 """
 import sys

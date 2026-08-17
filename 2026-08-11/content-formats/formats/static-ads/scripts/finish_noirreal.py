@@ -54,15 +54,15 @@ def window_mask(img, feather=10):
     win = (chroma > 16) & (blue | warm)
     h, w = win.shape
     rows, cols = win.mean(1), win.mean(0)
-    if rows.max <= 0:
+    if rows.max() <= 0:
         return np.zeros((h, w), dtype=np.float32)
-    ys = np.nonzero(rows > rows.max * 0.10)[0]
-    xs = np.nonzero(cols > cols.max * 0.10)[0]
+    ys = np.nonzero(rows > rows.max() * 0.10)[0]
+    xs = np.nonzero(cols > cols.max() * 0.10)[0]
     m = np.zeros((h, w), dtype=np.uint8)
-    m[ys.min:ys.max, xs.min:xs.max] = 255
+    m[ys.min():ys.max(), xs.min():xs.max()] = 255
     m = Image.fromarray(m).filter(ImageFilter.GaussianBlur(feather))
-    print(f"  window aperture x {xs.min}-{xs.max}, y {ys.min}-{ys.max} "
-          f"({100*(xs.max-xs.min)*(ys.max-ys.min)/(w*h):.0f}% of frame)")
+    print(f"  window aperture x {xs.min()}-{xs.max()}, y {ys.min()}-{ys.max()} "
+          f"({100*(xs.max()-xs.min())*(ys.max()-ys.min())/(w*h):.0f}% of frame)")
     return np.asarray(m, dtype=np.float32) / 255.0
 
 
@@ -88,7 +88,7 @@ def vsl_grade(img):
 def moire_still(img, out_png):
     """Render one moire frame over the plate using the house tool."""
     w, h = img.size
-    with tempfile.TemporaryDirectory as td:
+    with tempfile.TemporaryDirectory() as td:
         src = Path(td) / "plate.png"
         img.convert("RGB").save(src)
         mp4 = Path(td) / "m.mp4"
@@ -98,20 +98,20 @@ def moire_still(img, out_png):
              "--width", str(w), "--height", str(h), "--pitch", "6",
              "--opacity", "0.30", "--safe-top", "0.0"],
             capture_output=True, text=True)
-        if not Path(out_png).exists:
+        if not Path(out_png).exists():
             sys.exit(f"moire tool produced no still:\n{r.stdout[-1500:]}\n{r.stderr[-1500:]}")
 
 
 def finish(slug):
     src = PLATES / f"{slug}.png"
-    if not src.exists:
+    if not src.exists():
         sys.exit(f"no plate at {src}")
     img = Image.open(src).convert("RGB")
     base = np.asarray(img, dtype=np.float32) / 255.0
     m = window_mask(img)[..., None]
 
     graded = vsl_grade(img)                      # the window
-    with tempfile.TemporaryDirectory as td:
+    with tempfile.TemporaryDirectory() as td:
         still = Path(td) / "moire.png"
         moire_still(img, still)
         moired = np.asarray(Image.open(still).convert("RGB").resize(img.size),
@@ -126,7 +126,7 @@ def finish(slug):
 
     dst = PLATES / f"{slug}-finished.png"
     Image.fromarray((np.clip(out, 0, 1) * 255).astype(np.uint8)).save(dst)
-    cover = float(m.mean)
+    cover = float(m.mean())
     print(f"{dst}\n  window mask covers {cover*100:.1f}% of the frame, "
           f"graded; the remaining {100-cover*100:.1f}% took the moire")
 

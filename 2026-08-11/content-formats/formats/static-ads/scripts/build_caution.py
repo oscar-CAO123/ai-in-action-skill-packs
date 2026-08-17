@@ -62,7 +62,7 @@ LOOK = {
 }
 
 
-def hazard:
+def hazard():
     """The standard warning triangle with the bar and dot. Drawn in a local box centred on the
     origin and scaled up at draw time, so the stroke weights below are pre-scale: at SCALE 3.4
     a 7 becomes a 24px line on the card."""
@@ -73,7 +73,7 @@ def hazard:
         f'<circle cx="0" cy="55" r="9" fill="#fff"/>')
 
 
-def cross:
+def cross():
     """A heavy hand-cut X. Two bars, not a glyph, so it holds at thumbnail size."""
     return (
         f'<path d="M-96 -96 L96 96" stroke="#fff" stroke-width="16" '
@@ -94,10 +94,10 @@ def overlay(industry, look):
     """
     from PIL import ImageFont
     label = COPY["caution"](industry)["anno"]
-    f = ImageFont.truetype(str(ASSETS / "jost-300.ttf"), 30)
+    f = ImageFont.truetype(str(ASSETS / "display-300.ttf"), 30)
     tw = f.getlength(label) + 0.09 * 30 * max(len(label) - 1, 0)
 
-    g = MARKS[look["mark"]]
+    g = MARKS[look["mark"]]()
     s = MARK_SCALE[look["mark"]]
     return (
         f'<g opacity="0.5" transform="translate({CX + 4},{CY + 4}) scale({s * 1.015})" '
@@ -113,16 +113,16 @@ def plate_for(industry):
     set's own plate folder by `plates_magnet.py <industry> caution --go`."""
     if industry["plate"]:
         p = PLATES_REAL / industry["plate"]
-        if p.exists:
+        if p.exists():
             return p
     own = ROOT / "plates-magnet" / industry["key"] / "caution-plate.png"
-    return own if own.exists else None
+    return own if own.exists() else None
 
 
 if __name__ == "__main__":
     argv = sys.argv[1:]
     if "--marks" in argv:
-        for k, v in LOOK.items:
+        for k, v in LOOK.items():
             print(f"  {k:22} {v['mark']}  at ({v['cx']},{v['cy']})  "
                   f"scale {v['scale']}  tilt {v['tilt']}")
         sys.exit(0)

@@ -23,7 +23,7 @@ TWO GROUNDS.
            or plain white). Type composites over its top and bottom thirds in black. This is
            u1b and u4, where the ground is part of the generated image.
 
-TYPE. your display typeface 200, all lowercase (you, : both U1 variants go lowercase), centred,
+TYPE. Your display typeface 200, all lowercase (both U1 variants go lowercase), centred,
 capped small at 52px and set on an 84 per cent measure. The band law's justified-flush-both
 setting belongs to the band and does not transfer to a poster. One `[[accent]]` span per
 card, same syntax as band.py.
@@ -58,17 +58,17 @@ def _spans(lines):
     for ln in lines:
         parts, i = [], 0
         for m in re.finditer(r"\[\[(.+?)\]\]", ln):
-            parts.append(html.escape(ln[i:m.start]))
+            parts.append(html.escape(ln[i:m.start()]))
             parts.append(f'<em>{html.escape(m.group(1))}</em>')
-            i = m.end
+            i = m.end()
         parts.append(html.escape(ln[i:]))
         out.append("".join(parts))
     return out
 
 
 CSS = """
-@font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{a}/jost-200.ttf'); }}
-@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{a}/jost-300.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{a}/display-200.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{a}/display-300.ttf'); }}
 * {{ margin:0; padding:0; box-sizing:border-box; }}
 html,body {{ width:{w}px; height:{h}px; }}
 body {{ background:{bg}; overflow:hidden; }}
@@ -105,13 +105,13 @@ FIT_JS = """
 // small, then reflows wider the moment the webfont lands and overruns the third. And
 // fonts.ready alone is a trap, same as band.py line 152: nothing has requested the face
 // yet, so it resolves immediately. Ask for it explicitly, then wait.
-document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function{
+document.fonts.load('200 100px "your display typeface"', 'AZ09').then(function(){
   return document.fonts.ready;
-}).then(function{
+}).then(function(){
 // Grow each block until it fills its third, then step back one. Measured, never guessed.
 for (const el of document.querySelectorAll('.t')) {
   const box = el.parentElement;
-  const room =  => box.clientHeight - parseFloat(getComputedStyle(box).paddingTop)
+  const room = () => box.clientHeight - parseFloat(getComputedStyle(box).paddingTop)
                      - parseFloat(getComputedStyle(box).paddingBottom);
   // hi was 96 and the solver always hit the ceiling. 52 is the "significantly smaller" cap.
   // The bottom block gets a higher one so the CTA outsizes the hook rather than matching it.
@@ -119,13 +119,13 @@ for (const el of document.querySelectorAll('.t')) {
   while (lo <= hi) {
     const mid = (lo + hi) >> 1;
     el.style.fontSize = mid + 'px';
-    if (el.getBoundingClientRect.height <= room && el.scrollWidth <= el.clientWidth + 1) {
+    if (el.getBoundingClientRect().height <= room() && el.scrollWidth <= el.clientWidth + 1) {
       best = mid; lo = mid + 1;
     } else { hi = mid - 1; }
   }
   el.style.fontSize = best + 'px';
   el.dataset.px = best;
-  el.dataset.h = Math.round(el.getBoundingClientRect.height) + '/' + Math.round(room);
+  el.dataset.h = Math.round(el.getBoundingClientRect().height) + '/' + Math.round(room());
 }
 document.title = [...document.querySelectorAll('.t')]
 .map(e => e.dataset.px + 'px ' + e.dataset.h).join(' | ');
@@ -150,7 +150,7 @@ def render_poster(top, bottom, png, ground="black", plate=None, chrome=None, ove
 
     art = ""
     if plate:
-        src = Path(plate).resolve.as_uri
+        src = Path(plate).resolve().as_uri()
         if ground == "plate":
             art = f'<img class="bleed" src="{src}">'
         else:
@@ -180,12 +180,12 @@ def render_poster(top, bottom, png, ground="black", plate=None, chrome=None, ove
         subprocess.run([chrome or CHROME, "--headless", "--disable-gpu",
                         "--virtual-time-budget=4000", "--hide-scrollbars",
                         f"--window-size={W},{H}", f"--screenshot={png}",
-                        Path(tmp).as_uri],
+                        Path(tmp).as_uri()],
                        check=True, capture_output=True)
         dom = subprocess.run([chrome or CHROME, "--headless", "--disable-gpu",
                               "--virtual-time-budget=4000", "--hide-scrollbars",
                               f"--window-size={W},{H}", "--dump-dom",
-                              Path(tmp).as_uri], capture_output=True, text=True)
+                              Path(tmp).as_uri()], capture_output=True, text=True)
         m = re.search(r"<title>(.*?)</title>", dom.stdout)
         return m.group(1) if m else "?"
     finally:

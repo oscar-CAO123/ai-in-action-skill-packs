@@ -147,7 +147,7 @@ def rip_mask(w, h, seed=11, jag=46, step=26):
     return (xx < edge[:, None]).astype(np.float32)
 
 
-def key_green(path, thresh=0.25, patches=):
+def key_green(path, thresh=0.25, patches=()):
     """Key the flat chroma green, then keep ONLY the blob the subject sits in.
 
     The i2i pass does not green the whole frame evenly. It flattens most of it but leaves parts
@@ -185,7 +185,7 @@ def key_green(path, thresh=0.25, patches=):
         sys.exit(f"nothing survived the key in {path}")
     sizes = ndimage.sum(np.ones_like(lab), lab, range(1, n + 1))
     picked = lab == (int(np.argmax(sizes)) + 1)
-    print(f"  {n} islands, subject blob is {100*picked.mean:.1f}% of the frame")
+    print(f"  {n} islands, subject blob is {100*picked.mean():.1f}% of the frame")
     # Seal what interior holes are left. This used to run a 45px kernel, because a 0.10 key
     # threshold was taking the hi-vis with it. Measured on the construction cut: the chroma
     # background sits at g-max(r,b) = 0.44 and the vest at 0.06 or below, so a 0.25 threshold
@@ -196,7 +196,7 @@ def key_green(path, thresh=0.25, patches=):
     k = 15
     m8 = m8.filter(ImageFilter.MaxFilter(k)).filter(ImageFilter.MinFilter(k))
     picked = np.asarray(m8) > 127
-    print(f"  after hole close {100*picked.mean:.1f}%")
+    print(f"  after hole close {100*picked.mean():.1f}%")
     a = (picked * 255).astype(np.uint8)
     # close pinholes, then soften and tighten the edge back up
     a = Image.fromarray(a).filter(ImageFilter.MedianFilter(5)).filter(ImageFilter.GaussianBlur(2.0))
@@ -216,7 +216,7 @@ def key_green(path, thresh=0.25, patches=):
     ys, xs = np.where(a > 0.15)
     if not len(ys):
         sys.exit(f"nothing keyed out of {path}")
-    y0, y1, x0, x1 = ys.min, ys.max + 1, xs.min, xs.max + 1
+    y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
     return rgb[y0:y1, x0:x1], a[y0:y1, x0:x1]
 
 
@@ -235,8 +235,8 @@ def prop_mask(rgb, cfg):
     for i in range(1, n + 1):
         blob = lab == i
         ys = np.where(blob.any(axis=1))[0]
-        if blob.sum >= cfg["min_px"] and ys.min > h * cfg["below"]:
-            if keep is None or blob.sum > keep.sum:
+        if blob.sum() >= cfg["min_px"] and ys.min() > h * cfg["below"]:
+            if keep is None or blob.sum() > keep.sum():
                 keep = blob
     return keep
 
@@ -286,11 +286,11 @@ def read_matte(path, keep=0.02, prop=None):
     ch8 = Image.fromarray((((g - np.maximum(r, b)) > 0.10) * 255).astype(np.uint8))
     chroma = np.asarray(ch8.filter(ImageFilter.MinFilter(21))
 .filter(ImageFilter.MaxFilter(21))) > 127
-    if chroma.any:
+    if chroma.any():
         a = a * (~chroma)
         a = np.asarray(Image.fromarray((a * 255).astype(np.uint8))
 .filter(ImageFilter.MedianFilter(5)), dtype=np.float32) / 255.0
-        print(f"  cut {int(chroma.sum)}px of kept chroma out of the mask")
+        print(f"  cut {int(chroma.sum())}px of kept chroma out of the mask")
 
     # HARDEN the edge before it ever reaches `add_outline`. That function paints white wherever
     # alpha is under 1, which is right for a 3px magazine cut and wrong for the wide band of
@@ -298,7 +298,7 @@ def read_matte(path, keep=0.02, prop=None):
     # it guesses around both hands, because the drawings he is holding are dropped, and the
     # result on the card was a 25px white glow with his fingers lost inside it. Squeezing the
     # band to about a third of its width turns that back into a cut edge. you, .
-    soft = float(((a > 0.05) & (a < 0.95)).mean * 100)
+    soft = float(((a > 0.05) & (a < 0.95)).mean() * 100)
     # One opening first. What is left at the construction hand after the chroma cut is a thin
     # ghost of the drawings he is holding, hanging off his wrist, and the white cut edge turns
     # any sliver like that into a hook. An opening deletes anything thinner than the kernel and
@@ -309,7 +309,7 @@ def read_matte(path, keep=0.02, prop=None):
                    dtype=np.float32) / 255.0
     a = np.clip((a - 0.50) / 0.22, 0, 1)
     print(f"  edge hardened, soft band was {soft:.2f}% of the crop, now "
-          f"{float(((a > 0.05) & (a < 0.95)).mean * 100):.2f}%")
+          f"{float(((a > 0.05) & (a < 0.95)).mean() * 100):.2f}%")
 
     # Despill a second time, against the FINAL outline. The first pass measures its rim off the
     # matte's own edge, and cutting the chroma blob moves that edge, which left a green thread
@@ -320,14 +320,14 @@ def read_matte(path, keep=0.02, prop=None):
     r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
     f2 = ((g - np.maximum(r, b)) > 0.028) & (rim > 0.5)
     rgb = np.stack([r, np.where(f2, np.minimum(g, (r + b) / 2 + 0.02), g), b], axis=2)
-    print(f"  second despill took {int(f2.sum)}px along the final edge")
+    print(f"  second despill took {int(f2.sum())}px along the final edge")
 
     ys, xs = np.where(a > keep)
     if not len(ys):
         sys.exit(f"empty matte at {path}")
-    py0, py1, px0, px1 = int(ys.min), int(ys.max) + 1, int(xs.min), int(xs.max) + 1
-    print(f"  matte covers {100*(a > 0.5).mean:.1f}% of the frame, "
-          f"despilled {int(fringe.sum)}px of edge")
+    py0, py1, px0, px1 = int(ys.min()), int(ys.max()) + 1, int(xs.min()), int(xs.max()) + 1
+    print(f"  matte covers {100*(a > 0.5).mean():.1f}% of the frame, "
+          f"despilled {int(fringe.sum())}px of edge")
 
     # Restore the dropped prop, if this card names one. It joins the alpha but NOT the person box,
     # so `build` still scales and anchors off the figure alone.
@@ -337,9 +337,9 @@ def read_matte(path, keep=0.02, prop=None):
             print(f"  WANTED a prop ({prop['note']}) but found no blob matching it")
         else:
             a = np.maximum(a, pm.astype(np.float32))
-            print(f"  restored {int(pm.sum)}px of prop: {prop['note']}")
+            print(f"  restored {int(pm.sum())}px of prop: {prop['note']}")
     ys, xs = np.where(a > keep)
-    y0, y1, x0, x1 = int(ys.min), int(ys.max) + 1, int(xs.min), int(xs.max) + 1
+    y0, y1, x0, x1 = int(ys.min()), int(ys.max()) + 1, int(xs.min()), int(xs.max()) + 1
     meta = {"orig": (x0, y0),
             "person": (px0 - x0, py0 - y0, px1 - px0, py1 - py0)}
     return rgb[y0:y1, x0:x1], a[y0:y1, x0:x1], meta
@@ -405,12 +405,12 @@ def paper_bed(cfg, scans, seed=7):
         covered = blit(covered[..., None], np.ones_like(pg)[..., None], mk, x, y)[..., 0]
 
     # anywhere no page landed, fall back to the mid tone so the bed never holes out to black
-    layer = np.where(covered > 0.5, layer, float(layer[covered > 0.5].mean) if covered.any
+    layer = np.where(covered > 0.5, layer, float(layer[covered > 0.5].mean()) if covered.any()
                      else 0.5)
 
     lo, hi = cfg["bed_luma"]
     rng = max(float(np.ptp(layer)), 1e-6)
-    bed = lo + (layer - layer.min) / rng * (hi - lo)
+    bed = lo + (layer - layer.min()) / rng * (hi - lo)
 
     # the light spots: soft radial lifts, the only thing that brightens paper now
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
@@ -424,7 +424,7 @@ def paper_bed(cfg, scans, seed=7):
     grain = rng2.normal(0, 1, (H, W)).astype(np.float32)
     grain = np.asarray(Image.fromarray(((grain * 40 + 128).clip(0, 255)).astype(np.uint8))
 .filter(ImageFilter.GaussianBlur(0.6)), dtype=np.float32) / 255.0
-    return np.clip(bed + (grain - grain.mean) * 0.08, 0, 1)
+    return np.clip(bed + (grain - grain.mean()) * 0.08, 0, 1)
 
 
 def torn_edge(mask, px=5):
@@ -457,7 +457,7 @@ def build(key):
     # A local matte, if `matte_news.py` has produced one, beats the paid chroma key outright:
     # it needs no green plate at all and cannot half-fail the way the i2i does.
     mt = CUT / f"{key}.matte.png"
-    if mt.exists:
+    if mt.exists():
         rgb, a, meta = read_matte(mt, prop=KEEP_PROP.get(key))
     else:
         rgb, a = key_green(CUT / f"{key}.png", patches=PATCH_GREEN.get(key,))
@@ -486,7 +486,7 @@ def build(key):
     # right of a jagged diagonal tear and the paper collage fills the left, so the card reads as
     # the newsprint being ripped off the footage rather than replacing it.
     site_p = PLATES / f"{key}.png"
-    if site_p.exists:
+    if site_p.exists():
         site = Image.open(site_p).convert("RGB")
         if key in ALIGN_SITE:
             # Put the plate through the SAME transform as the cut-out, so the plate's own copy of
@@ -528,7 +528,7 @@ def build(key):
     # No local fade: band.py's own .plate-fade drops the join into the band.
     dst = OUT / f"{key}.png"
     Image.fromarray((np.clip(canvas, 0, 1) * 255).astype(np.uint8)).save(dst)
-    print(f"{dst}  ({dst.stat.st_size // 1024} KB)")
+    print(f"{dst}  ({dst.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

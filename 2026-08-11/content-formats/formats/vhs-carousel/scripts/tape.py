@@ -160,7 +160,7 @@ def find_wells(path, band="any", min_w_pct=34, min_h_pct=9, top_n=6):
             hcur = heights[x] if x < cw else 0
             start = x
             while stack and stack[-1][1] >= hcur:
-                sx, sh = stack.pop
+                sx, sh = stack.pop()
                 if sh >= min_h and (x - sx) >= min_w:
                     found.append((sh * (x - sx), sx, y - sh + 1, x - sx, sh))
                 start = sx
@@ -183,7 +183,7 @@ def find_wells(path, band="any", min_w_pct=34, min_h_pct=9, top_n=6):
             "h": round(100 * h / mean.shape[0], 1),
             "ground": _hex(col),
             "luma": round(float(_luma(col)), 1),
-            "spread": round(float(np.abs(patch - col).mean), 1),
+            "spread": round(float(np.abs(patch - col).mean()), 1),
             "area_pct": round(100 * area / (ch * cw), 1),
         })
         if len(out) >= top_n:
@@ -198,7 +198,7 @@ def band_flat_share(path, band="any"):
     ch = flat.shape[0]
     lo, hi = BANDS[band]
     sl = flat[int(ch * lo / 100):max(1, int(round(ch * hi / 100)))]
-    return round(100 * float(sl.mean), 1)
+    return round(100 * float(sl.mean()), 1)
 
 
 def sample(path, box):
@@ -210,7 +210,7 @@ def sample(path, box):
     patch = a[max(0, y0):min(H, y1), max(0, x0):min(W, x1)].reshape(-1, 3)
     col = patch.mean(axis=0)
     return {"ground": _hex(col), "luma": round(float(_luma(col)), 1),
-            "spread": round(float(np.abs(patch - col).mean), 1)}
+            "spread": round(float(np.abs(patch - col).mean()), 1)}
 
 
 if __name__ == "__main__":

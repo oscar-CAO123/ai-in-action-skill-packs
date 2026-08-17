@@ -37,12 +37,12 @@ def _noise(shape, seed, octaves=(6, 13, 29)):
     amp = 1.0
     for o in octaves:
         g = rng.normal(0, 1, (o, o)).astype(np.float32)
-        up = np.asarray(Image.fromarray(((g - g.min) / max(np.ptp(g), 1e-6) * 255)
+        up = np.asarray(Image.fromarray(((g - g.min()) / max(np.ptp(g), 1e-6) * 255)
 .astype(np.uint8)).resize(shape[::-1], Image.BICUBIC),
                         dtype=np.float32) / 255.0
         acc += (up - 0.5) * amp
         amp *= 0.55
-    return np.clip(acc / max(np.abs(acc).max, 1e-6), -1, 1)
+    return np.clip(acc / max(np.abs(acc).max(), 1e-6), -1, 1)
 
 
 def mask_luma(im, thresh=0.62, close=9):
@@ -80,7 +80,7 @@ def trim_dark(im, tol=38):
     flat = (np.abs(a - ref).max(axis=2) <= tol)
     rows = flat.mean(axis=1) < 0.94        # a row that is almost entirely surround
     cols = flat.mean(axis=0) < 0.94
-    if not rows.any or not cols.any:
+    if not rows.any() or not cols.any():
         return im
     y0, y1 = int(np.argmax(rows)), len(rows) - int(np.argmax(rows[::-1]))
     x0, x1 = int(np.argmax(cols)), len(cols) - int(np.argmax(cols[::-1]))
@@ -107,7 +107,7 @@ def trim_border(im, thresh=70, frac=0.6, seed_frac=0.5, rounds=2):
     to 1122, eating the bottom third. `build_u4.RAW_TO_CLEAN` carries the per-plate opt-in.
 
     ADDITIVE, : nothing already built calls it. `polaroid` is deliberately left alone
-    because U3 is live on the CRM and its three plates trim identically either way.
+    because U3 is shipped and live and its three plates trim identically either way.
     """
     a = np.asarray(im.convert("L"), dtype=np.int32)
     h, w = a.shape
@@ -122,17 +122,17 @@ def trim_border(im, thresh=70, frac=0.6, seed_frac=0.5, rounds=2):
     cols = np.where(dark.mean(axis=0) > seed_frac)[0]
     if not len(rows) or not len(cols):
         return im
-    y0, y1 = int(rows.min), int(rows.max) + 1
-    x0, x1 = int(cols.min), int(cols.max) + 1
+    y0, y1 = int(rows.min()), int(rows.max()) + 1
+    x0, x1 = int(cols.min()), int(cols.max()) + 1
     for _ in range(rounds):
         before = (y0, y1, x0, x1)
-        while y0 < y1 - 1 and (a[y0, x0:x1] < thresh).mean > frac:
+        while y0 < y1 - 1 and (a[y0, x0:x1] < thresh).mean() > frac:
             y0 += 1
-        while y1 > y0 + 1 and (a[y1 - 1, x0:x1] < thresh).mean > frac:
+        while y1 > y0 + 1 and (a[y1 - 1, x0:x1] < thresh).mean() > frac:
             y1 -= 1
-        while x0 < x1 - 1 and (a[y0:y1, x0] < thresh).mean > frac:
+        while x0 < x1 - 1 and (a[y0:y1, x0] < thresh).mean() > frac:
             x0 += 1
-        while x1 > x0 + 1 and (a[y0:y1, x1 - 1] < thresh).mean > frac:
+        while x1 > x0 + 1 and (a[y0:y1, x1 - 1] < thresh).mean() > frac:
             x1 -= 1
         if (y0, y1, x0, x1) == before:
             break
@@ -182,7 +182,7 @@ def _texture(im, seed):
     g = rng.normal(0, 1, a.shape[:2]).astype(np.float32)
     g = np.asarray(Image.fromarray(((g * 40 + 128).clip(0, 255)).astype(np.uint8))
 .filter(ImageFilter.GaussianBlur(0.5)), dtype=np.float32) / 255.0
-    a = a + (g - g.mean)[..., None] * 0.085
+    a = a + (g - g.mean())[..., None] * 0.085
     a = a * (1.0 + _noise(a.shape[:2], seed + 1, octaves=(3, 5))[..., None] * 0.10)
     return Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8))
 
@@ -260,7 +260,7 @@ def cut(src, seed=0, mask=None, tint="none", height=None):
     out.alpha_composite(art)
 
     # Trim the empty canvas away, THEN scale, so `height` is the subject.
-    box = out.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox
+    box = out.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox()
     if box:
         out = out.crop(box)
     if height and out.height:
@@ -332,7 +332,7 @@ def polaroid(src, seed=0, height=520, tint="press", trim=True):
 def edge_band(size, seed=0, n=8, opacity=0.58, span=(-0.06, 1.06)):
     """A newspaper collage running down the right side and curving round both corners.
 
-    THE THIRD DEPTH LAYER (you, . The page had two: the editorial bed baked into
+    THE THIRD DEPTH LAYER. The page had two: the editorial bed baked into
     the sheet, which is nearly subliminal, and the foreground of polaroids, shreds and ink marks
     at full strength. This sits between them, so the right side of the card has something
     happening in the middle distance instead of jumping from a whisper to a shout.
@@ -411,16 +411,16 @@ def mark(kind="circle", seed=0, height=220, width=8, ink="#141414"):
     with tempfile.NamedTemporaryFile("w", suffix=".html", dir=ROOT, delete=False) as f:
         f.write(doc)
         tmp = f.name
-    out = Path(tempfile.mkdtemp) / "mark.png"
+    out = Path(tempfile.mkdtemp()) / "mark.png"
     try:
         subprocess.run([chrome, "--headless", "--disable-gpu", "--hide-scrollbars",
                         "--default-background-color=00000000", "--window-size=400,400",
-                        f"--screenshot={out}", Path(tmp).as_uri],
+                        f"--screenshot={out}", Path(tmp).as_uri()],
                        check=True, capture_output=True)
     finally:
         os.unlink(tmp)
     im = Image.open(out).convert("RGBA")
-    box = im.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox
+    box = im.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox()
     if box:
         im = im.crop(box)
     if height and im.height:
@@ -431,13 +431,13 @@ def mark(kind="circle", seed=0, height=220, width=8, ink="#141414"):
 def scrap(seed=0, height=420, tint="none", family=None):
     """A torn scrap of NEWSPRINT. Free: the scans are already on disk for the paper bed.
 
-    Newsprint by default. `collage_bed_paper.families` returns eight families, and
+    Newsprint by default. `collage_bed_paper.families()` returns eight families, and
     drawing at random handed the fan scraps of fabric, sheet music and map hatching, which come
     back as grey blurs at scrap size and read as a smudge rather than as a torn piece of paper.
     Newsprint is the only family that still says "newspaper" at 420px. Pass `family` to override.
     """
     from collage_bed_paper import families
-    fams = families
+    fams = families()
     fam = fams[family] if family is not None else fams[0]   # index 0 is collage-src-university
     rng = np.random.default_rng(seed)
     src = fam[int(rng.integers(0, len(fam)))]
@@ -523,18 +523,18 @@ def ladder(bands=("70 to 120", "120 to 180", "180 to 250+"), height=620, seed=4)
            f'</filter></defs>{rails}{"".join(rows)}</svg>')
     doc = (f'<meta charset="utf-8">'
            f'<style>@font-face {{ font-family:\'your display typeface\'; font-weight:400; '
-           f'src:url("{(ROOT.parent / "assets" / "jost-300.ttf").resolve.as_uri}"); }}'
+           f'src:url("{(ROOT.parent / "assets" / "display-300.ttf").resolve().as_uri()}"); }}'
            f'{LADDER_CSS.format(w=W, h=H)}</style>{svg}')
     chrome = os.environ.get("CHROME_BIN",
                             "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
     with tempfile.NamedTemporaryFile("w", suffix=".html", dir=ROOT, delete=False) as f:
         f.write(doc)
         tmp = f.name
-    out = Path(tempfile.mkdtemp) / "ladder.png"
+    out = Path(tempfile.mkdtemp()) / "ladder.png"
     try:
         subprocess.run([chrome, "--headless", "--disable-gpu", "--hide-scrollbars",
                         "--default-background-color=00000000", f"--window-size={W},{H}",
-                        f"--screenshot={out}", Path(tmp).as_uri],
+                        f"--screenshot={out}", Path(tmp).as_uri()],
                        check=True, capture_output=True)
     finally:
         os.unlink(tmp)
@@ -579,7 +579,7 @@ def fan(card, pieces, origin, angles=None, spread=45, start=-45, pin=0.20, push=
     for i, piece in enumerate(pieces):
         ang = angles[i] if angles else start + spread * i
         if i < len(opacity) and opacity[i] < 1.0:
-            piece = piece.copy
+            piece = piece.copy()
             piece.putalpha(piece.getchannel("A")
 .point(lambda v, o=opacity[i]: int(v * o)))
         # EVERY PIECE ROTATES ABOUT THE SHARED ORIGIN, which is what makes this a fan rather
@@ -606,7 +606,7 @@ def fan(card, pieces, origin, angles=None, spread=45, start=-45, pin=0.20, push=
     return card
 
 
-def main:
+def main():
     if "--demo" not in sys.argv:
         sys.exit("usage: cutouts.py --demo")
     plates = ROOT.parent / "candidate" / "plates"
@@ -621,4 +621,4 @@ def main:
 
 if __name__ == "__main__":
     sys.path.insert(0, str(ROOT))
-    main
+    main()

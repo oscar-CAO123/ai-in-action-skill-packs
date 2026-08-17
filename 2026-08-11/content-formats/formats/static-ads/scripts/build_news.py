@@ -28,9 +28,9 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 W, H = 1080, 1350
 
 CSS = f"""
-@font-face{{font-family:'your display typeface';font-weight:200;src:url('{ASSETS}/jost-200.ttf')}}
-@font-face{{font-family:'your display typeface';font-weight:300;src:url('{ASSETS}/jost-300.ttf')}}
-@font-face{{font-family:'your display typeface';font-weight:500;src:url('{ASSETS}/jost-500.ttf')}}
+@font-face{{font-family:'your display typeface';font-weight:200;src:url('{ASSETS}/display-200.ttf')}}
+@font-face{{font-family:'your display typeface';font-weight:300;src:url('{ASSETS}/display-300.ttf')}}
+@font-face{{font-family:'your display typeface';font-weight:500;src:url('{ASSETS}/display-500.ttf')}}
 :root{{--blue:#1269ff}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:{W}px;height:{H}px;background:#000;overflow:hidden}}
@@ -104,11 +104,11 @@ def build(key, collage=False):
     """collage=True stands the cut-out subject on the editorial collage from collage_news.py."""
     c = CARDS[key]
     p = (COLLAGE if collage else PLATES) / f"{key}.png"
-    if not p.exists:
+    if not p.exists():
         print(f"  skip {key}: no plate at {p}")
         return
     doc = (f'<meta charset="utf-8"><style>{CSS}</style><div class="card">'
-           f'<img class="plate" src="{p.resolve.as_uri}"><div class="scrim"></div>'
+           f'<img class="plate" src="{p.resolve().as_uri()}"><div class="scrim"></div>'
            f'<div class="bottom">'
            f'<div class="lt"><b></b><span>{html.escape(c["role"])}</span></div>'
            f'<div class="head">{markup(c["head"])}</div>'
@@ -123,7 +123,7 @@ def build(key, collage=False):
                     "--force-device-scale-factor=1", f"--window-size={W},{H}",
                     f"--screenshot={png}", f"file://{tmp}"],
                    stderr=subprocess.DEVNULL, check=True)
-    Path(tmp).unlink
+    Path(tmp).unlink()
     print(f"  {png}")
 
 

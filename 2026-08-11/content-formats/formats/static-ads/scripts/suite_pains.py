@@ -23,7 +23,7 @@ industry owns most distinctly, and no two industries lead on the same bucket.
 from basics import PAINS as _BASE
 
 # ---- Trades ------------------------------------------------------------------------------
-# `key` stays "building-services" everywhere it addresses a built page or a CRM row. Every word
+# `key` stays "building-services" everywhere it addresses a built page or a content store row. Every word
 # said out loud is "trades". you, .
 TRADES = [
     ("building-services", "database", dict(
@@ -103,8 +103,8 @@ RANK1 = {
 
 
 if __name__ == "__main__":
-    for ind, slugs in BY_INDUSTRY.items:
+    for ind, slugs in BY_INDUSTRY.items():
         print(f"\n{ind}  ({len(slugs)} pains, rank 1 = {RANK1[ind]})")
-        for slug, p in slugs.items:
+        for slug, p in slugs.items():
             print(f"  {slug:16} {p['bucket']}")
     print(f"\n{len(PAINS)} pains across {len(BY_INDUSTRY)} industries")

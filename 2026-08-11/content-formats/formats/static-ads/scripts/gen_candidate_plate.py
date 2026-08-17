@@ -202,7 +202,7 @@ PLATES = {
             "rakes from high on one side, brilliant white highlights along the pointing arm and "
             "the shoulders, the rest solid black. " + MARKS),
     },
-    # THE VHS-NOIR CUTOUT SET (you, . Four subjects, cut out once and reused across
+    # THE VHS-NOIR CUTOUT SET. Four subjects, cut out once and reused across
     # every Theme B carousel. The fan law is one style per piece and no two the same on a page,
     # the way the F8 grid deliberately mixes four treatments, and the bank was all painted noir,
     # which you called "too much watercolour". These are the real-photograph half of it.
@@ -266,7 +266,7 @@ PLATES = {
             "them. One hard light from behind them rims both figures and the room past them is "
             "a plain wall, so the pair read as a single separate shape. " + VHS_TAIL_LIGHT),
     },
-    # EPHEMERA FOR THE CUTOUT FAN (you, . Two stills, cut out once and reused
+    # EPHEMERA FOR THE CUTOUT FAN. Two stills, cut out once and reused
     # forever across every Theme B carousel. Torn scraps and pen marks are built in code for
     # nothing; tape and staples are the two that need real material and a real shadow, which is
     # why these are the only pieces of the fan that cost anything.
@@ -390,7 +390,7 @@ PLATES = {
 }
 
 
-# THE HERO IS CAST TO THE BEAT (you, . This is the law the first pass broke: hero
+# THE HERO IS CAST TO THE BEAT. This is the law the first pass broke: hero
 # images were picked from whatever plates were lying around, so a slide about walking a work
 # floor got a stock shot of hands and a slide about businesses waiting got an empty room.
 # `industry-build-carousel/SKILL.md` section 2a already states it for the F8 grid, "cast the
@@ -402,7 +402,7 @@ PLATES = {
 #   O3  the three-rung ladder                         DRAWN, built in code, costs nothing
 #
 # Three media across three pages, getting less literal as the carousel goes on. O3 is absent
-# below because a drawn piece is not a plate: `cutouts.ladder` builds it for free.
+# below because a drawn piece is not a plate: `cutouts.ladder()` builds it for free.
 #
 # The press blocks are `press-flash` from `industry-build-carousels/styles.json`, verbatim.
 PRESS_HEAD = "A black-and-white press photograph."
@@ -557,7 +557,7 @@ PLATES.update({
 })
 
 
-# THE SCULPTURE END CARD (you, . The last page of a Theme B carousel is the same
+# THE SCULPTURE END CARD. The last page of a Theme B carousel is the same
 # end card the F8 industry-build carousels close on, except the monument changes per carousel.
 # The Thinker belongs to F8 and is never reused here.
 #
@@ -565,7 +565,7 @@ PLATES.update({
 # verbatim. Edit them together or the two formats stop matching. THE MOIRE IS NOT IN THE PROMPT:
 # the tail explicitly bans it, because a model low-passes the fine gratings that create real
 # interference and paints decorative op-art instead. The plate asks for the CARRIER, a fine metal
-# mesh in deep focus, and `endcard.grade` beats the pattern out afterwards for nothing.
+# mesh in deep focus, and `endcard.grade()` beats the pattern out afterwards for nothing.
 SCULPT_HEAD = "A classical bronze sculpture in a dark gallery."
 SCULPT_BODY = ("lit by one hard raking museum light from the side, seen through a fine metal "
                "mesh screen a short distance in front of it, deep focus so both the mesh and "
@@ -583,13 +583,13 @@ CROP_CLAUSE = {
 }
 
 
-def _monuments:
+def _monuments():
     """Build one plate key per monument in the bank, `mon-<slug>`."""
     src = (Path(__file__).parent.parent / "references" / "monuments" / "monuments.json")
-    if not src.exists:
+    if not src.exists():
         return {}
     out = {}
-    for m in json.loads(src.read_text)["items"]:
+    for m in json.loads(src.read_text())["items"]:
         out[f"mon-{m['slug']}"] = {
             "job": "your image model",
             "aspect": "4:5",
@@ -600,10 +600,10 @@ def _monuments:
     return out
 
 
-PLATES.update(_monuments)
+PLATES.update(_monuments())
 
 
-def main:
+def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     if not args or args[0] not in PLATES:
         sys.exit(f"usage: gen_candidate_plate.py <{'|'.join(PLATES)}> [--go]")
@@ -629,8 +629,8 @@ def main:
     # i2i refinement. The house habit is to feed the approved image back as a reference rather
     # than roll a fresh one, so the thing already signed off survives the change.
     for r in p.get("refs",):
-        ref = (OUT / r).resolve   # OUT is the plates dir; refs are bare filenames
-        if not ref.exists:
+        ref = (OUT / r).resolve()   # OUT is the plates dir; refs are bare filenames
+        if not ref.exists():
             sys.exit(f"reference plate missing: {ref}")
         cmd += ["--image-references", str(ref)]
     print("dispatching one paid job...")
@@ -661,4 +661,4 @@ def trim(png, pct=0.02):
 
 
 if __name__ == "__main__":
-    main
+    main()

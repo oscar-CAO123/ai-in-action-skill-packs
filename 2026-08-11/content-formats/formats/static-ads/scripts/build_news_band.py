@@ -44,7 +44,7 @@ COPY = {
 
 def build(key):
     p = PLATES / f"{key}.png"
-    if not p.exists:
+    if not p.exists():
         sys.exit(f"no collage plate at {p}, run collage_news.py first")
     lines = COPY[key]
     OUT.mkdir(parents=True, exist_ok=True)

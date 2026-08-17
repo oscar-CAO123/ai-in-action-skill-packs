@@ -106,12 +106,12 @@ Read in this order. Stop and flag anything missing rather than guessing.
 | 1 | `the business/projects/content-engine/engine/config/brand-kit.house.md` | palette, typography, voice gate, banned tokens, aspect specs, visual do/don't |
 | 2 | `the business/projects/content-engine/engine/config/content-strategy.house.md` | the barbell, the format families, the operating contract |
 | 3 | `references/canon/angles-and-formats.md` | the strict angle matrix (A1-A12) and the strict format list (F1, F2, F3, F5, F7). Ideation picks from here only |
-| 3a | `references/canon/model-routing.md` | **which model owns which shot type**, with every id and parameter verified off the your generation platform CLI. Load before anything is generated. Retro and authentic shots go to your cinematic model, design and type-led plates to your design model, object-into-scene to your image model, multi-shot video to your video model, video edits to your video edit model |
+| 3a | `references/canon/model-routing.md` | **which model owns which shot type**, with every id and parameter verified off your generation platform CLI. Load before anything is generated. Retro and authentic shots go to your cinematic model, design and type-led plates to your design model, object-into-scene to your image model, multi-shot video to your video model, video edits to your video edit model |
 | 4 | `references/hooks/HOOKS.md` | **the hook bank.** Every hook structure house has: the mechanics floor, the scraped template library, the house's own hooks per pain, and the cleared concepts. Fill from here, never free-write a hook |
 | 5 | `../../context/personas/personas-and-avatars.md` | Part 0 the industry spine (which of the 21 report industries a persona belongs to), Part 1 the approved callout list, Part 2 the persona detail behind every code, Part 3 the census that decided the list |
 | 6 | `formats/<format>/SKILL.md` | the build spec for the chosen format, including its Faceless Reframe doctrine section |
-| 7 | `../../context/pain-wiki/INDEX.md` | **the discovery corpus, industry first.** 21 industry playbooks in `industries/`, 13 objection pages in `objections/`, 33 pain themes in `pains/`, 297 company profiles in `companies/`. `MARKET.md` is the corpus rollup: industry distribution, weighted pain, objection resolve rates. The angle almost always starts here |
-| 7a | `../../context/pain-wiki/industries/<slug>.md` | **the playbook for one industry.** Ranked pains in the owner's own words with an angle for each, ranked objections with a pre-empt-in-the-ad and a rebuttal-on-the-call line, the language they use and the language to avoid, a lead magnet, three carousel concepts, targeting, and the raw evidence behind all of it. Read this whenever the work is vertical-specific |
+| 7 | `../../context/research-corpus/INDEX.md` | **the discovery corpus, industry first.** 21 industry playbooks in `industries/`, 13 objection pages in `objections/`, 33 pain themes in `pains/`, 297 company profiles in `companies/`. `MARKET.md` is the corpus rollup: industry distribution, weighted pain, objection resolve rates. The angle almost always starts here |
+| 7a | `../../context/research-corpus/industries/<slug>.md` | **the playbook for one industry.** Ranked pains in the owner's own words with an angle for each, ranked objections with a pre-empt-in-the-ad and a rebuttal-on-the-call line, the language they use and the language to avoid, a lead magnet, three carousel concepts, targeting, and the raw evidence behind all of it. Read this whenever the work is vertical-specific |
 | 7b | `references/candidate-knowledge-base.md` | **the evidence layer for builds, tools and workflows.** Load whenever the copy will name what to build, which tools to use, or how a workflow is structured. 177 validated Hub builds for the structure, 483 candidate interview summaries for the named tools |
 | 8 | `references/scripts/` | the written work: archetypes, the core-pain VSL scripts, the a reference brand teardowns, the raw idea dump |
 | 9 | `references/canon/CONCEPT-BANK.md` | worked examples per pain (reference, never lift lines verbatim). `references/canon/objection-bank.md` carries the 13 canonical objections with how often each is raised, how often the rep closes it on the call, and a pre-empt and rebuttal pair per industry |
@@ -139,7 +139,9 @@ spine entries to the ones that apply to it.
 
 These never bend, in any mode, for any audience.
 
-### The citation law (you, **Nothing is generated without a concrete reference from the bank, and the reference is shown
+### The citation law
+
+**Nothing is generated without a concrete reference from the bank, and the reference is shown
 with the generation.** Not a description of a reference, an ID that resolves: `arch:S6`, not
 "modelled on a job ad". Every format declares what it is modelled on, the copy shape first and
 then the layout or look, and the id is resolved by a gate rather than trusted because it was
@@ -214,7 +216,7 @@ teaching is what answers it, and house arrives as the conclusion of the lesson.
 What the teaching beat looks like: the five easiest automations that business can build this
 week, the three that close all eight of those admin gaps, the one mistake that makes AI fail in
 that industry, the ranked list, the walkthrough of the actual system. Real builds only, sourced
-from the CRM, never invented.
+from your content store, never invented.
 
 **The gap stays open.** The hook raises exactly one question, the teaching pays it off, and the
 offer lands after the reader already got something they can use. If a draft goes pain, pain,
@@ -236,11 +238,11 @@ as an invented number.
   `problem`, `solution`, `replicate_steps`, `what_worked`, `what_didnt`, `pitfalls`, `outcome`,
   `time_to_deploy`, `industry`. Pull the build that matches the pain, then write from it.
 - **A named tool** never comes from the Hub's `stack` field, which is abstracted to categories
-  by design ("an automation platform", "a fast LLM"). It comes from the CRM interview evidence
+  by design ("an automation platform", "a fast LLM"). It comes from your content store interview evidence
   or the Hub's vetted repos and accounts, and it carries the same discipline as a number: name
   the tool only where the evidence names it.
 - **The counted stack, 483 candidate interview summaries, :** Claude 198,
-  ChatGPT/GPT 102, n8n 71, Supabase 37, Python 29, Gemini 26, Cursor 24, Lovable 17, Zapier 16,
+  ChatGPT/GPT 102, n8n 71, your content store 37, Python 29, Gemini 26, Cursor 24, Lovable 17, Zapier 16,
   Copilot 16, LangChain 15, Notion 11, Twilio 11, HubSpot 9, Airtable 8, Salesforce 7,
   Make.com 6. Lead with the top of that list, because it is what the market actually runs.
 
@@ -383,7 +385,7 @@ Every video script is written as this five-column table. Folded in from `ad-scri
 
 The order that produces a script worth rendering.
 
-1. **Start from the mined pains.** They are already mined. `context/pain-wiki/MARKET.md` ranks the
+1. **Start from the mined pains.** They are already mined. `context/research-corpus/MARKET.md` ranks the
    15 pain labels by weighted severity across 238 discovery calls; `industries/<slug>.md` gives that
    industry's pains in the owner's own words with an angle already written for each; `pains/<slug>.md`
    holds the record-level evidence and `context/personas/personas-and-avatars.md` the verbatims behind
@@ -669,7 +671,7 @@ structures evidenced in the reference bank, in order of strength:
   this even at 550 characters a slide.
 - **One quotable closing line at the foot of a dense slide**, so the reader carries something out.
 - **Everything in section 8.** Every number keeps the scope its source supports, and every structure
-  it names comes from `context/pain-wiki/` or a named Hub build.
+  it names comes from `context/research-corpus/` or a named Hub build.
 
 **What is not settled.** The information slide's own type scale has not been measured. The band
 budget above was measured off seventeen rendered cards on and this class needs the same
@@ -758,7 +760,7 @@ question only where the honest answer is yes), E-061 (write against what the fee
 showed them), E-006 (a wide hook walks the awareness stages before the product appears).
 
 **Optional:** E-055, the ranked list scored controversially low, is a monologue structure and
-this is its natural home. It needs the full forty seconds and real builds from the CRM. Spine B
+this is its natural home. It needs the full forty seconds and real builds from your content store. Spine B
 (E-029) is also available when the pain is already conscious, and it suspends the late-naming
 rule for that clip only.
 

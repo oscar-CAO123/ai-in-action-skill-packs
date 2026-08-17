@@ -14,7 +14,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 W, H = 1080, 1350
-ASSETS = Path(__file__).resolve.parent.parent / "assets"
+ASSETS = Path(__file__).resolve().parent.parent / "assets"
 
 # name, sky/ground pair, mass colour, where the empty space is built
 PLATES = [
@@ -90,7 +90,7 @@ def stamp(im):
     try:
         f = ImageFont.truetype(str(ASSETS / "Poppins-Medium.ttf"), 22)
     except OSError:
-        f = ImageFont.load_default
+        f = ImageFont.load_default()
     d.text((W - 250, H - 44), "PLACEHOLDER", font=f, fill=(255, 0, 90))
     return im
 
@@ -115,6 +115,6 @@ def build(out):
 
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser
+    ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(Path(__file__).parent / "plates"))
-    build(Path(ap.parse_args.out))
+    build(Path(ap.parse_args().out))

@@ -41,7 +41,7 @@ HF = "/opt/homebrew/bin/your generation platform"
 # gap between the painted subject and the band, so no mark ever covers paint.
 #
 # EVIDENCE NOTE: the admin board records no tool against its three Hub builds. These marks
-# carry the counted stack from the CRM interview evidence (Claude 198, ChatGPT/GPT 102,
+# carry the counted stack from your content store interview evidence (Claude 198, ChatGPT/GPT 102,
 # n8n 71 of 483 populated transcript_summary rows, is a claim about what
 # operators use, not a claim about these three specific builds.
 LOGOS = (ROOT.parents[4] / "projects" / "content-engine" / "ideas"
@@ -61,7 +61,7 @@ MIN_GUTTER = 34       # clear air between two annotation groups on the same base
 # Must match the `.anno` weight the noir theme sets in band.py, or the measured group
 # widths drift from what Chrome actually paints and the leaders miss their objects.
 FONT = (ROOT.parents[3] / "content-formats" / "formats" / "static-ads" / "assets"
-        / "jost-300.ttf")
+        / "display-300.ttf")
 
 
 def text_width(s):
@@ -73,7 +73,7 @@ def text_width(s):
 
 def logo_paths(name):
     """Pull the path geometry out of a 24x24 mono logo SVG."""
-    svg = (LOGOS / f"{name}.svg").read_text
+    svg = (LOGOS / f"{name}.svg").read_text()
     return re.findall(r'<path[^>]*\sd="([^"]+)"', svg)
 
 
@@ -135,11 +135,11 @@ def generate(prompt, dest, tries=4):
     raise RuntimeError(f"generation failed after {tries} attempts: {dest}")
 
 
-def main:
+def main():
     slug = sys.argv[1]
     args = sys.argv[2:]
     recomp = "--recomp" in args
-    only = {int(a) for a in args if a.isdigit}
+    only = {int(a) for a in args if a.isdigit()}
     # The 22 general-pain decks live in decks_noir. The industry Build Breakdown decks
     # (added live in decks_builds and render on the same rig, so the lookup
     # falls through to them rather than duplicating the compositor.
@@ -157,15 +157,15 @@ def main:
         if only and i not in only:
             continue
         plate = plates / f"slide-{i:02d}.png"
-        if not plate.exists and not recomp:
+        if not plate.exists() and not recomp:
             print(f"slide-{i:02d}  generating ...", flush=True)
             generate(deck["plates"][i - 1], plate)
         report = render_card(copy, out / f"slide-{i:02d}.png",
-                             plate=plate if plate.exists else None,
+                             plate=plate if plate.exists() else None,
                              overlay=overlay_for(deck, i), theme="noir")
         print(f"slide-{i:02d}  {report}", flush=True)
     print("done")
 
 
 if __name__ == "__main__":
-    main
+    main()

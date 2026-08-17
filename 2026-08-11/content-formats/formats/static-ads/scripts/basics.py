@@ -81,7 +81,7 @@ PAINS = [
  ("real-estate", "systems", dict(
   who="Aussie real estate agencies", short="agency",
   bucket="run on disconnected systems", ing="running on disconnected systems",
-  wrong="buying another CRM", cost="You just added another login.",
+  wrong="buying another content store", cost="You just added another login.",
   before="A stack that does not talk", aft="One stack. Nothing typed twice.")),
  ("real-estate", "bottleneck", dict(
   who="Aussie real estate agencies", short="agency",
@@ -237,7 +237,7 @@ GRID = {
 
 
 def cap(s):
-    return s[0].upper + s[1:] if s else s
+    return s[0].upper() + s[1:] if s else s
 
 
 # Each shape is a FILL of a named template in references/hooks/HOOKS.md, cited by id.

@@ -9,7 +9,7 @@ parent: static-ads
 `../SKILL.md` routes by **how the card is made** (type-led, plate-led, ui-mock, hand-drawn, proof,
 lead-magnet). This layer routes by **what the card looks like when it is finished**. Every entry
 here is a presentation that was built, rendered, put in front of you and either shipped to the
-CRM or is sitting in front of him now. Nothing in this folder is a proposal.
+content store or is sitting in front of him now. Nothing in this folder is a proposal.
 
 **Why it exists.** The suite's copy was finished everywhere and presentation was the only
 bottleneck, so the same question kept being answered from scratch: what does this card look like.
@@ -22,16 +22,16 @@ format picks a shape instead of inventing one.
 
 | Presentation | Cites | The mechanism | Bed | Renderer | Status |
 |---|---|---|---|---|---|
-| **`news-banner/`** | `local:a competitor-8-statics/06-editorial-headline-still` | A report about the reader's market, not a message to the reader | plate, full bleed | `f5_variants.build_news` | LIVE on the CRM |
-| **`would-you-rather/`** | `local:a competitor-8-statics/05-would-you-rather` | A forced choice with a rigged pair, answered before the CTA | black | `f5_variants.build_rather` | LIVE on the CRM |
-| **`inbox/`** | `local:a competitor-8-statics/04-inbox-screenshot` | Trespass. Mail addressed to somebody else | mail chrome | `f5_variants.build_inbox` | LIVE on the CRM |
-| **`apology-letter/`** | `local:a competitor-8-statics/03-apology-letter` | The frame swap. An apology promises information, so the body argues while the reader is still reading the apology | warm paper | `f5_variants.build_apology` | LIVE on the CRM |
-| **`search-sheet/`** | `local:a competitor-6-formats/03-search-bar` | Self-diagnosis. The reader has typed one of those lines themselves | black, white sheet | `f6_variants.build_search` | LIVE on the CRM |
-| **`ticked-rows/`** | `tpl:Frame 466` | Headline held at the top, evenly ticked rows carrying the bottom | creased paper | `f6_variants.build_rows` | LIVE on the CRM |
+| **`news-banner/`** | `local:a competitor-8-statics/06-editorial-headline-still` | A report about the reader's market, not a message to the reader | plate, full bleed | `f5_variants.build_news` | shipped and live |
+| **`would-you-rather/`** | `local:a competitor-8-statics/05-would-you-rather` | A forced choice with a rigged pair, answered before the CTA | black | `f5_variants.build_rather` | shipped and live |
+| **`inbox/`** | `local:a competitor-8-statics/04-inbox-screenshot` | Trespass. Mail addressed to somebody else | mail chrome | `f5_variants.build_inbox` | shipped and live |
+| **`apology-letter/`** | `local:a competitor-8-statics/03-apology-letter` | The frame swap. An apology promises information, so the body argues while the reader is still reading the apology | warm paper | `f5_variants.build_apology` | shipped and live |
+| **`search-sheet/`** | `local:a competitor-6-formats/03-search-bar` | Self-diagnosis. The reader has typed one of those lines themselves | black, white sheet | `f6_variants.build_search` | shipped and live |
+| **`ticked-rows/`** | `tpl:Frame 466` | Headline held at the top, evenly ticked rows carrying the bottom | creased paper | `f6_variants.build_rows` | shipped and live |
 | **`ruled-pad/`** | `arch:S14`, `arch:S5` | Written by hand on lined paper, every line sitting on a rule | aged ruled paper | `f6_variants.build_hand`, `f7_variants.build_board` | F6 LIVE, F7/F33 awaiting the pick |
 | **`comparison-table/`** | `tpl:image 9.png` | Two headings over two tinted columns, the pairing carried by a grid | black | `f7_variants.build_table` | awaiting the pick |
 
-Seven rows are on the CRM as of all tagged `suite-static`: four `f5-variant` and three
+Seven rows are on your content store as of all tagged `suite-static`: four `f5-variant` and three
 `f6-variant`, all status `ready`, read back with `crm_f5_variants.py --status` and
 `crm_f6_variants.py --status`.
 

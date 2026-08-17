@@ -80,7 +80,7 @@ tracking, `anno_weight` 300), which the news-carousel format moved to on to sit 
 locked design system's display weight. A theme changes the face and the case; the band geometry, the
 justification and the one-size-per-card fit are the law and hold across all of them.
 
-**ALL CAPS IS THE NEWS-CAROUSEL DOCTRINE, NOT THE HOUSE DOCTRINE** (you, . Caps belong
+**ALL CAPS IS THE NEWS-CAROUSEL DOCTRINE, NOT THE HOUSE DOCTRINE.** Caps belong
 to the F5 news-carousel band and the five band keepers that inherit it. **Every other static sets
 sentence case by default.** your display typeface is the house face and it is usable across all twenty formats; the
 uppercase transform is not. A format that sets caps because the rig defaults to caps is a bug rather
@@ -196,7 +196,7 @@ which is the negation swap the house rules ban everywhere. The canonical line is
 
 ## 2. The copy rules (every sub-skill)
 
-**CALL OUT THE AVATAR ON EVERY CARD** (you, . The reader has to see themselves named
+**CALL OUT THE AVATAR ON EVERY CARD.** The reader has to see themselves named
 before they read anything else. A card that opens on a pain with nobody attached to it is a card
 about a general problem, and a general problem belongs to nobody. Name the industry plus the word
 business, or the role, in the reader's own vocabulary: construction businesses, real estate
@@ -224,7 +224,7 @@ is the claim or the question.** A card missing any of the three does not render.
 role, whichever is the surprise. An accent can span two hand-broken lines and the renderer closes
 and reopens the span across the break.
 
-**Ground every number.** Figures come from `context/pain-wiki/` (the industry playbook's raw-evidence
+**Ground every number.** Figures come from `context/research-corpus/` (the industry playbook's raw-evidence
 tables when the ad is vertical-specific, the theme page when it is general-pain) and
 `context/personas/personas-and-avatars.md`, and get recorded in the ad's `source` field. Never invent
 a number, never name a real company or person outside the `proof` gate.
@@ -265,8 +265,7 @@ all. FIGMA-PICKS.md carries the house fill for each and the three rig changes th
 
 **Copy the structure. Never the words, and never a competitor's claim.**
 
-**Every format cites what it is modelled on, and the citation is checked** (you, .
-`scripts/refs.py` resolves an id to its entry and opens the picture where there is one, and both
+**Every format cites what it is modelled on, and the citation is checked.** `scripts/refs.py` resolves an id to its entry and opens the picture where there is one, and both
 copy gates fail on a format whose `model` is empty or whose id is dead. The citable banks are
 `hook`, `arch`, `tear`, `hex`, `tpl`, `local` and `style`. Run `refs.py` for what is in each,
 `suite_copy.py --fmt <F>` to see one format's references with the file and line they live at, and
@@ -276,7 +275,7 @@ copy gates fail on a format whose `model` is empty or whose id is dead. The cita
 Founder statement, F17 Big quote and F24 Testimonials, all three proof-gated quote formats with no
 archetype or scaffold in the bank that fits them.
 
-**The scraped swipe banks are GONE from the reference layer** (you, . Every scraped
+**The scraped swipe banks are GONE from the reference layer.** Every scraped
 Meta and LinkedIn record, the consolidators, the galleries and the derived taxonomy were moved to
 `Archive/old-context/static-ads-swipe-banks-/` and are not a source of anything. Do not
 re-scrape, do not rebuild them, and do not cite them. The reference layer is the 41 Figma extracts
@@ -358,10 +357,10 @@ copy, `plates_real.py` for plates, `build_industry.py` to render, `dossier_indus
 - Build spec for the current set: `FORMAT-GRID.md` (this folder).
 - Canon: `skills/content-formats/references/canon/angles-and-formats.md` (F7),
   `context/personas/personas-and-avatars.md`.
-- Evidence: `context/pain-wiki/INDEX.md`. Vertical-specific work starts at
-  `context/pain-wiki/industries/<slug>.md` (ranked pains with angles, language, targeting);
-  general-pain work at `context/pain-wiki/pains/<slug>.md`; objection beats at
-  `context/pain-wiki/objections/<slug>.md` and `references/canon/objection-bank.md`.
+- Evidence: `context/research-corpus/INDEX.md`. Vertical-specific work starts at
+  `context/research-corpus/industries/<slug>.md` (ranked pains with angles, language, targeting);
+  general-pain work at `context/research-corpus/pains/<slug>.md`; objection beats at
+  `context/research-corpus/objections/<slug>.md` and `references/canon/objection-bank.md`.
 - Archetype source: `skills/content-formats/references/scripts/archetypes.md`.
 - Static doctrine: `skills/content-formats/references/scripts/a reference brand-teardowns.md`, the static section
   at the end.

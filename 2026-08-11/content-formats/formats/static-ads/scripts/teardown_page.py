@@ -46,7 +46,7 @@ margin:0 0 12px;letter-spacing:.03em}
 
 
 def kind(verdict):
-    v = verdict.lower
+    v = verdict.lower()
     if v.startswith(("no", "blocked", "already spent")):
         return "no"
     if v.startswith("yes"):
@@ -56,21 +56,21 @@ def kind(verdict):
 
 def build(which):
     entries = [e for e in refs.doc_entries("tear")
-               if which in str(e["src"]).lower and re.match(r"^\d", e["title"])]
+               if which in str(e["src"]).lower() and re.match(r"^\d", e["title"])]
     items = []
     for e in entries:
-        body = e["body"].splitlines[1:]
+        body = e["body"].splitlines()[1:]
         ref = next((ln.strip("` ") for ln in body[:3] if ln.startswith("`local:")), "")
-        prose = "\n".join(ln for ln in body if not ln.startswith("`local:")).strip
+        prose = "\n".join(ln for ln in body if not ln.startswith("`local:")).strip()
         verdict = VERDICT.search(prose)
-        v = verdict.group(1).strip if verdict else ""
-        paras = [p.replace("\n", " ").strip for p in prose.split("\n\n") if p.strip]
+        v = verdict.group(1).strip() if verdict else ""
+        paras = [p.replace("\n", " ").strip() for p in prose.split("\n\n") if p.strip()]
         paras = [re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", html.escape(p)
 .replace("&lt;", "<").replace("&gt;", ">")) for p in paras]
         pic = ""
         try:
             img = refs.resolve(ref)["image"]
-            pic = f'<img src="file://{Path(img).resolve}">'
+            pic = f'<img src="file://{Path(img).resolve()}">'
         except (KeyError, TypeError):
             pass
         items.append(
@@ -87,7 +87,7 @@ def build(which):
            f"rather than painted because the ad behind him is not in the footage. The verdict on "
            f"each is whether it survives house having no product to photograph."
            f"</p>{''.join(items)}")
-    dst = ROOT.parent / f"TEARDOWN-{which.upper}.html"
+    dst = ROOT.parent / f"TEARDOWN-{which.upper()}.html"
     dst.write_text(doc)
     print(f"{len(items)} formats -> {dst}")
     return dst

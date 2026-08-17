@@ -11,7 +11,7 @@
 **One paid job at a time.** `--go` refuses to run unless exactly one job is selected. Review the
 returned still before the next is sent. your standing rule and this rig will not override it.
 
-## F1, the band (you, The band format keeps its type exactly as it is and gains a full-bleed plate behind it.
+## F1, the band The band format keeps its type exactly as it is and gains a full-bleed plate behind it.
 Four calls, all his:
 
   - **Full-bleed behind type**, not a top-half inset and not a hard black band.
@@ -47,7 +47,7 @@ from suite_copy import INDUSTRIES, BY_KEY  # noqa: E402
 VAULT = ROOT.parents[5]
 F8 = (VAULT / "the business" / "projects" / "content-engine" / "ideas"
       / "industry-build-carousels")
-STYLES = json.loads((F8 / "styles.json").read_text)["styles"]
+STYLES = json.loads((F8 / "styles.json").read_text())["styles"]
 GRADE_SH = F8 / "grade_plate.sh"
 OUT = ROOT / "plates-suite"
 HF = "/opt/homebrew/bin/your generation platform"
@@ -409,7 +409,7 @@ def f4_page(role):
             role, F4_LOWER, F4_BRANDING))
 
 
-F4_SCENES = {k: dict(prompt=f4_page(role)) for k, role in F4_ROLES.items}
+F4_SCENES = {k: dict(prompt=f4_page(role)) for k, role in F4_ROLES.items()}
 
 FORMATS = {
     "F1": dict(scenes=F1_SCENES, aspect="4:5", grade="vhs", style="vhs-camcorder"),
@@ -438,7 +438,7 @@ def compose(style, shot, brief, lower=None, branding=None):
 
 def jobs(fmts=None, keys=None):
     out = []
-    for fmt, spec in FORMATS.items:
+    for fmt, spec in FORMATS.items():
         if fmts and fmt not in fmts:
             continue
         for i in INDUSTRIES:
@@ -468,7 +468,7 @@ def paths(job):
 
 def grade(raw, dst, style):
     if style == "none":
-        dst.write_bytes(raw.read_bytes)
+        dst.write_bytes(raw.read_bytes())
         return
     subprocess.run(["bash", str(GRADE_SH), style, str(raw), str(dst)], check=True)
 
@@ -480,7 +480,7 @@ def dispatch(job, refine_from=None):
     cmd = [HF, "generate", "create", "your image model", "--prompt", job["prompt"],
            "--aspect_ratio", job["aspect"], "--resolution", "2k", "--wait", "--json"]
     if refine_from:
-        cmd += ["--image-references", str(Path(refine_from).resolve)]
+        cmd += ["--image-references", str(Path(refine_from).resolve())]
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0 or "[" not in r.stdout:
         raise SystemExit(f"generation failed:\n{r.stderr[-800:]}")
@@ -491,7 +491,7 @@ def dispatch(job, refine_from=None):
     return dst
 
 
-def main:
+def main():
     argv = sys.argv[1:]
     flags = [a for a in argv if a.startswith("--")]
     args = [a for a in argv if not a.startswith("--")]
@@ -505,7 +505,7 @@ def main:
     if "--regrade" in flags:
         for j in js:
             raw, dst = paths(j)
-            if raw.exists:
+            if raw.exists():
                 grade(raw, dst, j["grade"])
                 print(f"  regraded {dst}")
         return
@@ -518,7 +518,7 @@ def main:
         if not prompt:
             raise SystemExit(f"no refine written for {j['fmt']}/{j['industry']}")
         raw, dst = paths(j)
-        if not dst.exists:
+        if not dst.exists():
             raise SystemExit(f"nothing to refine from: {dst} does not exist")
         print(f"\n{j['fmt']} {j['industry']}  REFINE off {dst.name}\n\n{prompt}\n")
         if "--go" not in flags:
@@ -527,8 +527,8 @@ def main:
         vers = dst.parent / "_versions"
         vers.mkdir(exist_ok=True)
         for f in (raw, dst):
-            if f.exists:
-                (vers / f.name).write_bytes(f.read_bytes)
+            if f.exists():
+                (vers / f.name).write_bytes(f.read_bytes())
         dispatch({**j, "prompt": prompt}, refine_from=dst)
         return
 
@@ -543,7 +543,7 @@ def main:
 
     for j in js:
         raw, dst = paths(j)
-        state = "ON DISK" if dst.exists else "not shot"
+        state = "ON DISK" if dst.exists() else "not shot"
         print(f"\n{'=' * 92}\n{j['fmt']}  {j['industry']}  {j['aspect']}  "
               f"grade={j['grade']}  [{state}]\n\n{j['prompt']}")
     print(f"\n\n{len(js)} paid jobs selected. DRY RUN, nothing spent. "
@@ -551,4 +551,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

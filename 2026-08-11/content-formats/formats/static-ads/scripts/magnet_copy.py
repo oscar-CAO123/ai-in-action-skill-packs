@@ -48,7 +48,7 @@ PLATES_REAL = (VAULT / "the business" / "skills" / "content-formats" / "formats"
 #   pain      hook 1's fill, as a gerund, because the sentence reads "still [painpoint]".
 #   still     the same pain as a second-person clause, for the split-screen dossier.
 #   magnet    the asset that EXISTS, verbatim off its shipped page's <title>. Kept for provenance:
-#             it is what the CRM row records and what the route serves. Renamed to the
+#             it is what the card's own record records and what the route serves. Renamed to the
 #             post-rename titles in `specs/RENAME-AND-FORMATS.md`: every industry asset is now
 #             "The [Industry] Business AI Audit", so the seven pain-named originals are gone.
 #   audit     WHAT THE CARDS SAY. you, : one name across the whole program,
@@ -126,7 +126,7 @@ INDUSTRIES = [
          agent="AI agent"),
     # you : this avatar is "trades businesses" everywhere it is said out loud, across
     # all five formats. `key`, `slug` and `proto` keep the building-services spelling: they address
-    # the CRM row and the prototype file on disk, and renaming them breaks both. `magnet` and
+    # the card's own record and the prototype file on disk, and renaming them breaks both. `magnet` and
     # `route` moved to the trades name on because the shipped page did.
     dict(key="building-services", audit="The Trades AI Audit", slug="building-services", paper="TRADES",
          name="Trades",
@@ -299,12 +299,12 @@ def billboard_copy(i):
         # what is PRINTED ON THE BILLBOARD, generated into the plate rather than composited.
         # Set in caps because that is how a billboard is set, and because the model holds
         # spelling far better on caps than on mixed case at this size.
-        head=f"{i['avatar'].upper}, ARE YOU STILL...",
-        bullets=[p.upper + "?" for p in PAIN3[i["key"]]],
-        box=f"Take {i['audit']}".upper,
+        head=f"{i['avatar'].upper()}, ARE YOU STILL...",
+        bullets=[p.upper() + "?" for p in PAIN3[i["key"]]],
+        box=f"Take {i['audit']}".upper(),
         # the Snapchat text-tool line. This one IS composited: it is phone UI sitting over the
         # footage, not something printed on the billboard.
-        snap=f"for all the {i['avatar'].lower} out there",
+        snap=f"for all the {i['avatar'].lower()} out there",
         cta=f"Take {i['audit']}")
 
 
@@ -358,7 +358,7 @@ BANNED = [
 def check(keys=None):
     bad = 0
     for c in every_card(keys):
-        text = " ".join(str(v) for v in c["copy"].values)
+        text = " ".join(str(v) for v in c["copy"].values())
         where = f"{c['industry']['key']}/{list(HOOKS).index('split') and ''}{c['hook']['fmt']}"
         for pattern, why in BANNED:
             if re.search(pattern, text):
@@ -372,7 +372,7 @@ def check(keys=None):
     # your law, : every format cites the bank entry it is modelled on, by an id that
     # resolves. `refs.py check` is the same gate any other pipeline stage runs.
     import refs
-    for key, h in HOOKS.items:
+    for key, h in HOOKS.items():
         if not h.get("model"):
             print(f"  FAIL {h['fmt']}: no model reference (refs.py list)")
             bad += 1
@@ -382,7 +382,7 @@ def check(keys=None):
             except KeyError as err:
                 print(f"  FAIL {h['fmt']}: {err}")
                 bad += 1
-            if len(takes.split) < 4:
+            if len(takes.split()) < 4:
                 print(f"  FAIL {h['fmt']}: {ref} cites no principle, say what is taken from it")
                 bad += 1
     print(f"\n{'FAILED, ' + str(bad) + ' problems' if bad else 'clean'}")
@@ -397,10 +397,10 @@ def show(keys=None):
         print(f"\n{'=' * 92}\n{i['name']}  ({i['avatar']})")
         print(f"  magnet {i['magnet']}   route {i['route']}")
         print(f"  plate  {plate}")
-        for hk, h in HOOKS.items:
+        for hk, h in HOOKS.items():
             c = COPY[hk](i)
             print(f"\n  {h['fmt']}  {h['label']}   [{h['hooks_id']}]")
-            for k, v in c.items:
+            for k, v in c.items():
                 v = " / ".join(v) if isinstance(v, list) else v
                 print(f"      {k:9} {v}")
 

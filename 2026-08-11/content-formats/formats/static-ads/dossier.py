@@ -54,9 +54,9 @@ PICKS = [
 ]
 
 CSS = f"""
-@font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{ASSETS}/jost-200.ttf'); }}
-@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{ASSETS}/jost-300.ttf'); }}
-@font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{ASSETS}/jost-500.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{ASSETS}/display-200.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{ASSETS}/display-300.ttf'); }}
+@font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{ASSETS}/display-500.ttf'); }}
 :root {{ --bg:#04050f; --card:#0c0d1a; --blue:#1269ff; --blue-dim:rgba(18,105,255,.12);
  --t1:#fff; --t3:rgba(255,255,255,.52); --t4:rgba(255,255,255,.28);
  --border:rgba(255,255,255,.08); --border-h:rgba(255,255,255,.18); }}
@@ -102,15 +102,15 @@ li b {{ color:var(--t1); font-weight:500; }}
 
 def fig(src, title, sub, tag="", cls=""):
     t = f'<span class="tag">{tag}</span>' if tag else ""
-    return (f'<figure class="{cls}"><img loading="lazy" src="{Path(src).as_uri}">'
+    return (f'<figure class="{cls}"><img loading="lazy" src="{Path(src).as_uri()}">'
             f'<figcaption><b>{title}</b><span>{sub}</span>{t}</figcaption></figure>')
 
 
-def build:
+def build():
     h = [f'<!doctype html><meta charset="utf-8"><title>house statics, F7 dossier</title>'
          f'<style>{CSS}</style>']
     n_cards = sum(len(list((CARDS / i[0]).glob("*.png"))) for i in INDUSTRIES
-                  if (CARDS / i[0]).exists)
+                  if (CARDS / i[0]).exists())
     h.append('<h1>house statics, the industry set</h1>')
     h.append(f'<p class="lede">Twenty-five cells: five industries by five ranked pains. '
              f'<b>Five are the existing band keepers</b> and <b>{n_cards} are the new basic '
@@ -121,12 +121,12 @@ def build:
 
     for slug, name, keeper_dir, keeper, magnet in INDUSTRIES:
         d = CARDS / slug
-        files = sorted(d.glob("*.png")) if d.exists else []
+        files = sorted(d.glob("*.png")) if d.exists() else []
         h.append(f'<h2>{name} <span class="n">{len(files)} new + 1 keeper</span></h2>')
         h.append(f'<p class="blurb">Every card closes on <b>{magnet}</b>.</p>')
         h.append('<div class="grid">')
         kp = KEEPERS / keeper_dir / f"{keeper}.png"
-        if kp.exists:
+        if kp.exists():
             h.append(fig(kp, f"{keeper} , the keeper",
                          "The existing band card. All caps, bottom band, VHS plate. "
                          "This is the control the other four are measured against.",
@@ -149,14 +149,14 @@ def build:
                     ("dossier-assets/B-grid.png", "Image argues, copy only frames",
                      "The <b>hairline grid</b>, 1px gap over --border, with line-art SVG per cell "
                      "in the locked 200x80 viewBox language. This is PSA 4 and image 9, in system.")]:
-        h.append(f'<div><img src="{(ROOT/f).as_uri}"><p class="blurb" style="margin-top:12px">'
+        h.append(f'<div><img src="{(ROOT/f).as_uri()}"><p class="blurb" style="margin-top:12px">'
                  f'<b>{t}.</b> {s}</p></div>')
     h.append('</div>')
 
     h.append('<h3>Which relationship each shape takes</h3>')
     h.append('<table><tr><th>Shape</th><th>Template filled</th><th>Image relationship</th>'
              '<th>What goes in the slot</th><th>Cost</th></tr>')
-    for shape, (tpl, rel, img) in SHAPE.items:
+    for shape, (tpl, rel, img) in SHAPE.items():
         h.append(f'<tr><td><b>{shape}</b></td><td>{tpl}</td><td>{rel}</td><td>{img}</td>'
                  f'<td class="free">free</td></tr>')
     h.append('</table>')
@@ -170,7 +170,7 @@ def build:
     h.append('<div class="grid">')
     for fn, title, sub in PICKS:
         p = TEMPLATES / fn
-        if p.exists:
+        if p.exists():
             h.append(fig(p, title, sub))
     h.append('</div>')
 
@@ -182,12 +182,12 @@ def build:
              'own wrong-fix would fix it.</li>')
     h.append('<li><b>The five magnet pages still do not exist.</b> Every card closes on a magnet, '
              'and only the generic /ai-readiness quiz is built. Largest open risk to the set.</li>')
-    h.append('<li><b>Nothing has reached the CRM.</b> Archiving the 22 old carousels is still an '
-             'unmade Supabase write.</li>')
+    h.append('<li><b>Nothing has reached your content store.</b> Archiving the 22 old carousels is still an '
+             'unmade your content store write.</li>')
     h.append('</ul>')
     OUT.write_text("\n".join(h))
     print(f"{n_cards} cards + 5 keepers -> {OUT}")
 
 
 if __name__ == "__main__":
-    build
+    build()

@@ -26,7 +26,7 @@ UA = "house-research/1.0 (you@yourdomain.example)"
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Encoding": "gzip"})
     with urllib.request.urlopen(req, timeout=120) as r:
-        raw = r.read
+        raw = r.read()
     if r.headers.get("Content-Encoding") == "gzip":
         import gzip
         raw = gzip.decompress(raw)
@@ -48,18 +48,18 @@ def page_jpg(image_urls, pct):
     return None
 
 
-def main:
-    ap = argparse.ArgumentParser
+def main():
+    ap = argparse.ArgumentParser()
     ap.add_argument("--q", required=True)
     ap.add_argument("--dates", required=True, help="YYYY/YYYY")
     ap.add_argument("--n", type=int, default=6)
     ap.add_argument("--pct", type=int, default=25, help="IIIF percent size; 25 is ~1500px wide")
     ap.add_argument("--out", default="arch")
     ap.add_argument("--tag", default=None, help="filename prefix, defaults to a slug of --q")
-    a = ap.parse_args
+    a = ap.parse_args()
 
     os.makedirs(a.out, exist_ok=True)
-    tag = a.tag or "-".join(a.q.lower.split)[:24]
+    tag = a.tag or "-".join(a.q.lower().split())[:24]
     src_path = os.path.join(a.out, "sources.json")
     sources = json.load(open(src_path)) if os.path.exists(src_path) else []
 
@@ -91,4 +91,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

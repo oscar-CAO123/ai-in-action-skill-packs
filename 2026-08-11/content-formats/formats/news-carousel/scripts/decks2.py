@@ -38,7 +38,7 @@ DECKS = [
              "WHAT SOMEONE ELSE ALREADY TYPED."],
             ["ONE REWORK COSTS [[$30,000]], AND IT LANDS",
              "ABOUT 400 TIMES A YEAR IN THIS ONE BUILDER."],
-            ["NOBODY OWNS THE SEAM, WHICH IS WHY", "THE [[CHIEF AGENT OFFICER]] EXISTS."],
+            ["NOBODY OWNS THE SEAM, WHICH IS WHY", "THE [[YOUR OFFER]] EXISTS."],
             ["THERE IS ONE PLACE IN", "AUSTRALIA YOU CAN [[HIRE ONE.]]"],
         ],
         # Tabloid: wide, three lines under a masthead.
@@ -64,7 +64,7 @@ DECKS = [
         "figure_label": "per incident, roughly 400 times a year",
         "caption": "What one rework costs this builder when a number is typed wrong at "
                    "handoff four. Six to seven handoffs run on every job they win.",
-        "reveal": ["THE CONSTRUCTION FIRMS", "WHO CLOSED THE SEAM HIRED", "A [[CHIEF AGENT OFFICER]]"],
+        "reveal": ["THE CONSTRUCTION FIRMS", "WHO CLOSED THE SEAM HIRED", "A [[YOUR OFFER]]"],
         "reveal_splash": ["ONE PERSON", "NOW OWNS", "[[THE SEAM]]"],
     },
     {
@@ -85,7 +85,7 @@ DECKS = [
              "SYSTEMS THAT [[NEVER TALK]] TO EACH OTHER."],
             ["REPORTING EATS [[HALF THE WEEK]] OF THE",
              "PEOPLE WHO OWN IT, IN ONE AGENCY."],
-            ["ONE HIRE OWNS THE WHOLE RUN, AND", "THE ROLE IS [[CHIEF AGENT OFFICER.]]"],
+            ["ONE HIRE OWNS THE WHOLE RUN, AND", "THE ROLE IS [[YOUR OFFER]]"],
             ["THERE IS ONE PLACE IN", "AUSTRALIA YOU CAN [[HIRE ONE.]]"],
         ],
         "headline": ["THE AUSSIE AGENCY", "PAYING [[80 PEOPLE]]", "TO MOVE NUMBERS"],
@@ -111,7 +111,7 @@ DECKS = [
         "caption": "Seventy to eighty offshore staff, hired by a single Australian agency to "
                    "keep its reporting moving. Reporting takes about half the week of the "
                    "people who own it.",
-        "reveal": ["THE AGENCIES THAT", "FIXED IT HIRED A", "[[CHIEF AGENT OFFICER]]"],
+        "reveal": ["THE AGENCIES THAT", "FIXED IT HIRED A", "[[YOUR OFFER]]"],
         "reveal_splash": ["ONE PERSON", "NOW OWNS", "[[THE REPORTING]]"],
     },
     {
@@ -152,7 +152,7 @@ DECKS = [
              "WITHIN [[SIXTY SECONDS,]] AUTOMATICALLY."],
             ["THREE: ANYTHING UNANSWERED BY FIVE",
              "LANDS ON [[SOMEBODY'S DAILY LIST.]]"],
-            ["THE PERSON WHO BUILDS ALL THREE", "IS A [[CHIEF AGENT OFFICER.]]"],
+            ["THE PERSON WHO BUILDS ALL THREE", "IS A [[YOUR OFFER]]"],
             ["THERE IS ONE PLACE IN", "AUSTRALIA YOU CAN [[HIRE ONE.]]"],
         ],
         "eyebrow": "The lesson",
@@ -189,7 +189,7 @@ DECKS = [
              "YOU NEED THESE [[THREE AUTOMATIONS]] ASAP."],
             # Each workflow card carries name, steps, outcome. That is three beats, so the
             # type sets smaller, the same trade you accepted on the cover. Every one is a
-            # Hub build (project aksmtvpubuinqhhmkzxd), tools named only where the CRM
+            # Hub build (project your-project-ref), tools named only where your content store
             # transcripts name them.
             #
             # 1. Hub: "Multi-step cold-outreach pipeline that won a paying client in a week".
@@ -228,7 +228,7 @@ DECKS = [
         #     overall impression under the ACL, so this needs to map to an actual placement
         #     or the wording softens. It is the only line in the batch making that kind of
         #     claim.
-        #  2. The AI Readiness quiz URL is not recorded anywhere in the vault. Slide 7 names
+        #  2. The AI Readiness quiz URL is not recorded anywhere in your workspace. Slide 7 names
         #     the quiz and has nowhere to point yet.
     },
 ]

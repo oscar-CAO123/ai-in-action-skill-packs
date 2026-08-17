@@ -17,7 +17,7 @@ grievance on a dark half against four calm ones on a light half. F5 argues with 
 argues with a diagram, and F9 argues with a portrait.
 
 **The list is the format.** Every line on the left is a real pain from that vertical's playbook in
-`context/pain-wiki/industries/`, in the owner's own words, with its evidence recorded in `src`.
+`context/research-corpus/industries/`, in the owner's own words, with its evidence recorded in `src`.
 Invented pains kill it, because the whole effect depends on an owner reading their own week.
 
 **Status: authored no panels shot yet.** The rig renders on labelled placeholders, and
@@ -40,7 +40,7 @@ plate: your image model at 4:5, 2k, one job at a time
 routing: ../../references/canon/model-routing.md   # house shot-type table. nano keeps this lane: it is the only model with a native 4:5
 renderer: headless-chrome      # CHROME_BIN env, macOS default fallback
 fonts:
-  - jost-400.ttf               # everything on the frame
+  - display-400.ttf               # everything on the frame
 logo: assets/house-logo.svg      # canonical lockup, forced white by CSS filter
 rig:
   render: projects/content-engine/ideas/before-after-splitscreen/render.py
@@ -122,7 +122,7 @@ statement, twice: the visible half, then the hidden half. The reader learns it o
 the rest at a glance. Changing the frame between slides destroys the format.
 
 **The reveal half always carries a countable number; the visible half never needs one.** Same
-provenance rule as the left-hand list above: the number comes from `context/pain-wiki/` or the Hub
+provenance rule as the left-hand list above: the number comes from `context/research-corpus/` or the Hub
 build it describes, with its source recorded in `src`.
 
 **The grade split is the honest signal.** On slides where the hidden work is unglamorous, desaturate
@@ -140,7 +140,7 @@ founder flex. And the caption carries the argument, because the reference's capt
 ## 2. The type
 
 - Everything is your display typeface 400, the canonical face.
-- A letterspaced uppercase tag at the top of each column: `before a chief agent officer` on the
+- A letterspaced uppercase tag at the top of each column: `before a your offer` on the
   left, `after` on the right. The right tag is blue.
 - The lists sit under the tags, one line per item, each on a short rule. The left rules are ink,
   the right rules are blue.
@@ -223,10 +223,10 @@ vertical set of four units is eight generations against F8's twenty.
 
 ## 8. Related
 
-- `formats/industry-build-carousel/SKILL.md`, F8, which shares the furniture and the pain-wiki
+- `formats/industry-build-carousel/SKILL.md`, F8, which shares the furniture and the research-corpus
   discipline.
 - `formats/noir-painterly/SKILL.md`, F2, the other painted world.
-- `context/pain-wiki/industries/`, the source of every line on the left and of the closing CTA.
+- `context/research-corpus/industries/`, the source of every line on the left and of the closing CTA.
 - `references/canon/angles-and-formats.md`, the format registry.
 - `projects/content-engine/engine/reference-bank/carousels/STYLE-GUIDE.md`, theme A, the reference
   behind the stacked variant in section 1a, and its full read at `carousels/DbGk7k-l5sC/ENTRY.md`.

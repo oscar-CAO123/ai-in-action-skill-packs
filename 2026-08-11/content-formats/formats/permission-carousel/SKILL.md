@@ -2,7 +2,7 @@
 name: permission-carousel
 description: Use when you says "permission carousel", "the they-say format", "the two-slide notice", "the period noir carousel", "the 50s carousel", "the full-length carousel", or wants a house carousel built as full-bleed period-noir photographs at 1080x1350 with thin your display typeface set natively into space composed into the plate. Covers both mechanisms (permission-and-turn, promise-and-payoff) and both lengths (two slides, or full length at seven). Declared canonical off F8, extended off F9 the same day.
 canonical: true
-status: LOCKED. Shot on real plates . F8's pair is live on the CRM; F9's three carousels are built and awaiting copy.
+status: LOCKED. Shot on real plates . F8's pair is shipped and live; F9's three carousels are built and awaiting copy.
 ---
 
 # The period carousel
@@ -16,7 +16,7 @@ new format skill." Extended the same day off F9's three carousels: "This is prob
 carousel format we've ever made ... train the canonical skill on all of these outputs."
 
 **The name is historical.** It was born as the permission carousel and it now carries two
-mechanisms. Do not rename the folder: `f8_notice.py`, the CRM rows and the router table all point
+mechanisms. Do not rename the folder: `f8_notice.py`, the card's own records and the router table all point
 at this path.
 
 ## The four laws
@@ -95,7 +95,7 @@ Every entry cites an id and names what is taken, per the citation law.
 |---|---|
 | `local:perfectly-fine/01-perfectly-legal-list` | the copy shape: one flat line in a light weight on a left margin, generous leading, sentence case, no terminal punctuation. **NOT its flat ground**, which is the thing being replaced. |
 | `local:perfectly-fine/02-period-photo-grain` | the look: a colourised mid-century photograph, grain in the shadows, softened resolution, warm skin against a cooler ground. **NOT that account's watermark, rule or caption bar.** |
-| `../noir-painterly/SKILL.md` | the lighting: single hard key, crushed blacks, the figure read as a silhouette. Grayscale is not mandatory (you, so this runs warm. |
+| `../noir-painterly/SKILL.md` | the lighting: single hard key, crushed blacks, the figure read as a silhouette. Grayscale is not mandatory, so this runs warm. |
 | `hook:A3` | the promise mechanism only: the count in the head is the open loop. |
 
 ## The type

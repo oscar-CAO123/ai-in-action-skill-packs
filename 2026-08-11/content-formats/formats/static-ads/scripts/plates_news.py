@@ -8,7 +8,7 @@
 your direction : fork the reference carousel into the canonical VHS / camcorder
 look, as if the avatar is being interviewed on the news. One per industry.
 
-**The reference carousel was never visible.** Instagram blocks Firecrawl and the your scraping API quota is
+**The reference carousel was never visible.** Instagram blocks Firecrawl and your scraping API quota is
 exhausted, so this is built from your description, not from the creative. Not a verified fork.
 
 The style is not invented here. `vhs-camcorder` head/body/tail come straight out of the F8
@@ -29,7 +29,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 F8 = ROOT.parents[4] / "projects/content-engine/ideas/industry-build-carousels"
-STYLE = json.loads((F8 / "styles.json").read_text)["styles"]["vhs-camcorder"]
+STYLE = json.loads((F8 / "styles.json").read_text())["styles"]["vhs-camcorder"]
 GRADE_SH = F8 / "grade_plate.sh"
 OUT = ROOT / "plates-news"
 HF = "/opt/homebrew/bin/your generation platform"
@@ -140,7 +140,7 @@ def shoot(slug):
     print(f"job {job.get('id')}")
     subprocess.run(["curl", "-sSL", "-o", str(raw), url], check=True)
     grade(raw, dst)
-    print(f"saved {dst}  ({dst.stat.st_size // 1024} KB), raw kept at {raw.name}")
+    print(f"saved {dst}  ({dst.stat().st_size // 1024} KB), raw kept at {raw.name}")
 
 
 if __name__ == "__main__":
@@ -153,7 +153,7 @@ if __name__ == "__main__":
     if regrade:
         for s in picks:
             raw = OUT / f"{s}.raw.png"
-            if raw.exists:
+            if raw.exists():
                 grade(raw, OUT / f"{s}.png")
             else:
                 print(f"  no raw for {s}")

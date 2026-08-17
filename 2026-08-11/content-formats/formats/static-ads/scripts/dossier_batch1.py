@@ -133,23 +133,23 @@ def card(entry):
             f'<figcaption>{lines}{tail}</figcaption></figure>')
 
 
-def main:
-    missing = [e[0] for u in UNITS for e in u["cards"] if not (ROOT / e[0]).exists]
+def main():
+    missing = [e[0] for u in UNITS for e in u["cards"] if not (ROOT / e[0]).exists()]
     body = []
     for u in UNITS:
         label, colour = u["status"]
-        cards = [e for e in u["cards"] if (ROOT / e[0]).exists]
+        cards = [e for e in u["cards"] if (ROOT / e[0]).exists()]
         solo = " solo" if len(cards) == 1 else ""
         body.append(
-            f'<section id="{u["unit"].lower}"><div class="head"><h2>{u["unit"]}</h2>'
+            f'<section id="{u["unit"].lower()}"><div class="head"><h2>{u["unit"]}</h2>'
             f'<span class="ttl">{u["title"]}</span>'
             f'<span class="pill" style="color:{colour}">{label}</span></div>'
             f'<p class="board">{u["board"]}</p><p class="note">{u["note"]}</p>'
             f'<div class="grid{solo}">{"".join(card(e) for e in cards)}</div></section>')
 
     total = sum(len(u["cards"]) for u in UNITS)
-    nav = "".join(f'<a href="#{u["unit"].lower}">{u["unit"]}</a>' for u in UNITS)
-    stamp = datetime.now.strftime("%-d %b %Y, %-I:%M%p").lower
+    nav = "".join(f'<a href="#{u["unit"].lower()}">{u["unit"]}</a>' for u in UNITS)
+    stamp = datetime.now().strftime("%-d %b %Y, %-I:%M%p").lower()
 
     html = f"""<!doctype html><html><head><meta charset="utf-8">
 <title>Candidate batch 1, finished cards</title><style>{CSS}</style></head><body><div class="wrap">
@@ -169,4 +169,4 @@ closing bar survives, as U4's O1.<br>Missing from disk: {", ".join(missing) if m
 
 
 if __name__ == "__main__":
-    main
+    main()

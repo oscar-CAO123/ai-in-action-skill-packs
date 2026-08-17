@@ -13,7 +13,7 @@ This plate's ground is already warm paper, so adding light does nothing visible.
 has to be applied as a DARKENING instead, which is the one line of difference below. The bed
 itself, its compression, its spots and its grain, all still come from `paper_bed`.
 
-SETTINGS (you, * Bed strength 0.20 to 0.30, a deliberate deviation from L-EDIT's measured 0.02 to 0.12.
+SETTINGS * Bed strength 0.20 to 0.30, a deliberate deviation from L-EDIT's measured 0.02 to 0.12.
     He asked for "mid": legible as collage at full size, still a bed at feed size. Recorded
     the same way D1 to D4 are recorded in BATCH-1-COPY.md.
   * BED ONLY. `layers/editorial-layer/SKILL.md` says F2 noir-painterly takes the bed and no
@@ -39,7 +39,7 @@ SRC = ROOT / "collage-src-university"          # newsprint, the original family
 TEX = ROOT / "collage-src-textures"            # maps, prints, ledger, technical
 
 
-def families:
+def families():
     """Every family that actually has files, newsprint first. Each is a list of paths."""
     fams = [sorted(SRC.glob("*.jpg"))]
     for d in sorted(TEX.glob("*/")):
@@ -71,7 +71,7 @@ CFG = dict(
 
 AMPLITUDE = 0.16      # LOCKED by you off a three-way compare at 0.30 / 0.16 / 0.09
 
-# A BLANK SHEET RUNS HEAVIER THAN A PAINTED PLATE (you, .
+# A BLANK SHEET RUNS HEAVIER THAN A PAINTED PLATE.
 #
 # 0.16 was locked against `u1b`, where the bed lands in the paper AROUND a black oil figure and
 # competes with it. A Theme B information page has no painting on it at all, and at 0.16 the same
@@ -166,7 +166,7 @@ def apply_bed(src, dest, amp=AMPLITUDE, seed=7, n_layers=11):
     The paint is masked off by the plate's own luma, so on a painted plate the bed lands only
     on the paper around the figure, and on a blank sheet it lands everywhere.
     """
-    fams = families
+    fams = families()
     if not fams:
         raise SystemExit(f"no scans under {SRC} or {TEX}")
     rgb = np.asarray(Image.open(src).convert("RGB").resize((W, H), Image.LANCZOS),
@@ -175,12 +175,12 @@ def apply_bed(src, dest, amp=AMPLITUDE, seed=7, n_layers=11):
     lo, hi = CFG["bed_luma"]
     raw = mixed_bed(seed, fams, n_layers=n_layers)
     rngv = max(float(np.ptp(raw)), 1e-6)
-    bed = lo + (raw - raw.min) / rngv * (hi - lo)
+    bed = lo + (raw - raw.min()) / rngv * (hi - lo)
     # the same texture pass paper_bed applies; without it the bed reads as a flat wash
     g = np.random.default_rng(seed).normal(0, 1, (H, W)).astype(np.float32)
     g = np.asarray(Image.fromarray(((g * 40 + 128).clip(0, 255)).astype(np.uint8))
 .filter(ImageFilter.GaussianBlur(0.6)), dtype=np.float32) / 255.0
-    bed = np.clip(bed + (g - g.mean) * 0.05, 0, 1)
+    bed = np.clip(bed + (g - g.mean()) * 0.05, 0, 1)
     # Back out the structure, then invert it: 1 where the scan carried ink, 0 where it was bare
     # newsprint. This is the darkening map.
     ink = 1.0 - np.clip((bed - lo) / (hi - lo), 0, 1)
@@ -197,7 +197,7 @@ def apply_bed(src, dest, amp=AMPLITUDE, seed=7, n_layers=11):
     return dest
 
 
-def main:
+def main():
     amp = float(sys.argv[1]) if len(sys.argv) > 1 else AMPLITUDE
     out = OUT if len(sys.argv) < 3 else OUT.with_name(sys.argv[2])
     apply_bed(PLATE, out, amp=amp, seed=7)
@@ -205,4 +205,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

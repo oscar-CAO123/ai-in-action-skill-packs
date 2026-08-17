@@ -11,7 +11,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 STEMS = sorted((HERE / "vo/stems").glob("*.mp3"))
-LINES = [l for l in (HERE / "vo/lines.txt").read_text.splitlines if l.strip]
+LINES = [l for l in (HERE / "vo/lines.txt").read_text().splitlines() if l.strip()]
 assert len(STEMS) == len(LINES), f"{len(STEMS)} stems vs {len(LINES)} lines"
 
 # Beat after each line. Longer at the turns: after 2 (hook into the setup), after 9 (the title is
@@ -33,7 +33,7 @@ def run(a):
 def dur(f):
     return float(subprocess.run(
         ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=nk=1:nw=1", str(f)],
-        capture_output=True, text=True).stdout.strip)
+        capture_output=True, text=True).stdout.strip())
 
 
 def edges(f):

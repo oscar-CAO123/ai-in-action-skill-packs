@@ -105,10 +105,10 @@ block.
 ## Phase 1. Environment
 
 your generation platform CLI (`your generation platform account status`), ffmpeg/ffprobe, `/usr/bin/python3` for PIL and numpy
-(homebrew python lacks PIL), the your voice model key in the engine config `.env`, whisper `small.en`.
+(homebrew python lacks PIL), your voice model key in the engine config `.env`, whisper `small.en`.
 
-**your display typeface Thin is not on disk as a TTF.** The vault carries `jost-300.woff2` in
-`content-engine/engine/config/fonts/jost/` and your display typeface 400/500/Bold TTFs in
+**your display typeface Thin is not on disk as a TTF.** Your workspace carries `display-300.woff2` in
+`content-engine/engine/config/fonts/display/` and your display typeface 400/500/Bold TTFs in
 `formats/static-ads/assets/`. The caption burner is PIL and needs a TTF, so resolve the Thin
 weight before the caption pass: either convert the woff2 or fetch the Thin TTF with your go.
 Falling back to your display typeface 400 changes the look and is a decision, not a default.
@@ -339,12 +339,12 @@ Captions go on **after** the grade so the type stays crisp, and the end card sta
 ## Phase 10. Deliver
 
 Master at CRF 21 capped around 6 Mbps with faststart, which lands in the 20 to 45MB range the
-CRM's other videos sit in. End card is the canonical one
+content store's other videos sit in. End card is the canonical one
 (`content-engine/engine/config/brand/endcard-client-9x16.png`), never hand-built.
 
-Then the CRM: upload to `content-media` with the service-role key and insert one row into
+Then your content store: upload to `content-media` with the service-role key and insert one row into
 `content_items` (`content_type='video'`, `production_status='ready'`). Show you the exact
-write and wait for his go, per the standing Supabase gate.
+write and wait for your go, per your own write gate.
 
 ---
 
@@ -391,4 +391,4 @@ All the cost risk sits in L4. Plates and cutouts are about 2 credits each.
 - The cutout rig and the full record of what failed before it worked:
   `projects/content-engine/ideas/cio-1981-noir/` (`bin_collage.py`, `BRIEF.md`).
 - Copy craft and the QA gate: `skills/content-formats/SKILL.md`.
-- Evidence: `context/pain-wiki/INDEX.md`.
+- Evidence: `context/research-corpus/INDEX.md`.

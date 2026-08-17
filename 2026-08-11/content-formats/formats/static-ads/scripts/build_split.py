@@ -105,7 +105,7 @@ def kicker(label, y=92, size=30):
     and a plain white label vanishes into it.
     """
     from PIL import ImageFont
-    f = ImageFont.truetype(str(ROOT.parent / "assets" / "jost-300.ttf"), size)
+    f = ImageFont.truetype(str(ROOT.parent / "assets" / "display-300.ttf"), size)
     tw = f.getlength(label) + 0.09 * size * max(len(label) - 1, 0)
     x = W / 2 - tw / 2
     return (f'<text class="anno" font-size="{size}" x="{x:.1f}" y="{y}" '
@@ -139,7 +139,7 @@ def composite(key):
     if not specs:
         return None, f"no crop set for {key}"
     paths = {h: PLATES / key / f"split-{h}.png" for h in ("before", "after")}
-    missing = [h for h, p in paths.items if not p.exists]
+    missing = [h for h, p in paths.items() if not p.exists()]
     if missing:
         return None, f"no plate for {', '.join(missing)}"
 

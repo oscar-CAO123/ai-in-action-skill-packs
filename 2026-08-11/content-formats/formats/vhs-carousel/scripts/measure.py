@@ -50,7 +50,7 @@ def _label(mask):
             stack = [(sy, sx)]
             lab[sy, sx] = cur
             while stack:
-                y, x = stack.pop
+                y, x = stack.pop()
                 for ny, nx in ((y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)):
                     if 0 <= ny < mask.shape[0] and 0 <= nx < mask.shape[1] \
                             and mask[ny, nx] and not lab[ny, nx]:
@@ -61,22 +61,22 @@ def _label(mask):
 
 def grade_tells(a, g):
     rows = g.mean(axis=1)
-    d = rows - rows.mean
+    d = rows - rows.mean()
     spec = np.abs(np.fft.rfft(d))
     freqs = np.fft.rfftfreq(len(d))
-    top = spec[1:].argmax + 1
+    top = spec[1:].argmax() + 1
     period = round(1 / freqs[top], 1) if freqs[top] else None
     mx, mn = a.max(axis=2), a.min(axis=2)
     r, b = a[..., 0], a[..., 2]
     best, bestc = 0, -2.0
     for s in range(-14, 15):
-        c = float(np.corrcoef(np.roll(r, s, axis=1)[:, 20:-20].ravel,
-                              b[:, 20:-20].ravel)[0, 1])
+        c = float(np.corrcoef(np.roll(r, s, axis=1)[:, 20:-20].ravel(),
+                              b[:, 20:-20].ravel())[0, 1])
         if c > bestc:
             bestc, best = c, s
     return {
-        "grain_floor": round(float(np.abs(g[1:, :] - g[:-1, :]).mean), 2),
-        "mean_saturation": round(float(np.where(mx > 0, (mx - mn) / np.maximum(mx, 1), 0).mean), 3),
+        "grain_floor": round(float(np.abs(g[1:, :] - g[:-1, :]).mean()), 2),
+        "mean_saturation": round(float(np.where(mx > 0, (mx - mn) / np.maximum(mx, 1), 0).mean()), 3),
         "chroma_shift_px": best,
         "scanline_period_px": period,
         "black_floor_1pct": round(float(np.percentile(g, 1)), 1),
@@ -102,8 +102,8 @@ def analyse(path):
         ys, xs = np.where(lab == i)
         if len(ys) < 4:
             continue
-        y0, y1 = ys.min * CELL, (ys.max + 1) * CELL
-        x0, x1 = xs.min * CELL, (xs.max + 1) * CELL
+        y0, y1 = ys.min() * CELL, (ys.max() + 1) * CELL
+        x0, x1 = xs.min() * CELL, (xs.max() + 1) * CELL
         patch = a[y0:y1, x0:x1].reshape(-1, 3)
         pl = _luma(patch)
         med = np.median(pl)
@@ -130,19 +130,19 @@ def analyse(path):
     return {
         "file": path.name, "size": [W, H], "aspect": round(W / H, 4),
         "grade": grade_tells(a, g),
-        "flat_pct": round(100 * float(flat.mean), 1),
-        "flat_by_band": {k: round(100 * float(v.mean), 1) for k, v in thirds.items},
+        "flat_pct": round(100 * float(flat.mean()), 1),
+        "flat_by_band": {k: round(100 * float(v.mean()), 1) for k, v in thirds.items()},
         "blocks": blocks[:6],
     }
 
 
-def main:
-    ap = argparse.ArgumentParser
+def main():
+    ap = argparse.ArgumentParser()
     ap.add_argument("dir")
     ap.add_argument("--json")
-    args = ap.parse_args
-    files = sorted(p for p in Path(args.dir).iterdir
-                   if p.suffix.lower in (".jpg", ".jpeg", ".png"))
+    args = ap.parse_args()
+    files = sorted(p for p in Path(args.dir).iterdir()
+                   if p.suffix.lower() in (".jpg", ".jpeg", ".png"))
     out = [analyse(p) for p in files]
     for s in out:
         gr, fb = s["grade"], s["flat_by_band"]
@@ -160,4 +160,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

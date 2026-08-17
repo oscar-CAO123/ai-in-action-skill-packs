@@ -7,7 +7,9 @@ format: F7.2
 
 # F7.2 Plate-led statics
 
-## LOCKED: the watercolour window format (you, The format of record for plate-led industry cards. Approved on the construction / owner-bottleneck
+## LOCKED: the watercolour window format
+
+The format of record for plate-led industry cards. Approved on the construction / owner-bottleneck
 card and locked. Reference build: `scripts/plates_noirreal.py` + `finish_noirreal.py` +
 `build_noirreal.py`, output at `scripts/out-noirreal/bottleneck.png`.
 
@@ -42,7 +44,9 @@ rejected. Unresolved.
 
 ---
 
-## LOCKED: the ripped news-collage format (you, The second format of record for plate-led industry cards, a sibling of the watercolour window above,
+## LOCKED: the ripped news-collage format
+
+The second format of record for plate-led industry cards, a sibling of the watercolour window above,
 not a replacement. Approved across all five industries and locked. Reference build:
 `scripts/plates_news.py` + `cut_news.py` + `collage_news.py` + `build_news_band.py`, output at
 `scripts/out-news/<industry>-band.png`, contact sheet `scripts/out-news/sheet-news.png`.

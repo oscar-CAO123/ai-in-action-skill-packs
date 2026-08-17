@@ -63,7 +63,7 @@ for: the column is given an explicit 952px width because `clientWidth` counts pa
 well uses `justify-content:flex-end` rather than an auto margin, because an auto margin absorbs
 overflow and the fit then passes at every size.
 
-### The two amendments of (you, measured before ruling)
+### The two amendments (measured before ruling)
 
 **The four-row ceiling is lifted to five.** The old text read "Four rows maximum. Five rows at this
 width takes the type under thumbnail legibility," and it had never been measured against short

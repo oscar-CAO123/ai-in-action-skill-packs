@@ -232,5 +232,5 @@ one-block clause, and only for this test. Recorded as deviation 2 in the parent 
    and the hand-drawn cards each need a template written against `band.py` first.
 4. Contact sheet plus dossier of all 25, walk it with you.
 5. Only then shoot the two paid plates, one at a time, for ultra low-fi and comment reply.
-6. Nothing reaches the CRM without your explicit go. Archiving the 22 old carousels is still an
-   unmade Supabase write.
+6. Nothing reaches your content store without your explicit go. Archiving the 22 old carousels is still an
+   unmade your content store write.

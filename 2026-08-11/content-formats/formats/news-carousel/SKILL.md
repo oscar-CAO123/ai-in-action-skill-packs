@@ -37,7 +37,7 @@ slides: 5 (house-reveal arc) | 6 (pain arc, see section 1)
 plate: your image model at 5:4, ~2 credits each, one job at a time
 routing: ../../references/canon/model-routing.md   # house shot-type table. nano keeps this lane: it is the only model with a native 5:4. The band stays PIL, never generated
 renderer: headless-chrome
-fonts: [jost-200 (band)]                # the ONLY type on the card. your display typeface only. See section 2c.
+fonts: [display-200 (band)]                # the ONLY type on the card. Your display typeface only. See section 2c.
 theme: noir                             # band.py THEMES key. Anton is retired on this format.
 layout: bottom-band law, see content-formats section 1 and static-ads section 0
 density: every slide is a headline, about three lines, one idea
@@ -52,7 +52,7 @@ inputs:
   persona: personas-and-avatars id, or "general" for general-pain targeting
   angle: angles-and-formats.md A1-A12
   offer: house | ai-officer | ai-orchestrator
-  figure: the number, with its pain-wiki or context/personas/personas-and-avatars.md provenance recorded
+  figure: the number, with its research-corpus or context/personas/personas-and-avatars.md provenance recorded
   scope: firm | industry            # what the figure is actually true of. See section 3.
   motifs: the noir motif vocabulary, noir-painterly SKILL.md phase 3. No board required.
   slides: headlines, about three lines each, written into decks_noir.py
@@ -92,9 +92,9 @@ industry, closing on that industry's own lead magnet. Sets never mix.
 | Financial Services & Insurance | The Broker and Adviser AI Readiness Check |
 
 **Everything here is already written down, so nothing is invented.** The five industries are the top
-five by call volume in `context/pain-wiki/INDEX.md`, and the same five
+five by call volume in `context/research-corpus/INDEX.md`, and the same five
 `projects/content-engine/ideas/industry-build-carousels/VERTICALS.md` maps. The five pains are the
-top five ranked pains in `context/pain-wiki/industries/<slug>.md`. The magnet names are the ones
+top five ranked pains in `context/research-corpus/industries/<slug>.md`. The magnet names are the ones
 those playbooks and VERTICALS.md already carry. Never write a new pain or a new magnet name here:
 add it to the playbook first.
 
@@ -112,7 +112,7 @@ AUSSIE <BUSINESS TYPE> ARE FINALLY REALISING THEY DON'T HAVE TO <PAIN> ANYMORE.
 
 The business type is one plural per industry (`WHO` in `decks_industry.py`): Aussie construction
 businesses, real estate agencies, hospitality venues, retailers, insurance brokers. **It must name
-the vertical, never gesture at it** (you, : "hospitality venues" not "venues",
+the vertical, never gesture at it**: "hospitality venues" not "venues",
 "insurance brokers" not "brokers". A bare noun reads as the wrong industry to half the feed. And
 **never "Aussie builders"**, which is the audience sense of the word that `context/language-rules.md`
 binds. The accent is the pain clause.
@@ -165,7 +165,7 @@ belongs in the caption and the link. Putting it back in the band is a copy chang
     useful) but **leaves anything mid-size or larger fully legible**, so it is not a fix for
     incidental text. And its noise **pools into dark speckle blobs on flat lit surfaces** (ceiling
     panels, tabletops), which reads as grime. Lower the noise in the regrade rather than re-shooting.
-- **Plates are real-world captures with no people in them** (you, . The painted noir
+- **Plates are real-world captures with no people in them.** The painted noir
   plates came off. `NO_PEOPLE` is part of `compose` and says "the scene", not "the room", because
   briefs go outdoors.
 - **Show the place the business actually is, not another desk.** you, after the first
@@ -281,7 +281,7 @@ with a title line and a caption line. This is the one house shape that does not 
   series. A mixed carousel is not this format.
 - **Canvas: a warm paper surface is permitted here and nowhere else**, the single
   exception to pure black on a house carousel). It exists because a mounted artefact needs a canvas
-  that reads as a mounting board rather than as void. your display typeface stays the only face and `#1269FF` stays
+  that reads as a mounting board rather than as void. Your display typeface stays the only face and `#1269FF` stays
   the only accent.
 - **Layout: the title line folds into the band.** No type above y=844. The artefact takes the top
   two thirds of the frame, and the band carries the title line and the caption line as two type
@@ -315,7 +315,7 @@ together.
 `replicate_steps` fields describe how each build actually works. Translate that into plain
 English, never invent a mechanism, and never dress it in the source's stack jargon: "a
 graph-based multi-agent framework with RAG" becomes "it works out the next step and opens your
-CRM itself". A build whose record describes no mechanism does not earn a teach slide.
+content store itself". A build whose record describes no mechanism does not earn a teach slide.
 
 **Length is a fit problem, not an authoring one.** Write the clause that explains the thing and
 let `band.py` shrink the type to fit. Teach slides land around 6 lines at 55px to 70px against
@@ -379,7 +379,7 @@ BEFORE  ONE. THE WORKFLOW ENGINE. THE MANUAL OVERHEAD ON ONE
 
 AFTER   ONE. THE WORKFLOW ENGINE. AN ASSISTANT THAT RUNS A WHOLE PROCESS.
         YOU ASK IN PLAIN ENGLISH, IT WORKS OUT THE NEXT STEP, OPENS YOUR
-        CRM, EMAIL AND CALENDAR ITSELF, AND WAITS FOR YOUR [[APPROVAL]]
+        content store, EMAIL AND CALENDAR ITSELF, AND WAITS FOR YOUR [[APPROVAL]]
         BEFORE ANYTHING THAT COSTS YOU.
 ```
 
@@ -445,7 +445,7 @@ Set `annotations` to a list of empty rows, one per slide, so `overlay_for` retur
 ```
 
 **The machinery stays on disk and is not canonical.** `plates_noir.py` still holds `annotation`,
-`overlay_for` and the geometry guard, `band.py` still carries the `.anno` class, `jost-500.ttf`
+`overlay_for` and the geometry guard, `band.py` still carries the `.anno` class, `display-500.ttf`
 still ships, and `check_dots.py` still audits leader coordinates. Reviving any of it needs your
 go, not just a populated `annotations` row.
 
@@ -456,7 +456,7 @@ annotation-free again, and a populated `annotations` row on any deck is still a 
 
 Two consequences worth knowing:
 
-- **The tool-logo evidence claim is gone with it.** It was only ever standing for the counted CRM
+- **The tool-logo evidence claim is gone with it.** It was only ever standing for the counted content store
   stack (Claude 198, ChatGPT/GPT 102, n8n 71 of 483 populated `transcript_summary` rows as at
   never for a specific Hub build, so nothing traceable was lost. Evidence now lives
   entirely in the headline copy, where section 3's scope rule already governs it.
@@ -517,7 +517,7 @@ Every deck built before needs this audit before it re-renders. The 13 in
 `p08-octopus`, `p09-headcount-trap`, `p11-three-thousand-unread`, `p12-most-expensive-junior`,
 `p13-eighteen-months`, `p16-three-hundred-grand`. The plural-framed headlines ("THE AUSSIE
 CONSTRUCTION BUSINESSES WHOSE...", "REVEALED: THE $30,000 TYPO HIDING IN AUSTRALIAN CONSTRUCTION") are where the
-error concentrates: check each against its pain-wiki record and rewrite to firm scope where the
+error concentrates: check each against its research-corpus record and rewrite to firm scope where the
 record is a single company.
 
 ## 4. The copy rules
@@ -530,7 +530,7 @@ reads as news. "Stop losing $30,000 to typos" reads as an ad and the format coll
 shock number or the role, whichever is the surprise. Two accents kills both.
 
 **Ground every number in the pain wiki.** Pull the vertical's real figures from its playbook at
-`context/pain-wiki/industries/<slug>.md` (the "Raw evidence" tables carry the call counts and the
+`context/research-corpus/industries/<slug>.md` (the "Raw evidence" tables carry the call counts and the
 strongest quote per pain) and the persona's own words from `context/personas/personas-and-avatars.md`.
 Never invent a number, never name a real company or person.
 
@@ -644,7 +644,7 @@ every line on all five slides says one agency, including the stat label and the 
 ## 9. Related
 
 - Canon: `skills/content-formats/references/canon/angles-and-formats.md` (F5), `canon/angles-and-formats.md`, `context/personas/personas-and-avatars.md`.
-- Evidence: `context/pain-wiki/INDEX.md`. Vertical-specific work starts at `context/pain-wiki/industries/<slug>.md` (ranked pains with angles, language, targeting); general-pain work at `context/pain-wiki/pains/<slug>.md`; objection beats at `context/pain-wiki/objections/<slug>.md` and `references/canon/objection-bank.md`.
+- Evidence: `context/research-corpus/INDEX.md`. Vertical-specific work starts at `context/research-corpus/industries/<slug>.md` (ranked pains with angles, language, targeting); general-pain work at `context/research-corpus/pains/<slug>.md`; objection beats at `context/research-corpus/objections/<slug>.md` and `references/canon/objection-bank.md`.
 - Concept bank: `skills/content-formats/references/canon/CONCEPT-BANK.md`. Archetypes: `skills/content-formats/references/scripts/archetypes.md` (S1, S16).
 - Concept map: `projects/content-engine/ideas/news-carousels/IDEATION.md` holds 38 carousels,
   one per avatar, each with a headline template and a cost anchor already assigned. Start there.

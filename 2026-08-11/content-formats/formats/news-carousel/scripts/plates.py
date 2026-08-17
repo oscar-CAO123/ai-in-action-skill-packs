@@ -101,11 +101,11 @@ def generate(prompt, dest, tries=4):
     raise RuntimeError(f"generation failed after {tries} attempts: {dest}")
 
 
-def main:
+def main():
     slug = sys.argv[1]
     args = sys.argv[2:]
     recomp = "--recomp" in args
-    only = {int(a) for a in args if a.isdigit}
+    only = {int(a) for a in args if a.isdigit()}
     deck = next(d for d in DECKS if d["slug"] == slug)
     plates = ROOT / "plates" / slug
     out = ROOT / "out2" / slug
@@ -114,16 +114,16 @@ def main:
         if only and i not in only:
             continue
         plate = plates / f"slide-{i:02d}.png"
-        if not plate.exists and not recomp:
+        if not plate.exists() and not recomp:
             prompt = deck.get("plates", [None] * 99)[i - 1] or PROMPTS[slug][i]
             print(f"slide-{i:02d}  generating ...", flush=True)
             generate(prompt, plate)
         report = render_card(copy, out / f"slide-{i:02d}.png",
-                             plate=plate if plate.exists else None,
+                             plate=plate if plate.exists() else None,
                              overlay=OVERLAYS.get(slug, {}).get(i))
         print(f"slide-{i:02d}  {report}", flush=True)
     print("done")
 
 
 if __name__ == "__main__":
-    main
+    main()

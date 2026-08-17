@@ -83,7 +83,7 @@ NOIR_DECKS = [
         # Coordinates are card space (1080x1350); the plate is y 0..844, band top 844.
         #
         # EVIDENCE: the admin board records no tool against its three Hub builds, so the
-        # logos carry the counted stack from the CRM interviews (Claude 198, n8n 71 of 483)
+        # logos carry the counted stack from your content store interviews (Claude 198, n8n 71 of 483)
         # rather than a per-build claim. Slide 1 is the pain, so it stays logo-free.
         "annotations": [[], [], [], [], [], []],
         "plates": [
@@ -423,11 +423,11 @@ NOIR_DECKS = [
             ["TWO. THE COMPUTER USE AGENT. FOR THE SYSTEM WITH NO WAY IN, AN",
              "AGENT ON A MACHINE YOU CONTROL LOGS IN AND TYPES LIKE A PERSON",
              "WOULD, AND [[CHECKS]] EVERY ACTION LANDED BEFORE IT MOVES ON."],
-            ["THREE. THE MORNING SYNC. THE CRM IS BUILT AROUND THE WORKFLOW YOU",
+            ["THREE. THE MORNING SYNC. THE content store IS BUILT AROUND THE WORKFLOW YOU",
              "ACTUALLY RUN, EVENTS AND OUTREACH FIRE THEMSELVES, AND A BROWSER",
              "EXTENSION [[BRIDGES]] THE TOOLS THAT OFFER NO WAY IN."],
             ["THE RESULT, ONE BUSINESS EACH: A FULL OPERATING SYSTEM ROLLED OUT",
-             "IN EIGHT WEEKS, THE API LESS SYSTEM DRIVEN WITHOUT ONE, AND A CRM",
+             "IN EIGHT WEEKS, THE API LESS SYSTEM DRIVEN WITHOUT ONE, AND A content store",
              "RUNNING A PORTFOLIO PAST [[A HUNDRED THOUSAND A MONTH.]]"],
             ["TAKE THE AI READINESS QUIZ AND SEE",
              "WHERE [[YOUR BUSINESS STANDS.]]"],
@@ -501,7 +501,7 @@ NOIR_DECKS = [
         # a loss: the three Hub builds behind this deck (the always-on executive-assistant
         # agent, the owners-corporation email fleet, and the computer-use inspection workflow)
         # record no tool against them, so the marks were only ever standing for the counted
-        # CRM stack, never for these builds.
+        # content store stack, never for these builds.
         "annotations": [[], [], [], [], [], []],
         "plates": [
             plate("Wide shot of a sliced-open multi-room business standing in an empty black "
@@ -606,7 +606,7 @@ NOIR_DECKS = [
              "YOU NEED THESE [[THREE AUTOMATIONS]] ASAP."],
             ["ONE. THE WORKFLOW ENGINE. AN ASSISTANT THAT RUNS A WHOLE PROCESS.",
              "YOU ASK IN PLAIN ENGLISH, IT WORKS OUT THE NEXT STEP, OPENS YOUR",
-             "CRM, EMAIL AND CALENDAR ITSELF, AND WAITS FOR YOUR [[APPROVAL]]",
+             "content store, EMAIL AND CALENDAR ITSELF, AND WAITS FOR YOUR [[APPROVAL]]",
              "BEFORE ANYTHING THAT COSTS YOU."],
             ["TWO. THE PROCESS RUNNER. A TEAM OF SMALL AGENTS WITH ONE",
              "COORDINATOR OVER THE TOP. YOU MAP THE SLOW PROCESS ONCE, EVERY",
@@ -981,7 +981,7 @@ NOIR_DECKS = [
             ["THREE. THE INTERNAL BUILD. WHERE THE LICENCE IS THE COST, THE TOOL",
              "IS REBUILT IN HOUSE AND EACH AGENT IS GIVEN THE [[SMALLEST MODEL]]",
              "THAT CAN DO ITS JOB, SO THE RUNNING COST STAYS LOW."],
-            ["THE RESULT, ONE BUSINESS EACH: A PAID CRM SUBSCRIPTION GONE, A",
+            ["THE RESULT, ONE BUSINESS EACH: A PAID content store SUBSCRIPTION GONE, A",
              "NINETY THOUSAND DOLLAR A YEAR MANUAL PROCESS REPLACED FOR A FEW",
              "HUNDRED A MONTH IN COMPUTE, AND FIVE MILLION SAVED IN",
              "[[LICENSING.]]"],

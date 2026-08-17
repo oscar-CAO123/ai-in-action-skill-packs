@@ -30,17 +30,17 @@ PLATES = ROOT / "plates-news"
 
 def matte(slug):
     src = CUT / f"{slug}.png"
-    if not src.exists:
+    if not src.exists():
         src = PLATES / f"{slug}.raw.png"
-    if not src.exists:
+    if not src.exists():
         sys.exit(f"no plate to matte for {slug}")
     dst = CUT / f"{slug}.matte.png"
     print(f"matting {slug} from {src.name}")
     r = subprocess.run(["npx", "--yes", "hyperframes@latest", "remove-background",
                         str(src), "-o", str(dst)], capture_output=True, text=True)
-    if r.returncode != 0 or not dst.exists:
+    if r.returncode != 0 or not dst.exists():
         sys.exit(f"remove-background failed for {slug}:\n{r.stderr[-1200:]}")
-    print(f"  {dst.name}  ({dst.stat.st_size // 1024} KB)")
+    print(f"  {dst.name}  ({dst.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

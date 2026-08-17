@@ -238,7 +238,7 @@ Every one of these was hit while building U3.
   resized cards that were already on the board.
 - **Re-running a sibling's build script without its flags.** Verifying the checksum gate meant
   rebuilding every sibling, and `build_candidate_posters.py` run with no `--plates` re-rendered
-  u1a and u1b with PLACEHOLDER plates, overwriting two cards that are live on the CRM. The gate
+  u1a and u1b with PLACEHOLDER plates, overwriting two cards that are shipped and live. The gate
   caught it at 15 of 17 and `--plates` restored them byte-identically. **Read a sibling script's
   docstring before you run it to prove you did not break it.**
 - **Seeding a per-page effect off a leftover loop counter.** `lay_band(png, seed=i)` sat in a
@@ -279,7 +279,7 @@ shasum -c /tmp/sib.txt          # all 17 must be OK
 - **Read the render.** Every one of the failures in section 6 was found by looking at the output,
   not by reading the diff.
 
-## 8. Pushing a finished carousel to the CRM
+## 8. Pushing a finished carousel to your content store
 
 `scripts/crm_u3.py` is the worked example. One row, not one per page: a carousel is one post,
 which is the convention U7 set at row 44.

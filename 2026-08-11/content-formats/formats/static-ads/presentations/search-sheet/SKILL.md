@@ -1,6 +1,6 @@
 ---
 name: static-ads-search-sheet
-description: Presentation sub-skill. A phone search-suggestion sheet on black, one typed stem completed five ways, each completion a pain. Use when a symptom stack should read as self-diagnosis rather than as a claim. Shipped as the F6 search variant, LIVE on the CRM and the strongest of the three. Read formats/static-ads/presentations/SKILL.md, formats/static-ads/ui-mock/SKILL.md and formats/static-ads/SKILL.md first.
+description: Presentation sub-skill. A phone search-suggestion sheet on black, one typed stem completed five ways, each completion a pain. Use when a symptom stack should read as self-diagnosis rather than as a claim. Shipped as the F6 search variant, shipped and live and the strongest of the three. Read formats/static-ads/presentations/SKILL.md, formats/static-ads/ui-mock/SKILL.md and formats/static-ads/SKILL.md first.
 parent: static-ads-presentations
 cites: local:a competitor-6-formats/03-search-bar
 renderer: scripts/f6_variants.py build_search
@@ -52,7 +52,7 @@ personification fully intact.
 
 **The five agnostic completions are hand-written and the seven verticals are NOT.** Each vertical
 still needs its own search column, written for the business as the subject, before its card ships.
-This is the outstanding item on the format and it is written into the card's `notes` on the CRM
+This is the outstanding item on the format and it is written into the card's `notes` on your content store
 row.
 
 ## 4. The trap that cost three passes

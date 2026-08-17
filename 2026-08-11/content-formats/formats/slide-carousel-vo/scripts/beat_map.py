@@ -23,11 +23,11 @@ import sys
 DEFAULT_FOCAL = [0.45, 0.58]
 
 
-def main:
+def main():
     here = sys.argv[1] if len(sys.argv) > 1 else "."
     cfg = json.load(open(os.path.join(here, "beats.config.json")))
     raw = json.load(open(os.path.join(here, "work/words.json")))
-    lines = [l.split for l in open(os.path.join(here, "vo/lines.txt")).read.splitlines if l.strip]
+    lines = [l.split() for l in open(os.path.join(here, "vo/lines.txt")).read().splitlines() if l.strip()]
 
     total_tokens = sum(len(t) for t in lines)
     if total_tokens != len(raw):
@@ -44,7 +44,7 @@ def main:
         base.append(k)
         k += len(t)
 
-    splits = {int(a): b for a, b in cfg["splits"].items}
+    splits = {int(a): b for a, b in cfg["splits"].items()}
     stills = cfg["stills"]
     focal = cfg.get("focal", {})
 
@@ -80,4 +80,4 @@ def main:
 
 
 if __name__ == "__main__":
-    main
+    main()

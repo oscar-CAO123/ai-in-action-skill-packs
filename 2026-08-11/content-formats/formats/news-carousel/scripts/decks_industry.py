@@ -7,10 +7,10 @@ canonical F5 look reduced to ONE card, targeted at a named industry and closing 
 industry's own lead magnet.
 
 The shape:
-  - **5 industries**, the top five in `context/pain-wiki/INDEX.md` by call volume. The same
+  - **5 industries**, the top five in `context/research-corpus/INDEX.md` by call volume. The same
     five `projects/content-engine/ideas/industry-build-carousels/VERTICALS.md` already maps.
   - **5 pains each**, the top five ranked pains in that industry's playbook at
-    `context/pain-wiki/industries/<slug>.md`. 25 cards total.
+    `context/research-corpus/industries/<slug>.md`. 25 cards total.
   - **One lead magnet per industry.** It is no longer in the band: it rides on the plate as a
     leader-arrow annotation, "TAKE <MAGNET> TODAY", pointing at the painted subject.
   - Every card carries `q`, the number of the magnet question it walks the reader into.
@@ -92,7 +92,7 @@ NEW_PLATES = {
 }
 
 # The plural the template opens on. One per industry. It must NAME THE VERTICAL, not gesture at
-# it (you, : "hospitality venues" not "venues", "insurance brokers" not "brokers",
+# it: "hospitality venues" not "venues", "insurance brokers" not "brokers",
 # "real estate agencies" not "agencies". A bare noun reads as the wrong industry to half the feed.
 WHO = {
     "construction-and-trades": "AUSSIE CONSTRUCTION BUSINESSES",

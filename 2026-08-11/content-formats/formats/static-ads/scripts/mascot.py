@@ -60,7 +60,7 @@ FILL = 0.86
 
 # A DRAWN HEAD, for the plates that have no painted one. On the U3 cover the mark sits inside a
 # head the model painted, so it reads as a face. u6r has only an open collar on bare paper, and
-# the bare mark floating above it reads as a caption rather than a head (you, . So
+# the bare mark floating above it reads as a caption rather than a head. So
 # the contour is drawn here and the mark set inside it, which is the same contract as the mark
 # itself: the brand asset stays exact, the plate is never asked to paint lettering.
 #
@@ -123,12 +123,12 @@ def apply_head(key, dest=None):
     with tempfile.NamedTemporaryFile("w", suffix=".svg", dir=ROOT, delete=False) as f:
         f.write(svg)
         tmp = f.name
-    out = Path(tempfile.mkdtemp) / "head.png"
+    out = Path(tempfile.mkdtemp()) / "head.png"
     try:
         subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
                         "--default-background-color=00000000",
                         f"--window-size={im.width},{im.height}", f"--screenshot={out}",
-                        Path(tmp).as_uri], check=True, capture_output=True)
+                        Path(tmp).as_uri()], check=True, capture_output=True)
     finally:
         os.unlink(tmp)
     im.alpha_composite(Image.open(out).convert("RGBA"))
@@ -148,19 +148,19 @@ def apply_head(key, dest=None):
 
 def mark_png(width, part="house"):
     """Render the logo to a transparent PNG `width` px across, cropped to the wanted part."""
-    svg = LOGO.resolve.as_uri
+    svg = LOGO.resolve().as_uri()
     h = int(width * 521.2 / 1023.1)
     doc = (f'<style>*{{margin:0;padding:0}}html,body{{width:{width}px;height:{h}px}}'
            f'img{{width:{width}px;display:block}}</style><img src="{svg}">')
     with tempfile.NamedTemporaryFile("w", suffix=".html", dir=ROOT, delete=False) as f:
         f.write(doc)
         tmp = f.name
-    out = Path(tempfile.mkdtemp) / "mark.png"
+    out = Path(tempfile.mkdtemp()) / "mark.png"
     try:
         subprocess.run([CHROME, "--headless", "--disable-gpu", "--hide-scrollbars",
                         "--default-background-color=00000000",
                         f"--window-size={width},{h}", f"--screenshot={out}",
-                        Path(tmp).as_uri], check=True, capture_output=True)
+                        Path(tmp).as_uri()], check=True, capture_output=True)
     finally:
         os.unlink(tmp)
     im = Image.open(out).convert("RGBA")
@@ -205,15 +205,15 @@ def measure(key):
     lab, n = ndimage.label(a < 110)
     sz = ndimage.sum(a < 110, lab, range(1, n + 1))
     ys, xs = np.where(lab == int(np.argmax(sz)) + 1)
-    print(f"painted mass  x {xs.min}-{xs.max}  y {ys.min}-{ys.max}")
-    top = ys.min + (ys.max - ys.min) // 2
-    sub = a[ys.min:top, xs.min:xs.max] > 195
+    print(f"painted mass  x {xs.min()}-{xs.max()}  y {ys.min()}-{ys.max()}")
+    top = ys.min() + (ys.max() - ys.min()) // 2
+    sub = a[ys.min():top, xs.min():xs.max()] > 195
     l2, n2 = ndimage.label(sub)
     s2 = ndimage.sum(sub, l2, range(1, n2 + 1))
     for j in np.argsort(s2)[::-1][:3]:
         yy, xx = np.where(l2 == j + 1)
-        print(f"  blob {int(s2[j]):>7}px  x {xx.min+xs.min}-{xx.max+xs.min}  "
-              f"y {yy.min+ys.min}-{yy.max+ys.min}")
+        print(f"  blob {int(s2[j]):>7}px  x {xx.min()+xs.min()}-{xx.max()+xs.min()}  "
+              f"y {yy.min()+ys.min()}-{yy.max()+ys.min()}")
 
 
 if __name__ == "__main__":
