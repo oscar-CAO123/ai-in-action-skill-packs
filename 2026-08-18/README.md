@@ -1,8 +1,10 @@
 # 18 August 2026
 
-Three skills, given away on the AI in Action call, Tuesday 18 August 2026. They are one system: a
-diary that captures what you know, a trigger that reads it and picks the work, and a gauntlet that
-builds the work to a bar.
+Seven skills, given away on the AI in Action call, Tuesday 18 August 2026.
+
+Three of them are one system: a diary that captures what you know, a trigger that reads it and picks
+the work, and a gauntlet that builds the work to a bar. The other four are the demos from the call:
+driving a screen, a fixed-path macro, an approved outreach batch, and a video prompting engine.
 
 Root of the repo: [../README.md](../README.md). Licence: MIT, see [../LICENSE](../LICENSE).
 
@@ -44,6 +46,36 @@ nothing integrates until it passes. `do-smart-things` builds through this.
 
 Useful on its own for taking a working first version to showcase quality.
 
+### `computer-use-training-loop/`
+How to let an agent drive your actual screen without wrecking anything. The two mechanisms, looking
+at a window and taking the mouse, the escalation order between them, the permission model behind
+both, and the jobs this is genuinely the right tool for.
+
+This is the answer to the tool with no API: the scheduling system, the supplier portal from 2011,
+the accounting package where the export is three menus deep.
+
+### `build-deterministic-macro/`
+When the same click path runs every time, take the model out of the execution loop. A gate that
+tells you whether the path even qualifies, a dry run that resolves every anchor and touches nothing,
+a checkpoint after every action that fails closed, and a final verification that does not trust the
+click that caused it.
+
+Cheaper and steadier than computer use for anything that genuinely does not change.
+
+### `linkedin-outreach/`
+An approved batch of connection invitations, sent through a supervised screen session. One preflight
+approves the recipients, the note and the cap before anything sends. Every profile is verified by
+name and URL before the click, and a contacted ledger stops duplicates across runs.
+
+It never automates login and it never sources its own targets.
+
+### `seedance-prompt/`
+A prompting engine for reference-driven video. Seven tagged blocks that close the six gaps a
+one-line prompt leaves open, so the model stops filling them with its own average. Every clause has
+to name something you could photograph.
+
+Written against Seedance 2.5, though the block grammar carries. `COMMANDS.md` has the runnable CLI.
+
 ## Running them
 
 ```
@@ -55,6 +87,9 @@ Useful on its own for taking a working first version to showcase quality.
 Start with `diary/` and run it for a week before you try the three words. `do-smart-things` on an
 empty tree gives you a guess. On a tree with a fortnight of diary entries it gives you the thing you
 were about to ask for.
+
+The other four stand alone. Read `computer-use-training-loop/` before you point any agent at your
+screen.
 
 ## What this supersedes
 

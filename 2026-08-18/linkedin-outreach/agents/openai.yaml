@@ -1,0 +1,4 @@
+interface:
+  display_name: "LinkedIn Outreach"
+  short_description: "Send verified LinkedIn invitations"
+  default_prompt: "Use $linkedin-outreach to preflight and send this approved LinkedIn invitation batch through Computer Use."

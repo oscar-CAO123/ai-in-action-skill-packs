@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Deterministic Macro"
+  short_description: "Build fixed-path desktop macros"
+  default_prompt: "Use $build-deterministic-macro to turn this stable click path into a bounded deterministic macro."
