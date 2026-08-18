@@ -13,6 +13,7 @@ That is deliberate. The tools churn every few months. Anything written as a file
 | Date | What landed | Folder |
 |---|---|---|
 | **11 August 2026** | Graph engineering, workspace audit, funnel builder, content formats, four marketing agents | [`2026-08-11/`](2026-08-11/) |
+| **18 August 2026** | The diary, the three-word prompt, and the gauntlet | [`2026-08-18/`](2026-08-18/) |
 
 Nothing gets rewritten in place. A later drop that improves an earlier pack ships as its own dated
 folder and says what it supersedes, so anything you cloned keeps working.
@@ -33,6 +34,9 @@ you get a plan.
 
 `2026-08-11/graph-engineering/member-business-interview`. It builds the brain every other pack in
 this repo assumes exists, and all of them get noticeably better once it has run.
+
+Then `2026-08-18/diary`. Run it for a week, and the rest of the repo starts reading your actual
+situation instead of guessing at it.
 
 ## Things that hold across every pack
 
