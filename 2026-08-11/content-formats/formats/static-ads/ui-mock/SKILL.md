@@ -58,7 +58,7 @@ they read the words. Match the real interface exactly:
 - **Nothing that reads as a platform endorsement**, which is a policy problem as well as a trust
   problem.
 
-The organic post screenshot is a **personal profile post from Simon**, which is exactly why it sits
+The organic post screenshot is a **personal profile post from one of your own founders**, which is exactly why it sits
 on financial services / owner-bottleneck: the pain is the owner personally building the automation,
 and a personal post is how that gets said. It is first person, it is his, and it is gated by
 `../proof/`.
@@ -95,5 +95,5 @@ Approve it on its own, one job, before anything renders on top of it.
 - Put it beside a real screenshot of the same interface at the same zoom. Anything that differs is
   a defect.
 - Read it at thumbnail size, where an ad-classified card dies.
-- Funnel label recorded, sources recorded, no real name that is not Simon's.
+- Funnel label recorded, sources recorded, no real name that is not your own founder's.
 - Em dash scan, negation-swap scan, banned vocabulary, house terminology.

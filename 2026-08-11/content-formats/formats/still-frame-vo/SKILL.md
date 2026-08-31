@@ -202,7 +202,7 @@ The end card stays caption-free, which is what `--endclean` protects.
 
 - **End card (canonical), do not hand-build one.**
   `content-engine/engine/config/brand/endcard-client-9x16.png` (still, hold about 3s) or
-  `simon-webinar/ads/_parts/endcard-9x16.mp4` (animated 3s). Black, mono white the business mark,
+  `founder-webinar/ads/_parts/endcard-9x16.mp4` (animated 3s). Black, mono white the business mark,
   "Hire a the role you place".
 - **Optional persistent hook line** above the frame, in the a reference account manner. The renderer is
   `archive/nighthawks/work/render_hook.py` (your display typeface, auto-fit to 950px, transparent PNG), overlaid

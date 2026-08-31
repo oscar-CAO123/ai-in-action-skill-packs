@@ -4,7 +4,7 @@
     python3 _measure/frame_pick.py <video>                  # labelled contact sheet, every 6s
     python3 _measure/frame_pick.py <video> --every 3        # denser sheet
     python3 _measure/frame_pick.py <video> --at 42,66,120   # full-res frames at those seconds
-    python3 _measure/frame_pick.py <video> --at 66 --name simon-podcast-composed
+    python3 _measure/frame_pick.py <video> --at 66 --name founder-podcast-composed
 
 Free, every time. Nothing here spends a credit.
 

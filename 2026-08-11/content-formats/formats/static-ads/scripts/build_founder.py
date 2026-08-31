@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The founder statics. a founder and Emil Juresic, real words over real frames.
+"""The founder statics. Your founders, real words over real frames.
 
     python3 build_founder.py                    # every card whose plates exist
     python3 build_founder.py --statement        # type only, no image, always renders
@@ -17,8 +17,8 @@ both halves are open and the card is attributed by name underneath.
 
 ## What the seam is doing
 
-Left is Simon composed, hands together, mid-word. Right is Simon animated, both hands wide, mid-
-word. Same set, same shirt, same camera, same afternoon. The seam reads as one man changing
+Left is the founder composed, hands together, mid-word. Right is the same founder animated,
+both hands wide, mid-word. Same set, same shirt, same camera, same afternoon. The seam reads as one man changing
 register rather than as two photographs, which is the whole reason a matched pair is worth hunting
 for in `_measure/frame_pick.py`.
 
@@ -48,11 +48,11 @@ INK = (16, 16, 20)
 # Measured off --composite at full size, never guessed.
 # Measured off a 20-column gridded copy of each source frame at full size, the same
 # method `_measure/grid_eyes.py` uses on the F-M1 censor bar. Guessing put the composed half at
-# 0.60 and sliced Simon's face in two at the card's left edge.
+# 0.60 and sliced the founder's face in two at the card's left edge.
 SPLIT = {
-    "simon": dict(
-        left=dict(plate="simon-vsl-composed.png", anchor=0.50),
-        right=dict(plate="simon-vsl-open-hands.png", anchor=0.47),),
+    "founder-a": dict(
+        left=dict(plate="founder-a-composed.png", anchor=0.50),
+        right=dict(plate="founder-a-open-hands.png", anchor=0.47),),
 }
 
 
@@ -97,14 +97,15 @@ def kicker(label, y=96, size=30):
 
     It cannot live in the band. `band.py` flattens every line it is given into ONE justified
     block, so an attribution passed as a line arrives welded to the last sentence of the quote
-    and the card reads as though Simon said his own name and job title out loud. The name goes
+    and the card reads as though the founder said his own name and job title out loud. The name goes
     to the top, the quote keeps the band, and the two stop competing.
 
     Drawn twice, a soft black pass under the white pass, because the plate behind it is a daylit
     room and plain white lettering vanishes into the far wall.
 
     **The size shrinks to fit.** At a fixed 30px this centred on a width wider than the card and
-    silently clipped "EMIL" off the left edge, because his attribution carries two organisations.
+    silently clipped the first name off the left edge, on a founder whose attribution carried two
+    organisations.
     Measure the drawn width including the letterspacing, then step down until it clears the
     margin. Never centre on an unmeasured width; that is the same trap `clientWidth` set on the
     newspaper masthead.

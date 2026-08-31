@@ -77,8 +77,8 @@ ideas: skills/content-formats/formats/noir-painterly/IDEAS.md
 | | |
 |---|---|
 | Original build and full spec | `projects/content-engine/ideas/noir-machine/` (`SHOTS.md`, `anchor/prompt.txt`, `bin/`) |
-| Approved static bank (27 frames) | `projects/simon-webinar/house-vsl-full/stills-noir/` plus `CONTACT-SHEET.jpg` |
-| Canonical shot list | `projects/simon-webinar/house-vsl-full/SCRIPT-hire-a-house-v2-noir-vo.md`, the per-beat "Visuals:" blocks |
+| Approved static bank (27 frames) | `projects/founder-webinar/house-vsl-full/stills-noir/` plus `CONTACT-SHEET.jpg` |
+| Canonical shot list | `projects/founder-webinar/house-vsl-full/SCRIPT-hire-a-house-v2-noir-vo.md`, the per-beat "Visuals:" blocks |
 | Working generators | `stills-noir/gen_all_statics.sh`, `gen_detext.sh`, `animate_all.sh`, `contactsheet.py` |
 | Open motion question | `.claude/handovers/house-vsl-noir-refine.md` |
 
@@ -324,7 +324,7 @@ so the entire cost risk of this format sits in this phase.
   the raw stem). Whisper `small.en` with the script as `initial_prompt`.
 - **End card (canonical), do not hand-build one.**
   `content-engine/engine/config/brand/endcard-client-9x16.png` (still) and
-  `simon-webinar/ads/_parts/endcard-9x16.mp4` (animated 3s). Black, mono white the business logo,
+  `founder-webinar/ads/_parts/endcard-9x16.mp4` (animated 3s). Black, mono white the business logo,
   "Hire a the role you place". The white-logo PNG `house-logo-white-300.png` has a checkerboard
   baked into its transparency and is unusable on black.
 - **your captions tool handoff** when you wants to edit: strip audio from the cut, copy stems and raw
