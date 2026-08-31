@@ -1,10 +1,11 @@
 # 18 August 2026
 
-Seven skills, given away on the AI in Action call, Tuesday 18 August 2026.
+Eight skills, given away on the AI in Action call, Tuesday 18 August 2026.
 
 Three of them are one system: a diary that captures what you know, a trigger that reads it and picks
-the work, and a gauntlet that builds the work to a bar. The other four are the demos from the call:
-driving a screen, a fixed-path macro, an approved outreach batch, and a video prompting engine.
+the work, and a gauntlet that builds the work to a bar. Four are the demos from the call: driving a
+screen, a fixed-path macro, an approved outreach batch, and a video prompting engine. The eighth,
+added later, builds a whole content operating system out of your own customer evidence.
 
 Root of the repo: [../README.md](../README.md). Licence: MIT, see [../LICENSE](../LICENSE).
 
@@ -69,6 +70,18 @@ name and URL before the click, and a contacted ledger stops duplicates across ru
 
 It never automates login and it never sources its own targets.
 
+### `content-operating-system/`
+Your content, built out of your own customer evidence instead of out of your head on a Sunday night.
+It sweeps your workspace, finds where your calls, tickets, reviews and forum threads actually live,
+interviews you for 60 to 90 minutes, then builds a brain, an engine and an outputs tree, plus a
+founder question bank of things only you can answer.
+
+Then it installs two scheduled tasks: one pulls evidence nightly, one turns it into a ranked idea
+queue weekly, with the quotes attached to every idea. Production stays attached to a person, and
+nothing is paid for or published without you.
+
+Added after the call. Run `member-business-interview` from the 11 August drop first if you can.
+
 ### `seedance-prompt/`
 A prompting engine for reference-driven video. Seven tagged blocks that close the six gaps a
 one-line prompt leaves open, so the model stops filling them with its own average. Every clause has
@@ -93,4 +106,7 @@ screen.
 
 ## What this supersedes
 
-Nothing. The 11 August packs stand as they shipped.
+Nothing. The 11 August packs stand as they shipped. `content-operating-system/` reads the business
+brain that `2026-08-11/graph-engineering/member-business-interview` produces, and generalises the
+craft in `2026-08-11/content-formats/` into a system that feeds itself. Both still stand on their
+own.
