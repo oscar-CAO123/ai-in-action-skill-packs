@@ -21,6 +21,8 @@ That is the whole setup. Nothing to clone, no account, no service in the middle.
 **Turn on auto update** in the plugin menu. Every time a call adds a skill, it lands on your machine
 by itself.
 
+Then type `/start-here`. It looks at what you already have and names the one skill to run next.
+
 Prefer to do it by hand? Copy any folder from `skills/` into `~/.claude/skills/` and it works the
 same way. The files are the product; the plugin is only the delivery.
 
@@ -54,6 +56,9 @@ same way. The files are the product; the plugin is only the delivery.
 | `engagement-signal-leads` | A lead source built on intent rather than demographics. |
 | `reply-agent` | An agent on the reply side of an outbound campaign. |
 | `sending-infrastructure` | Email sending that does not put the main business domain at risk. |
+
+Plus one command, `/start-here`, which reads your working directory and tells you which of the three
+starting skills you actually need.
 
 ## How to use one without the plugin
 
