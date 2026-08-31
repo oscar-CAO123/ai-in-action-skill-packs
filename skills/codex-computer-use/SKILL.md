@@ -1,6 +1,5 @@
 ---
-name: Codex Computer Use
-slug: codex-computer-use
+name: codex-computer-use
 description: >
   An INSTRUCTIONAL skill: how to let a coding agent drive your actual screen without wrecking
   anything. Covers the two mechanisms (look at a window, or take the mouse), the escalation order

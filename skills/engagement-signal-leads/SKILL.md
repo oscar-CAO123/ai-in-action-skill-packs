@@ -1,6 +1,5 @@
 ---
-name: Engagement Signal Leads
-slug: engagement-signal-leads
+name: engagement-signal-leads
 description: >
   An INSTRUCTIONAL skill: it walks your agent through building a lead source out of
   intent rather than demographics. Pick the ten to twenty accounts your buyers actually read, watch

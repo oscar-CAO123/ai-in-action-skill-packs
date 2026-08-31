@@ -1,6 +1,5 @@
 ---
-name: Content From Calls
-slug: content-from-calls
+name: content-from-calls
 description: >
   An INSTRUCTIONAL skill: it walks your agent through turning conversations the business
   already has into published content. Source material comes from sales calls, a weekly ten minute

@@ -1,6 +1,5 @@
 ---
-name: Reply Agent
-slug: reply-agent
+name: reply-agent
 description: >
   An INSTRUCTIONAL skill: it walks your agent through putting an agent on the reply side
   of an outbound campaign. A webhook fires on every reply, the agent classifies it, drafts the next

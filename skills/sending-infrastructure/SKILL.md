@@ -1,6 +1,5 @@
 ---
-name: Sending Infrastructure
-slug: sending-infrastructure
+name: sending-infrastructure
 description: >
   An INSTRUCTIONAL skill: it walks your agent through standing up email sending
   infrastructure that does not put the main business domain at risk. Separates the four kinds of

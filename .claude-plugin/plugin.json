@@ -1,0 +1,12 @@
+{
+  "name": "ai-in-action",
+  "description": "The AI in Action beginners skills hub. Every skill given away on the calls, in one plugin: the diary that builds your agent's memory, the three-word autonomy prompt, the gauntlet, the business interview, Computer Use, LinkedIn outreach, deterministic macros, the funnel builder, the workspace audit, four marketing agents, and the full content format pack.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Open Operator",
+    "url": "https://github.com/oscar-CAO123/ai-in-action-skill-packs"
+  },
+  "homepage": "https://github.com/oscar-CAO123/ai-in-action-skill-packs",
+  "license": "MIT",
+  "keywords": ["skills", "agents", "claude-code", "codex", "marketing", "content", "computer-use", "beginners"]
+}

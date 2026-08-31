@@ -1,0 +1,17 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "ai-in-action",
+  "description": "The AI in Action beginners skills hub. One install, every skill from the calls.",
+  "owner": {
+    "name": "Open Operator",
+    "url": "https://github.com/oscar-CAO123"
+  },
+  "plugins": [
+    {
+      "name": "ai-in-action",
+      "source": "./",
+      "description": "The AI in Action beginners skills hub. Every skill given away on the calls, in one plugin: the diary that builds your agent's memory, the three-word autonomy prompt, the gauntlet, the business interview, Computer Use, LinkedIn outreach, deterministic macros, the funnel builder, the workspace audit, four marketing agents, and the full content format pack.",
+      "category": "productivity"
+    }
+  ]
+}
