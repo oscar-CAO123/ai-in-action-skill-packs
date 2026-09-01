@@ -1,0 +1,16 @@
+{
+  "_note": "One entry per POINT. splits are token offsets inside a line where a new beat starts; stills are one slug per beat in order; focal is optional and only matters if a later pass adds a push.",
+  "splits": {
+    "0": [2, 8],
+    "1": [4],
+    "12": [9, 14, 18]
+  },
+  "stills": [
+    "01-opener",
+    "01b-second-point",
+    "01c-third-point"
+  ],
+  "focal": {
+    "01-opener": [0.42, 0.56]
+  }
+}

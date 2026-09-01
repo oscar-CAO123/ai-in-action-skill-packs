@@ -1,12 +1,29 @@
 {
   "name": "ai-in-action",
-  "description": "The AI in Action beginners skills hub. Every skill given away on the calls, in one plugin: the diary that builds your agent's memory, the three-word autonomy prompt, the gauntlet, the business interview, Computer Use, LinkedIn outreach, deterministic macros, the funnel builder, the workspace audit, four marketing agents, and the full content format pack.",
-  "version": "1.0.0",
+  "description": "The AI in Action skills, current drop 1 September 2026: the gauntlet, sharing your skills as a plugin, computer use, Seedance prompting, the content formats, stop the slop, and the content operating system.",
+  "version": "2026.09.01",
   "author": {
     "name": "Open Operator",
     "url": "https://github.com/oscar-CAO123/ai-in-action-skill-packs"
   },
   "homepage": "https://github.com/oscar-CAO123/ai-in-action-skill-packs",
   "license": "MIT",
-  "keywords": ["skills", "agents", "claude-code", "codex", "marketing", "content", "computer-use", "beginners"]
+  "skills": [
+    "./2026-09-01/01-gauntlet-goal",
+    "./2026-09-01/02-share-your-skills",
+    "./2026-09-01/03-computer-use",
+    "./2026-09-01/04-seedance-prompt",
+    "./2026-09-01/05-content-formats",
+    "./2026-09-01/06-stop-the-slop",
+    "./2026-09-01/07-content-operating-system"
+  ],
+  "keywords": [
+    "skills",
+    "agents",
+    "claude-code",
+    "codex",
+    "marketing",
+    "content",
+    "computer-use"
+  ]
 }

@@ -1,0 +1,42 @@
+[
+ {
+  "file": "textile-pattern-design-01.jpg",
+  "date": "1994-08-15",
+  "title": "Close-up of textile pattern.",
+  "item": "http://www.loc.gov/item/afcwip000204/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:afc:afc1995028:afc1995028_dtc005:afc1995028_dtc00512/full/pct:25/0/default.jpg",
+  "query": "textile pattern design",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "textile-pattern-design-02.jpg",
+  "date": "1994-08-15",
+  "title": "Gaetano Pepe with textile pattern.",
+  "item": "http://www.loc.gov/item/afcwip000202/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:afc:afc1995028:afc1995028_dtc005:afc1995028_dtc00510/full/pct:25/0/default.jpg",
+  "query": "textile pattern design",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "textile-pattern-design-03.jpg",
+  "date": "1994-08-15",
+  "title": "Gaetano Pepe with textile pattern.",
+  "item": "http://www.loc.gov/item/afcwip000203/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:afc:afc1995028:afc1995028_dtc005:afc1995028_dtc00511/full/pct:25/0/default.jpg",
+  "query": "textile pattern design",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "textile-pattern-design-04.jpg",
+  "date": "1994-08-15",
+  "title": "Woman uses computer to design fabric pattern.",
+  "item": "http://www.loc.gov/item/afcwip000982/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:afc:afc1995028:afc1995028_mcc024:afc1995028_mcc02412/full/pct:25/0/default.jpg",
+  "query": "textile pattern design",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ }
+]

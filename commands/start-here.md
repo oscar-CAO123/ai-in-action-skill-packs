@@ -13,18 +13,22 @@ step.
 
 2. Then say, in a few short lines:
 
-   - **No intelligence layer yet:** the next step is `member-business-interview`. Tell them plainly
-     that it talks to them for two or three hours, one question at a time, and writes their business
-     down as files every other skill in this plugin reads. Ask if they want to start it now.
+   - **No intelligence layer yet:** the next step is `member-business-interview`, which lives in the
+     repository at `2026-08-11/graph-engineering/member-business-interview` rather than in this
+     plugin. Tell them plainly that it talks to them for two or three hours, one question at a time,
+     and writes their business down as files every other skill reads. Ask if they want to start it.
    - **It exists:** ask what they are actually trying to do next, then route:
      build something ambitious and verifiable, `gauntlet-goal`. Turn a job they already do by hand
      into a skill, `member-workflow-graph`. Get an agent operating software, `computer-use`. Make
      content, `content-formats`. Share what they have built with their team, `share-your-skills`.
 
-3. Only if they ask, list the rest in one line each: `seedance-prompt` for video prompting,
-   `stop-the-slop` for anything going in front of customers, `workspace-audit` to check what their
-   routers claim against what is on disk, `funnel-builder` for a quiz funnel, and
-   `content-from-calls`, `engagement-signal-leads`, `reply-agent` and `sending-infrastructure` for
-   outbound.
+3. Only if they ask, list the rest of the current drop in one line each: `seedance-prompt` for video
+   prompting, `stop-the-slop` for anything going in front of customers, and
+   `content-operating-system` for the whole content pipeline.
+
+4. Everything from earlier calls is still in the repository by date, and it is not installed with
+   this plugin. `2026-08-11/` holds the business interview, the workspace audit, the funnel builder
+   and four marketing agents. `2026-08-18/` holds the diary and do-smart-things. Point them at the
+   folder rather than pretending the skill is available.
 
 Never run a skill without the user saying yes first.
