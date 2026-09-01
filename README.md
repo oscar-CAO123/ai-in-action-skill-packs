@@ -1,7 +1,7 @@
 # AI in Action skills
 
-The beginners skills hub for the AI in Action calls. Everything given away, in one plugin you
-install once and never think about again.
+**Current pack: 1 September 2026.** The beginners skills hub for the AI in Action calls. Everything
+given away, in one plugin you install once and never think about again.
 
 A **skill** is a plain markdown file your coding agent reads before it does the work. A **plugin**
 is just a way for the agent to find them. This repository is both: a marketplace and the plugin
@@ -72,12 +72,18 @@ The interview skills expect to talk to you for a while. That is the point of the
 field names, real numbers and real thresholds and you get something that runs. Answer vaguely and you
 get a plan.
 
-## A note on the layout
+## What changed on 1 September 2026
 
-Until 1 September 2026 this repository was organised as one folder per call date. It is now a single
-plugin with a flat `skills/` directory, because a dated folder is a good archive and a bad thing to
-install. The old layout is preserved in git history at the tag `dated-drops-2026-08-18` if you
-cloned it and want to compare.
+This pack supersedes the 18 August one. Until now the repository was organised as one folder per
+call date, which is a good archive and a bad thing to install: you had to know which date held the
+skill you wanted, and nothing updated by itself.
+
+It is now a single plugin with a flat `skills/` directory. Add the marketplace once, turn auto
+update on, and every later call lands on your machine without you doing anything. Same 16 skills,
+plus `/start-here`.
+
+If you cloned the old dated layout, it is preserved in git history at the tag
+`dated-drops-2026-08-18`.
 
 ## Licence
 
