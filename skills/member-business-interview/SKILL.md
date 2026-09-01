@@ -873,7 +873,7 @@ Based on what you said in the interview ("<auth_method>"), the most likely setup
 
 - **OAuth:** Create an OAuth app in <Tool>'s developer console, set redirect URI to `http://localhost:8765`, capture client ID + client secret, run a local consent flow to mint a refresh token. Store at `.secrets/<tool-slug>-credentials.json`.
 - **API key / token:** Open <Tool>'s settings → API / Developer / Integrations. Generate a token scoped to the operations the agent needs (read-only first). Store at `.secrets/<tool-slug>-credentials.json`.
-- **App password:** Open <Tool>'s account settings → security → app passwords. Generate one for "your agent". Store at `.secrets/<tool-slug>-credentials.json`.
+- **App password:** Open <Tool>'s account settings → security → app passwords. Generate one for your agent. Store at `.secrets/<tool-slug>-credentials.json`.
 - **Service account:** If <Tool> exposes service accounts (rare outside Google + AWS), create one in <Tool>'s admin console, grant the minimum permissions for the agent's reads. Store the credential JSON at `.secrets/<tool-slug>-credentials.json`.
 
 ## Steps to fill in
