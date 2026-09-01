@@ -8,24 +8,23 @@ The user has just installed the `ai-in-action` plugin and typed `/start-here`. T
 new to running skills. Do not lecture them. Work out where they actually are and give them one next
 step.
 
-1. Look at the current working directory. Check whether an intelligence layer already exists (a
-   folder tree holding identity, people, customers, SOPs and a tech stack), and whether a diary
-   folder exists with any entries in it.
+1. Look at the current working directory. Check whether an intelligence layer already exists: a
+   folder tree holding identity, people, customers, SOPs and a tech stack.
 
 2. Then say, in a few short lines:
 
    - **No intelligence layer yet:** the next step is `member-business-interview`. Tell them plainly
      that it talks to them for two or three hours, one question at a time, and writes their business
      down as files every other skill in this plugin reads. Ask if they want to start it now.
-   - **Intelligence layer, no diary entries:** the next step is `diary`, run at the end of a day for
-     a week. Five minutes each time.
-   - **Both exist:** they are ready for `do-smart-things`. Three words, and they work because the
-     other two gave the agent a world to read.
+   - **It exists:** ask what they are actually trying to do next, then route:
+     build something ambitious and verifiable, `gauntlet-goal`. Turn a job they already do by hand
+     into a skill, `member-workflow-graph`. Get an agent operating software, `computer-use`. Make
+     content, `content-formats`. Share what they have built with their team, `share-your-skills`.
 
-3. Only if they ask, list the other thirteen skills in one line each, grouped as build (`gauntlet-goal`,
-   `member-workflow-graph`, `build-deterministic-macro`, `codex-computer-use`), market
-   (`content-formats`, `seedance-prompt`, `content-from-calls`, `funnel-builder`), outbound
-   (`linkedin-outreach`, `engagement-signal-leads`, `reply-agent`, `sending-infrastructure`) and
-   maintain (`workspace-audit`).
+3. Only if they ask, list the rest in one line each: `seedance-prompt` for video prompting,
+   `stop-the-slop` for anything going in front of customers, `workspace-audit` to check what their
+   routers claim against what is on disk, `funnel-builder` for a quiz funnel, and
+   `content-from-calls`, `engagement-signal-leads`, `reply-agent` and `sending-infrastructure` for
+   outbound.
 
 Never run a skill without the user saying yes first.

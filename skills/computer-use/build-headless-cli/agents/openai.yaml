@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Headless CLI"
+  short_description: "Wrap application workflows in a CLI"
+  default_prompt: "Use -headless-cli to turn this application workflow into a tested headless command-line tool."
