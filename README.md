@@ -43,6 +43,7 @@ After that, `/start-here` will ask what you are trying to do and point you at th
 | `share-your-skills` | Turns your own skills folder into a repo that installs as a plugin, so your team gets them with one command. |
 | `computer-use` | The router for getting an agent to operate software: a CLI, a macro, driving the screen, and LinkedIn outreach as the worked example. |
 | `member-workflow-graph` | Takes one workflow you already run and turns it into a skill that does that work. |
+| `content-operating-system` | The whole content pipeline: a workspace sweep, an interview, then a brain, engine and outputs tree fed by your own customer evidence. |
 | `content-formats` | The craft skill for ad scripts, copy, hooks, VSLs, posts and carousels, routing to 30 format skills. |
 | `seedance-prompt` | Structured video prompting: one reference image into one unbroken photoreal take. |
 | `stop-the-slop` | Two passes that take the signs of AI writing out of anything going in front of customers. |
@@ -79,9 +80,9 @@ skill you wanted, and nothing updated by itself.
 It is now a single plugin with a flat `skills/` directory. Add the marketplace once, turn auto
 update on, and every later call lands on your machine without you doing anything.
 
-Also on 1 September: `share-your-skills` and `stop-the-slop` were added, the four automation skills
-were gathered under one `computer-use` router, `build-headless-cli` joined them, and `diary` and
-`do-smart-things` were removed.
+Also on 1 September: `content-operating-system`, `share-your-skills` and `stop-the-slop` were added,
+the four automation skills were gathered under one `computer-use` router, `build-headless-cli` joined
+them, and `diary` and `do-smart-things` were removed.
 
 If you cloned the old dated layout, it is preserved in git history at the tag
 `dated-drops-2026-08-18`.
