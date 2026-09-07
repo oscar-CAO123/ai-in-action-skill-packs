@@ -1,7 +1,7 @@
 {
   "name": "ai-in-action",
-  "description": "The AI in Action skills, current drop 1 September 2026: the gauntlet, sharing your skills as a plugin, computer use, Seedance prompting, the content formats, stop the slop, and the content operating system.",
-  "version": "2026.09.01",
+  "description": "The AI in Action skills, current drops 1 and 8 September 2026: the gauntlet, sharing your skills as a plugin, computer use, Seedance prompting, the content formats, stop the slop, the content operating system, and the Blender motion study.",
+  "version": "2026.09.08",
   "author": {
     "name": "Open Operator",
     "url": "https://github.com/oscar-CAO123/ai-in-action-skill-packs"
@@ -15,7 +15,8 @@
     "./2026-09-01/04-seedance-prompt",
     "./2026-09-01/05-content-formats",
     "./2026-09-01/06-stop-the-slop",
-    "./2026-09-01/07-content-operating-system"
+    "./2026-09-01/07-content-operating-system",
+    "./2026-09-08/01-blender-motion-study"
   ],
   "keywords": [
     "skills",
