@@ -1,0 +1,11 @@
+{
+  "source_dir": "~/Downloads/Campaign/Video",
+  "glob": "AD_*.mp4",
+  "whisper_model": "medium.en",
+  "speakers": {"A": "founder one", "B": "founder two"},
+  "films": {
+    "D": {"stem": "AD_06.08_A_DisappearedFromBusiness", "speaker": "A", "setting": "office-window"},
+    "SIX": {"stem": "AD_06.08_A_SixDifferentApps", "speaker": "A", "setting": "office-window"},
+    "T": {"stem": "AD_07.08_B_EverythingOnTheTable", "speaker": "B", "setting": "street"}
+  }
+}

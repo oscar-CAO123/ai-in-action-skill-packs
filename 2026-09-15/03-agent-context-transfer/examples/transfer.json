@@ -1,0 +1,32 @@
+{
+  "business_name": "Acme Plumbing",
+  "source_root": "~/acme-brain",
+  "repo_path": "~/acme-agent-context",
+  "include_globs": [
+    "CLAUDE.md", "AGENTS.md", "INDEX.md",
+    "context/**/*.md",
+    "skills/*.md", "skills/**/*.md", "skills/**/*.py", "skills/**/*.sh", "skills/**/*.mjs", "skills/**/*.yaml",
+    "agent/*.md"
+  ],
+  "exclude_patterns": [
+    "customers/", "clients/", "candidates/", "proposals/", "meetings/", "transcripts/", "invoices/",
+    "/outputs?/", "/exports?/", "/data/", "/sources/", "analysis[^/]*/", "/logos/", "/node_modules/", "/vendor/", "/__pycache__/", "/\\.venv/", "\\.secrets", "archive/"
+  ],
+  "allowed_email_domains": ["@acmeplumbing.com.au"],
+  "max_file_bytes": 400000,
+  "read_order": [
+    "context/company.md", "context/INDEX.md", "context/offer.md", "context/brand-voice.md",
+    "context/customers-and-pains.md", "context/process/INDEX.md", "agent/ops-agent.md", "skills/"
+  ],
+  "rules": [
+    "Never use em dashes. Say the positive thing directly.",
+    "Call the reader's business by its industry plus the word business.",
+    "Prices and quotes come from context/offer.md, never from memory."
+  ],
+  "tree_notes": [
+    "`CLAUDE.md` / `AGENTS.md`: the router. What lives where, which rules bind.",
+    "`context/`: what the business knows. Company, offer, voice, customers, process.",
+    "`skills/`: the business's own skills. A single `.md` is one skill; a folder with a `SKILL.md` is one skill with its scripts beside it.",
+    "`agent/`: the identity of the agent that runs the scheduled operations."
+  ]
+}

@@ -10,7 +10,7 @@
     {
       "name": "ai-in-action",
       "source": "./",
-      "description": "The AI in Action skills, current drops 1 and 8 September 2026: the gauntlet, sharing your skills as a plugin, computer use, Seedance prompting, the content formats, stop the slop, the content operating system, the Blender motion study, and the content machine.",
+      "description": "The AI in Action skills, current drops 1, 8 and 15 September 2026: the gauntlet, sharing your skills as a plugin, computer use, Seedance prompting, the content formats, stop the slop, the content operating system, the Blender motion study, the content machine, the ad tape recut, the soundbite miner, and the agent context transfer.",
       "category": "productivity",
       "skills": [
         "./2026-09-01/01-gauntlet-goal",
@@ -21,7 +21,10 @@
         "./2026-09-01/06-stop-the-slop",
         "./2026-09-01/07-content-operating-system",
         "./2026-09-08/01-blender-motion-study",
-        "./2026-09-08/02-content-machine"
+        "./2026-09-08/02-content-machine",
+        "./2026-09-15/01-ad-tape-recut",
+        "./2026-09-15/02-soundbite-miner",
+        "./2026-09-15/03-agent-context-transfer"
       ]
     }
   ]
