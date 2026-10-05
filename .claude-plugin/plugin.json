@@ -1,7 +1,7 @@
 {
   "name": "ai-in-action",
-  "description": "The AI in Action skills, current drops 1, 8 and 15 September 2026: the gauntlet, sharing your skills as a plugin, computer use, Seedance prompting, the content formats, stop the slop, the content operating system, the Blender motion study, the content machine, the ad tape recut, the soundbite miner, and the agent context transfer.",
-  "version": "2026.09.15",
+  "description": "The AI in Action skills, current drops 1, 8 and 15 September and 6 October 2026: the gauntlet, sharing your skills as a plugin, computer use, Seedance prompting, the content formats, stop the slop, the content operating system, the Blender motion study, the content machine, the ad tape recut, the soundbite miner, the agent context transfer, and build your own CRM.",
+  "version": "2026.10.06",
   "author": {
     "name": "Open Operator",
     "url": "https://github.com/oscar-CAO123/ai-in-action-skill-packs"
@@ -20,7 +20,8 @@
     "./2026-09-08/02-content-machine",
     "./2026-09-15/01-ad-tape-recut",
     "./2026-09-15/02-soundbite-miner",
-    "./2026-09-15/03-agent-context-transfer"
+    "./2026-09-15/03-agent-context-transfer",
+    "./2026-10-06/01-build-your-own-crm"
   ],
   "keywords": [
     "skills",

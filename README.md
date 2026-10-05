@@ -17,6 +17,7 @@ folder and says what it supersedes, so anything you cloned keeps working.
 | **1 September 2026** | The gauntlet, sharing your skills as a plugin, computer use, Seedance prompting, content formats, stop the slop, the content operating system | [`2026-09-01/`](2026-09-01/) |
 | **8 September 2026** | The Blender motion study, the skill behind the content animations, scrubbed to run on your script | [`2026-09-08/`](2026-09-08/) |
 | **15 September 2026** | The agent context transfer (one repository every agent reads, then ingest, build native skills, orchestrate), the ad tape recut and the soundbite miner | [`2026-09-15/`](2026-09-15/) |
+| **6 October 2026** | Build your own CRM: a deep interview, a detailed PRD, then your agent forks an open source CRM and builds it | [`2026-10-06/`](2026-10-06/) |
 
 ## Install the current drop as a plugin
 
@@ -30,7 +31,7 @@ current drop instead of copying folders around. In Claude Code or Codex, type `/
 
 **Turn on auto update** in the plugin menu. Every later call lands on your machine by itself.
 
-The plugin serves the **current drops**, [`2026-09-01/`](2026-09-01/), [`2026-09-08/`](2026-09-08/) and [`2026-09-15/`](2026-09-15/). The older folders stay
+The plugin serves the **current drops**, [`2026-09-01/`](2026-09-01/), [`2026-09-08/`](2026-09-08/), [`2026-09-15/`](2026-09-15/) and [`2026-10-06/`](2026-10-06/). The older folders stay
 where they are and stay readable. `02-share-your-skills` in that drop shows you how to do this with
 your own skills.
 
