@@ -1,0 +1,114 @@
+{
+  "project": {
+    "name": "",
+    "root": ".",
+    "timezone": "Australia/Sydney"
+  },
+
+  "sources": [
+    {
+      "id": "calls_export",
+      "type": "calls",
+      "rank": 1,
+      "enabled": true,
+      "paths": ["~/Drive/Call Transcripts"],
+      "lookback_days": 60
+    },
+    {
+      "id": "tickets_csv",
+      "type": "tickets",
+      "rank": 2,
+      "enabled": false,
+      "paths": ["~/Downloads/helpdesk-export"],
+      "lookback_days": 90
+    },
+    {
+      "id": "tickets_intercom",
+      "type": "tickets",
+      "rank": 2,
+      "enabled": false,
+      "vendor": "intercom",
+      "token_env": "HELPDESK_API_TOKEN",
+      "lookback_days": 30
+    },
+    {
+      "id": "forums_reddit",
+      "type": "forums",
+      "rank": 3,
+      "enabled": false,
+      "platform": "reddit",
+      "boards": [],
+      "listings": ["new", "top"],
+      "lookback_days": 30
+    },
+    {
+      "id": "forums_hn",
+      "type": "forums",
+      "rank": 4,
+      "enabled": false,
+      "platform": "hackernews",
+      "queries": [],
+      "lookback_days": 30
+    },
+    {
+      "id": "reviews_google",
+      "type": "reviews",
+      "rank": 5,
+      "enabled": false,
+      "route": "google_places",
+      "place_id": "",
+      "whose": "own",
+      "token_env": "GOOGLE_PLACES_API_KEY",
+      "lookback_days": 365
+    }
+  ],
+
+  "channels": [],
+  "formats": [],
+
+  "providers": {
+    "llm": "agent_cli",
+    "image": null,
+    "video": null,
+    "voice": null
+  },
+
+  "provider_settings": {
+    "openai":     { "token_env": "OPENAI_API_KEY", "quality": "medium" },
+    "google":     { "token_env": "GEMINI_API_KEY" },
+    "replicate":  { "token_env": "REPLICATE_API_TOKEN", "image_model": "", "video_model": "" },
+    "fal":        { "token_env": "FAL_KEY", "image_endpoint": "", "video_endpoint": "" },
+    "elevenlabs": { "token_env": "ELEVENLABS_API_KEY", "voice_id": "" }
+  },
+
+  "ideation": {
+    "ideas_per_run": 15,
+    "written_up": 5,
+    "lookback_days": 7,
+    "weights": {
+      "independent_sources": 3.0,
+      "recency": 2.0,
+      "money_behind_it": 2.0,
+      "repetition": 1.5,
+      "unanswered": 1.0
+    }
+  },
+
+  "caps": {
+    "weekly_generation_spend": 0,
+    "per_asset_spend": 0
+  },
+
+  "approval": {
+    "ingest": "unattended",
+    "ideate": "unattended",
+    "paid_generation": "human",
+    "publish": "human",
+    "system_of_record_write": "human"
+  },
+
+  "redaction": {
+    "enabled": true,
+    "keep": ["role", "industry", "size_band", "stage", "call_type"]
+  }
+}

@@ -1,0 +1,42 @@
+[
+ {
+  "file": "city-plan-survey-01.jpg",
+  "date": "1895",
+  "title": "Atlas of the city of Somerville, Massachusetts : from actual surveys and official plans",
+  "item": "http://www.loc.gov/item/2012587548/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd376m:g3764m:g3764sm:gla00253:ca000001/full/pct:25/0/default.jpg",
+  "query": "city plan survey",
+  "endpoint": "maps",
+  "rights": "Public domain, Library of Congress Geography & Map Division"
+ },
+ {
+  "file": "city-plan-survey-02.jpg",
+  "date": "1925",
+  "title": "Atlas of the city of Boston, Brighton : from actual surveys and official plans",
+  "item": "http://www.loc.gov/item/2007630744/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd376m:g3764m:g3764bm:gla00097:ca000001/full/pct:25/0/default.jpg",
+  "query": "city plan survey",
+  "endpoint": "maps",
+  "rights": "Public domain, Library of Congress Geography & Map Division"
+ },
+ {
+  "file": "city-plan-survey-03.jpg",
+  "date": "1894",
+  "title": "Atlas of the city of New York, Manhattan Island : from actual surveys and official plans",
+  "item": "http://www.loc.gov/item/2010587355/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd380m:g3804m:g3804nm:gla00209:ca000001/full/pct:25/0/default.jpg",
+  "query": "city plan survey",
+  "endpoint": "maps",
+  "rights": "Public domain, Library of Congress Geography & Map Division"
+ },
+ {
+  "file": "city-plan-survey-04.jpg",
+  "date": "1880",
+  "title": "City atlas of Schenectady, N.Y. : from official records, private plans and actual surveys",
+  "item": "http://www.loc.gov/item/2018593342/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:gmd:gmdatlases:20:18:59:33:42:2018593342:cs000001/full/pct:25/0/default.jpg",
+  "query": "city plan survey",
+  "endpoint": "maps",
+  "rights": "Public domain, Library of Congress Geography & Map Division"
+ }
+]

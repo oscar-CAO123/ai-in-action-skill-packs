@@ -1,0 +1,6 @@
+{
+  "_comment": "id: {name, stage, segments, note}. A segment token is a bank id, or id@start-end to trim inside it. One speaker per recipe, same setting throughout.",
+  "T4": {"name": "Open on the stat", "stage": "T", "segments": ["D-4", "D-2", "D-3", "D-5", "D-6"], "note": "opens on the proof line, the film's own hook trimmed out"},
+  "T4b": {"name": "Open on the stat, six apps bridge", "stage": "T", "segments": ["D-4", "SIX-2", "D-3", "D-5", "D-6"], "note": "same as T4 with the pain passage from the sister film (same setting) before the role"},
+  "B1": {"name": "The offer, native", "stage": "B", "segments": ["D-5@42.76-52.00", "D-6"], "note": "native trim of the close"}
+}

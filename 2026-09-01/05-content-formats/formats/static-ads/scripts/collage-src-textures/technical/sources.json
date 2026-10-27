@@ -1,0 +1,32 @@
+[
+ {
+  "file": "patent-mechanical-diagra-01.jpg",
+  "date": "1898",
+  "title": "A course in mechanical drawing /",
+  "item": "http://www.loc.gov/item/05028069/",
+  "image": "https://tile.loc.gov/image-services/iiif/public:gdcmassbookdig:courseinmechanic01reid:courseinmechanic01reid_0009/full/pct:25/0/default.jpg",
+  "query": "patent mechanical diagram",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "patent-mechanical-diagra-02.jpg",
+  "date": "1870",
+  "title": "The Portfolio, an artistic periodical;",
+  "item": "http://www.loc.gov/item/08019399/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:rbc:rbc0001:2023:2023rosen019399-1876:0001/full/pct:25/0/default.jpg",
+  "query": "patent mechanical diagram",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "patent-mechanical-diagra-03.jpg",
+  "date": "1917",
+  "title": "Greenhouses, their construction and equipment /",
+  "item": "http://www.loc.gov/item/17025367/",
+  "image": "https://tile.loc.gov/image-services/iiif/public:gdcmassbookdig:greenhousestheir01wrig:greenhousestheir01wrig_0007/full/pct:25/0/default.jpg",
+  "query": "patent mechanical diagram",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ }
+]

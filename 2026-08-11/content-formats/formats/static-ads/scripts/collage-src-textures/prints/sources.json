@@ -1,0 +1,52 @@
+[
+ {
+  "file": "machine-shop-engraving-01.jpg",
+  "date": "1841",
+  "title": "Punch.",
+  "item": "http://www.loc.gov/item/10003698/",
+  "image": "https://tile.loc.gov/image-services/iiif/public:gdc:10003698v56:00000003/full/pct:25/0/default.jpg",
+  "query": "machine shop engraving",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "machine-shop-engraving-02.jpg",
+  "date": "1897",
+  "title": "Pen drawing and pen draughtsmen : their work and their methods : a study of the art to-day with technical suggestions /",
+  "item": "http://www.loc.gov/item/81186564/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:rbc:rbc0001:2024:2024rosen186564:0001/full/pct:25/0/default.jpg",
+  "query": "machine shop engraving",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "botanical-engraving-plat-01.jpg",
+  "date": "1841",
+  "title": "Punch.",
+  "item": "http://www.loc.gov/item/10003698/",
+  "image": "https://tile.loc.gov/image-services/iiif/public:gdc:10003698v56:00000003/full/pct:25/0/default.jpg",
+  "query": "botanical engraving plate",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "botanical-engraving-plat-02.jpg",
+  "date": "1870",
+  "title": "The Portfolio, an artistic periodical;",
+  "item": "http://www.loc.gov/item/08019399/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:rbc:rbc0001:2023:2023rosen019399-1876:0001/full/pct:25/0/default.jpg",
+  "query": "botanical engraving plate",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "botanical-engraving-plat-03.jpg",
+  "date": "1900",
+  "title": "Fifty years of art, 1849-1899, being articles and illustrations selected from \"The Art journal.\"",
+  "item": "http://www.loc.gov/item/01010935/",
+  "image": "https://tile.loc.gov/image-services/iiif/public:gdc:00538951900:0008/full/pct:25/0/default.jpg",
+  "query": "botanical engraving plate",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ }
+]

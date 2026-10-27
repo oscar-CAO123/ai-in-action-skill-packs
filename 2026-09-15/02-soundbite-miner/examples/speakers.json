@@ -1,0 +1,4 @@
+{
+  "one": {"name": "Speaker One", "companies": ["Their Retail Co", "Their Current Co"], "themes": ["hiring", "AI in business"], "host_channels": ["Speaker One"]},
+  "two": {"name": "Speaker Two", "companies": ["Their Agency"], "themes": ["sales", "leadership"], "host_channels": ["Speaker Two", "Their Agency"]}
+}

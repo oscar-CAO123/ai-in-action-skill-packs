@@ -1,0 +1,14 @@
+{
+  "_comment": "id: [prefix, start, end, stage, beat]. Stages T (cold), M (warm), B (ready). Beats: HOOK PAIN EDU CRED TURN ROLE DIFF PROOF TEACH OFFER CTA. X = not usable in an ad.",
+  "D-1": ["D", 0.0, 6.72, "T", "HOOK"],
+  "D-2": ["D", 7.10, 27.90, "T", "EDU"],
+  "D-3": ["D", 28.00, 33.58, "M", "ROLE"],
+  "D-4": ["D", 33.92, 42.58, "M", "PROOF"],
+  "D-5": ["D", 42.76, 57.62, "B", "OFFER"],
+  "D-6": ["D", 57.62, 62.10, "B", "CTA"],
+  "SIX-1": ["SIX", 0.0, 8.40, "T", "HOOK"],
+  "SIX-2": ["SIX", 8.64, 30.20, "T", "PAIN"],
+  "SIX-3": ["SIX", 30.48, 38.60, "M", "TEACH"],
+  "T-1": ["T", 0.0, 5.20, "T", "HOOK"],
+  "T-2": ["T", 5.40, 19.80, "X", "third-party clip, rights unclear"]
+}

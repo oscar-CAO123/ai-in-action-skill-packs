@@ -1,0 +1,26 @@
+{
+  "_about": "A two second white-on-black hold with one weighted arrival, rendered through scripts/render.py. One dominant subject (the ring) on the centre line, two symmetric supporting bars flanking it. Swap the objects for the ones your storyboard names; keep the world, the camera and the material.",
+  "output": {"kind": "sequence", "ratio": "9:16", "fps": 60, "seconds": 2, "samples": 8, "view_transform": "Standard"},
+  "world": {"bg": [0, 0, 0], "strength": 0.0},
+  "materials": {
+    "white": {"color": [1, 1, 1], "roughness": 1.0, "metallic": 0.0}
+  },
+  "lights": [
+    {"type": "SUN", "loc": [0, -10, 0], "target": [0, 0, 0], "energy": 6.0, "color": [1, 1, 1]}
+  ],
+  "camera": {"lens": 50, "loc": [0, -10, 0], "target": [0, 0, 0], "ortho": true, "ortho_scale": 6.3, "ease": "bezier"},
+  "objects": [
+    {"type": "torus", "name": "ring", "loc": [4.5, 0, 0], "rot": [90, 0, 0], "size": 1.0, "material": "white", "smooth": true,
+     "keys": [
+       {"frame": 1,  "loc": [4.5, 0, 0]},
+       {"frame": 18, "loc": [-0.18, 0, 0]},
+       {"frame": 26, "loc": [0.06, 0, 0]},
+       {"frame": 34, "loc": [0, 0, 0]},
+       {"frame": 120, "loc": [0, 0, 0]}
+     ]},
+    {"type": "cube", "name": "bar_left", "loc": [-2.1, 0, 0], "scale": [0.08, 0.08, 1.2], "material": "white",
+     "keys": [{"frame": 1, "scale": [0.08, 0.08, 0.0]}, {"frame": 40, "scale": [0.08, 0.08, 0.0]}, {"frame": 52, "scale": [0.08, 0.08, 1.2]}, {"frame": 120, "scale": [0.08, 0.08, 1.2]}]},
+    {"type": "cube", "name": "bar_right", "loc": [2.1, 0, 0], "scale": [0.08, 0.08, 1.2], "material": "white",
+     "keys": [{"frame": 1, "scale": [0.08, 0.08, 0.0]}, {"frame": 40, "scale": [0.08, 0.08, 0.0]}, {"frame": 52, "scale": [0.08, 0.08, 1.2]}, {"frame": 120, "scale": [0.08, 0.08, 1.2]}]}
+  ]
+}

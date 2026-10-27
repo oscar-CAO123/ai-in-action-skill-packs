@@ -1,0 +1,5 @@
+{
+  "T4": {"text_hook": "Why you're actually\nstruggling to scale.", "ref": "user-verbatim", "note": "the user's own line, punctuation kept"},
+  "T4b": {"text_hook": "More software\n\u2260 better systems", "ref": "user-verbatim"},
+  "B1": {"text_hook": "Book the call\nbefore Friday", "ref": "drafted", "y": 1500, "note": "no card on this film; the user placed the pill by eye"}
+}

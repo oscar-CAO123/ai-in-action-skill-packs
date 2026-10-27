@@ -1,0 +1,11 @@
+{
+  "source_dir": "~/Downloads/Campaign/Video",
+  "glob": "AD_*.mp4",
+  "whisper_model": "medium.en",
+  "speakers": {"A": "founder one", "B": "founder two"},
+  "films": {
+    "D": {"stem": "AD_01_A_FirstTake", "speaker": "A", "setting": "office-window"},
+    "SIX": {"stem": "AD_02_A_SecondTake", "speaker": "A", "setting": "office-window"},
+    "T": {"stem": "AD_03_B_FirstTake", "speaker": "B", "setting": "street"}
+  }
+}

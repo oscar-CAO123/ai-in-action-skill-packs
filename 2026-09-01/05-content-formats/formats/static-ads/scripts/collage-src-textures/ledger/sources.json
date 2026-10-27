@@ -1,0 +1,32 @@
+[
+ {
+  "file": "ledger-account-book-page-01.jpg",
+  "date": null,
+  "title": "The Tractor field book, with power farm equipment specifications.",
+  "item": "http://www.loc.gov/item/18010410/",
+  "image": "https://tile.loc.gov/image-services/iiif/public:gdcmassbookdig:tractorfieldbook00unse:tractorfieldbook00unse_0007/full/pct:25/0/default.jpg",
+  "query": "ledger account book page",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "ledger-account-book-page-02.jpg",
+  "date": "1904",
+  "title": "Catalogue of the engraved portraits of Washington",
+  "item": "http://www.loc.gov/item/04002506/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:rbc:rbc0001:2024:2024rosen002506:0001/full/pct:25/0/default.jpg",
+  "query": "ledger account book page",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ },
+ {
+  "file": "ledger-account-book-page-03.jpg",
+  "date": "1918",
+  "title": "Hillie John Franz Collection",
+  "item": "http://www.loc.gov/item/afc2001001.12617/",
+  "image": "https://tile.loc.gov/image-services/iiif/service:vhp:0126:012617:ph0001001/full/pct:25/0/default.jpg",
+  "query": "ledger account book page",
+  "endpoint": "photos",
+  "rights": "Public domain, Library of Congress Prints & Photographs"
+ }
+]
