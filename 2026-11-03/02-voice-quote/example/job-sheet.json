@@ -1,0 +1,26 @@
+{
+  "_read_me": "A saved reading of transcript.txt, in the exact shape the model returns. The page uses it for the example when no API key is set, so you can see the pricing work first. The job, the name and the address are made up.",
+  "job": "fence",
+  "job_said": "a new Colorbond fence",
+  "facts": [
+    { "name": "fence.length_m", "value": "32", "said": "so thirty two metres in total" },
+    { "name": "fence.height_m", "value": "1.8", "said": "one point eight high" },
+    { "name": "fence.colour", "value": "Woodland Grey", "said": "Woodland Grey" },
+    { "name": "fence.gates", "value": "1", "said": "One pedestrian gate on the side" },
+    { "name": "fence.remove_old", "value": "yes", "said": "The old timber fence comes out and gets taken away" }
+  ],
+  "client": "Jo Sample",
+  "site": "12 Sample Street",
+  "timing": "in the next six weeks",
+  "timing_said": "Sometime in the next six weeks would suit",
+  "not_priced": [
+    { "item": "Core drill posts through the concrete path", "said": "a few posts will need core drilling" },
+    { "item": "Lattice on top of the back run", "said": "lattice on top of the back run for privacy" }
+  ],
+  "photo_notes": [],
+  "to_confirm": [
+    "How many posts land in the concrete path?",
+    "How high and how long should the lattice be?",
+    "Send the neighbour a fencing notice before work starts."
+  ]
+}

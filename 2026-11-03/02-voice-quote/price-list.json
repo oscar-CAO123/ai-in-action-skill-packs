@@ -1,0 +1,92 @@
+{
+  "_read_me": "Example rates for an example building business. Replace every number with your own before you send a real quote. SKILL.md walks your agent through it.",
+  "business": {
+    "name": "Example Building Co",
+    "abn": "00 000 000 000",
+    "email": "quotes@example.com",
+    "phone": "0400 000 000"
+  },
+  "locale": "en-AU",
+  "currency": "AUD",
+  "language": "en",
+  "markup_percent": 20,
+  "tax": { "label": "GST", "percent": 10 },
+  "deposit_percent": 10,
+  "valid_days": 30,
+  "terms": "Priced from our price list on the day of the quote. Any change to the work is priced and agreed in writing before it starts.",
+  "speech_hints": "Site voice note for a building quote. Colorbond, Monument, Surfmist, Woodland Grey, Basalt, merbau, balustrade, vanity, waterproofing.",
+  "jobs": {
+    "fence": {
+      "label": "Colorbond fence",
+      "listen_for": "fence, Colorbond, paling",
+      "facts": {
+        "length_m": { "label": "Length (m)", "type": "number", "means": "Length of the fence in lineal metres, added up across every run.", "needed": true },
+        "height_m": { "label": "Height (m)", "type": "number", "means": "Height of the fence in metres." },
+        "colour": { "label": "Colour", "type": "text", "means": "The Colorbond colour, for example Monument." },
+        "gates": { "label": "Gates", "type": "count", "means": "How many gates are asked for." },
+        "remove_old": { "label": "Old work removed", "type": "yes_no", "means": "yes only when the speaker says the old fence comes out or goes to the tip." }
+      },
+      "lines": [
+        { "item": "Colorbond panels", "unit": "m", "qty": "length_m", "rate": 52 },
+        { "item": "Steel posts and caps", "unit": "each", "qty": { "of": "length_m", "every": 2.4, "plus": 1 }, "rate": 41.5 },
+        { "item": "Concrete footings", "unit": "each", "qty": { "of": "length_m", "every": 2.4, "plus": 1 }, "rate": 18 },
+        { "item": "Gate to match, with latch", "unit": "each", "qty": "gates", "rate": 680 },
+        { "item": "Take away the old fence", "unit": "m", "qty": "length_m", "rate": 14, "only_if": "remove_old" },
+        { "item": "Labour", "unit": "m", "qty": "length_m", "rate": 165 }
+      ],
+      "checks": [
+        "Send the neighbour a fencing notice before work starts.",
+        "Over 1.8 m high: check with council before you build."
+      ]
+    },
+    "deck": {
+      "label": "Hardwood deck",
+      "listen_for": "deck, decking, merbau",
+      "facts": {
+        "area_m2": { "label": "Area (m²)", "type": "number", "means": "Deck area in square metres. Length times width when both are said.", "needed": true },
+        "steps": { "label": "Steps", "type": "count", "means": "How many sets of steps are asked for." },
+        "balustrade_m": { "label": "Balustrade (m)", "type": "number", "means": "Length of balustrade or railing in metres." },
+        "remove_old": { "label": "Old work removed", "type": "yes_no", "means": "yes only when the speaker says the old deck comes out." }
+      },
+      "lines": [
+        { "item": "Treated pine frame", "unit": "m²", "qty": "area_m2", "rate": 95 },
+        { "item": "Merbau decking boards", "unit": "m²", "qty": { "of": "area_m2", "times": 1.1 }, "rate": 118 },
+        { "item": "Footings and stirrups", "unit": "each", "qty": { "of": "area_m2", "every": 2.4 }, "rate": 46 },
+        { "item": "Steps", "unit": "each", "qty": "steps", "rate": 420 },
+        { "item": "Balustrade", "unit": "m", "qty": "balustrade_m", "rate": 210 },
+        { "item": "Take away the old deck", "unit": "m²", "qty": "area_m2", "rate": 22, "only_if": "remove_old" },
+        { "item": "Labour", "unit": "m²", "qty": "area_m2", "rate": 160 }
+      ],
+      "checks": [
+        "A floor more than 1 m above the ground needs a balustrade and may need council approval."
+      ]
+    },
+    "bathroom": {
+      "label": "Bathroom renovation",
+      "listen_for": "bathroom, ensuite",
+      "facts": {
+        "tiling_m2": { "label": "Tiling (m²)", "type": "number", "means": "Tiling area in square metres.", "needed": true },
+        "screen": { "label": "Shower screen", "type": "yes_no", "means": "yes when a shower screen is asked for." },
+        "vanity": { "label": "Vanity", "type": "yes_no", "means": "yes when a new vanity is asked for." },
+        "toilet": { "label": "Toilet", "type": "yes_no", "means": "yes when a new toilet is asked for." },
+        "towel_rail": { "label": "Heated towel rail", "type": "yes_no", "means": "yes when a heated towel rail is asked for." }
+      },
+      "lines": [
+        { "item": "Strip out the old bathroom", "unit": "lot", "qty": 1, "rate": 2400 },
+        { "item": "Waterproofing", "unit": "m²", "qty": { "of": "tiling_m2", "times": 0.35 }, "rate": 85 },
+        { "item": "Tiling labour and glue", "unit": "m²", "qty": "tiling_m2", "rate": 120 },
+        { "item": "Tiles, client to choose", "unit": "m²", "qty": "tiling_m2", "rate": 55, "tag": "Allowance" },
+        { "item": "Frameless shower screen", "unit": "each", "qty": 1, "rate": 1150, "only_if": "screen" },
+        { "item": "Vanity, client to choose", "unit": "each", "qty": 1, "rate": 1200, "only_if": "vanity", "tag": "Allowance" },
+        { "item": "Toilet suite", "unit": "each", "qty": 1, "rate": 1290, "only_if": "toilet" },
+        { "item": "Heated towel rail, supply and wire in", "unit": "each", "qty": 1, "rate": 650, "only_if": "towel_rail" },
+        { "item": "Plumbing", "unit": "lot", "qty": 1, "rate": 4200 },
+        { "item": "Electrical", "unit": "lot", "qty": 1, "rate": 1600 }
+      ],
+      "checks": [
+        "Waterproofing by a licensed waterproofer.",
+        "Licensed plumber and electrician."
+      ]
+    }
+  }
+}
