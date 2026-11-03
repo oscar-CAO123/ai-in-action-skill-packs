@@ -31,7 +31,9 @@ current drop instead of copying folders around. In Claude Code or Codex, type `/
 /plugin install ai-in-action
 ```
 
-**Turn on auto update** in the plugin menu. Every later call lands on your machine by itself.
+**Update after each call** from the plugin menu, so each new drop lands on your machine. Auto update
+also works, but it installs whatever is pushed next without asking, so scan each update first (the
+`2026-10-27/` folder shows how).
 
 The plugin serves the **current drops**, [`2026-09-01/`](2026-09-01/), [`2026-09-08/`](2026-09-08/), [`2026-09-15/`](2026-09-15/), [`2026-10-06/`](2026-10-06/) and [`2026-11-03/`](2026-11-03/). The older folders stay
 where they are and stay readable. `02-share-your-skills` in that drop shows you how to do this with

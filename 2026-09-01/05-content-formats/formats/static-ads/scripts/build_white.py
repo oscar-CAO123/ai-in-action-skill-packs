@@ -29,7 +29,7 @@ CSS = f"""
 @font-face{{font-family:'your display typeface';font-weight:200;src:url('{ASSETS}/display-200.ttf')}}
 @font-face{{font-family:'your display typeface';font-weight:300;src:url('{ASSETS}/display-300.ttf')}}
 @font-face{{font-family:'your display typeface';font-weight:500;src:url('{ASSETS}/display-500.ttf')}}
-:root{{--ink:#0f1020;--blue:#1269ff;--rule:rgba(15,16,32,.16);--t3:rgba(15,16,32,.55);--ground:#f5f7f6}}
+:root{{--ink:#0f1020;--blue:#3b82f6;--rule:rgba(15,16,32,.16);--t3:rgba(15,16,32,.55);--ground:#f5f7f6}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:{W}px;height:{H}px;background:var(--ground);overflow:hidden}}
 .card{{position:relative;width:{W}px;height:{H}px;background:var(--ground);overflow:hidden}}
@@ -70,8 +70,8 @@ def markup(s):
 # An arrow entering from above and landing on the centre figure, plus its label. Drawn in the
 # locked line-art language: one stroke weight, no icon set.
 def arrow_down(x, y_from, y_to, label, label_x, label_y, anchor="end"):
-    return (f'<path d="M{x} {y_from} L{x} {y_to}" stroke="#1269ff" stroke-width="3" fill="none"/>'
-            f'<path d="M{x-13} {y_to-18} L{x} {y_to} L{x+13} {y_to-18}" stroke="#1269ff" '
+    return (f'<path d="M{x} {y_from} L{x} {y_to}" stroke="#3b82f6" stroke-width="3" fill="none"/>'
+            f'<path d="M{x-13} {y_to-18} L{x} {y_to} L{x+13} {y_to-18}" stroke="#3b82f6" '
             f'stroke-width="3" fill="none" stroke-linejoin="round"/>'
             f'<text class="lbl" x="{label_x}" y="{label_y}" text-anchor="{anchor}">'
             f'{html.escape(label)}</text>')
@@ -126,7 +126,7 @@ def versus_overlay(cx, kx):
                 f'<path d="M{x-11} 746 L{x} 762 L{x+11} 746" stroke="{colour}" stroke-width="3" '
                 f'fill="none" stroke-linejoin="round"/>')
     return one(cx, "A consultant", "rgba(15,16,32,.55)") + one(kx, "A the role you place",
-                                                               "#1269ff")
+                                                               "#3b82f6")
 
 
 CARDS = {

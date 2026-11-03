@@ -1,6 +1,7 @@
 ---
 name: industry-build-carousel
-description: Use when you says "industry build carousel", "industry carousel", "what an AI hire builds", "vertical carousel", "grid carousel", or wants a house carousel that shows the actual systems an embedded the role you place builds for one industry. Builds a 4:5 carousel: a full-bleed 2x2 grid where each quadrant is shot in a DIFFERENT house style (painted noir, VHS camcorder, 16mm, Super 8, Betacam, security camera, press flash), with a white node diagram walking clockwise around a square ring centred on the frame. Format F8 in angles-and-formats.md.
+description: >-
+  Use when you says "industry build carousel", "industry carousel", "what an AI hire builds", "vertical carousel", "grid carousel", or wants a house carousel that shows the actual systems an embedded the role you place builds for one industry. Builds a 4:5 carousel: a full-bleed 2x2 grid where each quadrant is shot in a DIFFERENT house style (painted noir, VHS camcorder, 16mm, Super 8, Betacam, security camera, press flash), with a white node diagram walking clockwise around a square ring centred on the frame. Format F8 in angles-and-formats.md.
 canonical: false
 format: F8
 status: in gate (Step-6-style). Not a valid pick for the weekly draw until it passes.

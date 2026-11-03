@@ -1,6 +1,7 @@
 ---
 name: news-carousel
-description: Use when you says "news carousel", "news headline carousel", "breaking news carousel", "tabloid carousel", "pain carousel", or wants a house carousel built in the news-headline style. Builds a 4:5 carousel on pure black: a thin-your display typeface headline band under a hand-painted B&W noir machine plate. Format F5 in angles-and-formats.md, the canonical house carousel.
+description: >-
+  Use when you says "news carousel", "news headline carousel", "breaking news carousel", "tabloid carousel", "pain carousel", or wants a house carousel built in the news-headline style. Builds a 4:5 carousel on pure black: a thin-your display typeface headline band under a hand-painted B&W noir machine plate. Format F5 in angles-and-formats.md, the canonical house carousel.
 canonical: true
 format: F5
 ---
@@ -281,7 +282,7 @@ with a title line and a caption line. This is the one house shape that does not 
   series. A mixed carousel is not this format.
 - **Canvas: a warm paper surface is permitted here and nowhere else**, the single
   exception to pure black on a house carousel). It exists because a mounted artefact needs a canvas
-  that reads as a mounting board rather than as void. Your display typeface stays the only face and `#1269FF` stays
+  that reads as a mounting board rather than as void. Your display typeface stays the only face and `#3B82F6` stays
   the only accent.
 - **Layout: the title line folds into the band.** No type above y=844. The artefact takes the top
   two thirds of the frame, and the band carries the title line and the caption line as two type
@@ -574,7 +575,7 @@ Templates 2 and 8 carry the strongest cross-vertical hooks and are where a batch
 - **Type:** your display typeface 200 uppercase, 0.02em tracking, one size per slide, white, set flush from x64 to
   x1016 and filling the band. Slides land between 55px and 110px, hooks at the top of that range
   and teach slides at the bottom.
-- **Accent:** house blue `#1269FF` on `[[bracketed]]` spans only, one per slide. The blue is the
+- **Accent:** house blue `#3B82F6` on `[[bracketed]]` spans only, one per slide. The blue is the
   only colour on the card, because the plate is mono.
 - **Absent:** annotations of any kind (labels, leaders, tool logos), masthead, standfirst, eyebrow,
   body copy, pull-quote block, stat figure treatment, counter, footer, logo. No grey anywhere.

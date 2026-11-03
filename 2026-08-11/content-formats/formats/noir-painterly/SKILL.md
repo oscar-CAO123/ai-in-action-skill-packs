@@ -1,6 +1,7 @@
 ---
 name: noir-painterly
-description: Use when you says "noir", "noir animation", "painterly noir", "the noir style", "oil noir", "hand-painted noir", "noir watercolour", "the brand animation style", or wants a brand video or static built in the hand-painted black-and-white oil-noir look. Builds the cutaway business-as-machine world: thick brushstrokes, glowing white work on belts, faceless silhouettes, single hard key, crushed blacks. This is the brand's declared animation style. Format F2 in angles-and-formats.md. Stills are locked, the motion treatment is written and awaiting its pilot beat.
+description: >-
+  Use when you says "noir", "noir animation", "painterly noir", "the noir style", "oil noir", "hand-painted noir", "noir watercolour", "the brand animation style", or wants a brand video or static built in the hand-painted black-and-white oil-noir look. Builds the cutaway business-as-machine world: thick brushstrokes, glowing white work on belts, faceless silhouettes, single hard key, crushed blacks. This is the brand's declared animation style. Format F2 in angles-and-formats.md. Stills are locked, the motion treatment is written and awaiting its pilot beat.
 canonical: true
 format: F2
 ---
@@ -385,7 +386,7 @@ points at Russo or a fresh sample. Sample before locking, review in Cursor.
 **Music.** Light bed, low, near-silent open, lifting on the proof beat and resolving on the end
 card. Never wall to wall.
 
-**Look, grade, palette.** Deep navy base `#1A1A2E`, one electric-blue accent `#1269FF` used with
+**Look, grade, palette.** Deep navy base `#1A1A2E`, one electric-blue accent `#3B82F6` used with
 intent (a screen glow, a UI highlight, one caption word), text `#F4F6FB`, muted `#8A8FA3`. Never
 wash a frame in blue, one accent per shot. Controlled soft key, shallow depth of field, precise
 macro framing, subtle volumetric depth, photoreal, clean negative space. Semi-premium rather than
@@ -411,7 +412,7 @@ matched to the VO delay. Every enunciated word is covered; the end card stays ca
 
 **End card.** Matte deep-navy `#1A1A2E`, generous negative space, `your wordmark` muted,
 one restrained gradient accent
-(`radial-gradient(circle at 80% 45%, rgba(18,105,255,0.10) 0%, transparent 55%)`). The line
+(`radial-gradient(circle at 80% 45%, rgba(59,130,246,0.10) 0%, transparent 55%)`). The line
 "your call to action.", optionally one dry tag beneath in fine muted italic. Music resolves and cuts
 on the card. The close drives to your site.
 

@@ -47,7 +47,7 @@ CHROME = os.environ.get("CHROME_BIN",
 
 W, H = 1080, 1350
 THIRD = H // 3                # 450
-BLUE = "#1269FF"
+BLUE = "#3B82F6"
 PAD = 64
 INK_DARK = "#0a0a0a"          # type on a paper or white ground, never pure #000
 

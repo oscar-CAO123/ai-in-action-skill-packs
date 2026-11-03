@@ -65,7 +65,7 @@ while the graded plate stays behind the tear. The subject is alone in it, holdin
 themselves, and the location is deleted rather than tinted.
 
 **The sunglasses are GENERATED, not drawn.** Pop-art shades on every subject: heavy black contour,
-flat `#1269FF` lens, Ben-Day dot field, one white glint. Described in the prompt as a flat comic
+flat `#3B82F6` lens, Ben-Day dot field, one white glint. Described in the prompt as a flat comic
 graphic so they read drawn inside a photoreal frame. The compositor never paints them on.
 
 **The card.**

@@ -1,6 +1,7 @@
 ---
 name: editorial-layer
-description: Use when you says "editorial layer", "newspaper cutouts", "make it feel editorial", "layered background", "archival cutouts", "newsprint", "collage layer", or wants a brand video to stop sitting on flat black and instead sit on layered archival imagery, or wants newspaper and editorial fragments cut out and floating in a shot. A layer, not a format: it bolts onto F2, F10 and F11 without changing them.
+description: >-
+  Use when you says "editorial layer", "newspaper cutouts", "make it feel editorial", "layered background", "archival cutouts", "newsprint", "collage layer", or wants a brand video to stop sitting on flat black and instead sit on layered archival imagery, or wants newspaper and editorial fragments cut out and floating in a shot. A layer, not a format: it bolts onto F2, F10 and F11 without changing them.
 canonical: true
 layer: L-EDIT
 ---

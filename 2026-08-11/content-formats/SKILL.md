@@ -873,7 +873,7 @@ sentences stay flat and factual and let the facts be the shock.
 
 **Load:** E-059 (the silent bar: the whole thing lands in the text or it does not land),
 E-008 (borrow the news frame, and the limit that goes with it: fabricating a source, a study or
-a masthead is out, because trust is existential for a recruitment brand), E-039 and E-016 (the
+a masthead is out, because trust is existential for a service brand), E-039 and E-016 (the
 unrounded number leads, every adjective replaced by the fact under it), E-054 (the scope caveat
 lives on the card, in the same sentence, and it costs three words), E-019 and E-064 (slide one
 buys slide two, and nothing else), E-030 (no naked callout on slide one), E-052 (industry x
@@ -1052,7 +1052,7 @@ white, no outline or shadow, dead center, timed to whisper word onsets against t
 audio. Rig at `content-engine/engine/tools/captions/`.
 
 **End card (canonical):** matte deep navy `#1A1A2E`, `your wordmark` muted, one
-restrained `#1269FF` radial accent, the line "your call to action." Music resolves and cuts on
+restrained `#3B82F6` radial accent, the line "your call to action." Music resolves and cuts on
 the card.
 
 **Moiré shimmer (optional, any asset, adopted :** a company-wide finishing layer that
@@ -1083,8 +1083,8 @@ card. No talking head, roughly 90% AI-buildable, cheap to batch. Full spec:
 | **Voice** | Casual, deep, unmistakably Australian, male. Dry confidence, unhurried. Talks to one owner like a mate who has seen behind the curtain. your voice model `eleven_multilingual_v2`, voice ID is a gated ear test. |
 | **Music** | Light bed, low. Near-silent open, lifts on the proof beat, resolves and cuts on the end card. Never wall to wall. |
 | **Visuals** | Semi-premium and precise. Clean macro, controlled lighting, shallow depth of field, real-material texture. One notch below full luxury on purpose. The operator's world: hands at a keyboard, a dashboard resolving, an inbox clearing. |
-| **Palette** | Deep navy `#1A1A2E`, one electric-blue accent `#1269FF` used with intent, text `#F4F6FB`, muted `#8A8FA3`. Never wash a frame in blue, one accent per shot. |
-| **Captions** | Kinetic, word by word, hard-synced to the voice. Sora, weight 800, tight tracking. Mostly `#F4F6FB` with a single `#1269FF` accent word per phrase on the load-bearing word. |
+| **Palette** | Deep navy `#1A1A2E`, one electric-blue accent `#3B82F6` used with intent, text `#F4F6FB`, muted `#8A8FA3`. Never wash a frame in blue, one accent per shot. |
+| **Captions** | Kinetic, word by word, hard-synced to the voice. Sora, weight 800, tight tracking. Mostly `#F4F6FB` with a single `#3B82F6` accent word per phrase on the load-bearing word. |
 | **Never** | Text baked into the generated plate, moiré baked into the generated plate, garbled AI type, stock cheese, rainbow gradients, more than one accent colour. |
 
 **Refining images:** always feed the existing image plus its anchors back as i2i references.
@@ -1103,7 +1103,7 @@ funnel-builder skill in this repo produces most of what the first one needs.
 
 ## 10. The QA gate
 
-Run the output-qa gate against every draft before it leaves. The skill itself was archived to `Archive/old-skills/general/output-qa.md` (read-only); the six gates are restated here so the archive is reference, not a dependency. Six gates, in order,
+Run the output-qa gate against every draft before it leaves. The original skill is archived (read-only); the six gates are restated here so the archive is reference, not a dependency. Six gates, in order,
 stopping at the first failure: em dash scan, banned pattern scan, banned vocabulary scan,
 voice match check, reference bank comparison, format-specific checks.
 

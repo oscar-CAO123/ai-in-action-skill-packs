@@ -1,6 +1,7 @@
 ---
 name: static-ads-hand-drawn
-description: F7 sub-skill. Deliberately low fidelity: marker, pen, paper, whiteboard, phone snapshot. Owns the rules that keep low fidelity readable rather than sloppy. Use for the napkin, the whiteboard explainer, and the ultra low-fi static. Read formats/static-ads/SKILL.md first for the shared law.
+description: >-
+  F7 sub-skill. Deliberately low fidelity: marker, pen, paper, whiteboard, phone snapshot. Owns the rules that keep low fidelity readable rather than sloppy. Use for the napkin, the whiteboard explainer, and the ultra low-fi static. Read formats/static-ads/SKILL.md first for the shared law.
 parent: static-ads
 format: F7.4
 ---

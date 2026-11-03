@@ -94,7 +94,7 @@ Craft and the QA gate: `skills/content-formats/SKILL.md`.
 
 ## Phase 3. VO
 
-`scripts/vo_stems.sh` cuts one stem per line so line boundaries stay exact, then
+`scripts/vo_stems.sh <voice_id>` (a voice from your voice library) cuts one stem per line so line boundaries stay exact, then
 `scripts/join_vo.py` trims each stem's own head and tail, butts them together over controlled gaps
 and writes `vo/timeline.json`.
 

@@ -1,6 +1,7 @@
 ---
 name: seedance-prompt
-description: Use when you says "seedance prompt", "seedance 2.5", "write a seedance prompt", "structured video prompt", "turn this image into a video", "fly the camera through this reference", "shot-by-shot prompt", or has one or two reference images and wants a single unbroken photoreal take out of them. A layer, not a format: it bolts onto any format that turns stills into motion, and it runs the generation on Higgsfield.
+description: >-
+  Use when you says "seedance prompt", "seedance 2.5", "write a seedance prompt", "structured video prompt", "turn this image into a video", "fly the camera through this reference", "shot-by-shot prompt", or has one or two reference images and wants a single unbroken photoreal take out of them. A layer, not a format: it bolts onto any format that turns stills into motion, and it runs the generation on Higgsfield.
 canonical: true
 layer: L-SEED
 ---
@@ -26,8 +27,6 @@ They compose, and they answer different questions: `path-control` specifies **wh
 drawing the route on the plate. `L-SEED` specifies **the world it flies through**, in prose. On a
 shot using both, `[MOTION]` shrinks to pace and reaction while the drawn line carries the geometry.
 
-Provenance is in `reference-ophelia-decode.md`. Read it only to check our working. It is evidence,
-it is not instruction, and nothing in it binds.
 
 ---
 

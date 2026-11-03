@@ -30,7 +30,7 @@ CSS = f"""
 @font-face{{font-family:'your display typeface';font-weight:500;src:url('{ASSETS}/display-500.ttf')}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:{W}px;height:{H}px;background:var(--paper);overflow:hidden}}
-:root{{--paper:#f4f2ee;--ink:#0f1020;--blue:#1269ff;--t3:rgba(15,16,32,.58)}}
+:root{{--paper:#f4f2ee;--ink:#0f1020;--blue:#3b82f6;--t3:rgba(15,16,32,.58)}}
 .card{{position:relative;width:{W}px;height:{H}px;overflow:hidden;background:var(--paper)}}
 /* The plate is 4:5, the same ratio as the card, so it bleeds full frame and the type sits
    OVER the artwork. Legibility comes from a paper-coloured wash rather than a dark scrim: a

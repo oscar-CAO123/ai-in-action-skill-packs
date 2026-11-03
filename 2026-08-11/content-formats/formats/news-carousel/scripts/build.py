@@ -33,7 +33,7 @@ LOGO_SVG = re.sub(r"<\?xml.*?\?>", "", (ASSETS / "house-logo.svg").read_text, fl
 LOGO_SVG = LOGO_SVG.replace("<svg ", '<svg fill="#FFFFFF" ', 1)
 
 W, H = 1080, 1350
-BLUE = "#1269FF"
+BLUE = "#3B82F6"
 SAFE = 984            # 1080 minus the 48px side padding
 ANTON_ADVANCE = 0.44  # measured average glyph advance as a fraction of font size
 POPPINS_ADVANCE = 0.53

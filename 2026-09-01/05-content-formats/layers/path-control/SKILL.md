@@ -1,6 +1,7 @@
 ---
 name: path-control
-description: Use when you says "path control", "draw the camera path", "annotated camera move", "draw the line on the plate", "fly the camera through this still", or wants a video shot to follow an exact route through a scene instead of whatever the text prompt happens to produce. A layer, not a format: it bolts onto any format that generates motion from a still.
+description: >-
+  Use when you says "path control", "draw the camera path", "annotated camera move", "draw the line on the plate", "fly the camera through this still", or wants a video shot to follow an exact route through a scene instead of whatever the text prompt happens to produce. A layer, not a format: it bolts onto any format that generates motion from a still.
 canonical: true
 layer: L-PATH
 ---
