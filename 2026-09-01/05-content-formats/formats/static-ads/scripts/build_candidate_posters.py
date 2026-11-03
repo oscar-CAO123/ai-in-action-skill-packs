@@ -4,7 +4,7 @@
     python3 build_candidate_posters.py            # renders layout with placeholder plates
     python3 build_candidate_posters.py --plates   # uses the real plates once they exist
 
-Copy of record: BATCH-1-COPY.md U1 and U4. Spec of record: candidate-angles/POSTER-SPEC.md.
+Copy of record: BATCH-1-COPY.md U1 and U4. Spec of record: angles/POSTER-SPEC.md.
 Everything here is free. The plates are the only paid part and they are generated one at a
 time by hand, never from this script.
 """

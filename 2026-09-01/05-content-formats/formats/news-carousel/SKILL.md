@@ -312,7 +312,7 @@ numbers, which is also what keeps scope discipline (section 3) honest now that t
 together.
 
 **The mechanics are evidence too.** They come from the build's own record in
-`projects/your-knowledge-hub/import-data/staged/builds/`, whose `solution` and
+your export of build records, whose `solution` and
 `replicate_steps` fields describe how each build actually works. Translate that into plain
 English, never invent a mechanism, and never dress it in the source's stack jargon: "a
 graph-based multi-agent framework with RAG" becomes "it works out the next step and opens your

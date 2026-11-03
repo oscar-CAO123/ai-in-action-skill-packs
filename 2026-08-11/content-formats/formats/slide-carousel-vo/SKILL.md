@@ -15,8 +15,8 @@ the canonical one-word captions go on last.
 
 No motion model is called at any point. The movement is entirely the cut, the flick and the tape.
 
-**Reference:** @null.histories on Instagram, hidden-history stories narrated over held frames,
-crossed with the Chris Moran reel the moiré pass came from. Worked example and the whole rig:
+**Reference:** a hidden-history account on Instagram, stories narrated over held frames,
+crossed with the reel the moiré pass came from. Worked example and the whole rig:
 `projects/content-engine/ideas/cio-1981-noir/` (shipped 87s, 44 beats, 49 stills).
 
 **When to pick this format:** a story or an argument that moves through many small points, where

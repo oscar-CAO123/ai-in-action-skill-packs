@@ -144,8 +144,8 @@ Give them exactly two lines:
 /plugin install <plugin-name>
 ```
 
-Then tell them the part everyone forgets: **update when you say a new version is out** (the `/plugin`
-menu). Without it they are frozen at whatever the repository held on the day they installed. Auto
+Then tell them the part everyone forgets: **update whenever you announce a new version** (the
+`/plugin` menu). Without it they are frozen at whatever the repository held on the day they installed. Auto
 update is quicker, but it installs whatever is pushed next without anyone looking, so turn it on only
 if everyone trusts every push to the repository.
 

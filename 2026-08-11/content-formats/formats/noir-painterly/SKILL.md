@@ -78,8 +78,8 @@ ideas: skills/content-formats/formats/noir-painterly/IDEAS.md
 | | |
 |---|---|
 | Original build and full spec | `projects/content-engine/ideas/noir-machine/` (`SHOTS.md`, `anchor/prompt.txt`, `bin/`) |
-| Approved static bank (27 frames) | `projects/founder-webinar/founder-vsl-full/stills-noir/` plus `CONTACT-SHEET.jpg` |
-| Canonical shot list | `projects/founder-webinar/founder-vsl-full/SCRIPT-founder-vsl-v2-noir-vo.md`, the per-beat "Visuals:" blocks |
+| Approved static bank (27 frames) | `projects/<your-vsl>/stills-noir/` plus `CONTACT-SHEET.jpg` |
+| Canonical shot list | `projects/<your-vsl>/SCRIPT-founder-vsl-v2-noir-vo.md`, the per-beat "Visuals:" blocks |
 | Working generators | `stills-noir/gen_all_statics.sh`, `gen_detext.sh`, `animate_all.sh`, `contactsheet.py` |
 
 Copy `stills-noir/` as the starting toolkit for a new build. Every script resolves its own
@@ -323,7 +323,7 @@ so the entire cost risk of this format sits in this phase.
   the raw stem). Whisper `small.en` with the script as `initial_prompt`.
 - **End card (canonical), do not hand-build one.**
   `content-engine/engine/config/brand/endcard-client-9x16.png` (still) and
-  `founder-webinar/ads/_parts/endcard-9x16.mp4` (animated 3s). Black, mono white the business logo,
+  `<your-vsl>/ads/_parts/endcard-9x16.mp4` (animated 3s). Black, mono white the business logo,
   "your call to action". The white-logo PNG `house-logo-white-300.png` has a checkerboard
   baked into its transparency and is unusable on black.
 - **your captions tool handoff** when you wants to edit: strip audio from the cut, copy stems and raw
@@ -367,9 +367,9 @@ so the entire cost risk of this format sits in this phase.
 ## The Faceless Reframe brand doctrine
 
 Migrated from `skills/content-formats/formats/ (the Faceless Reframe doctrine now lives in each video format skill)`, which is retired.
-Reverse-engineered from four high-spend Duppe Scents ads (page_id `511918325342558`), all
+Reverse-engineered from four high-spend faceless ads from one consumer brand, all
 faceless VO plus captions over precise macro on the same four-beat spine. Contact sheets:
-`projects/content-engine/engine/reference-bank/exceptional-videos/duppe-faceless-reframe/`.
+`projects/content-engine/engine/reference-bank/exceptional-videos/faceless-reframe/`.
 
 **The voice.** Distinct, casual, deep, unmistakably Australian, male. Dry confidence, unhurried,
 talking to one owner like a mate who has seen behind the curtain. Slightly cheeky, never
@@ -393,9 +393,9 @@ macro framing, subtle volumetric depth, photoreal, clean negative space. Semi-pr
 busy, one notch below full luxury on purpose. No text baked into the generated plate, no garbled
 AI type, no stock cheese, no rainbow gradients, never a second accent colour.
 
-**The brand shot bank** (the Duppe shot list translated):
+**The brand shot bank** (the reference shot list translated):
 
-| Duppe shot | brand equivalent |
+| Reference shot | brand equivalent |
 |---|---|
 | Gloved hands in the lab, beakers, pipettes, funnels filling bottles | The operator's world in precise macro: hands at a clean keyboard, a screen mid-build, a dashboard resolving, a workflow diagram assembling, an inbox clearing, a quote drafting on screen. The manufacturing is the building. |
 | Competitor luxury bottles shown, then dethroned | The con props, shown then dethroned: a consultant's glossy slide deck, a contractor's van pulling away, a generic AI course thumbnail, a stack of half-built automations. Handle them, then set them aside. |

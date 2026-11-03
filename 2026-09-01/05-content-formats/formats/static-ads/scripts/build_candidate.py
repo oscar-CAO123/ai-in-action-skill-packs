@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Candidate-facing F7.1 type-led statics (audience A, the entry-level role entry tier).
 
-Copy of record: `projects/content-engine/candidate-angles/BATCH-1-COPY.md`, units U1 and U4.
+Copy of record: `projects/content-engine/angles/BATCH-1-COPY.md`, units U1 and U4.
 Free to render: no plate, no paid generation, ever (type-led/SKILL.md section 1).
 
 Theme is `noir` (your display typeface 200 caps), matching every static the house currently ships and the
