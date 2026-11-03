@@ -9,8 +9,8 @@ Pulled from the canonical sources only: `SKILL.md` (the F7 router, sections 0-3)
 
 > **The reference layer is the 41 Figma extracts in
 > `context/advertising/static-ads-bank/templates/` and nothing else.** The scraped Meta and
-> LinkedIn swipe banks were pulled out on and moved to
-> `Archive/old-context/static-ads-swipe-banks-/`. Do not re-scrape or cite them.
+> LinkedIn swipe banks were pulled out and moved to
+> an archive folder. Do not re-scrape or cite them.
 
 ---
 

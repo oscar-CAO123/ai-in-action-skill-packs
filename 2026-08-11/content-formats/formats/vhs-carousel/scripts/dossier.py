@@ -22,7 +22,7 @@ def b64(p):
 
 
 CSS = """
-:root{--bg:#0e0f12;--card:#16181d;--line:#262a33;--txt:#e8eaf0;--mut:#8a8fa3;--blue:#1269FF}
+:root{--bg:#0e0f12;--card:#16181d;--line:#262a33;--txt:#e8eaf0;--mut:#8a8fa3;--blue:#3B82F6}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--txt);font:15px/1.55 -apple-system,BlinkMacSystemFont,
   'Segoe UI',sans-serif;padding:40px}
@@ -33,7 +33,7 @@ h1{font-size:26px;letter-spacing:-.01em;margin-bottom:6px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .shot{position:relative;line-height:0}
 .shot img{width:100%;display:block}
-.well{position:absolute;border:2px dashed rgba(18,105,255,.95);
+.well{position:absolute;border:2px dashed rgba(59,130,246,.95);
   box-shadow:0 0 0 1px rgba(0,0,0,.5) inset}
 .well span{position:absolute;top:-1px;left:-1px;background:var(--blue);color:#fff;
   font:600 11px/1 sans-serif;padding:4px 6px;letter-spacing:.06em}

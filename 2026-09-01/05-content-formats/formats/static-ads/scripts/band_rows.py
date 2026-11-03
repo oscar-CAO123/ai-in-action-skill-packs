@@ -46,7 +46,7 @@ W, H = 1080, 1350
 WELL = H * 3 // 8          # 506, the band. Identical to band.py.
 PAD = 64
 COL = W - 2 * PAD          # 952, the flush column every row runs in
-BLUE = "#1269FF"
+BLUE = "#3B82F6"
 
 ACC = re.compile(r"\[\[(.+?)\]\]")
 

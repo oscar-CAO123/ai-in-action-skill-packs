@@ -30,7 +30,7 @@ CSS = f"""
 @font-face{{font-family:'your display typeface';font-weight:200;src:url('{ASSETS}/display-200.ttf')}}
 @font-face{{font-family:'your display typeface';font-weight:300;src:url('{ASSETS}/display-300.ttf')}}
 @font-face{{font-family:'your display typeface';font-weight:500;src:url('{ASSETS}/display-500.ttf')}}
-:root{{--blue:#1269ff}}
+:root{{--blue:#3b82f6}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:{W}px;height:{H}px;background:#000;overflow:hidden}}
 .card{{position:relative;width:{W}px;height:{H}px;overflow:hidden}}

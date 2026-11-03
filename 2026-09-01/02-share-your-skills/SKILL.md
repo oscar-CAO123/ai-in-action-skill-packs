@@ -10,7 +10,7 @@ a plugin, which is the only sharing method that survives a non-technical teammat
 
 **What you are building.** One GitHub repository that is both a marketplace and the plugin inside
 it. Two small JSON files do that. Everyone adds the repository once, installs the plugin once, and
-every change you push afterwards lands on their machine on its own.
+every change you push afterwards is one update away for them.
 
 Drive, Dropbox and Obsidian all fail here for the same reason: the agent reads skills from its own
 directory, so somebody has to symlink a synced folder into it, and that breaks the first time a
@@ -144,9 +144,10 @@ Give them exactly two lines:
 /plugin install <plugin-name>
 ```
 
-Then tell them the part everyone forgets: **turn auto update on** in the `/plugin` menu. Without it
-they are frozen at whatever the repository held on the day they installed, and nobody notices for
-weeks.
+Then tell them the part everyone forgets: **update whenever you announce a new version** (the
+`/plugin` menu). Without it they are frozen at whatever the repository held on the day they installed. Auto
+update is quicker, but it installs whatever is pushed next without anyone looking, so turn it on only
+if everyone trusts every push to the repository.
 
 Worth saying out loud once: the same plugin works in Codex, and because it is a git repository, a
 skill somebody ruins is one revert away.

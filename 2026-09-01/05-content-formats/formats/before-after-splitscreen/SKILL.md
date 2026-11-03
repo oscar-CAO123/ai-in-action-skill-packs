@@ -1,6 +1,7 @@
 ---
 name: before-after-splitscreen
-description: Use when you says "before and after", "split screen", "splitscreen", "before/after carousel", "the painting one", or wants a house static showing a business owner before and after they hire a the role you place. Builds a 4:5 split screen: two classical oil paintings of the same owner in the same room meeting at a hard centre seam, their pains listed in your display typeface over the dark half and what changed listed over the light half. Format F9 in angles-and-formats.md.
+description: >-
+  Use when you says "before and after", "split screen", "splitscreen", "before/after carousel", "the painting one", or wants a house static showing a business owner before and after they hire a the role you place. Builds a 4:5 split screen: two classical oil paintings of the same owner in the same room meeting at a hard centre seam, their pains listed in your display typeface over the dark half and what changed listed over the light half. Format F9 in angles-and-formats.md.
 canonical: false
 format: F9
 status: in gate (Step-6-style). Not a valid pick for the weekly draw until it passes.
@@ -133,7 +134,7 @@ evidence rather than promotion. Applied by judgement, on roughly half the slides
 moral on a single photograph.
 
 **What the house changes from the reference.** Faces stay turned away or in shadow, per the house rule.
-The accent is `#1269FF`, never the reference's red. The pairing is the reader's week before and
+The accent is `#3B82F6`, never the reference's red. The pairing is the reader's week before and
 after a the role you place, or house against the alternative they are considering, never a
 founder flex. And the caption carries the argument, because the reference's caption carries none.
 

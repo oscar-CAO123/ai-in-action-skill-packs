@@ -1,9 +1,12 @@
 /**
  * guarded.ts : the primitives every scheduled agent in this pack shares.
  *
- * THE CONTAINMENT CONTRACT. Without ALLOW_PROD_WRITES=1 nothing leaves this machine. Every write
- * and every send goes through guardedWrite, which prints the payload and records it under the run
- * directory instead of performing it.
+ * THE CONTAINMENT CONTRACT. Without ALLOW_PROD_WRITES=1 nothing is written to your store and no
+ * message is sent. Every write and every send goes through guardedWrite, which prints the payload and
+ * records it under the run directory instead of performing it. Two calls are not gated: dataSelect
+ * reads from DATA_URL when DATA_URL and DATA_KEY are both set, and callModel always posts the prompt
+ * to the model API (without a key that call fails, but the request is still made). Run with no keys,
+ * as in the env -i line below, and a run that makes no model calls stays on this machine.
  *
  * Nothing here is tied to one database or one model provider. DATA_URL and DATA_KEY point at
  * whatever REST surface your store exposes; swap sbSelect for your client if you have one.
@@ -42,7 +45,8 @@ export function runDirectory(): string { return runDir; }
 // ---------------------------------------------------------------------------
 
 /**
- * The only way a scheduled agent writes or sends anything. It sits directly above fetch.
+ * The only way a scheduled agent writes to your store or sends a message. It sits directly above
+ * fetch. Model calls go through callModel, which is not gated.
  *
  * One function, deliberately, rather than a boolean read in four places: a flag that guards the
  * code you remember writing has no reach into a helper somebody else imported. Alerting and
@@ -50,7 +54,7 @@ export function runDirectory(): string { return runDir; }
  */
 export async function guardedWrite(what: string, url: string, init: RequestInit): Promise<Response | null> {
   if (!ALLOW_PROD_WRITES) {
-    console.log(`  WOULD ${what} (ALLOW_PROD_WRITES is not 1, so nothing left this machine)`);
+    console.log(`  WOULD ${what} (ALLOW_PROD_WRITES is not 1, so nothing was written or sent)`);
     if (runDir) {
       const dir = join(runDir, "would-write");
       mkdirSync(dir, { recursive: true });
@@ -67,7 +71,7 @@ export async function guardedWrite(what: string, url: string, init: RequestInit)
   return r;
 }
 
-/** Reads are ungated, and they still need a key. With no key you get an empty list and a gap. */
+/** Reads are ungated, and they still need a key. With no key you get an empty list; record the gap yourself. */
 export async function dataSelect<T>(path: string): Promise<T[]> {
   if (!DATA_URL || !DATA_KEY) return [];
   const r = await fetch(`${DATA_URL}/${path}`, {

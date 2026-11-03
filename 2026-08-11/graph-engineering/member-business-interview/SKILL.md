@@ -1,8 +1,10 @@
 ---
 name: member-business-interview-skill
-description: Run by an Open Operator member in a CLI agent (Claude Code, Codex CLI, Cursor terminal, or any agent with shell and file access). Conducts a deep 2-3 hour business interview, ONE question at a time, then emits a setup.sh that creates a local intelligence-layer folder tree (the agent's business memory): identity, you, memory rules, people, customers, SOPs, the tech stack, and per-tool connection notes. No PDF, no build plan, just the interview and the files.
+description: >-
+  Run by an Open Operator member in a CLI agent (Claude Code, Codex CLI, Cursor terminal, or any agent with shell and file access). Conducts a deep 2-3 hour business interview, ONE question at a time, then emits a setup.sh that creates a local intelligence-layer folder tree (the agent's business memory): identity, you, memory rules, people, customers, SOPs, the tech stack, and per-tool connection notes. No PDF, no build plan, just the interview and the files.
 purpose: Self-serve OO member business interview plus local intelligence-layer bootstrap. CLI-first, chatbot-tolerated.
-version: 1.0 ---
+version: 1.0
+---
 
 # Open Operator: Member Business Interview Skill
 

@@ -1,6 +1,7 @@
 ---
 name: static-ads-lead-magnet
-description: F7 sub-skill. The five lead-magnet statics: one visual format per hook, filled across seven industries, every card closing on a lead magnet that exists as a built page. Use when you asks for statics for the lead magnets, for a new industry's magnet ads, or to re-run any of the five formats. Read formats/static-ads/SKILL.md first for the shared law.
+description: >-
+  F7 sub-skill. The five lead-magnet statics: one visual format per hook, filled across seven industries, every card closing on a lead magnet that exists as a built page. Use when you asks for statics for the lead magnets, for a new industry's magnet ads, or to re-run any of the five formats. Read formats/static-ads/SKILL.md first for the shared law.
 parent: static-ads
 format: F7.6
 ---

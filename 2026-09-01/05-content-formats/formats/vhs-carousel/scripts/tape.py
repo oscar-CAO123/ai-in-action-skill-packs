@@ -6,7 +6,7 @@
     contrast(a, b)     WCAG contrast ratio, the gate both laws answer to
 
 Both laws were measured off the reference set at
-`content-engine/engine/reference-bank/carousels/DbQkpEOAl1l/` and the numbers behind them
+`content-engine/engine/reference-bank/carousels/<reference-carousel>/` and the numbers behind them
 are written up in that folder's ENTRY.md. Re-derive with `measure.py`.
 """
 import colorsys

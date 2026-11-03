@@ -37,7 +37,7 @@ CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 W, H = 1080, 1350
 PAD = 84
-BLUE = "#1269FF"
+BLUE = "#3B82F6"
 INK = "#101014"
 
 # Per-industry presentation. `tilt` in degrees, `width` in px on a 1080 card, `drop` is the

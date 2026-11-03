@@ -56,7 +56,7 @@ MIRROR_SITE = {"hospitality", "retail", "financial-services"}
 # greened the room at all), so it is masked here instead, which costs nothing and is exact.
 # After re-reading the reference reel: the paper is a BED, not a set of pasted
 # chips. The first pass cut small rectangles, gave each a white edge and sat them inside the frame,
-# and the verdict was that it read as pasted on. The reel (a reference account DY7TSLJAQef,
+# and the verdict was that it read as pasted on. The reel (a reference account,
 # decoded at `layers/editorial-layer/reference-decode-b.png`) does the opposite: whole pages,
 # overlapping, tilted a few degrees, running OFF all four edges with no cut edge anywhere, then
 # both ends of the range squeezed toward the middle so the paper is felt rather than read. The

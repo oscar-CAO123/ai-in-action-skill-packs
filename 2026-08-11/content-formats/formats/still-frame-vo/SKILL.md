@@ -201,7 +201,7 @@ The end card stays caption-free, which is what `--endclean` protects.
 
 - **End card (canonical), do not hand-build one.**
   `content-engine/engine/config/brand/endcard-client-9x16.png` (still, hold about 3s) or
-  `founder-webinar/ads/_parts/endcard-9x16.mp4` (animated 3s). Black, mono white the business mark,
+  `<your-vsl>/ads/_parts/endcard-9x16.mp4` (animated 3s). Black, mono white the business mark,
   "your call to action".
 - **Optional persistent hook line** above the frame, in the a reference account manner. The renderer is
   `archive/nighthawks/work/render_hook.py` (your display typeface, auto-fit to 950px, transparent PNG), overlaid
@@ -241,9 +241,9 @@ The end card stays caption-free, which is what `--endclean` protects.
 ## The Faceless Reframe brand doctrine
 
 Migrated from `skills/content-formats/formats/ (the Faceless Reframe doctrine now lives in each video format skill)`, which is retired.
-Reverse-engineered from four high-spend Duppe Scents ads (page_id `511918325342558`), all
+Reverse-engineered from four high-spend faceless ads from one consumer brand, all
 faceless VO plus captions over precise macro on the same four-beat spine. Contact sheets:
-`projects/content-engine/engine/reference-bank/exceptional-videos/duppe-faceless-reframe/`.
+`projects/content-engine/engine/reference-bank/exceptional-videos/faceless-reframe/`.
 
 **The voice.** Distinct, casual, deep, unmistakably Australian, male. Dry confidence, unhurried,
 talking to one owner like a mate who has seen behind the curtain. Slightly cheeky, never
@@ -260,16 +260,16 @@ points at Russo or a fresh sample. Sample before locking, review in Cursor.
 **Music.** Light bed, low, near-silent open, lifting on the proof beat and resolving on the end
 card. Never wall to wall.
 
-**Look, grade, palette.** Deep navy base `#1A1A2E`, one electric-blue accent `#1269FF` used with
+**Look, grade, palette.** Deep navy base `#1A1A2E`, one electric-blue accent `#3B82F6` used with
 intent (a screen glow, a UI highlight, one caption word), text `#F4F6FB`, muted `#8A8FA3`. Never
 wash a frame in blue, one accent per shot. Controlled soft key, shallow depth of field, precise
 macro framing, subtle volumetric depth, photoreal, clean negative space. Semi-premium rather than
 busy, one notch below full luxury on purpose. No text baked into the generated plate, no garbled
 AI type, no stock cheese, no rainbow gradients, never a second accent colour.
 
-**The brand shot bank** (the Duppe shot list translated):
+**The brand shot bank** (the reference shot list translated):
 
-| Duppe shot | brand equivalent |
+| Reference shot | brand equivalent |
 |---|---|
 | Gloved hands in the lab, beakers, pipettes, funnels filling bottles | The operator's world in precise macro: hands at a clean keyboard, a screen mid-build, a dashboard resolving, a workflow diagram assembling, an inbox clearing, a quote drafting on screen. The manufacturing is the building. |
 | Competitor luxury bottles shown, then dethroned | The con props, shown then dethroned: a consultant's glossy slide deck, a contractor's van pulling away, a generic AI course thumbnail, a stack of half-built automations. Handle them, then set them aside. |
@@ -286,7 +286,7 @@ matched to the VO delay. Every enunciated word is covered; the end card stays ca
 
 **End card.** Matte deep-navy `#1A1A2E`, generous negative space, `your wordmark` muted,
 one restrained gradient accent
-(`radial-gradient(circle at 80% 45%, rgba(18,105,255,0.10) 0%, transparent 55%)`). The line
+(`radial-gradient(circle at 80% 45%, rgba(59,130,246,0.10) 0%, transparent 55%)`). The line
 "your call to action.", optionally one dry tag beneath in fine muted italic. Music resolves and cuts
 on the card. The close drives to your site.
 

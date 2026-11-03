@@ -147,9 +147,9 @@ Ask once whether their industry has a regulator or a contractual limit on this. 
 ## Calls (Fathom)
 
 - **Rank:** 1
-- **Where:** ~/Library/CloudStorage/GoogleDrive/.../Fathom Transcripts/
+- **Where:** <the folder your call recorder exports to>
 - **Reach:** local folder, no credentials, watched by the ingestion job
-- **Depth:** March 2025 to now, roughly 340 transcripts
+- **Depth:** <earliest date> to now, roughly <n> transcripts
 - **Record:** date, call type, role, transcript text, source id
 - **Redaction:** names and company names stripped at ingestion
 - **Good for:** objections, buying triggers, the words they use for the problem
@@ -166,7 +166,7 @@ Machine-readable half in `engine/config.json`:
       "type": "calls",
       "rank": 1,
       "enabled": true,
-      "paths": ["~/Drive/Fathom Transcripts"],
+      "paths": ["<path/to/call-transcripts>"],
       "redact": true,
       "lookback_days": 30
     }

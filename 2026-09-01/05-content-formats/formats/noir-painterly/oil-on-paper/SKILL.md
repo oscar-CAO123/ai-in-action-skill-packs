@@ -17,7 +17,7 @@ room. Paint on paper, with air around it.
 
 **When to use it.** Candidate-facing work (audience A), where the parent's black world reads heavy
 and corporate. Employer-facing work stays in the black environment. Approved on the candidate side
-as deviation D1 in `projects/content-engine/candidate-angles/BATCH-1-COPY.md`.
+as deviation D1 in `projects/content-engine/angles/BATCH-1-COPY.md`.
 
 ---
 
@@ -129,4 +129,4 @@ cutouts, per `layers/editorial-layer/SKILL.md`.
 
 Parent style: `formats/noir-painterly/SKILL.md`. The bed: `layers/editorial-layer/SKILL.md`.
 The band and poster engines: `formats/static-ads/scripts/band.py` and `poster.py`.
-Live use and deviations: `projects/content-engine/candidate-angles/BATCH-1-COPY.md`.
+Live use and deviations: `projects/content-engine/angles/BATCH-1-COPY.md`.

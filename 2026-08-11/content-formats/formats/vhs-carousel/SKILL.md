@@ -1,6 +1,7 @@
 ---
 name: vhs-carousel
-description: Use when you says "tape carousel", "VHS carousel", "the degraded photo carousel", "type in the negative space", or wants a house carousel where each slide is one full-bleed VHS-degraded photograph with the copy sitting inside empty space composed into the shot. Builds 4:5 slides at 1080x1350: the plate fills the frame, the well is found in the plate, and the ink colour is taken off the ground it lands on. Format F12 in angles-and-formats.md.
+description: >-
+  Use when you says "tape carousel", "VHS carousel", "the degraded photo carousel", "type in the negative space", or wants a house carousel where each slide is one full-bleed VHS-degraded photograph with the copy sitting inside empty space composed into the shot. Builds 4:5 slides at 1080x1350: the plate fills the frame, the well is found in the plate, and the ink colour is taken off the ground it lands on. Format F12 in angles-and-formats.md.
 canonical: false
 format: F12
 status: built and rendering on stand-in plates. Not a valid pick for the weekly draw until a real shot set passes review.
@@ -18,8 +19,8 @@ board, F12 borrows the trust of found footage. It reads as something that was re
 than designed, and the words read as a caption someone added to it.
 
 **The vehicle is lifted from `a reference account`** (`instagram.com/p/<id>/`, 12 slides,
-12,868 likes) and rebuilt in the house's world. The reference is ingested, measured and written up
-at `content-engine/engine/reference-bank/carousels/DbQkpEOAl1l/`. Read that ENTRY.md before
+a high-engagement post) and rebuilt in the house's world. The reference is ingested, measured and written up
+at `content-engine/engine/reference-bank/carousels/<reference-carousel>/`. Read that ENTRY.md before
 changing anything here: every law below is a measured number off those twelve slides, not a
 preference.
 

@@ -27,7 +27,7 @@ CHROME = os.environ.get("CHROME_BIN",
                         "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
 W, H = 1080, 1350
-BLUE = "#1269FF"
+BLUE = "#3B82F6"
 PAD = 84
 
 CSS = f"""

@@ -132,7 +132,7 @@ h1 {{ font-size:34px; font-weight:300; letter-spacing:.01em; margin:0 0 6px; }}
 .lede {{ color:#9a9aa4; max-width:74ch; margin:0 0 40px; }}
 h2 {{ font-size:19px; font-weight:400; margin:52px 0 4px; padding-bottom:8px;
      border-bottom:1px solid #26262c; }}
-.n {{ color:#1269FF; font-size:14px; }}
+.n {{ color:#3B82F6; font-size:14px; }}
 .blurb {{ color:#8e8e98; max-width:80ch; margin:10px 0 22px; }}
 .grid {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:20px; }}
 figure {{ margin:0; }}
@@ -143,7 +143,7 @@ table {{ width:100%; border-collapse:collapse; margin-top:20px; font-size:13.5px
 th {{ text-align:left; font-weight:500; color:#8e8e98; padding:8px 12px 8px 0;
      border-bottom:1px solid #26262c; }}
 td {{ padding:8px 12px 8px 0; border-bottom:1px solid #1c1c22; vertical-align:top; }}
-tr.done td {{ color:#1269FF; }}
+tr.done td {{ color:#3B82F6; }}
 td.f {{ color:#7e7e88; }}
 .wrap {{ overflow-x:auto; }}
 </style>

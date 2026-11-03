@@ -30,7 +30,7 @@ CHROME = os.environ.get(
     "CHROME_BIN", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
 W, H = 1080, 1350
-BLUE = "#1269FF"
+BLUE = "#3B82F6"
 INSET = 0.035           # keep type off the well's own edges, fraction of the frame
 MIN_INSET_PX = 46
 

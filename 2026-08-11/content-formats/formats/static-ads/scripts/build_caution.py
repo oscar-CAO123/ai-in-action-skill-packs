@@ -37,7 +37,7 @@ OUT = ROOT / "out-magnet"
 ASSETS = ROOT.parent / "assets"
 
 W, PLATE_H = 1080, 844
-BLUE = "#1269FF"
+BLUE = "#3B82F6"
 
 # you, second pass: **the laptop is gone, the mark is much larger, everything is
 # centred and symmetrical, and it centres on the PLATE AREA, not the whole card.** The plate runs

@@ -1,6 +1,7 @@
 ---
 name: path-control
-description: Use when you says "path control", "draw the camera path", "annotated camera move", "draw the line on the plate", "fly the camera through this still", or wants a video shot to follow an exact route through a scene instead of whatever the text prompt happens to produce. A layer, not a format: it bolts onto any format that generates motion from a still.
+description: >-
+  Use when you says "path control", "draw the camera path", "annotated camera move", "draw the line on the plate", "fly the camera through this still", or wants a video shot to follow an exact route through a scene instead of whatever the text prompt happens to produce. A layer, not a format: it bolts onto any format that generates motion from a still.
 canonical: true
 layer: L-PATH
 ---
@@ -17,10 +18,10 @@ end point.** Prose gets you a genre of move. A drawn line gets you the move.
 
 **References:** two reels, scraped with a scraping API token and decoded frame by frame.
 
-| Ref | Account | Source artwork | Plays / likes | Clip |
+| Ref | Account | Source artwork | Engagement | Clip |
 |---|---|---|---|---|
-| A | `a reference account`, `instagram.com/p/<id>/` | Zbyszko Siemaszko press photograph, Pulawska St, Warsaw, 1968 | 10.1K likes | `reference-bank/reels/ref-pathcontrol-Dbz_OTCKbFd.mp4`, 26.6s, 1080x1920 |
-| B | `a reference account`, `instagram.com/p/<id>/` | Matejko's Stanczyk, Bocklin's self-portrait, Van Gogh's Starry Night | 192.5K likes | `reference-bank/reels/ref-pathcontrol-DbftzezssqF.mp4`, 20.0s, 750x1333 |
+| A | `a reference account`, `instagram.com/p/<id>/` | Zbyszko Siemaszko press photograph, Pulawska St, Warsaw, 1968 | high engagement | `reference-bank/reels/ref-pathcontrol-a.mp4`, 26.6s, 1080x1920 |
+| B | `a reference account`, `instagram.com/p/<id>/` | Matejko's Stanczyk, Bocklin's self-portrait, Van Gogh's Starry Night | high engagement | `reference-bank/reels/ref-pathcontrol-b.mp4`, 20.0s, 750x1333 |
 
 Decoded contact sheets are `reference-decode-a.png` and `reference-decode-b.png` in this folder.
 Ref B states its stack in the caption: made inside your generation platform, tagged `#your video model`.

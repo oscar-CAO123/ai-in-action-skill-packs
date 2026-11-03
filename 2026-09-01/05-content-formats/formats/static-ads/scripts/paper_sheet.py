@@ -50,7 +50,7 @@ COLW = int(W * 0.58)          # 626, the type column's width
 HEAD_GAP = 46                 # heading block to the first body line
 
 
-BLUE = "#1269FF"
+BLUE = "#3B82F6"
 
 
 def highlighter(seed=3, colour=BLUE, alpha=0.30):

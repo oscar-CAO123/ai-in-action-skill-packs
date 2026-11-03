@@ -24,7 +24,7 @@ CHROME = os.environ.get("CHROME_BIN",
                         "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
 W, H = 1080, 1350
-BLUE = "#1269FF"
+BLUE = "#3B82F6"
 PAD = 64
 WELL = H * 3 // 8             # every mark lives in the bottom 1.5/4 of the frame
 LH = 0.95                     # tight, but clear of the ink Anton hangs below the baseline

@@ -134,7 +134,7 @@ The slowest to pay off, the hardest to copy.
 **"You say the answer is honest even when it hurts. So what is the honest answer to
 'this is too expensive for a business our size'?"**
 
-- **Source:** lost deal, 12 Aug, "we just can't justify it at our revenue" (calls_fathom / c-2291)
+- **Source:** lost deal, <date>, "<their exact words>" (<source id> / <record id>)
 - **Also seen:** 3 forum threads, r/[their industry], all within 60 days
 - **Format fit:** talking head, 60 to 90 seconds
 - **Status:** unanswered

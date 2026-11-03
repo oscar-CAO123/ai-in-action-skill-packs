@@ -1,6 +1,7 @@
 ---
 name: static-ads
-description: Use when you says "static ad", "single image ad", "Meta static", "make some statics", "static ads for [avatar]", or wants one-image house ad creative rather than video or a carousel. The F7 router. Routes to one of five production sub-skills (type-led, plate-led, ui-mock, hand-drawn, proof) and carries the law they all share: the band, the copy rules, the swipe bank, the funnel label. Format F7 in angles-and-formats.md, the paid-first volume format.
+description: >-
+  Use when you says "static ad", "single image ad", "Meta static", "make some statics", "static ads for [avatar]", or wants one-image house ad creative rather than video or a carousel. The F7 router. Routes to one of five production sub-skills (type-led, plate-led, ui-mock, hand-drawn, proof) and carries the law they all share: the band, the copy rules, the swipe bank, the funnel label. Format F7 in angles-and-formats.md, the paid-first volume format.
 canonical: true
 format: F7
 router: true
@@ -277,7 +278,7 @@ archetype or scaffold in the bank that fits them.
 
 **The scraped swipe banks are GONE from the reference layer.** Every scraped
 Meta and LinkedIn record, the consolidators, the galleries and the derived taxonomy were moved to
-`Archive/old-context/static-ads-swipe-banks-/` and are not a source of anything. Do not
+an archive folder and are not a source of anything. Do not
 re-scrape, do not rebuild them, and do not cite them. The reference layer is the 41 Figma extracts
 in `context/advertising/static-ads-bank/templates/` and nothing else.
 

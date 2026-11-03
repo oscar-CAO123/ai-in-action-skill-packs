@@ -76,7 +76,7 @@ def doc_entries(bank):
 
 
 # NOT A BANK, deliberately. Direction: the scraped Meta and LinkedIn swipe records were
-# moved to `Archive/old-context/static-ads-swipe-banks-/` and are not a source of
+# moved to an archive folder and are not a source of
 # anything. `static-ads/SKILL.md` section 3: "do not re-scrape, do not rebuild them, and do not
 # cite them. The reference layer is the Figma extracts and nothing else." A competitor static
 # is therefore not citable here, and adding a `swipe` bank back reopens a closed decision.

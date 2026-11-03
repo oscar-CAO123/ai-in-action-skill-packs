@@ -57,7 +57,7 @@ CSS = f"""
 @font-face {{ font-family:'your display typeface'; font-weight:200; src:url('{ASSETS}/display-200.ttf'); }}
 @font-face {{ font-family:'your display typeface'; font-weight:300; src:url('{ASSETS}/display-300.ttf'); }}
 @font-face {{ font-family:'your display typeface'; font-weight:500; src:url('{ASSETS}/display-500.ttf'); }}
-:root {{ --bg:#04050f; --card:#0c0d1a; --blue:#1269ff; --blue-dim:rgba(18,105,255,.12);
+:root {{ --bg:#04050f; --card:#0c0d1a; --blue:#3b82f6; --blue-dim:rgba(59,130,246,.12);
  --t1:#fff; --t3:rgba(255,255,255,.52); --t4:rgba(255,255,255,.28);
  --border:rgba(255,255,255,.08); --border-h:rgba(255,255,255,.18); }}
 * {{ margin:0; padding:0; box-sizing:border-box; }}
@@ -162,8 +162,8 @@ def build():
     h.append('</table>')
 
     h.append('<h2>The reference layer <span class="n">Tier 1 Figma scaffolds</span></h2>')
-    h.append('<p class="blurb">The scraped swipe banks were removed on and moved to '
-             '<b>Archive/old-context/static-ads-swipe-banks-/</b>. The reference layer is '
+    h.append('<p class="blurb">The scraped swipe banks were removed and moved to '
+             '<b>an archive folder</b>. The reference layer is '
              'the 41 Figma extracts and nothing else. These five survived the test that <b>house has '
              'no product to photograph</b>, so only scaffolds whose argument holds with the product '
              'removed transfer.</p>')

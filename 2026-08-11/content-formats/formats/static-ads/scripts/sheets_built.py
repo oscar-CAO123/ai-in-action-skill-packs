@@ -53,10 +53,10 @@ h1{{font-weight:300;font-size:34px;margin-bottom:6px}}
      padding:14px 0 18px;margin-bottom:26px;border-bottom:1px solid #1e1e28}}
 button{{font-family:inherit;font-weight:300;font-size:14px;color:#E8E8ED;background:#14141c;
    border:1px solid #26263a;border-radius:99px;padding:7px 16px;margin:0 7px 7px 0;cursor:pointer}}
-button.on{{background:#1269ff;border-color:#1269ff}}
+button.on{{background:#3b82f6;border-color:#3b82f6}}
 .fmt{{margin:34px 0 46px}}
 .fh{{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:3px}}
-.fid{{font-weight:500;font-size:20px;color:#1269ff}}
+.fid{{font-weight:500;font-size:20px;color:#3b82f6}}
 .fn{{font-size:20px}}
 .meta{{font-size:13px;opacity:.5}}
 .hook{{font-size:13px;opacity:.6;margin-bottom:15px}}

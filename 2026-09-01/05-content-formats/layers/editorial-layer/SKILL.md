@@ -1,6 +1,7 @@
 ---
 name: editorial-layer
-description: Use when you says "editorial layer", "newspaper cutouts", "make it feel editorial", "layered background", "archival cutouts", "newsprint", "collage layer", or wants a brand video to stop sitting on flat black and instead sit on layered archival imagery, or wants newspaper and editorial fragments cut out and floating in a shot. A layer, not a format: it bolts onto F2, F10 and F11 without changing them.
+description: >-
+  Use when you says "editorial layer", "newspaper cutouts", "make it feel editorial", "layered background", "archival cutouts", "newsprint", "collage layer", or wants a brand video to stop sitting on flat black and instead sit on layered archival imagery, or wants newspaper and editorial fragments cut out and floating in a shot. A layer, not a format: it bolts onto F2, F10 and F11 without changing them.
 canonical: true
 layer: L-EDIT
 ---
@@ -16,7 +17,7 @@ scraped and decoded frame by frame . Caption: *"One of the easiest ways to make 
 graphics feel more editorial."* The reel is a tutorial, so it states the method rather than only
 demonstrating it. Decoded contact sheets are `reference-decode-a.png` and `reference-decode-b.png`
 in this folder; the source clip is
-`projects/content-engine/engine/reference-bank/reels/ref-editorial-DY7TSLJAQef.mp4`.
+`projects/content-engine/engine/reference-bank/reels/ref-editorial-a.mp4`.
 
 **The claim it makes, in its own words:** a solid background is fine because it does not distract
 from the main content, "but if every background is just a flat color, eventually the piece begins
