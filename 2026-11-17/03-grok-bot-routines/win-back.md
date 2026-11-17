@@ -6,12 +6,12 @@ description: Find customers who have gone quiet and draft a short personal text 
 # Win back the quiet ones
 
 ## Tools to connect
-Read the customer export, write drafts and your own contacted ledger, and one channel that messages
-only you. Do not give the bot tools that send texts, pay, book or delete. A rule in a file can be
+Read the customer export, write drafts and the contacted ledger, and one channel that messages
+only me. Do not give the bot tools that send texts, pay, book or delete. A rule in a file can be
 ignored. A tool the bot does not have cannot be used.
 
 ## The gate
-Drafts only. Nothing goes out until you say yes to that person.
+Drafts only. Nothing goes out until I say yes to that person.
 
 ## When it runs
 Every Tuesday at 9 am. Also when I ask "who has gone quiet".

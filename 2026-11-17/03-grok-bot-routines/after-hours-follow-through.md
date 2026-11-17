@@ -11,7 +11,7 @@ This skill does the follow-through the next morning.
 
 ## Tools to connect
 Read the call transcripts and the booking diary, write drafts, and one channel that messages only
-you. Do not give the bot tools that send texts, book, pay or delete. A rule in a file can be ignored.
+me. Do not give the bot tools that send texts, book, pay or delete. A rule in a file can be ignored.
 A tool the bot does not have cannot be used.
 
 ## The gate

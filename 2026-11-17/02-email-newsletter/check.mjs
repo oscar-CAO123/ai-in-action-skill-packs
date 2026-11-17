@@ -92,24 +92,24 @@ if (/position\s*:\s*(fixed|absolute|sticky)/i.test(html)) errors.push("Fixed, ab
 if (/display\s*:\s*(flex|grid)/i.test(html)) warnings.push("Flexbox or grid CSS found. Outlook ignores it. Use table cells for layout.");
 
 // 4. Styles: inline on each element. The one <style> block holds only media queries.
-// Style blocks found with indexOf, not a regex, so a crafted file cannot stall the check.
-const lower = html.toLowerCase();
+// Style blocks: every opening and closing style tag is found with one bounded pattern on the original text
+// (no lower-casing, which can shift positions), so a crafted file cannot stall the check or hide a block.
+// An unclosed block runs to the end of the file.
 const cssParts = [];
-for (let i = lower.indexOf("<style"); i !== -1; i = lower.indexOf("<style", i + 1)) {
-  const open = lower.indexOf(">", i);
-  const close = open === -1 ? -1 : lower.indexOf("</style>", open);
-  if (close === -1) break;
-  cssParts.push(html.slice(open + 1, close));
-  i = close;
+let openEnd = -1;
+for (const m of html.matchAll(/<(\/?)style\b[^>]{0,200}>/gi)) {
+  if (!m[1] && openEnd === -1) openEnd = m.index + m[0].length;
+  else if (m[1] && openEnd !== -1) { cssParts.push(html.slice(openEnd, m.index)); openEnd = -1; }
 }
+if (openEnd !== -1) cssParts.push(html.slice(openEnd));
 const css = cssParts.join("\n");
-const looseCss = stripMediaBlocks(css).replace(/\/\*[\s\S]*?\*\//g, "").trim();
+const looseCss = stripMediaBlocks(css.replace(/\/\*[\s\S]*?\*\//g, "")).replace(/\/\*[\s\S]*?\*\//g, "").trim();
 if (looseCss) errors.push("Style rules sit outside a media query in the <style> block. Move them inline on each element.");
 const bareText = [...html.matchAll(/<(td|th|p|h[1-6]|a|span|li)\b[^>]{0,2000}>/gi)].filter((m) => attr(m[0], "style") === null).length;
 if (bareText) warnings.push(`${bareText} text element${bareText === 1 ? " has" : "s have"} no inline style. Give each one its own style attribute.`);
 
 // 5. Images: alt text, absolute https address, display block.
-const imgs = [...html.matchAll(/<img\b[^>]{0,2000}>/gi)].map((m) => m[0]);
+const imgs = [...html.matchAll(/<img\b[^>]{0,20000}>/gi)].map((m) => m[0]);
 imgs.forEach((tag, n) => {
   const label = `Image ${n + 1}`;
   if (!(attr(tag, "alt") ?? "").trim()) errors.push(`${label} has no alt text. Write a sentence that says what the picture shows.`);
@@ -144,7 +144,7 @@ if (!(/display\s*:\s*none/i.test(html) && /max-height\s*:\s*0/i.test(html))) {
   warnings.push("No hidden preheader found. Add a short hidden line for the inbox preview.");
 }
 
-process.stdout.write(`${file}\n`);
+process.stdout.write(`${shown}\n`);
 process.stdout.write(`  ${kb} of 100KB limit, ${widest ? `${widest}px` : "no fixed"} container, ${imgs.length} image${imgs.length === 1 ? "" : "s"}, ${anchors.length} link${anchors.length === 1 ? "" : "s"}\n`);
 for (const e of errors) process.stdout.write(`  ERROR  ${e}\n`);
 for (const w of warnings) process.stdout.write(`  warn   ${w}\n`);

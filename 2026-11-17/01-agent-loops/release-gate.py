@@ -16,6 +16,7 @@ Lines that state a writing rule ("Never use: ...", "Never write ...") are skippe
 A gate catches the mistakes you can name. It does not replace a person reading the release. Known
 limits: a key built by joining strings in code, and a bare ~/ or $HOME path, get through.
 """
+import os
 import re
 import sys
 import unicodedata
@@ -24,40 +25,55 @@ from pathlib import Path
 # Every repeat is bounded, so a crafted file cannot make a pattern run for minutes.
 SECRETS = [r"sk-[A-Za-z0-9_-]{20,300}", r"sk_(live|test)_[A-Za-z0-9]{16,300}", r"ghp_[A-Za-z0-9]{20,300}", r"github_pat_[A-Za-z0-9_]{20,300}",
            r"AKIA[0-9A-Z]{16}", r"AIza[0-9A-Za-z_-]{30,300}", r"xox[abprs]-[A-Za-z0-9-]{10,300}", r"-----BEGIN [A-Z ]{0,40}PRIVATE KEY-----",
-           r"eyJ[A-Za-z0-9_-]{20,500}\.[A-Za-z0-9_-]{20,500}\.",
-           r"(?i)(api[_-]?key|secret|token|passw(or)?d)[\"']?\s{0,10}[:=]\s{0,10}[\"']?[^\s\"'<>{}$]{12,300}"]
+           r"eyJ[A-Za-z0-9_-]{20,4000}\.[A-Za-z0-9_-]{20,4000}\.",
+           r"(?i)(api[_-]?key|secret|token|passw(or)?d)[\"']?\s{0,60}[:=]\s{0,60}[\"']?[^\s\"'<>{}$]{12,300}"]
 HOME_PATHS = r"(?i)(/Users/\s*[A-Za-z]|/home/[A-Za-z]|[A-Z]:[\\/]Users[\\/]|%2F" + "Users%2F|-Users-[A-Za-z])"
 MAX_BYTES = 5_000_000
+INVISIBLE = set("\u2800\u3164\u115f\u1160\uffa0")
 BANNED = ["delve", "leverage", "unlock", "seamless", "game-changer", "robust", "elevate"]
 NEGATION_SWAP = r"(?i)\b(it'?s|it is|this is|that'?s|that is)( not|n'?t) (just )?[^.]{1,40}[,;:.]\s*(it'?s|it is|this is|that'?s|that is)\b"
-NEGATION_SWAP_2 = r"(?i)\b(is|are)( not|n'?t) (a |an |the )?[^.,;:]{1,30}[,;:]\s*the [^.,;:]{1,30} (is|are)\b"
+NEGATION_SWAP_2 = r"(?i)\b(is|are)( not|n'?t) (a |an |the )?[^.,;:]{1,30}[,;:]\s*(the [^.,;:]{1,30} (is|are)|(it|this|that)( is|'s))\b"
 EM_DASH = re.compile(r"\u2014|&mdash;?|&#8212;?|&#x2014;?|\\u2014", re.I)
-# A line that states the writing rule itself ("Never use: delve, ...") is skipped by the word checks, and only that line.
-RULE_LINE = re.compile(r"(?i)(never use:\s*delve, leverage|never write \"it's not)")
+# The writing rule itself names the banned words, so exactly that sentence (and nothing else on its line) is removed
+# before the word checks.
+RULE_TEXT = re.compile(r"(?i)never use: delve, leverage, unlock, seamless, game-changer, robust, elevate\.|never write \"it's not x, it's y\"\.")
 ZERO_WIDTH = dict.fromkeys(map(ord, "\u200b\u200c\u200d\u2060\ufeff\u00ad"))
 
 
 def read_all(root):
+    """Every file under root, read as text. Anything that cannot be checked is reported, never skipped."""
     texts, unreadable = {}, []
-    for p in sorted(root.rglob("*")):
-        if p.name == ".git" and p.is_dir():
-            unreadable.append(f"{safe(p.relative_to(root))}: a nested .git folder (its history is not checked)")
-            continue
-        if ".git" in p.parts or p.name == ".DS_Store" or p.is_dir() and not p.is_symlink():
+    paths = []
+
+    def cannot_list(err):
+        unreadable.append(f"{safe(Path(err.filename).relative_to(root)) if err.filename else '?'}: folder cannot be read")
+
+    for folder, dirs, files in os.walk(root, onerror=cannot_list, followlinks=False):
+        for d in list(dirs):
+            full = Path(folder) / d
+            if d == ".git" or full.is_symlink():
+                what = "a nested .git folder (its history is not checked)" if d == ".git" else "a link to somewhere else, not followed"
+                unreadable.append(f"{safe(full.relative_to(root))}: {what}")
+                dirs.remove(d)
+        paths += [Path(folder) / f for f in files]
+    for p in sorted(paths):
+        rel = safe(p.relative_to(root))
+        if p.name in (".DS_Store", ".git"):
+            unreadable.append(f"{rel}: {p.name} should not ship, remove it")
             continue
         if p.is_symlink():
-            unreadable.append(f"{safe(p.relative_to(root))}: a link to somewhere else, not followed. Replace it with the real file")
+            unreadable.append(f"{rel}: a link to somewhere else, not followed. Replace it with the real file")
             continue
         if not p.is_file():
-            unreadable.append(f"{safe(p.relative_to(root))}: not a regular file")
-            continue
-        if p.stat().st_size > MAX_BYTES:
-            unreadable.append(f"{safe(p.relative_to(root))}: over {MAX_BYTES // 1_000_000} MB, check it by hand")
+            unreadable.append(f"{rel}: not a regular file")
             continue
         try:
+            if p.stat().st_size > MAX_BYTES:
+                unreadable.append(f"{rel}: over {MAX_BYTES // 1_000_000} MB, check it by hand")
+                continue
             raw = p.read_bytes()
         except OSError as e:
-            unreadable.append(f"{safe(p.relative_to(root))}: cannot be read ({e.strerror})")
+            unreadable.append(f"{rel}: cannot be read ({e.strerror})")
             continue
         try:
             # UTF-16 only with its byte order mark; everything else must be strict UTF-8.
@@ -65,7 +81,7 @@ def read_all(root):
         except UnicodeDecodeError:
             t = None
         if t is None or (b"\x00" in raw and not raw.startswith((b"\xff\xfe", b"\xfe\xff"))):
-            unreadable.append(f"{safe(p.relative_to(root))}: binary or unknown encoding, check it by hand")
+            unreadable.append(f"{rel}: binary or unknown encoding, check it by hand")
             continue
         texts[p] = clean(t)
     return texts, unreadable
@@ -74,8 +90,9 @@ def read_all(root):
 def clean(t):
     """Normalised text: invisible format characters removed, curly quotes made straight."""
     t = unicodedata.normalize("NFKC", t)
-    t = "".join(c for c in t if unicodedata.category(c) != "Cf")
-    return t.translate({0x2018: "'", 0x2019: "'", 0x201C: '"', 0x201D: '"'})
+    # Invisible format characters, combining marks and blank-looking fillers are removed.
+    t = "".join(c for c in t if unicodedata.category(c) not in ("Cf", "Mn", "Me") and c not in INVISIBLE)
+    return t.translate({0x2018: "'", 0x2019: "'", 0x02BC: "'", 0x201C: '"', 0x201D: '"'})
 
 
 def safe(x):
@@ -109,8 +126,6 @@ def main():
         results.append((name, problems))
 
     texts, unreadable = read_all(root) if root.is_dir() else ({}, [])
-    me = Path(__file__).resolve()
-    texts = {p: ("" if p.resolve() == me else t) for p, t in texts.items()}  # its own patterns would match themselves
     rel = {p: safe(p.relative_to(root)) for p in texts}
     check("files found", [] if texts else [f"no readable files under {safe(root)}"])
     check("every file readable as text", unreadable)
@@ -134,8 +149,8 @@ def main():
 
     check("em dashes", [rel[p] for p, t in texts.items() if EM_DASH.search(t) and p.suffix not in {".py", ".mjs", ".js"}]
           + [rel[p] for p, t in texts.items() if "\u2014" in t and p.suffix in {".py", ".mjs", ".js"}])
-    prose = {p: "\n".join(l for l in t.splitlines() if not RULE_LINE.search(l)) for p, t in texts.items()
-             if p.suffix.lower() in {".md", ".txt", ".html"}}
+    prose = {p: RULE_TEXT.sub(" ", t) for p, t in texts.items()
+             if p.suffix.lower() in {".md", ".markdown", ".txt", ".html", ".htm"}}
     check("banned words", [f"{rel[p]}: {w}" for p, t in prose.items() for w in BANNED if re.search(r"(?i)\b" + w + r"\b", t)])
     check("negation swap", [rel[p] for p, t in prose.items() if re.search(NEGATION_SWAP, t) or re.search(NEGATION_SWAP_2, t)])
 

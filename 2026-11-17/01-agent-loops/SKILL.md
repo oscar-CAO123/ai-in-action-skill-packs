@@ -91,6 +91,7 @@ security checks and internal apps. Put the ones that fit into the prompt.
    check and exits 0 only when all pass. The loop is done when the gate says so. Nothing ships, gets
    imported or gets called finished until the gate passes. `release-gate.py` in this folder is a worked
    example: `python3 release-gate.py <folder> [<repo root>] [<private word list>]`.
+   The word list defaults to `.gate-private` in the repo root, and the gate fails on purpose without one.
 2. **Write the answer key before the build.** For new work, list every decision, settle the open ones
    first (research, a quick prototype the user reacts to, or a real test), then turn the settled list
    into pass or fail checks. An agent never fills a gap with a guess.
@@ -123,13 +124,13 @@ Claude Code team describe, in our words, and how we suggest putting it in your p
    instruction files read-only for the loop, so one bad input can never stay in every future run.
 2. **Checking means running the thing.** Tests, lint and type checks are already easy to automate.
    The check that matters is whether the agent can run what it built the way a user would: open the
-   app, click through the new screen, try the edge cases, fix, and check again. Make that a line of done.
+   app, click through the new screen, try the edge cases, fix, and check again. Our advice: make that a line of done.
 3. **The skill gets better after every new fix.** In the video, when the agent solves a new problem
    (a test server is down, a step is missing), it is told to update the skill it was following, so the
    next run starts ahead. Our advice: have it write the change it would make, and a person makes it.
 4. **Routines watch and fix the easy ones.** An engineer on their team runs a routine that picks up
    every bug report nobody has answered in five hours and puts up a fix. He merges the ones that are
-   easy to check. A person stays on the merge.
+   easy to check. Our advice: keep a person on the merge.
 5. **Little context, a way to look things up.** Give the agent the smallest instructions and tools
    that do the job, and a way to pull in what it needs. Too much context is micromanaging.
 6. **A separate model checks safety.** Instead of a person approving every action, a second model
