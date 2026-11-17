@@ -4,19 +4,18 @@
 It prints PASS or FAIL per check and exits 0 only when every check passes. Run it on every pass of a
 loop, and call the release done only when it exits 0.
 
-    python3 release-gate.py <folder> [<repo root>]
+    python3 release-gate.py <folder> [<repo root>] [<private word list>]
 
 Your private words (company, client and staff names, your own domains) never go in this file. Put
-them one per line in a file called .gate-private in the repo root, keep that file out of git, or point
-GATE_PRIVATE at it. The gate fails if that list is missing or empty, so a release is never checked
-without it.
+them one per line in a file called .gate-private in the repo root and keep that file out of git, or
+pass the list's path as the third argument. The gate fails if that list is missing or empty, so a
+release is never checked without it. It reads no environment variables and makes no network calls.
 
 It reads every file, whatever its type, and every file name. A file it cannot read as text fails.
 Lines that state a writing rule ("Never use: ...", "Never write ...") are skipped by the word checks.
 A gate catches the mistakes you can name. It does not replace a person reading the release. Known
 limits: a key built by joining strings in code, and a bare ~/ or $HOME path, get through.
 """
-import os
 import re
 import sys
 import unicodedata
@@ -75,8 +74,7 @@ def safe(x):
     return "".join(c if c.isprintable() else repr(c)[1:-1] for c in str(x))
 
 
-def private_words(repo):
-    path = Path(os.environ.get("GATE_PRIVATE", repo / ".gate-private"))
+def private_words(path):
     try:
         text = path.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError):
@@ -111,9 +109,9 @@ def main():
     check("secrets", [f"{rel[p]}: matches {pat[:24]}" for p, vs in views.items() for pat in SECRETS if any(re.search(pat, v) for v in vs)])
     check("private paths", [f"{rel[p]}: {m.group(0)}" for p, vs in views.items() for v in vs[:1] + vs[2:] for m in [re.search(HOME_PATHS, v)] if m])
 
-    words = private_words(repo)
+    words = private_words(Path(sys.argv[3]).resolve() if len(sys.argv) > 3 else repo / ".gate-private")
     if not words:
-        check("private words", ["no private words to check: add them to .gate-private (or set GATE_PRIVATE)"])
+        check("private words", ["no private words to check: add them to .gate-private, or pass a list as the third argument"])
     else:
         hits = set()
         for p, (t, joined, name) in views.items():

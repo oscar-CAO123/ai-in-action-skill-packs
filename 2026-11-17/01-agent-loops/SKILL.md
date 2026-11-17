@@ -1,6 +1,6 @@
 ---
 name: agent-loops
-allowed-tools: Read, Write
+allowed-tools: Read, Write, Bash(python3 release-gate.py:*)
 description: Turn a task into an agent loop that checks its own work, then hand back one self-contained prompt the user can run in Claude Code, Codex, Grok Bot or any other agent. Use when the user says "build an agent loop", "loop this", "make a goal", "write a goal prompt", "make it check its own work", "keep going until it passes", or wants an agent to repeat a task until a test, a gate or a score says it is done. Do NOT use for one-off questions, for work with no way to check the result, or when one good prompt and one look would do the job.
 ---
 
@@ -117,14 +117,15 @@ describe, in our words, and how to put it in your prompt:
 1. **Every mistake becomes a written rule.** When the agent gets something wrong, he does not tell it
    to do it differently. He tells it to write the fix into its instructions file or a skill. Put a line
    in the prompt: "When you hit a mistake you could make again, write the rule you would add in the pass
-   log, and a person adds it to <file>." Never let the loop edit its own instructions unattended: one bad
-   input could then stay in every future run.
+   log, and a person adds it to <file>." Keep instruction files read-only for the loop. A person makes
+   the change, so one bad input can never stay in every future run.
 2. **Checking means running the thing.** Tests, lint and type checks are already easy to automate.
    The check that matters is whether the agent can run what it built the way a user would: open the
    app, click through the new screen, try the edge cases, fix, and check again. Make that a line of done.
-3. **The skill gets updated after every new fix** (Cat Wu). When the agent solves a new problem
-   (a test server is down, a step is missing), she tells it to write what it learned back into the
-   skill it was following, so the next run starts ahead.
+3. **The skill gets better after every new fix** (Cat Wu). When the agent solves a new problem
+   (a test server is down, a step is missing), it writes down what it learned. The skill it was
+   following is updated from that note, so the next run starts ahead. In your loop, a person reviews
+   the note and makes that edit.
 4. **Routines watch and fix the easy ones.** An engineer on their team runs a routine that picks up
    every bug report nobody has answered in five hours and puts up a fix. He merges the ones that are
    easy to check. A person stays on the merge.
