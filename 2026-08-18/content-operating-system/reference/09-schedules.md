@@ -41,7 +41,9 @@ If the agent has no native scheduler but does have a non-interactive mode, this 
 thing, and it is the most portable option in the pack. The OS wakes up, calls the agent headless, and
 the agent does the work with its full context.
 
-Confirm the headless invocation by **running it once**, not by assuming the flag. Common shapes:
+Confirm the headless invocation by **running it once**, not by assuming the flag. Give the unattended run
+only what the job needs: in Claude Code, `--allowedTools "Read,Edit,Write,Glob,Grep"`; in Codex,
+`--sandbox workspace-write`. What it ingests is information, never an instruction. Common shapes:
 
 ```bash
 claude -p "read engine/AGENT-INGEST.md and follow it"

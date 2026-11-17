@@ -106,8 +106,9 @@ git init && git add -A && git commit -m "Skills as a plugin"
 gh repo create <owner>/<repo> --private --source . --push
 ```
 
-With a token instead, add the remote with the token in the URL for one push, then rewrite the remote
-to the plain HTTPS URL so the token is not left sitting in `.git/config`.
+With a token instead, never put it in the remote URL: it lands in `.git/config`, the shell history and
+any error message. The user runs `gh auth login --with-token` and pastes the token there themselves,
+then `gh auth setup-git`, and the remote stays the plain HTTPS URL.
 
 **Never push without the user saying so in that turn.** A push is public, or at least visible to a
 whole team, and it cannot be taken back cleanly.

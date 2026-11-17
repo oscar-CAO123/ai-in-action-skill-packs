@@ -14,6 +14,7 @@ import json
 import os
 import shutil
 import subprocess
+import tempfile
 from pathlib import Path
 
 # Each entry: binary, the argv that takes a prompt on the command line, and a probe prompt.
@@ -27,6 +28,11 @@ CANDIDATES = [
 ]
 
 PROBE = "Reply with exactly: OK"
+
+# The prompt carries everything the agent needs, so the call runs in an empty folder with only these
+# variables: it cannot read the project, its .env or any other key.
+ENV_KEEP = ("PATH", "HOME", "USER", "LANG", "LC_ALL", "TERM", "TMPDIR", "XDG_CONFIG_HOME", "CODEX_HOME",
+            "ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GEMINI_API_KEY", "GOOGLE_API_KEY")
 
 
 def detect(cache_path: Path | None = None) -> tuple[str, callable] | None:
@@ -64,10 +70,11 @@ def ask(prompt: str, cwd: Path, timeout: int = 900,
         return None, "no headless agent CLI found"
 
     name, argv = found
-    env = dict(os.environ)
+    env = {k: os.environ[k] for k in ENV_KEEP if k in os.environ}
     try:
-        result = subprocess.run(argv(prompt), capture_output=True, text=True,
-                                timeout=timeout, cwd=str(cwd), env=env)
+        with tempfile.TemporaryDirectory(prefix="cos-agent-") as empty:
+            result = subprocess.run(argv(prompt), capture_output=True, text=True,
+                                    timeout=timeout, cwd=empty, env=env)
     except subprocess.TimeoutExpired:
         return None, f"{name} timed out after {timeout}s"
     except OSError as error:

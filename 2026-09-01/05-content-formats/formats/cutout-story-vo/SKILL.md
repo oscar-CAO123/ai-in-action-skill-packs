@@ -122,7 +122,7 @@ and the id is cited, never free-written.
 
 **The storytime formula is not optional, and it is where draft 1 of the first build failed.** It is
 measured over a [your figure]-reel corpus from a reference account, scraped and transcribed (`references/transcripts/the reference corpus-corpus.json`, breakdown in
-`references/transcripts/the reference corpus-FORMULA.md`) and it lives as spine entries **E-067 to E-073**
+`references/transcripts/HEX-CREATIVES-FORMULA.md`) and it lives as spine entries **E-067 to E-073**
 in `references/spine.md`. Every F11 script runs this shape:
 
 | # | Move | Seen in | Entry |

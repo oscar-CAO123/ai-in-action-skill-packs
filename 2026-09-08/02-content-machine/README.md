@@ -46,7 +46,7 @@ stage 1, which is what makes it a loop rather than a list.
 
 ```
 cd scripts
-env -i PATH="$PATH" HOME="$HOME" npx tsx ingest_performance.ts
+env -i PATH="$PATH" HOME="$HOME" npx tsx@4.19.2 ingest_performance.ts
 ```
 
 With no credentials and no database it reads nothing, stamps a gap per channel, writes nothing and
