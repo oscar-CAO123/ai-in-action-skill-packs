@@ -24,7 +24,8 @@ text on images, size, an unsubscribe line), and hands you the file. It never sen
 email tool. `deliverability.md` is the checklist for landing in the inbox.
 
 ### `03-grok-bot-routines/`
-Four routines for Grok Bot or any always-on agent: inbox sort, after-hours call follow-through, find
+Grok Bot is xAI's always-on agent that runs jobs on a schedule; any agent that can read a file and
+run on a timer works the same way. Four routines for it: inbox sort, after-hours call follow-through, find
 the money (overcharges on supplier invoices) and win-back. Each says when it runs, what it reads, its
 steps and its gate. All are drafts only, and the money one never pays or disputes anything. Each lists the files it reads: create
 those first (your price list, offer sheet, FAQ, an empty ledger). Put the
@@ -38,6 +39,6 @@ replaces nothing.
 
 ## How this drop was checked
 
-Every file passed `01-agent-loops/release-gate.py` (no keys, no private names or paths, no em dashes,
+Every file passed `01-agent-loops/release-gate.py` and NVIDIA SkillSpector (see `2026-10-27/`) (no keys, no private names or paths, no em dashes,
 no banned words, every skill complete), then four agents attacked it from four angles before a
 person merged it.

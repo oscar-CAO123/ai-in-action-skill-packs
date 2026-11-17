@@ -5,6 +5,10 @@ description: Find customers who have gone quiet and draft a short personal text 
 
 # Win back the quiet ones
 
+## Tools to connect
+Read and draft access only. Do not give the bot tools that send, pay, book or delete: a written
+rule is not a lock, the missing tool is.
+
 ## When it runs
 Every Tuesday at 9 am. Also when I ask "who has gone quiet".
 

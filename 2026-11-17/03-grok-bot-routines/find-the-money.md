@@ -5,6 +5,10 @@ description: Check every supplier invoice line against the agreed price list and
 
 # Find the money
 
+## Tools to connect
+Read and draft access only. Do not give the bot tools that send, pay, book or delete: a written
+rule is not a lock, the missing tool is.
+
 ## When it runs
 Every Monday at 7 am, over last week's invoices. Also when I ask "check the invoices".
 

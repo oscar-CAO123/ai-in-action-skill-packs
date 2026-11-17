@@ -9,6 +9,10 @@ description: Turn last night's after-hours calls into draft bookings for a perso
 A voice agent answers the phone after hours and saves a transcript.
 This skill does the follow-through the next morning.
 
+## Tools to connect
+Read and draft access only. Do not give the bot tools that send, pay, book or delete: a written
+rule is not a lock, the missing tool is.
+
 ## The gate
 Draft only. Nothing is booked or texted until I say yes.
 

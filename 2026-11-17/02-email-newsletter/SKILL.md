@@ -1,5 +1,6 @@
 ---
 name: email-newsletter
+allowed-tools: Read, Write, Bash(node check.mjs:*)
 description: Author a designed HTML email newsletter on your own computer, check it against the rules email clients enforce, and hand the file over for sending. Use when someone asks for a newsletter, a campaign email or a designed HTML email. The agent drafts and checks only. It never sends, schedules or uploads anything, and the person sends the email from their own email or mailing tool.
 ---
 

@@ -5,6 +5,10 @@ description: Sort the shared inbox and draft replies to the mail that matters. D
 
 # Inbox sort
 
+## Tools to connect
+Read and draft access only. Do not give the bot tools that send, pay, book or delete: a written
+rule is not a lock, the missing tool is.
+
 ## When it runs
 Weekdays at 6:30 am and 12:30 pm. Also when I ask "sort the inbox".
 

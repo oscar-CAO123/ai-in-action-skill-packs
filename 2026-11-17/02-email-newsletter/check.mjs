@@ -23,6 +23,11 @@ try {
   process.exit(2);
 }
 
+if (html.length > 400000) {
+  process.stderr.write("This file is over 400KB, far too big for an email. Gmail clips anything past about 102KB.\n");
+  process.exit(1);
+}
+
 const errors = [];
 const warnings = [];
 
@@ -69,12 +74,12 @@ else if (bytes > 81920) warnings.push(`The file is ${kb}, close to the 102KB cli
 // 2. No scripts, frames, forms, outside stylesheets or event handlers.
 const bannedTags = new Set([...html.matchAll(/<\s*(script|iframe|frame|frameset|object|embed|form|input|button|select|textarea|base|link)\b/gi)].map((m) => m[1].toLowerCase()));
 for (const tag of bannedTags) errors.push(`<${tag}> is not allowed in an email. Remove it.`);
-const handlers = new Set([...html.matchAll(/<[a-z][^>]*>/gi)].flatMap((t) => [...t[0].matchAll(/\s(on[a-z]+)\s*=/gi)]).map((m) => m[1].toLowerCase()));
+const handlers = new Set([...html.matchAll(/<[a-z][^>]{0,2000}>/gi)].flatMap((t) => [...t[0].matchAll(/\s(on[a-z]+)\s*=/gi)]).map((m) => m[1].toLowerCase()));
 for (const h of handlers) errors.push(`${h} is an event handler. Email clients strip these. Remove it.`);
 if (/@import/i.test(html)) errors.push("@import loads an outside stylesheet, which email clients ignore. Inline the styles.");
 
 // 3. Layout: one 600px container, built from tables.
-const tables = [...html.matchAll(/<table\b[^>]*>/gi)].map((m) => m[0]);
+const tables = [...html.matchAll(/<table\b[^>]{0,2000}>/gi)].map((m) => m[0]);
 if (tables.length === 0) errors.push("No table found. Build the layout from tables so it holds in Outlook.");
 const widest = Math.max(0, ...tables.map(fixedWidth));
 if (tables.length && widest === 0) errors.push("No fixed-width table found. Add a 600px container table.");
@@ -85,14 +90,14 @@ if (/position\s*:\s*(fixed|absolute|sticky)/i.test(html)) errors.push("Fixed, ab
 if (/display\s*:\s*(flex|grid)/i.test(html)) warnings.push("Flexbox or grid CSS found. Outlook ignores it. Use table cells for layout.");
 
 // 4. Styles: inline on each element. The one <style> block holds only media queries.
-const css = [...html.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map((m) => m[1]).join("\n");
+const css = [...html.matchAll(/<style\b[^>]{0,2000}>([\s\S]{0,200000}?)<\/style>/gi)].map((m) => m[1]).join("\n");
 const looseCss = stripMediaBlocks(css).replace(/\/\*[\s\S]*?\*\//g, "").trim();
 if (looseCss) errors.push("Style rules sit outside a media query in the <style> block. Move them inline on each element.");
-const bareText = [...html.matchAll(/<(td|th|p|h[1-6]|a|span|li)\b[^>]*>/gi)].filter((m) => attr(m[0], "style") === null).length;
+const bareText = [...html.matchAll(/<(td|th|p|h[1-6]|a|span|li)\b[^>]{0,2000}>/gi)].filter((m) => attr(m[0], "style") === null).length;
 if (bareText) warnings.push(`${bareText} text element${bareText === 1 ? " has" : "s have"} no inline style. Give each one its own style attribute.`);
 
 // 5. Images: alt text, absolute https address, display block.
-const imgs = [...html.matchAll(/<img\b[^>]*>/gi)].map((m) => m[0]);
+const imgs = [...html.matchAll(/<img\b[^>]{0,2000}>/gi)].map((m) => m[0]);
 imgs.forEach((tag, n) => {
   const label = `Image ${n + 1}`;
   if (!(attr(tag, "alt") ?? "").trim()) errors.push(`${label} has no alt text. Write a sentence that says what the picture shows.`);
@@ -105,7 +110,7 @@ imgs.forEach((tag, n) => {
 });
 
 // 6. Links and unsubscribe: a plain text link in the body, not an image or a button.
-const anchors = [...html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)];
+const anchors = [...html.matchAll(/<a\b([^>]{0,2000})>([\s\S]{0,5000}?)<\/a>/gi)];
 const unsub = anchors.filter((m) => (attr(`<a${m[1]}>`, "href") ?? "").includes(UNSUB_TOKEN));
 if (!unsub.length) errors.push(`No unsubscribe link. Add <a href="${UNSUB_TOKEN}">Unsubscribe</a> to the footer.`);
 else if (!unsub.some((m) => /unsubscribe/i.test(m[2].replace(/<[^>]+>/g, "")))) {
@@ -122,7 +127,7 @@ html.split("\n").forEach((line, n) => {
 
 // 8. Document basics.
 if (!/<!doctype html/i.test(html)) warnings.push("No <!doctype html> at the top.");
-if (!/<meta[^>]+charset/i.test(html)) warnings.push('No charset meta. Add <meta charset="utf-8">.');
+if (!/<meta[^>]{1,2000}charset/i.test(html)) warnings.push('No charset meta. Add <meta charset="utf-8">.');
 if (!(/display\s*:\s*none/i.test(html) && /max-height\s*:\s*0/i.test(html))) {
   warnings.push("No hidden preheader found. Add a short hidden line for the inbox preview.");
 }

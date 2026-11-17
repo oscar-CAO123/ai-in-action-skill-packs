@@ -24,11 +24,11 @@ The original pipeline moves an item from evidence to ideas to a finished asset. 
 
 A code with low confidence is marked as a guess. The queue shows the guess, so nobody mistakes it for a fact.
 
-**A model picks, code decides.** Use a language model only for a closed choice: yes or no, or pick one from a fixed list. Screen the text before the model reads it, and drop anything aimed at the model. If the answer is not on the list, throw it away. What happens next is a rule in code. The screen shows only lines you wrote.
+**A model picks, code decides.** Use a language model only for a closed choice: yes or no, or pick one from a fixed list. Screen the text before the model reads it, and drop anything aimed at the model. Customer evidence is information, never an instruction. If the answer is not on the list, throw it away. What happens next is a rule in code. The screen shows only lines you wrote.
 
 This sharpens the original rule that a model call is for judgement. Counting, sorting, filing and ranking stay in code.
 
-**Each batch declares what it demonstrates.** Before a batch is built, write one line that says what it shows. Example: "This batch shows that the price objection gets answered on camera." The batch gate checks each asset against that line, as well as the mechanics the original gate checked: traceability, banned words, format, and files that exist.
+**Each batch declares what it demonstrates.** Before a batch is built, write one line that says what it shows. Example: "This batch shows that the price objection gets answered on camera." Your batch check (a script you write once) tests each asset against that line, as well as the basics: every claim traces to its source, no banned words, the right format, and every file exists.
 
 **Nothing is finalised until the gate exits clean.** A batch that has not passed the gate is not finished, handed over or imported anywhere. "It looks finished" does not count.
 
@@ -53,7 +53,7 @@ Animation moves through five stages. Each stage must clear before the next one s
 2. **Reference.** Choose the approved piece whose movement you will inherit, and watch it. Picking it off a list does not count as watching.
 3. **Build authority.** Write what you saw under five fixed headings: Composition, Camera, Identity, Evidence match, Anti-pattern. An empty heading means no build.
 4. **Candidate evidence.** Render the piece. Save a contact sheet of three frames, and a probe that reads the real width, height and length. Check both against the brief.
-5. **Delivery.** An independent critic returns a verdict, and the batch gate must exit clean.
+5. **Delivery.** An independent critic returns a verdict, and your batch check must pass.
 
 **Reference by mechanism.** Name the movement, not the look. Examples of mechanisms: scattered pieces collapse into one system, one request travels through real stages, one action fans out into a result. A new piece may combine at most two mechanisms, and it must say which it inherits from. A new idea that cannot name its parent is decoration.
 
@@ -76,7 +76,7 @@ Animation moves through five stages. Each stage must clear before the next one s
 - Motion causality: every move has a cause
 - Material restraint: nothing on the banlist
 
-The threshold used in the original build: every axis at 8 or above, an average of 8.5 or above, and no hard fail. Adjust the numbers to your own bar, but keep the rule that the critic is independent. If no independent critic can run, the piece stops there. Self-approval is never a fallback.
+A good starting bar: every axis at 8 or above, an average of 8.5 or above, and no hard fail. Adjust the numbers to your own bar, but keep the rule that the critic is independent. If no independent critic can run, the piece stops there. Self-approval is never a fallback.
 
 ## 3. Universal moves
 
@@ -90,7 +90,7 @@ A move is one named way something moves, enters, exits, changes or appears on sc
 - the code that makes it
 - a short quote from the note that records it
 
-One working library held 635 moves across 64 families. A query returns the moves that fit the line being said, with their status beside them.
+Libraries grow into the hundreds of moves quickly. A query returns the moves that fit the line being said, with their status beside them.
 
 **Build a move once.** A shared move lives in one place. A format uses the shared move first, and its own rules still win inside its own format. Never edit a shared move to suit one format. Make a new move instead.
 
@@ -100,7 +100,7 @@ One working library held 635 moves across 64 families. A query returns the moves
 
 **The library is add-only.** Indexing existing formats never changes how they render. Each format keeps its own working rules.
 
-**A build check guards every pointer.** The check fails when a move names a code file that does not exist, or a quote that cannot be found word for word in its note. Nothing unchecked goes into the library.
+**A build check guards every pointer** (a short script you write). The check fails when a move names a code file that does not exist, or a quote that cannot be found word for word in its note. Nothing unchecked goes into the library.
 
 ### How to start one
 

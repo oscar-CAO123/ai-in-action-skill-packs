@@ -26,7 +26,8 @@ SECRETS = [r"sk-[A-Za-z0-9_-]{20,}", r"sk_(live|test)_[A-Za-z0-9]{16,}", r"ghp_[
            r"AKIA[0-9A-Z]{16}", r"AIza[0-9A-Za-z_-]{30,}", r"xox[abprs]-[A-Za-z0-9-]{10,}", r"-----BEGIN [A-Z ]*PRIVATE KEY-----",
            r"eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.",
            r"(?i)(api[_-]?key|secret|token|passw(or)?d)[\"']?\s*[:=]\s*[\"']?[^\s\"'<>{}$]{12,}"]
-HOME_PATHS = r"(?i)(/Users/\s*[A-Za-z]|/home/[A-Za-z]|[A-Z]:[\\/]Users[\\/]|%2FUsers%2F|-Users-[A-Za-z])"
+HOME_PATHS = r"(?i)(/Users/\s*[A-Za-z]|/home/[A-Za-z]|[A-Z]:[\\/]Users[\\/]|%2F" + "Users%2F|-Users-[A-Za-z])"
+MAX_BYTES = 5_000_000
 BANNED = ["delve", "leverage", "unlock", "seamless", "game-changer", "robust", "elevate"]
 NEGATION_SWAP = r"(?i)\b(it'?s|it is|this is|that'?s|that is)( not|n'?t) (just )?[^.]{1,40}[,;:.]\s*(it'?s|it is|this is|that'?s|that is)\b"
 EM_DASH = re.compile(r"\u2014|&mdash;|&#8212;|&#x2014;|\\u2014", re.I)
@@ -38,14 +39,23 @@ def read_all(root):
     texts, unreadable = {}, []
     for p in sorted(root.rglob("*")):
         if p.name == ".git" and p.is_dir():
-            unreadable.append(f"{p.relative_to(root)}: a nested .git folder (its history is not checked)")
+            unreadable.append(f"{safe(p.relative_to(root))}: a nested .git folder (its history is not checked)")
             continue
-        if not p.is_file() or ".git" in p.parts or p.name == ".DS_Store":
+        if ".git" in p.parts or p.name == ".DS_Store" or p.is_dir() and not p.is_symlink():
+            continue
+        if p.is_symlink():
+            unreadable.append(f"{safe(p.relative_to(root))}: a link to somewhere else, not followed. Replace it with the real file")
+            continue
+        if not p.is_file():
+            unreadable.append(f"{safe(p.relative_to(root))}: not a regular file")
+            continue
+        if p.stat().st_size > MAX_BYTES:
+            unreadable.append(f"{safe(p.relative_to(root))}: over {MAX_BYTES // 1_000_000} MB, check it by hand")
             continue
         try:
             raw = p.read_bytes()
         except OSError as e:
-            unreadable.append(f"{p.relative_to(root)}: cannot be read ({e.strerror})")
+            unreadable.append(f"{safe(p.relative_to(root))}: cannot be read ({e.strerror})")
             continue
         for enc in ("utf-8", "utf-16"):
             try:
@@ -54,17 +64,24 @@ def read_all(root):
             except UnicodeDecodeError:
                 t = None
         if t is None or (b"\x00" in raw and not raw.startswith((b"\xff\xfe", b"\xfe\xff"))):
-            unreadable.append(f"{p.relative_to(root)}: binary or unknown encoding, check it by hand")
+            unreadable.append(f"{safe(p.relative_to(root))}: binary or unknown encoding, check it by hand")
             continue
         texts[p] = unicodedata.normalize("NFKC", t).translate(ZERO_WIDTH)
     return texts, unreadable
 
 
+def safe(x):
+    """A file name printed to the terminal, with control characters shown as escapes."""
+    return "".join(c if c.isprintable() else repr(c)[1:-1] for c in str(x))
+
+
 def private_words(repo):
     path = Path(os.environ.get("GATE_PRIVATE", repo / ".gate-private"))
-    if not path.exists():
+    try:
+        text = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
         return []
-    return [w.strip() for w in path.read_text().splitlines() if w.strip() and not w.startswith("#")]
+    return [w.strip() for w in text.splitlines() if w.strip() and not w.startswith("#")]
 
 
 def squash(s):
@@ -85,7 +102,7 @@ def main():
     texts, unreadable = read_all(root) if root.is_dir() else ({}, [])
     me = Path(__file__).resolve()
     texts = {p: ("" if p.resolve() == me else t) for p, t in texts.items()}  # its own patterns would match themselves
-    rel = {p: str(p.relative_to(root)) for p in texts}
+    rel = {p: safe(p.relative_to(root)) for p in texts}
     check("files found", [] if texts else [f"no readable files under {root}"])
     check("every file readable as text", unreadable)
 
