@@ -18,13 +18,15 @@ step.
      plugin. Tell them plainly that it talks to them for two or three hours, one question at a time,
      and writes their business down as files every other skill reads. Ask if they want to start it.
    - **It exists:** ask what they are actually trying to do next, then route:
-     build something ambitious and verifiable, `gauntlet-goal`. Turn a job they already do by hand
+     build something ambitious and verifiable, `gauntlet-goal`. Make an agent repeat a task until a
+     check passes, `agent-loops`. Turn a job they already do by hand
      into a skill, `member-workflow-graph`. Get an agent operating software, `computer-use`. Make
      content, `content-formats`. Share what they have built with their team, `share-your-skills`.
 
 3. Only if they ask, list the rest of the current drop in one line each: `seedance-prompt` for video
-   prompting, `stop-the-slop` for anything going in front of customers, and
-   `content-operating-system` for the whole content pipeline.
+   prompting, `stop-the-slop` for anything going in front of customers,
+   `content-operating-system` for the whole content pipeline (with `content-operating-system-update`
+   for what changed since), and `email-newsletter` for a designed email you send yourself.
 
 4. Everything from earlier calls is still in the repository by date, and it is not installed with
    this plugin. `2026-08-11/` holds the business interview, the workspace audit, the funnel builder

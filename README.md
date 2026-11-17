@@ -20,6 +20,7 @@ folder and says what it supersedes, so anything you cloned keeps working.
 | **6 October 2026** | Build your own CRM: a deep interview, a detailed PRD, then your agent forks an open source CRM and builds it | [`2026-10-06/`](2026-10-06/) |
 | **27 October 2026** | Security: check a skill or repo before you install it, with NVIDIA SkillSpector | [`2026-10-27/`](2026-10-27/) |
 | **3 November 2026** | The video editing stack with links to every tool, and voice quote: a working template that turns a voice note into a priced quote | [`2026-11-03/`](2026-11-03/) |
+| **17 November 2026** | Agent loops that check their own work, an email newsletter builder, four Grok Bot routines, and the content system update | [`2026-11-17/`](2026-11-17/) |
 
 ## Install the current drop as a plugin
 
@@ -35,7 +36,7 @@ current drop instead of copying folders around. In Claude Code or Codex, type `/
 also works, but it installs whatever is pushed next without asking, so scan each update first (the
 `2026-10-27/` folder shows how).
 
-The plugin serves the **current drops**, [`2026-09-01/`](2026-09-01/), [`2026-09-08/`](2026-09-08/), [`2026-09-15/`](2026-09-15/), [`2026-10-06/`](2026-10-06/) and [`2026-11-03/`](2026-11-03/). The older folders stay
+The plugin serves the **current drops**, [`2026-09-01/`](2026-09-01/), [`2026-09-08/`](2026-09-08/), [`2026-09-15/`](2026-09-15/), [`2026-10-06/`](2026-10-06/), [`2026-11-03/`](2026-11-03/) and [`2026-11-17/`](2026-11-17/). The older folders stay
 where they are and stay readable. `02-share-your-skills` in that drop shows you how to do this with
 your own skills.
 
