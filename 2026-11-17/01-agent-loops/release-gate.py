@@ -14,7 +14,8 @@ release is never checked without it. It reads no environment variables and makes
 It reads every file, whatever its type, and every file name. A file it cannot read as text fails.
 Lines that state a writing rule ("Never use: ...", "Never write ...") are skipped by the word checks.
 A gate catches the mistakes you can name. It does not replace a person reading the release. Known
-limits: a key built by joining strings in code, and a bare ~/ or $HOME path, get through.
+limits: a key built by joining strings in code or broken up with other characters, and a bare ~/ or
+$HOME path, get through.
 """
 import os
 import re
@@ -134,7 +135,8 @@ def main():
     leaks = [f"{rel[p]}: matches {pat[:24]}" for p, vs in views.items() for pat in SECRETS if any(re.search(pat, v) for v in vs)]
     # Web tokens (eyJ...) are found by splitting into word runs once, which stays fast on any input.
     leaks += [f"{rel[p]}: a web token" for p, vs in views.items()
-              if any(w.startswith("eyJ") and w.count(".") >= 2 and len(w) > 40 for v in vs for w in re.findall(r"[A-Za-z0-9_.-]+", v))]
+              if any("eyJ" in w and w[w.index("eyJ"):].count(".") >= 2 and len(w) - w.index("eyJ") > 40
+                     for v in vs for w in re.findall(r"[A-Za-z0-9_.-]+", v))]
     check("secrets", leaks)
     check("private paths", [f"{rel[p]}: a home folder path" for p, vs in views.items() if any(re.search(HOME_PATHS, v) for v in vs[:1] + vs[2:])])
 
@@ -152,11 +154,14 @@ def main():
 
     check("em dashes", [rel[p] for p, t in texts.items() if EM_DASH.search(t) and p.suffix not in {".py", ".mjs", ".js"}]
           + [rel[p] for p, t in texts.items() if "\u2014" in t and p.suffix in {".py", ".mjs", ".js"}])
-    # The rule sentence is cut out and the spacing closed up, so a sentence split around it reads whole again.
-    prose = {p: re.sub(r"[ \t]+", " ", RULE_TEXT.sub("", t)) for p, t in texts.items()
-             if p.suffix.lower() in {".md", ".markdown", ".txt", ".html", ".htm"}}
+    # The rule sentence names the banned words, so it is taken out before the word checks. Banned words are
+    # checked with it replaced by a space (no word can be glued to the next); the sentence shape is checked
+    # with it cut out and the spacing closed (a sentence split around it reads whole again).
+    docs = {p: t for p, t in texts.items() if p.suffix.lower() in {".md", ".markdown", ".txt", ".html", ".htm"}}
+    prose = {p: RULE_TEXT.sub(" ", t) for p, t in docs.items()}
+    joined = {p: re.sub(r"[ \t]+", " ", RULE_TEXT.sub("", t)) for p, t in docs.items()}
     check("banned words", [f"{rel[p]}: {w}" for p, t in prose.items() for w in BANNED if re.search(r"(?i)\b" + w + r"\b", t)])
-    check("negation swap", [rel[p] for p, t in prose.items() if re.search(NEGATION_SWAP, t) or re.search(NEGATION_SWAP_2, t)])
+    check("negation swap", [rel[p] for p, t in joined.items() if re.search(NEGATION_SWAP, t) or re.search(NEGATION_SWAP_2, t)])
 
     fm = []
     for p, t in texts.items():
