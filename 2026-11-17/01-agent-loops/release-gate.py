@@ -21,17 +21,19 @@ import sys
 import unicodedata
 from pathlib import Path
 
-SECRETS = [r"sk-[A-Za-z0-9_-]{20,}", r"sk_(live|test)_[A-Za-z0-9]{16,}", r"ghp_[A-Za-z0-9]{20,}", r"github_pat_[A-Za-z0-9_]{20,}",
-           r"AKIA[0-9A-Z]{16}", r"AIza[0-9A-Za-z_-]{30,}", r"xox[abprs]-[A-Za-z0-9-]{10,}", r"-----BEGIN [A-Z ]*PRIVATE KEY-----",
-           r"eyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.",
-           r"(?i)(api[_-]?key|secret|token|passw(or)?d)[\"']?\s*[:=]\s*[\"']?[^\s\"'<>{}$]{12,}"]
+# Every repeat is bounded, so a crafted file cannot make a pattern run for minutes.
+SECRETS = [r"sk-[A-Za-z0-9_-]{20,300}", r"sk_(live|test)_[A-Za-z0-9]{16,300}", r"ghp_[A-Za-z0-9]{20,300}", r"github_pat_[A-Za-z0-9_]{20,300}",
+           r"AKIA[0-9A-Z]{16}", r"AIza[0-9A-Za-z_-]{30,300}", r"xox[abprs]-[A-Za-z0-9-]{10,300}", r"-----BEGIN [A-Z ]{0,40}PRIVATE KEY-----",
+           r"eyJ[A-Za-z0-9_-]{20,500}\.[A-Za-z0-9_-]{20,500}\.",
+           r"(?i)(api[_-]?key|secret|token|passw(or)?d)[\"']?\s{0,10}[:=]\s{0,10}[\"']?[^\s\"'<>{}$]{12,300}"]
 HOME_PATHS = r"(?i)(/Users/\s*[A-Za-z]|/home/[A-Za-z]|[A-Z]:[\\/]Users[\\/]|%2F" + "Users%2F|-Users-[A-Za-z])"
 MAX_BYTES = 5_000_000
 BANNED = ["delve", "leverage", "unlock", "seamless", "game-changer", "robust", "elevate"]
 NEGATION_SWAP = r"(?i)\b(it'?s|it is|this is|that'?s|that is)( not|n'?t) (just )?[^.]{1,40}[,;:.]\s*(it'?s|it is|this is|that'?s|that is)\b"
 NEGATION_SWAP_2 = r"(?i)\b(is|are)( not|n'?t) (a |an |the )?[^.,;:]{1,30}[,;:]\s*the [^.,;:]{1,30} (is|are)\b"
-EM_DASH = re.compile(r"\u2014|&mdash;|&#8212;|&#x2014;|\\u2014", re.I)
-RULE_LINE = re.compile(r"(?i)\bnever (use|write)\b")
+EM_DASH = re.compile(r"\u2014|&mdash;?|&#8212;?|&#x2014;?|\\u2014", re.I)
+# A line that states the writing rule itself ("Never use: delve, ...") is skipped by the word checks, and only that line.
+RULE_LINE = re.compile(r"(?i)(never use:\s*delve, leverage|never write \"it's not)")
 ZERO_WIDTH = dict.fromkeys(map(ord, "\u200b\u200c\u200d\u2060\ufeff\u00ad"))
 
 
@@ -57,17 +59,23 @@ def read_all(root):
         except OSError as e:
             unreadable.append(f"{safe(p.relative_to(root))}: cannot be read ({e.strerror})")
             continue
-        for enc in ("utf-8", "utf-16"):
-            try:
-                t = raw.decode(enc)
-                break
-            except UnicodeDecodeError:
-                t = None
+        try:
+            # UTF-16 only with its byte order mark; everything else must be strict UTF-8.
+            t = raw.decode("utf-16") if raw.startswith((b"\xff\xfe", b"\xfe\xff")) else raw.decode("utf-8")
+        except UnicodeDecodeError:
+            t = None
         if t is None or (b"\x00" in raw and not raw.startswith((b"\xff\xfe", b"\xfe\xff"))):
             unreadable.append(f"{safe(p.relative_to(root))}: binary or unknown encoding, check it by hand")
             continue
-        texts[p] = unicodedata.normalize("NFKC", t).translate(ZERO_WIDTH)
+        texts[p] = clean(t)
     return texts, unreadable
+
+
+def clean(t):
+    """Normalised text: invisible format characters removed, curly quotes made straight."""
+    t = unicodedata.normalize("NFKC", t)
+    t = "".join(c for c in t if unicodedata.category(c) != "Cf")
+    return t.translate({0x2018: "'", 0x2019: "'", 0x201C: '"', 0x201D: '"'})
 
 
 def safe(x):
@@ -77,7 +85,9 @@ def safe(x):
 
 def private_words(path):
     try:
-        text = path.read_text(encoding="utf-8")
+        if not path.is_file():
+            return []
+        text = clean(path.read_text(encoding="utf-8"))
     except (OSError, UnicodeDecodeError):
         return []
     return [w.strip() for w in text.splitlines() if w.strip() and not w.startswith("#")]
@@ -102,13 +112,13 @@ def main():
     me = Path(__file__).resolve()
     texts = {p: ("" if p.resolve() == me else t) for p, t in texts.items()}  # its own patterns would match themselves
     rel = {p: safe(p.relative_to(root)) for p in texts}
-    check("files found", [] if texts else [f"no readable files under {root}"])
+    check("files found", [] if texts else [f"no readable files under {safe(root)}"])
     check("every file readable as text", unreadable)
 
     # Each file is scanned as written, joined across line breaks, and by its own path.
     views = {p: (t, t.replace("\n", "").replace("\r", ""), rel[p]) for p, t in texts.items()}
     check("secrets", [f"{rel[p]}: matches {pat[:24]}" for p, vs in views.items() for pat in SECRETS if any(re.search(pat, v) for v in vs)])
-    check("private paths", [f"{rel[p]}: {m.group(0)}" for p, vs in views.items() for v in vs[:1] + vs[2:] for m in [re.search(HOME_PATHS, v)] if m])
+    check("private paths", [f"{rel[p]}: a home folder path" for p, vs in views.items() if any(re.search(HOME_PATHS, v) for v in vs[:1] + vs[2:])])
 
     words = private_words(Path(sys.argv[3]).resolve() if len(sys.argv) > 3 else repo / ".gate-private")
     if not words:
@@ -139,7 +149,11 @@ def main():
     check("skill frontmatter", fm)
 
     readme = repo / "README.md"
-    check("listed in the README", [] if readme.exists() and f"{root.name}/" in readme.read_text(errors="replace") else [f"{root.name}/ is not in {readme.name}"])
+    try:
+        listed = readme.is_file() and f"{root.name}/" in readme.read_text(errors="replace")
+    except OSError:
+        listed = False
+    check("listed in the README", [] if listed else [f"{safe(root.name)}/ is not in the repo README"])
     check("drop has a README", [] if (root / "README.md").exists() else ["README.md missing in the drop folder"])
 
     failed = 0

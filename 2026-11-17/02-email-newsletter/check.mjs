@@ -3,7 +3,7 @@
 // Usage: node check.mjs <file.html>
 // Exit 0: no errors (warnings still need reading). Exit 1: at least one error. Exit 2: bad usage.
 
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 
 // The unsubscribe tag your mailing tool swaps for each recipient's link.
 // Change this if your tool uses another name, for example {{unsubscribe}}.
@@ -16,10 +16,12 @@ if (!file) {
 }
 
 let html;
+const shown = String(file).replace(/[\x00-\x1f\x7f]/g, "?");
 try {
+  if (!statSync(file).isFile()) throw new Error("not a file");
   html = readFileSync(file, "utf8");
 } catch {
-  process.stderr.write(`Could not read ${file}\n`);
+  process.stderr.write(`Could not read ${shown} as a file\n`);
   process.exit(2);
 }
 
@@ -90,7 +92,17 @@ if (/position\s*:\s*(fixed|absolute|sticky)/i.test(html)) errors.push("Fixed, ab
 if (/display\s*:\s*(flex|grid)/i.test(html)) warnings.push("Flexbox or grid CSS found. Outlook ignores it. Use table cells for layout.");
 
 // 4. Styles: inline on each element. The one <style> block holds only media queries.
-const css = [...html.matchAll(/<style\b[^>]{0,2000}>([\s\S]{0,200000}?)<\/style>/gi)].map((m) => m[1]).join("\n");
+// Style blocks found with indexOf, not a regex, so a crafted file cannot stall the check.
+const lower = html.toLowerCase();
+const cssParts = [];
+for (let i = lower.indexOf("<style"); i !== -1; i = lower.indexOf("<style", i + 1)) {
+  const open = lower.indexOf(">", i);
+  const close = open === -1 ? -1 : lower.indexOf("</style>", open);
+  if (close === -1) break;
+  cssParts.push(html.slice(open + 1, close));
+  i = close;
+}
+const css = cssParts.join("\n");
 const looseCss = stripMediaBlocks(css).replace(/\/\*[\s\S]*?\*\//g, "").trim();
 if (looseCss) errors.push("Style rules sit outside a media query in the <style> block. Move them inline on each element.");
 const bareText = [...html.matchAll(/<(td|th|p|h[1-6]|a|span|li)\b[^>]{0,2000}>/gi)].filter((m) => attr(m[0], "style") === null).length;
@@ -120,7 +132,7 @@ const plainHttp = anchors.filter((m) => /^http:\/\//i.test((attr(`<a${m[1]}>`, "
 if (plainHttp) warnings.push(`${plainHttp} link${plainHttp === 1 ? " uses" : "s use"} http:// rather than https://.`);
 
 // 7. No em dashes, as the character or as an HTML entity.
-const emDash = /\u2014|&mdash;|&#8212;|&#x2014;/i;
+const emDash = /\u2014|&mdash;?|&#8212;?|&#x2014;?/i;
 html.split("\n").forEach((line, n) => {
   if (emDash.test(line)) errors.push(`Em dash on line ${n + 1}. Replace it with a comma, a full stop, a colon or brackets.`);
 });
