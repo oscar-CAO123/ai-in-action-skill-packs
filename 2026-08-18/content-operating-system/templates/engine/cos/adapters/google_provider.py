@@ -4,6 +4,7 @@ from __future__ import annotations
 
 # The key travels in a header, never in a URL, so it cannot end up in an error message or a log.
 import base64
+from urllib.parse import urlparse
 import time
 from pathlib import Path
 
@@ -44,6 +45,17 @@ class GoogleAdapter(Adapter):
         request.out_path.write_bytes(base64.b64decode(data))
         return request.out_path
 
+    def _download(self, uri: str) -> bytes:
+        """The key only ever goes to Google's API host, and redirects are followed without it."""
+        if urlparse(uri).hostname != urlparse(BASE).hostname:
+            raise ValueError("the video address is not on Google's API host; refusing to send the key")
+        response = requests.get(uri, headers={"x-goog-api-key": self.token()}, timeout=600,
+                                allow_redirects=False)
+        if response.is_redirect:
+            response = requests.get(response.headers["location"], timeout=600)
+        response.raise_for_status()
+        return response.content
+
     def _video(self, request: Request) -> Path:
         model = self.settings.get("video_model", "veo-3.0-generate-001")
         start = requests.post(
@@ -63,7 +75,6 @@ class GoogleAdapter(Adapter):
             if body.get("done"):
                 uri = body["response"]["generateVideoResponse"]["generatedSamples"][0]["video"]["uri"]
                 request.out_path.parent.mkdir(parents=True, exist_ok=True)
-                request.out_path.write_bytes(
-                    requests.get(uri, headers={"x-goog-api-key": self.token()}, timeout=600).content)
+                request.out_path.write_bytes(self._download(uri))
                 return request.out_path
         raise TimeoutError("video generation did not finish in 20 minutes")

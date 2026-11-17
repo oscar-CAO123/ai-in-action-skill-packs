@@ -241,7 +241,7 @@ as an invented number.
   by design ("an automation platform", "a fast LLM"). It comes from your content store interview evidence
   or the tools your evidence layer records, and it carries the same discipline as a number: name
   the tool only where the evidence names it.
-- **The counted stack, from [your figure] candidate interview summaries:** lead with the tools that top your own count, because it is what the market actually runs.
+- **The counted stack, from [your figure] customer interview summaries:** lead with the tools that top your own count, because it is what the market actually runs.
 
 Queries, table shapes and the refresh procedure: `references/candidate-knowledge-base.md`.
 

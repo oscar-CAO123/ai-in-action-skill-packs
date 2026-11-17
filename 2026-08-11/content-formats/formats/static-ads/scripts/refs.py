@@ -151,6 +151,8 @@ def line_of(entry):
 
 
 def cmd_show(args):
+    if not args:
+        sys.exit("usage: refs.py show <bank>:<id> [--open]")
     ref = args[0]
     e = resolve(ref)
     print(f"{e['ref']}  {e['title']}")

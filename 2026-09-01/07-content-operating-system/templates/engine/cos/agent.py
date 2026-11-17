@@ -29,10 +29,21 @@ CANDIDATES = [
 
 PROBE = "Reply with exactly: OK"
 
-# The prompt carries everything the agent needs, so the call runs in an empty folder with only these
-# variables: it cannot read the project, its .env or any other key.
-ENV_KEEP = ("PATH", "HOME", "USER", "LANG", "LC_ALL", "TERM", "TMPDIR", "XDG_CONFIG_HOME", "CODEX_HOME",
-            "ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GEMINI_API_KEY", "GOOGLE_API_KEY")
+
+
+def agent_env() -> dict:
+    """The operator's own environment, minus every key this project's .env loaded. The agent CLI keeps
+    its own sign-in; the project's provider keys never reach it."""
+    from .config import DOTENV_KEYS
+    return {k: v for k, v in os.environ.items() if k not in DOTENV_KEYS}
+
+
+def run_isolated(argv: list[str], timeout: int) -> subprocess.CompletedProcess:
+    """Run the CLI in an empty folder, so it cannot read the project or its .env. Every prompt is
+    self-contained: whatever the agent needs is written into it."""
+    with tempfile.TemporaryDirectory(prefix="cos-agent-") as empty:
+        return subprocess.run(argv, capture_output=True, text=True, timeout=timeout,
+                              cwd=empty, env=agent_env())
 
 
 def detect(cache_path: Path | None = None) -> tuple[str, callable] | None:
@@ -51,7 +62,7 @@ def detect(cache_path: Path | None = None) -> tuple[str, callable] | None:
         if not shutil.which(name):
             continue
         try:
-            result = subprocess.run(argv(PROBE), capture_output=True, text=True, timeout=120)
+            result = run_isolated(argv(PROBE), timeout=120)
         except (subprocess.TimeoutExpired, OSError):
             continue
         if result.returncode == 0 and "OK" in result.stdout:
@@ -70,11 +81,8 @@ def ask(prompt: str, cwd: Path, timeout: int = 900,
         return None, "no headless agent CLI found"
 
     name, argv = found
-    env = {k: os.environ[k] for k in ENV_KEEP if k in os.environ}
     try:
-        with tempfile.TemporaryDirectory(prefix="cos-agent-") as empty:
-            result = subprocess.run(argv(prompt), capture_output=True, text=True,
-                                    timeout=timeout, cwd=empty, env=env)
+        result = run_isolated(argv(prompt), timeout=timeout)
     except subprocess.TimeoutExpired:
         return None, f"{name} timed out after {timeout}s"
     except OSError as error:
