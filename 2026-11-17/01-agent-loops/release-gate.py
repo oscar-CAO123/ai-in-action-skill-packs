@@ -29,6 +29,7 @@ HOME_PATHS = r"(?i)(/Users/\s*[A-Za-z]|/home/[A-Za-z]|[A-Z]:[\\/]Users[\\/]|%2F"
 MAX_BYTES = 5_000_000
 BANNED = ["delve", "leverage", "unlock", "seamless", "game-changer", "robust", "elevate"]
 NEGATION_SWAP = r"(?i)\b(it'?s|it is|this is|that'?s|that is)( not|n'?t) (just )?[^.]{1,40}[,;:.]\s*(it'?s|it is|this is|that'?s|that is)\b"
+NEGATION_SWAP_2 = r"(?i)\b(is|are)( not|n'?t) (a |an |the )?[^.,;:]{1,30}[,;:]\s*the [^.,;:]{1,30} (is|are)\b"
 EM_DASH = re.compile(r"\u2014|&mdash;|&#8212;|&#x2014;|\\u2014", re.I)
 RULE_LINE = re.compile(r"(?i)\bnever (use|write)\b")
 ZERO_WIDTH = dict.fromkeys(map(ord, "\u200b\u200c\u200d\u2060\ufeff\u00ad"))
@@ -126,7 +127,7 @@ def main():
     prose = {p: "\n".join(l for l in t.splitlines() if not RULE_LINE.search(l)) for p, t in texts.items()
              if p.suffix.lower() in {".md", ".txt", ".html"}}
     check("banned words", [f"{rel[p]}: {w}" for p, t in prose.items() for w in BANNED if re.search(r"(?i)\b" + w + r"\b", t)])
-    check("negation swap", [rel[p] for p, t in prose.items() if re.search(NEGATION_SWAP, t)])
+    check("negation swap", [rel[p] for p, t in prose.items() if re.search(NEGATION_SWAP, t) or re.search(NEGATION_SWAP_2, t)])
 
     fm = []
     for p, t in texts.items():

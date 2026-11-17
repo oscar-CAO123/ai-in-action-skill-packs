@@ -14,9 +14,9 @@ Nothing to install, no account, no service in the middle.
 ### `01-agent-loops/`
 Turns any task into a loop that checks its own work, and hands back one prompt any agent can run.
 It asks what done means and turns it into a check, picks the smallest shape (solo, maker and checker,
-or a gauntlet), and always sets a hard stop. Includes how Boris Cherny, who built Claude Code, and his
-colleague Cat Wu run loops, and `release-gate.py`: the gate this drop itself passed before it was shared. Copy it for
-your own releases.
+or a gauntlet), and always sets a hard stop. Includes how Boris Cherny, who built Claude Code, and a
+colleague run loops, and `release-gate.py`: the gate this drop itself passed before it was shared. Copy it for
+your own releases: `python3 release-gate.py <folder> [<repo root>] [<private word list>]`.
 
 ### `02-email-newsletter/`
 Builds a designed HTML email newsletter on your computer, checks it with `check.mjs` (layout, alt
@@ -28,7 +28,8 @@ Grok Bot is xAI's always-on agent that runs jobs on a schedule; any agent that c
 run on a timer works the same way. Four routines for it: inbox sort, after-hours call follow-through, find
 the money (overcharges on supplier invoices) and win-back. Each says when it runs, what it reads, its
 steps and its gate. All are drafts only, and the money one never pays or disputes anything. Each lists the files it reads: create
-those first (your price list, offer sheet, FAQ, an empty ledger). Put the
+those first (brand voice, FAQ, services list, booking diary, agreed prices, offer sheet, and empty
+ledgers). Put the
 file in the repository your bot reads, run it once by hand and watch it, then schedule it.
 
 ### `04-content-operating-system-update/`

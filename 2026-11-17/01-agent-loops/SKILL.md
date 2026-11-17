@@ -1,6 +1,6 @@
 ---
 name: agent-loops
-allowed-tools: Read, Write, Bash(python3 release-gate.py:*)
+allowed-tools: Read, Write
 description: Turn a task into an agent loop that checks its own work, then hand back one self-contained prompt the user can run in Claude Code, Codex, Grok Bot or any other agent. Use when the user says "build an agent loop", "loop this", "make a goal", "write a goal prompt", "make it check its own work", "keep going until it passes", or wants an agent to repeat a task until a test, a gate or a score says it is done. Do NOT use for one-off questions, for work with no way to check the result, or when one good prompt and one look would do the job.
 ---
 
@@ -88,7 +88,9 @@ These come from running loops on real business systems: new features, scrapers, 
 security checks and internal apps. Put the ones that fit into the prompt.
 
 1. **One gate script, and it must exit 0.** Put every check in one script that prints pass or fail per
-   check and exits 0 only when all pass. The loop is done when the gate says so. Nothing ships, gets imported or gets called finished until the gate passes.
+   check and exits 0 only when all pass. The loop is done when the gate says so. Nothing ships, gets
+   imported or gets called finished until the gate passes. `release-gate.py` in this folder is a worked
+   example: `python3 release-gate.py <folder> [<repo root>] [<private word list>]`.
 2. **Write the answer key before the build.** For new work, list every decision, settle the open ones
    first (research, a quick prototype the user reacts to, or a real test), then turn the settled list
    into pass or fail checks. An agent never fills a gap with a guess.
@@ -111,25 +113,24 @@ security checks and internal apps. Put the ones that fit into the prompt.
 
 Boris Cherny built Claude Code. In "Reflecting on a year of Claude Code" (Claude's YouTube channel,
 8 June 2026, https://www.youtube.com/watch?v=Hth_tLaC2j8) he says he no longer talks to an agent. He
-talks to a loop or a routine, and it prompts the agent for him. What he and his colleague Cat Wu
-describe, in our words, and how to put it in your prompt:
+talks to a loop or a routine, and it prompts the agent for him. What he and a colleague on the
+Claude Code team describe, in our words, and how we suggest putting it in your prompt:
 
 1. **Every mistake becomes a written rule.** When the agent gets something wrong, he does not tell it
-   to do it differently. He tells it to write the fix into its instructions file or a skill. Put a line
-   in the prompt: "When you hit a mistake you could make again, write the rule you would add in the pass
-   log, and a person adds it to <file>." Keep instruction files read-only for the loop. A person makes
-   the change, so one bad input can never stay in every future run.
+   to do it differently. He tells it to write the fix into its instructions file or a skill. Our advice
+   for a loop that runs unattended: put a line in the prompt, "When you hit a mistake you could make
+   again, write the rule you would add in the pass log, and a person adds it to <file>." Keep
+   instruction files read-only for the loop, so one bad input can never stay in every future run.
 2. **Checking means running the thing.** Tests, lint and type checks are already easy to automate.
    The check that matters is whether the agent can run what it built the way a user would: open the
    app, click through the new screen, try the edge cases, fix, and check again. Make that a line of done.
-3. **The skill gets better after every new fix** (Cat Wu). When the agent solves a new problem
-   (a test server is down, a step is missing), it writes down what it learned. The skill it was
-   following is updated from that note, so the next run starts ahead. In your loop, a person reviews
-   the note and makes that edit.
+3. **The skill gets better after every new fix.** In the video, when the agent solves a new problem
+   (a test server is down, a step is missing), it is told to update the skill it was following, so the
+   next run starts ahead. Our advice: have it write the change it would make, and a person makes it.
 4. **Routines watch and fix the easy ones.** An engineer on their team runs a routine that picks up
    every bug report nobody has answered in five hours and puts up a fix. He merges the ones that are
    easy to check. A person stays on the merge.
-5. **Little context, a way to look things up** (both of them). Give the agent the smallest instructions and tools
+5. **Little context, a way to look things up.** Give the agent the smallest instructions and tools
    that do the job, and a way to pull in what it needs. Too much context is micromanaging.
 6. **A separate model checks safety.** Instead of a person approving every action, a second model
    reviews each risky step and blocks the ones that look wrong. The same idea as a fresh checker.
@@ -197,7 +198,8 @@ Save it as `goals/<date>-<short-name>.md` in the user's project and tell them wh
 The prompt is plain text, so it runs anywhere. How you start it depends on the tool.
 
 - **Claude Code:** paste the prompt into a session in the project folder. If your version has a goal or
-  loop command, hand it the prompt there. Let it run, and read the pass log at the end.
+  loop command, hand it the prompt there. Let it run with nothing that sends, deploys or pays, and
+  read the pass log at the end.
 - **Codex:** same prompt, same folder. Give it permission to run the gate command, and nothing that
   sends or deploys.
 - **Grok Bot and other always-on agents:** save the prompt as a skill file in the repository the bot

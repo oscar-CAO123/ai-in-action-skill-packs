@@ -10,8 +10,9 @@ A voice agent answers the phone after hours and saves a transcript.
 This skill does the follow-through the next morning.
 
 ## Tools to connect
-Read and draft access only. Do not give the bot tools that send, pay, book or delete: a written
-rule is not a lock, the missing tool is.
+Read the call transcripts and the booking diary, write drafts, and one channel that messages only
+you. Do not give the bot tools that send texts, book, pay or delete. A rule in a file can be ignored.
+A tool the bot does not have cannot be used.
 
 ## The gate
 Draft only. Nothing is booked or texted until I say yes.

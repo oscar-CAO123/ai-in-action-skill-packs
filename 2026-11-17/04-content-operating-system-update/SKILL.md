@@ -47,11 +47,11 @@ This sharpens the original rule that a model call is for judgement. Counting, so
 
 ## 2. Animation philosophy
 
-Animation moves through five stages. Each stage must clear before the next one starts. Build authority comes from watching a reference, not from building first and justifying later.
+Animation moves through five stages. Each stage must clear before the next one starts. You earn the right to build by watching a reference, not from building first and justifying later.
 
 1. **Brief.** Name the beat, the audience, the evidence, the format, the frame shape and the length. Nothing is left to default.
 2. **Reference.** Choose the approved piece whose movement you will inherit, and watch it. Picking it off a list does not count as watching.
-3. **Build authority.** Write what you saw under five fixed headings: Composition, Camera, Identity, Evidence match, Anti-pattern. An empty heading means no build.
+3. **Write down what you watched.** Use five fixed headings: Composition, Camera, Identity, What the evidence shows, What to avoid. An empty heading means no build.
 4. **Candidate evidence.** Render the piece. Save a contact sheet of three frames, and a probe that reads the real width, height and length. Check both against the brief.
 5. **Delivery.** An independent critic returns a verdict, and your batch check must pass.
 
