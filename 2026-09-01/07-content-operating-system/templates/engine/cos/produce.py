@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -49,7 +50,16 @@ def draft_dir(root: Path, queue_date: str, rank: int) -> Path:
 def step_script(cfg: dict, idea: dict, out: Path) -> int:
     root = Path(cfg["_root"])
     fmt = idea.get("format") or (cfg.get("formats") or [""])[0]
-    spec = root / "brain" / "formats" / f"{fmt}.md"
+    # The format name comes from the idea queue, which a model wrote: only a plain name is accepted,
+    # and the file must sit inside brain/formats.
+    if not re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,60}", str(fmt)):
+        print(f"refusing format name {str(fmt)[:60]!r}: use a plain name like slide-carousel")
+        return 1
+    formats_dir = (root / "brain" / "formats").resolve()
+    spec = (formats_dir / f"{fmt}.md").resolve()
+    if spec.parent != formats_dir:
+        print("refusing a format file outside brain/formats")
+        return 1
 
     evidence = "\n".join(
         f"- {e['source_type']} {e['date']} ({e['record_id']}): {e['text']}"
