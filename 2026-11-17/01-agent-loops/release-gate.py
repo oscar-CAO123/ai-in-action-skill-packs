@@ -25,7 +25,6 @@ from pathlib import Path
 # Every repeat is bounded, so a crafted file cannot make a pattern run for minutes.
 SECRETS = [r"sk-[A-Za-z0-9_-]{20,300}", r"sk_(live|test)_[A-Za-z0-9]{16,300}", r"ghp_[A-Za-z0-9]{20,300}", r"github_pat_[A-Za-z0-9_]{20,300}",
            r"AKIA[0-9A-Z]{16}", r"AIza[0-9A-Za-z_-]{30,300}", r"xox[abprs]-[A-Za-z0-9-]{10,300}", r"-----BEGIN [A-Z ]{0,40}PRIVATE KEY-----",
-           r"eyJ[A-Za-z0-9_-]{20,4000}\.[A-Za-z0-9_-]{20,4000}\.",
            r"(?i)(api[_-]?key|secret|token|passw(or)?d)[\"']?\s{0,60}[:=]\s{0,60}[\"']?[^\s\"'<>{}$]{12,300}"]
 HOME_PATHS = r"(?i)(/Users/\s*[A-Za-z]|/home/[A-Za-z]|[A-Z]:[\\/]Users[\\/]|%2F" + "Users%2F|-Users-[A-Za-z])"
 MAX_BYTES = 5_000_000
@@ -92,7 +91,7 @@ def clean(t):
     t = unicodedata.normalize("NFKC", t)
     # Invisible format characters, combining marks and blank-looking fillers are removed.
     t = "".join(c for c in t if unicodedata.category(c) not in ("Cf", "Mn", "Me") and c not in INVISIBLE)
-    return t.translate({0x2018: "'", 0x2019: "'", 0x02BC: "'", 0x201C: '"', 0x201D: '"'})
+    return t.translate({0x2018: "'", 0x2019: "'", 0x02BC: "'", 0x201C: '"', 0x201D: '"', 0x2010: "-", 0x2011: "-"})
 
 
 def safe(x):
@@ -132,7 +131,11 @@ def main():
 
     # Each file is scanned as written, joined across line breaks, and by its own path.
     views = {p: (t, t.replace("\n", "").replace("\r", ""), rel[p]) for p, t in texts.items()}
-    check("secrets", [f"{rel[p]}: matches {pat[:24]}" for p, vs in views.items() for pat in SECRETS if any(re.search(pat, v) for v in vs)])
+    leaks = [f"{rel[p]}: matches {pat[:24]}" for p, vs in views.items() for pat in SECRETS if any(re.search(pat, v) for v in vs)]
+    # Web tokens (eyJ...) are found by splitting into word runs once, which stays fast on any input.
+    leaks += [f"{rel[p]}: a web token" for p, vs in views.items()
+              if any(w.startswith("eyJ") and w.count(".") >= 2 and len(w) > 40 for v in vs for w in re.findall(r"[A-Za-z0-9_.-]+", v))]
+    check("secrets", leaks)
     check("private paths", [f"{rel[p]}: a home folder path" for p, vs in views.items() if any(re.search(HOME_PATHS, v) for v in vs[:1] + vs[2:])])
 
     words = private_words(Path(sys.argv[3]).resolve() if len(sys.argv) > 3 else repo / ".gate-private")
@@ -149,7 +152,8 @@ def main():
 
     check("em dashes", [rel[p] for p, t in texts.items() if EM_DASH.search(t) and p.suffix not in {".py", ".mjs", ".js"}]
           + [rel[p] for p, t in texts.items() if "\u2014" in t and p.suffix in {".py", ".mjs", ".js"}])
-    prose = {p: RULE_TEXT.sub(" ", t) for p, t in texts.items()
+    # The rule sentence is cut out and the spacing closed up, so a sentence split around it reads whole again.
+    prose = {p: re.sub(r"[ \t]+", " ", RULE_TEXT.sub("", t)) for p, t in texts.items()
              if p.suffix.lower() in {".md", ".markdown", ".txt", ".html", ".htm"}}
     check("banned words", [f"{rel[p]}: {w}" for p, t in prose.items() for w in BANNED if re.search(r"(?i)\b" + w + r"\b", t)])
     check("negation swap", [rel[p] for p, t in prose.items() if re.search(NEGATION_SWAP, t) or re.search(NEGATION_SWAP_2, t)])
