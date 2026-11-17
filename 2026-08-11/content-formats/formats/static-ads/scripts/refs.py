@@ -4,10 +4,10 @@
     python3 refs.py                      # every bank, with counts
     python3 refs.py list hook            # the ids in one bank
     python3 refs.py show arch:S6         # the entry, verbatim
-    python3 refs.py show swipe:09 --open # ... and open the image in Preview
+    python3 refs.py show local:<id> --open  # ... and open the image
     python3 refs.py check arch:S6 hook:S1 style:noir-oil   # exit 1 if any id is dead
 
-your law, : nothing is generated without a concrete reference from the bank, named
+The rule: nothing is generated without a concrete reference from the bank, named
 before the generation and shown with it. A reference is an ID that resolves here, not a
 description. "modelled on a newspaper" is not a reference; `tpl:Frame 466` is.
 
@@ -18,10 +18,10 @@ Banks:
   hook   the copy structure the headline FILLS       references/hooks/HOOKS.md
   arch   the static/video archetype it IMITATES      references/scripts/archetypes.md
   tear   the doctrine the treatment obeys            references/scripts/a reference brand-teardowns.md
-  hex    the measured shape of the 16-reel corpus    references/transcripts/the reference corpus-FORMULA.md
-  tpl    a Figma layout extract                      context/advertising/static-ads-bank/templates/
+  hex    the measured shape of the 16-reel corpus    references/transcripts/HEX-CREATIVES-FORMULA.md
+  tpl    a Figma layout extract                      context/static-ads-bank/templates/   (yours, optional)
   local  a reference image a format was built on     formats/static-ads/references/
-  style  a locked plate look                         content-engine/ideas/industry-build-carousels/styles.json
+  style  a locked plate look                         context/styles.json                  (yours, optional)
 """
 import json
 import re
@@ -30,12 +30,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent
-VAULT = ROOT.parents[5]
-house = VAULT / "the business"
-REFS = house / "skills" / "content-formats" / "references"
-ADS_BANK = house / "context" / "advertising" / "static-ads-bank"
-STYLES = (house / "projects" / "content-engine" / "ideas" / "industry-build-carousels"
-          / "styles.json")
+PACK = ROOT.parents[2]  # the content-formats folder this script ships in
+REFS = PACK / "references"
+ADS_BANK = PACK / "context" / "static-ads-bank"  # your own Figma extracts, if you keep them
+STYLES = PACK / "context" / "styles.json"  # your own locked looks, if you keep them
 
 # bank -> (sources, heading regex). The regex's first group is the id, the second the title.
 # `tear` takes a GLOB: teardowns arrive one file per source (a reference brand, then a competitor), and a bank
@@ -44,7 +42,7 @@ DOC_BANKS = {
     "hook": (REFS / "hooks" / "HOOKS.md", r"^### ([A-Z]\d+)\. (.+)$"),
     "arch": (REFS / "scripts" / "archetypes.md", r"^## ([A-Z]\d+)\. (.+)$"),
     "tear": (sorted((REFS / "scripts").glob("*teardowns*.md")), r"^## (.+)$"),
-    "hex": (REFS / "transcripts" / "the reference corpus-FORMULA.md", r"^## (.+)$"),
+    "hex": (REFS / "transcripts" / "HEX-CREATIVES-FORMULA.md", r"^## (.+)$"),
 }
 
 
@@ -75,11 +73,7 @@ def doc_entries(bank):
     return out
 
 
-# NOT A BANK, deliberately. Direction: the scraped Meta and LinkedIn swipe records were
-# moved to an archive folder and are not a source of
-# anything. `static-ads/SKILL.md` section 3: "do not re-scrape, do not rebuild them, and do not
-# cite them. The reference layer is the Figma extracts and nothing else." A competitor static
-# is therefore not citable here, and adding a `swipe` bank back reopens a closed decision.
+# There is deliberately no bank of scraped competitor ads: copying a competitor is not a reference.
 
 
 def image_bank(d, what, recurse=False):
@@ -93,8 +87,8 @@ def image_bank(d, what, recurse=False):
     it = sorted(d.rglob("*")) if recurse else sorted(d.iterdir())
     files = [f for f in it if f.suffix.lower() in (".png", ".jpg", ".svg", ".webp")]
     stems = [f.stem if f.parent == d else f"{f.parent.name}/{f.stem}" for f in files]
-    # `.strip()`: one export is named "VetNotes Static Ads .png", and a trailing space in an id is
-    # invisible in a listing and undebuggable in a citation. The gate found it on its first run.
+    # `.strip()`: an export named with a trailing space would give an id whose space is invisible
+    # in a listing and undebuggable in a citation.
     out = []
     for f, sid in zip(files, stems):
         rid = sid if stems.count(sid) == 1 else f"{sid}{f.suffix}"
@@ -157,6 +151,8 @@ def line_of(entry):
 
 
 def cmd_show(args):
+    if not args:
+        sys.exit("usage: refs.py show <bank>:<id> [--open]")
     ref = args[0]
     e = resolve(ref)
     print(f"{e['ref']}  {e['title']}")
@@ -165,7 +161,7 @@ def cmd_show(args):
     print(e["body"])
     if "--open" in args:
         target = e.get("image") or e["src"]
-        subprocess.run(["open", "-a", "Preview" if e.get("image") else "Cursor", str(target)])
+        subprocess.run(["open", str(target)])
 
 
 def cmd_list(args):
@@ -203,8 +199,8 @@ def main():
                                                           "local": ROOT.parent / "references",
                                                           "style": STYLES}[b]
             # `tear` is a glob, so its source is a list of files rather than one path.
-            where = (", ".join(str(p.relative_to(VAULT)) for p in src)
-                     if isinstance(src, list) else str(src.relative_to(VAULT)))
+            where = (", ".join(str(p.relative_to(PACK)) for p in src)
+                     if isinstance(src, list) else str(src.relative_to(PACK)))
             print(f"  {b:<7} {n:>4}  {where}")
         print(f"\n  {total} citable references. refs.py list <bank> to see them.")
         return

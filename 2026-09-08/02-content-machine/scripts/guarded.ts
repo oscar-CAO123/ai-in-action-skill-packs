@@ -12,7 +12,7 @@
  * whatever REST surface your store exposes; swap sbSelect for your client if you have one.
  *
  * Run a cron locally, contained, with no credentials at all:
- *   env -i PATH="$PATH" HOME="$HOME" npx tsx scripts/ingest_performance.ts
+ *   env -i PATH="$PATH" HOME="$HOME" npx tsx@4.19.2 scripts/ingest_performance.ts
  */
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from "fs";
 import { join } from "path";

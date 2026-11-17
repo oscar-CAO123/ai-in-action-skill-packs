@@ -11,7 +11,7 @@
  * payloads print and land in the run directory. Never source a whole environment file into a
  * local run: pass only the variables the run needs.
  *
- *   env -i PATH="$PATH" HOME="$HOME" npx tsx scripts/ingest_performance.ts
+ *   env -i PATH="$PATH" HOME="$HOME" npx tsx@4.19.2 scripts/ingest_performance.ts
  */
 import { writeFileSync } from "fs";
 import { join } from "path";

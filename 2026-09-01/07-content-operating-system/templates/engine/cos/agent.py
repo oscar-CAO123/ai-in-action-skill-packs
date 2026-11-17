@@ -14,6 +14,7 @@ import json
 import os
 import shutil
 import subprocess
+import tempfile
 from pathlib import Path
 
 # Each entry: binary, the argv that takes a prompt on the command line, and a probe prompt.
@@ -27,6 +28,22 @@ CANDIDATES = [
 ]
 
 PROBE = "Reply with exactly: OK"
+
+
+
+def agent_env() -> dict:
+    """The operator's own environment, minus every key this project's .env loaded. The agent CLI keeps
+    its own sign-in; the project's provider keys never reach it."""
+    from .config import DOTENV_KEYS
+    return {k: v for k, v in os.environ.items() if k not in DOTENV_KEYS}
+
+
+def run_isolated(argv: list[str], timeout: int) -> subprocess.CompletedProcess:
+    """Run the CLI in an empty folder, so it cannot read the project or its .env. Every prompt is
+    self-contained: whatever the agent needs is written into it."""
+    with tempfile.TemporaryDirectory(prefix="cos-agent-") as empty:
+        return subprocess.run(argv, capture_output=True, text=True, timeout=timeout,
+                              cwd=empty, env=agent_env())
 
 
 def detect(cache_path: Path | None = None) -> tuple[str, callable] | None:
@@ -45,7 +62,7 @@ def detect(cache_path: Path | None = None) -> tuple[str, callable] | None:
         if not shutil.which(name):
             continue
         try:
-            result = subprocess.run(argv(PROBE), capture_output=True, text=True, timeout=120)
+            result = run_isolated(argv(PROBE), timeout=120)
         except (subprocess.TimeoutExpired, OSError):
             continue
         if result.returncode == 0 and "OK" in result.stdout:
@@ -64,10 +81,8 @@ def ask(prompt: str, cwd: Path, timeout: int = 900,
         return None, "no headless agent CLI found"
 
     name, argv = found
-    env = dict(os.environ)
     try:
-        result = subprocess.run(argv(prompt), capture_output=True, text=True,
-                                timeout=timeout, cwd=str(cwd), env=env)
+        result = run_isolated(argv(prompt), timeout=timeout)
     except subprocess.TimeoutExpired:
         return None, f"{name} timed out after {timeout}s"
     except OSError as error:

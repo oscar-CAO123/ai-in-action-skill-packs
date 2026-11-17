@@ -66,7 +66,8 @@ variable name found in an `.env.example`:
 
 **MCP and connector config to check**, since a wired connector means the agent can already read a
 source without any new credentials: `.mcp.json`, `.cursor/mcp.json`, `~/.codex/config.toml`, the
-Claude Code settings file, and any `mcpServers` block in a project config.
+Claude Code settings file, and any `mcpServers` block in a project config. List the server names only.
+Never print or copy a config file's values: they can hold tokens.
 
 ---
 

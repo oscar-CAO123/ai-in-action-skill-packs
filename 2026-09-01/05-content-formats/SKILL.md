@@ -112,7 +112,7 @@ Read in this order. Stop and flag anything missing rather than guessing.
 | 6 | `formats/<format>/SKILL.md` | the build spec for the chosen format, including its Faceless Reframe doctrine section |
 | 7 | `../../context/research-corpus/INDEX.md` | **the discovery corpus, industry first.** industry playbooks in `industries/`, objection pages in `objections/`, pain themes in `pains/`, company profiles in `companies/`. `MARKET.md` is the corpus rollup: industry distribution, weighted pain, objection resolve rates. The angle almost always starts here |
 | 7a | `../../context/research-corpus/industries/<slug>.md` | **the playbook for one industry.** Ranked pains in the owner's own words with an angle for each, ranked objections with a pre-empt-in-the-ad and a rebuttal-on-the-call line, the language they use and the language to avoid, a lead magnet, three carousel concepts, targeting, and the raw evidence behind all of it. Read this whenever the work is vertical-specific |
-| 7b | `references/candidate-knowledge-base.md` | **the evidence layer for builds, tools and workflows.** Load whenever the copy will name what to build, which tools to use, or how a workflow is structured. [your figure] validated Hub builds for the structure, [your figure] candidate interview summaries for the named tools |
+| 7b | `references/candidate-knowledge-base.md` | **the evidence layer for builds, tools and workflows.** Load whenever the copy will name what to build, which tools to use, or how a workflow is structured. [your figure] validated builds for the structure, [your figure] customer interview summaries for the named tools |
 | 8 | `references/scripts/` | the written work: archetypes, the core-pain VSL scripts, the a reference brand teardowns, the raw idea dump |
 | 9 | `references/canon/CONCEPT-BANK.md` | worked examples per pain (reference, never lift lines verbatim). `references/canon/objection-bank.md` carries the canonical objections with how often each is raised, how often the rep closes it on the call, and a pre-empt and rebuttal pair per industry |
 | 10 | Section 8 below | the evidence layer distilled from [your figure] scraped posts |
@@ -234,14 +234,14 @@ the business candidate knowledge base, because that is the record of what has ac
 validated and shipped. A plausible-sounding automation invented at the desk is the same failure
 as an invented number.
 
-- **The workflow structure** comes from the Hub `builds` table ([your figure] published builds):
+- **The workflow structure** comes from your evidence layer (`references/candidate-knowledge-base.md`, [your figure] recorded builds):
   `problem`, `solution`, `replicate_steps`, `what_worked`, `what_didnt`, `pitfalls`, `outcome`,
   `time_to_deploy`, `industry`. Pull the build that matches the pain, then write from it.
-- **A named tool** never comes from the Hub's `stack` field, which is abstracted to categories
+- **A named tool** never comes from a category label in your notes, which is abstracted
   by design ("an automation platform", "a fast LLM"). It comes from your content store interview evidence
-  or the Hub's vetted repos and accounts, and it carries the same discipline as a number: name
+  or the tools your evidence layer records, and it carries the same discipline as a number: name
   the tool only where the evidence names it.
-- **The counted stack, from [your figure] candidate interview summaries:** lead with the tools that top your own count, because it is what the market actually runs.
+- **The counted stack, from [your figure] customer interview summaries:** lead with the tools that top your own count, because it is what the market actually runs.
 
 Queries, table shapes and the refresh procedure: `references/candidate-knowledge-base.md`.
 
@@ -667,7 +667,7 @@ structures evidenced in the reference bank, in order of strength:
   this even at 550 characters a slide.
 - **One quotable closing line at the foot of a dense slide**, so the reader carries something out.
 - **Everything in section 8.** Every number keeps the scope its source supports, and every structure
-  it names comes from `context/research-corpus/` or a named Hub build.
+  it names comes from `context/research-corpus/` or a build named in your evidence layer.
 
 **What is not settled.** The information slide's own type scale has not been measured. The band
 budget above was measured off the rendered cards on and this class needs the same
@@ -741,7 +741,7 @@ handed to anyone else here.
 
 **The teach beat: one build, plus its outcome.** The education law in
 section 1 binds here like everywhere else, and this is how it lands inside the word budget. One
-line names a real Hub build, the next line gives its recorded outcome scoped to one business.
+line names a real build from your evidence layer, the next line gives its recorded outcome scoped to one business.
 The three-build trio belongs to F5, where three separate slides carry it: inside thirty-eight
 seconds of one man talking, three builds eat the pain arc and land nothing, and they push every
 script past the 110-word ceiling. Keep the two lines in one clip chunk so the mechanism and the
@@ -778,7 +778,7 @@ result beat in its own words, and change only this:
    business, the work comes in here"). The job of this script is to educate, so the runtime goes
    to the builds rather than to a second lap of the pain.
 4. **Three AI systems, replacing the source's hire block. Each one is taught the same way: the
-   tools, what it does, the outcome.** Every build is a published row in the Hub `builds` table
+   tools, what it does, the outcome.** Every build is a recorded entry in your evidence layer
    (`references/candidate-knowledge-base.md` has the query). Take the tools out of that build's
    own `replicate_steps`, never out of the `stack` column, which is abstracted on purpose.
    Pick the three that remove the owner from three different parts of the loop, and drop any
@@ -1137,6 +1137,5 @@ Fix and re-run. Never deliver a flagged draft.
 - Media plans, budget allocation, audience research.
 - Email sequences, unless asked with full context.
 - Brand voice document creation. Use the `brand-voice` skill.
-- Anything for Open Operator. Different brand, different voice, different rules.
 - Writing before the clarifying questions are answered.
 - Publishing. Nothing here posts anything anywhere.

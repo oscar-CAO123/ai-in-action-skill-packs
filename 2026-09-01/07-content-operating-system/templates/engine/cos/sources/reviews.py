@@ -149,7 +149,9 @@ class ReviewsSource(Source):
             )
             response.raise_for_status()
         except requests.RequestException as error:
-            print(f"  {self.id}: places call failed, {error}")
+            # The key is a URL parameter on this API, so print the error type and status only, never the URL.
+            status = getattr(getattr(error, "response", None), "status_code", None)
+            print(f"  {self.id}: places call failed ({type(error).__name__}{f', HTTP {status}' if status else ''})")
             return []
 
         since = self.since(watermark)

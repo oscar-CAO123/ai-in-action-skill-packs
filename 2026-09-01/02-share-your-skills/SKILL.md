@@ -22,9 +22,9 @@ Confirm all three, and stop and ask if any is missing.
 
 1. **A folder of skills.** Each skill is a directory with a `SKILL.md` inside it. If they have loose
    `.md` files instead, each one becomes its own directory with the file renamed to `SKILL.md`.
-2. **GitHub access.** Either the `gh` CLI authenticated (`gh auth status`), or a personal access
-   token with `repo` scope in an environment variable. Ask which they have. Never read a token out
-   of a file and never print one.
+2. **GitHub access.** The `gh` CLI, authenticated (`gh auth status`). If the user has a personal
+   access token with `repo` scope instead, they sign `gh` in with it themselves (Step 3 shows how).
+   Ask which they have. Never read a token out of a file and never print one.
 3. **A decision on public or private.** Private repositories work as plugins for anyone whose git
    credentials can read them. Default to private and ask.
 
@@ -106,8 +106,9 @@ git init && git add -A && git commit -m "Skills as a plugin"
 gh repo create <owner>/<repo> --private --source . --push
 ```
 
-With a token instead, add the remote with the token in the URL for one push, then rewrite the remote
-to the plain HTTPS URL so the token is not left sitting in `.git/config`.
+With a token instead, never put it in the remote URL: it lands in `.git/config`, the shell history and
+any error message. The user runs `gh auth login --with-token` and pastes the token there themselves,
+then `gh auth setup-git`, and the remote stays the plain HTTPS URL.
 
 **Never push without the user saying so in that turn.** A push is public, or at least visible to a
 whole team, and it cannot be taken back cleanly.

@@ -71,6 +71,10 @@ def load(path: Path | None = None) -> dict:
     return cfg
 
 
+# Names of the variables this project's .env set, so the headless agent can be run without them.
+DOTENV_KEYS: set[str] = set()
+
+
 def load_dotenv(root: Path | None = None) -> None:
     """Read .env from the project root into os.environ without overwriting what is already set."""
     root = root or project_root()
@@ -84,7 +88,9 @@ def load_dotenv(root: Path | None = None) -> None:
         key, _, value = line.partition("=")
         key = key.strip()
         value = value.strip().strip("'\"")
-        os.environ.setdefault(key, value)
+        if key not in os.environ:
+            os.environ[key] = value
+            DOTENV_KEYS.add(key)
 
 
 def enabled_sources(cfg: dict) -> list[dict]:

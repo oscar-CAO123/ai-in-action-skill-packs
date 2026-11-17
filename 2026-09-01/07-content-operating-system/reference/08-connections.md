@@ -20,6 +20,7 @@ never ask them to send you a key in chat, and you never write one into a file.
 ```
 1. MCP config: .mcp.json, .cursor/mcp.json, ~/.codex/config.toml, the Claude Code settings file.
    Any mcpServers entry for a platform means it may already be reachable. Try a read call.
+   Read the server names only; never print a config file's values, which can hold tokens.
 2. Authenticated CLIs: gh auth status, gcloud auth list, aws sts get-caller-identity,
    supabase projects list, stripe config --list. Whatever is installed, ask it who it is.
 3. Environment: env | grep -iE 'TOKEN|KEY|SECRET' | cut -d= -f1
